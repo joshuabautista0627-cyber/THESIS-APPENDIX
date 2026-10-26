@@ -1,0 +1,187 @@
+{
+  "archive": "THESIS_DATA_2026-10-27.zip",
+  "bytes": 67902789436,
+  "sha256": "e0d042f1a1c3f63728df24a25d84f3a772b9a4c09bd6ce12c7db75db013a7a1b",
+  "parts": [
+    {
+      "name": "THESIS_DATA_2026-10-27.zip.part001",
+      "bytes": 1900000000,
+      "sha256": "03a216acb439870b68937ec6841e5a4648ad9a19e41bec0402af91445fe9f05b"
+    },
+    {
+      "name": "THESIS_DATA_2026-10-27.zip.part002",
+      "bytes": 1900000000,
+      "sha256": "e8a6ce680b58546ff08ef3400c9d63187b647d181cd2ba20f3bb12b90c58c35c"
+    },
+    {
+      "name": "THESIS_DATA_2026-10-27.zip.part003",
+      "bytes": 1900000000,
+      "sha256": "fe4575dea3ddcc8a197c7f79be977b48e3dee58b0d22c73262fa8f13d364a57f"
+    },
+    {
+      "name": "THESIS_DATA_2026-10-27.zip.part004",
+      "bytes": 1900000000,
+      "sha256": "fa7dea3cc7efb9b087650722b2db182c28a44b64bf8541409b2f53c80e88c1e5"
+    },
+    {
+      "name": "THESIS_DATA_2026-10-27.zip.part005",
+      "bytes": 1900000000,
+      "sha256": "aa689bfe64013ba7bc46f78018da745d8ffa01de6749d8781f6766c86545fc75"
+    },
+    {
+      "name": "THESIS_DATA_2026-10-27.zip.part006",
+      "bytes": 1900000000,
+      "sha256": "b9414faf99d32e894b19e9bac71bd1f64724765dacdc39d7eba481c89b9bf761"
+    },
+    {
+      "name": "THESIS_DATA_2026-10-27.zip.part007",
+      "bytes": 1900000000,
+      "sha256": "332a050f8b8e39f29f7ab913455aeda382cfac00bb0417c01119f09f0fac454a"
+    },
+    {
+      "name": "THESIS_DATA_2026-10-27.zip.part008",
+      "bytes": 1900000000,
+      "sha256": "10c43deff85a016fad6015e0f1c83bda52abf8c61fcb44165bd3eef7624594c1"
+    },
+    {
+      "name": "THESIS_DATA_2026-10-27.zip.part009",
+      "bytes": 1900000000,
+      "sha256": "3ba2db05fab967007c813d039426d476110129e0d6f7f0d21f0ae64cea236958"
+    },
+    {
+      "name": "THESIS_DATA_2026-10-27.zip.part010",
+      "bytes": 1900000000,
+      "sha256": "6d0fffd5ac1591e1f28b669c8ef34d97ba36d1bfd08e672cde7532a03abf38e7"
+    },
+    {
+      "name": "THESIS_DATA_2026-10-27.zip.part011",
+      "bytes": 1900000000,
+      "sha256": "140bf87ee50a5071f7cc9caeae8ac957f795fe00a8d66b84d21a068a1292dd84"
+    },
+    {
+      "name": "THESIS_DATA_2026-10-27.zip.part012",
+      "bytes": 1900000000,
+      "sha256": "268552697c0a5cede96f35ef0954b3a82faf674820e488ceb7fe1abbcdf5085a"
+    },
+    {
+      "name": "THESIS_DATA_2026-10-27.zip.part013",
+      "bytes": 1900000000,
+      "sha256": "19b735fef2291905c363abebfe8e8a5de70d98eea6aedc11ea6ecae872f6f1d5"
+    },
+    {
+      "name": "THESIS_DATA_2026-10-27.zip.part014",
+      "bytes": 1900000000,
+      "sha256": "389da11c732fd4a57d260e1814a1357656f4cba72fa6b8a719151dc17a3223cf"
+    },
+    {
+      "name": "THESIS_DATA_2026-10-27.zip.part015",
+      "bytes": 1900000000,
+      "sha256": "f27c9e4dff23b4a12b44f9dbbbd1e5f71a3dc6879bb4fd111c9eb8ce5cdce85a"
+    },
+    {
+      "name": "THESIS_DATA_2026-10-27.zip.part016",
+      "bytes": 1900000000,
+      "sha256": "dd66888960cdd0799494846975f18035462a518035c05c7497c13dc38f6e37df"
+    },
+    {
+      "name": "THESIS_DATA_2026-10-27.zip.part017",
+      "bytes": 1900000000,
+      "sha256": "6b2deea321f52e0f1b6a463dddb8f87ba410e3dddb402138a6d6aef94eff973a"
+    },
+    {
+      "name": "THESIS_DATA_2026-10-27.zip.part018",
+      "bytes": 1900000000,
+      "sha256": "5a961d5460f80ae83097e782a19cfc1239ba08f0be6036f921ea7c74b00be333"
+    },
+    {
+      "name": "THESIS_DATA_2026-10-27.zip.part019",
+      "bytes": 1900000000,
+      "sha256": "fa325319e7b91e3a73732fb70db0981fe11d0f63d750c4b3027436e1f41e01b8"
+    },
+    {
+      "name": "THESIS_DATA_2026-10-27.zip.part020",
+      "bytes": 1900000000,
+      "sha256": "19e346f153e3f64eeeee1bd2d11908e62da8f3759de89ca8435e7266743d3c48"
+    },
+    {
+      "name": "THESIS_DATA_2026-10-27.zip.part021",
+      "bytes": 1900000000,
+      "sha256": "6c293ed744da9f8f70d2da85edeb5ffae5496648449a696f25734eafcfb0323c"
+    },
+    {
+      "name": "THESIS_DATA_2026-10-27.zip.part022",
+      "bytes": 1900000000,
+      "sha256": "d76efb5ecf066f296992088947ffed4cb4048a0ca7b2429c228ca5200e31fe5f"
+    },
+    {
+      "name": "THESIS_DATA_2026-10-27.zip.part023",
+      "bytes": 1900000000,
+      "sha256": "8a275e2b9875543aaee433c6024722438ed4504320248f74e69420d546cefc09"
+    },
+    {
+      "name": "THESIS_DATA_2026-10-27.zip.part024",
+      "bytes": 1900000000,
+      "sha256": "a19e8aa92aaa5fef0219fbd964dc598406617da91229b2e2d2bf0c55b20471d9"
+    },
+    {
+      "name": "THESIS_DATA_2026-10-27.zip.part025",
+      "bytes": 1900000000,
+      "sha256": "746bbf2c29963af6f9f962a8317f5c1e5e1b840e093dfe73ba7ee258e38ac09c"
+    },
+    {
+      "name": "THESIS_DATA_2026-10-27.zip.part026",
+      "bytes": 1900000000,
+      "sha256": "6cfba67d4512fa6494ea54433c7f4b16a9224615c95cb63c5c9d69b2453452d2"
+    },
+    {
+      "name": "THESIS_DATA_2026-10-27.zip.part027",
+      "bytes": 1900000000,
+      "sha256": "5469d6313b315410f088f2df39dd8ccddb0c1914d637900ad6683621a4b3742d"
+    },
+    {
+      "name": "THESIS_DATA_2026-10-27.zip.part028",
+      "bytes": 1900000000,
+      "sha256": "d49ffd9d02c5e7258fd124eb0195b6915291fa19609c989097118f598cb0b853"
+    },
+    {
+      "name": "THESIS_DATA_2026-10-27.zip.part029",
+      "bytes": 1900000000,
+      "sha256": "766952049622776d43b5d7c01cc69123f7a2dbdfcd9d5aeb56e03ad8c303333c"
+    },
+    {
+      "name": "THESIS_DATA_2026-10-27.zip.part030",
+      "bytes": 1900000000,
+      "sha256": "ac746027eca6fa3a563554bd9c1f31d846cae81f088a51da781df951b7de74f3"
+    },
+    {
+      "name": "THESIS_DATA_2026-10-27.zip.part031",
+      "bytes": 1900000000,
+      "sha256": "aa577b6ca695ec47c494c224c80d9a3bdfb29a05644295e76b97f7782b65cb49"
+    },
+    {
+      "name": "THESIS_DATA_2026-10-27.zip.part032",
+      "bytes": 1900000000,
+      "sha256": "e0383262a4f65f03cd4e39d6a1d8eff8a5b3984e4fff354ff0ac769e7855de0d"
+    },
+    {
+      "name": "THESIS_DATA_2026-10-27.zip.part033",
+      "bytes": 1900000000,
+      "sha256": "793e371981f566810322c153edc3c1bea06628a14e8940511893804258152023"
+    },
+    {
+      "name": "THESIS_DATA_2026-10-27.zip.part034",
+      "bytes": 1900000000,
+      "sha256": "508193f3bcd0d5ee121a4c53786bf930ff4bf77965d2cf311756cdbee0eb2694"
+    },
+    {
+      "name": "THESIS_DATA_2026-10-27.zip.part035",
+      "bytes": 1900000000,
+      "sha256": "5c90f0d215c59888ca6ad0f5be7e1f1375a51721be558b0db26f9abf96f3d754"
+    },
+    {
+      "name": "THESIS_DATA_2026-10-27.zip.part036",
+      "bytes": 1402789436,
+      "sha256": "13423d43c3beaf3fe1fd558c4df5b13f7dee3e86bcbe621af00d503c5b2c265a"
+    }
+  ]
+}

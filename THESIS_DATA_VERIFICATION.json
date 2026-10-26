@@ -1,0 +1,27 @@
+{
+  "snapshot_date": "2026-10-27",
+  "source_file_count": 8589,
+  "source_directory_count": 717,
+  "source_bytes": 69613874782,
+  "source_files_excluded": 0,
+  "source_sha256_computed_while_archiving": 8589,
+  "source_inventory_unchanged_through_packaging": true,
+  "git_browsable_files": 7551,
+  "git_source_byte_equality_check": "passed",
+  "git_data_commit": "7d998dafe02d24777814ca2752988dda1eab57b8",
+  "release_only_files": 1038,
+  "archive": "THESIS_DATA_2026-10-27.zip",
+  "archive_bytes": 67902789436,
+  "archive_sha256": "e0d042f1a1c3f63728df24a25d84f3a772b9a4c09bd6ce12c7db75db013a7a1b",
+  "numbered_parts": 36,
+  "all_remote_part_sizes_and_sha256": "passed",
+  "recovery_script_tests": [
+    "split ZIP content and CRC",
+    "part checksums",
+    "successful reassembly",
+    "existing output rejected",
+    "corrupt part rejected",
+    "missing part rejected"
+  ],
+  "release_url": "https://github.com/joshuabautista0627-cyber/THESIS-APPENDIX/releases/tag/thesis-data-2026-10-27"
+}

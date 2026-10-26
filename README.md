@@ -2,6 +2,19 @@
 
 Source and supporting evidence snapshot prepared on **19 October 2026**, published to this repository on **26 October 2026**.
 
+## Complete THESIS DATA folder — 27 October 2026
+
+The separate [THESIS DATA release](https://github.com/joshuabautista0627-cyber/THESIS-APPENDIX/releases/tag/thesis-data-2026-10-27) preserves **all 8,589 files (69,613,874,782 source bytes)** and the complete directory structure from the supplied folder, including original ZIP archives and their extracted data folders. See [download and recovery instructions](THESIS_DATA_DOWNLOAD.md).
+
+Browse the 7,551 smaller files directly:
+
+- [ANSYS FOR HOLLOW RODS](ANSYS%20FOR%20HOLLOW%20RODS/)
+- [CHEMICAL CHARACTERIZATION](CHEMICAL%20CHARACTERIZATION/)
+- [Data Collection](Data%20Collection/)
+- [UTM Characterization](UTM%20Characterization/)
+
+ZIP archives, videos, and six other files above 50 MiB are supplied in the complete release download. [THESIS_DATA_MANIFEST.json](THESIS_DATA_MANIFEST.json) records every original file, its size, SHA-256, and whether it is also browsable in Git. The Git checkout and GitHub's automatic source-code ZIP contain the browsable subset; download the release parts to obtain the complete folder.
+
 ## Complete electronic appendix
 
 The original ZIP contains 8,847 payload files and is 35,111,754,320 bytes (35.1 GB). Download **all numbered ZIP parts** and `reassemble_appendix.py` from the [appendix release](https://github.com/joshuabautista0627-cyber/THESIS-APPENDIX/releases/tag/appendix-2026-10-19). Put them in the same folder, then run:
