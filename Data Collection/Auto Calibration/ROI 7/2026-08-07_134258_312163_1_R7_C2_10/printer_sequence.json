@@ -1,0 +1,3026 @@
+{
+  "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+  "generation": 2,
+  "status": "complete",
+  "configured_cycles": 10,
+  "completed_cycles": 10,
+  "force_limit_exceeded": false,
+  "maximum_abs_force_N": 1.1620982542340466,
+  "error": "",
+  "started_monotonic_ns": 336280014580500,
+  "finished_monotonic_ns": 336324285812000,
+  "events": [
+    {
+      "host_monotonic_ns": 336280015314300,
+      "event": "state",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "state": "verifying_readiness",
+      "cycle": 0,
+      "cycle_id": ""
+    },
+    {
+      "host_monotonic_ns": 336280015509100,
+      "event": "state",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "state": "pre_roll",
+      "cycle": 0,
+      "cycle_id": ""
+    },
+    {
+      "host_monotonic_ns": 336281015718700,
+      "event": "state",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "state": "move_to_start",
+      "cycle": 0,
+      "cycle_id": ""
+    },
+    {
+      "host_monotonic_ns": 336281027306400,
+      "event": "command_submitted",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "command_id": "b9766c23-1fb7-413e-9d49-42247fd0d0b7",
+      "gcode": "G1 Z90.000 F200.000"
+    },
+    {
+      "host_monotonic_ns": 336281049928300,
+      "event": "state",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "state": "pressing_down",
+      "cycle": 1,
+      "cycle_id": "21db9765-123a-4d70-af3d-0cb708b81ea2"
+    },
+    {
+      "host_monotonic_ns": 336281061348100,
+      "event": "command_submitted",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "command_id": "5ad76732-f296-4e9e-af24-b14c81d180b6",
+      "gcode": "G1 Z87.375 F200.000"
+    },
+    {
+      "host_monotonic_ns": 336282008034000,
+      "event": "state",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "state": "holding",
+      "cycle": 1,
+      "cycle_id": "21db9765-123a-4d70-af3d-0cb708b81ea2"
+    },
+    {
+      "host_monotonic_ns": 336282508400600,
+      "event": "state",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "state": "retracting",
+      "cycle": 1,
+      "cycle_id": "21db9765-123a-4d70-af3d-0cb708b81ea2"
+    },
+    {
+      "host_monotonic_ns": 336282520201400,
+      "event": "command_submitted",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "command_id": "f3fcbaaa-2c66-4835-9e9a-8fe9a1b97d2b",
+      "gcode": "G1 Z90.000 F200.000"
+    },
+    {
+      "host_monotonic_ns": 336283464452700,
+      "event": "state",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "state": "inter_cycle_dwell",
+      "cycle": 1,
+      "cycle_id": ""
+    },
+    {
+      "host_monotonic_ns": 336285464795700,
+      "event": "state",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "state": "pressing_down",
+      "cycle": 2,
+      "cycle_id": "1bd334d7-ecb4-40c9-adb5-a94f51529c2f"
+    },
+    {
+      "host_monotonic_ns": 336285476474200,
+      "event": "command_submitted",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "command_id": "71f49aca-b9b4-4296-8805-77b211dbf72b",
+      "gcode": "G1 Z87.375 F200.000"
+    },
+    {
+      "host_monotonic_ns": 336286423909100,
+      "event": "state",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "state": "holding",
+      "cycle": 2,
+      "cycle_id": "1bd334d7-ecb4-40c9-adb5-a94f51529c2f"
+    },
+    {
+      "host_monotonic_ns": 336286925054100,
+      "event": "state",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "state": "retracting",
+      "cycle": 2,
+      "cycle_id": "1bd334d7-ecb4-40c9-adb5-a94f51529c2f"
+    },
+    {
+      "host_monotonic_ns": 336286937770400,
+      "event": "command_submitted",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "command_id": "28f7f276-4af0-4371-b6b0-71917d4e27bf",
+      "gcode": "G1 Z90.000 F200.000"
+    },
+    {
+      "host_monotonic_ns": 336287887521400,
+      "event": "state",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "state": "inter_cycle_dwell",
+      "cycle": 2,
+      "cycle_id": ""
+    },
+    {
+      "host_monotonic_ns": 336289887749300,
+      "event": "state",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "state": "pressing_down",
+      "cycle": 3,
+      "cycle_id": "4c441bf7-9dd6-4f15-ba92-1c75932b81b4"
+    },
+    {
+      "host_monotonic_ns": 336289900952200,
+      "event": "command_submitted",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "command_id": "e64247b5-d77d-467c-b83e-c1777027f14c",
+      "gcode": "G1 Z87.375 F200.000"
+    },
+    {
+      "host_monotonic_ns": 336290851459500,
+      "event": "state",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "state": "holding",
+      "cycle": 3,
+      "cycle_id": "4c441bf7-9dd6-4f15-ba92-1c75932b81b4"
+    },
+    {
+      "host_monotonic_ns": 336291352156500,
+      "event": "state",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "state": "retracting",
+      "cycle": 3,
+      "cycle_id": "4c441bf7-9dd6-4f15-ba92-1c75932b81b4"
+    },
+    {
+      "host_monotonic_ns": 336291363530000,
+      "event": "command_submitted",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "command_id": "142396f8-1722-4e77-a5d8-dd22d7a140e9",
+      "gcode": "G1 Z90.000 F200.000"
+    },
+    {
+      "host_monotonic_ns": 336292315224100,
+      "event": "state",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "state": "inter_cycle_dwell",
+      "cycle": 3,
+      "cycle_id": ""
+    },
+    {
+      "host_monotonic_ns": 336294315826500,
+      "event": "state",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "state": "pressing_down",
+      "cycle": 4,
+      "cycle_id": "ac567fb8-992a-4cb6-ada1-8b572e53a09b"
+    },
+    {
+      "host_monotonic_ns": 336294327532700,
+      "event": "command_submitted",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "command_id": "f1d2b8a6-1aea-4b88-8099-1c059845da60",
+      "gcode": "G1 Z87.375 F200.000"
+    },
+    {
+      "host_monotonic_ns": 336295280747500,
+      "event": "state",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "state": "holding",
+      "cycle": 4,
+      "cycle_id": "ac567fb8-992a-4cb6-ada1-8b572e53a09b"
+    },
+    {
+      "host_monotonic_ns": 336295781488100,
+      "event": "state",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "state": "retracting",
+      "cycle": 4,
+      "cycle_id": "ac567fb8-992a-4cb6-ada1-8b572e53a09b"
+    },
+    {
+      "host_monotonic_ns": 336295796717700,
+      "event": "command_submitted",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "command_id": "cf44771d-f2f8-4a82-ba44-d97a77e05ccd",
+      "gcode": "G1 Z90.000 F200.000"
+    },
+    {
+      "host_monotonic_ns": 336296744557800,
+      "event": "state",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "state": "inter_cycle_dwell",
+      "cycle": 4,
+      "cycle_id": ""
+    },
+    {
+      "host_monotonic_ns": 336298744982300,
+      "event": "state",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "state": "pressing_down",
+      "cycle": 5,
+      "cycle_id": "2ab3c173-33e2-491f-a28e-eb0bc802c982"
+    },
+    {
+      "host_monotonic_ns": 336298756030300,
+      "event": "command_submitted",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "command_id": "96d48d9e-5887-4357-a598-f241476a4873",
+      "gcode": "G1 Z87.375 F200.000"
+    },
+    {
+      "host_monotonic_ns": 336299702851400,
+      "event": "state",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "state": "holding",
+      "cycle": 5,
+      "cycle_id": "2ab3c173-33e2-491f-a28e-eb0bc802c982"
+    },
+    {
+      "host_monotonic_ns": 336300203401600,
+      "event": "state",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "state": "retracting",
+      "cycle": 5,
+      "cycle_id": "2ab3c173-33e2-491f-a28e-eb0bc802c982"
+    },
+    {
+      "host_monotonic_ns": 336300215497400,
+      "event": "command_submitted",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "command_id": "8f6918c5-683d-4322-a891-48416ae743d8",
+      "gcode": "G1 Z90.000 F200.000"
+    },
+    {
+      "host_monotonic_ns": 336301161986600,
+      "event": "state",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "state": "inter_cycle_dwell",
+      "cycle": 5,
+      "cycle_id": ""
+    },
+    {
+      "host_monotonic_ns": 336303162209500,
+      "event": "state",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "state": "pressing_down",
+      "cycle": 6,
+      "cycle_id": "85653210-3b62-4436-99a1-17a2ea70bd27"
+    },
+    {
+      "host_monotonic_ns": 336303174124800,
+      "event": "command_submitted",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "command_id": "e1dcf5f8-4368-48a6-b4c7-ce154c33973c",
+      "gcode": "G1 Z87.375 F200.000"
+    },
+    {
+      "host_monotonic_ns": 336304123316400,
+      "event": "state",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "state": "holding",
+      "cycle": 6,
+      "cycle_id": "85653210-3b62-4436-99a1-17a2ea70bd27"
+    },
+    {
+      "host_monotonic_ns": 336304623447000,
+      "event": "state",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "state": "retracting",
+      "cycle": 6,
+      "cycle_id": "85653210-3b62-4436-99a1-17a2ea70bd27"
+    },
+    {
+      "host_monotonic_ns": 336304634752700,
+      "event": "command_submitted",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "command_id": "f51d93f3-457f-48cc-9840-1a9da9ccea90",
+      "gcode": "G1 Z90.000 F200.000"
+    },
+    {
+      "host_monotonic_ns": 336305578872900,
+      "event": "state",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "state": "inter_cycle_dwell",
+      "cycle": 6,
+      "cycle_id": ""
+    },
+    {
+      "host_monotonic_ns": 336307579312800,
+      "event": "state",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "state": "pressing_down",
+      "cycle": 7,
+      "cycle_id": "5fbed69b-21ef-4fe0-80ad-9827e5fe8b66"
+    },
+    {
+      "host_monotonic_ns": 336307595001400,
+      "event": "command_submitted",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "command_id": "a3160fbd-bfe4-4dd7-bf00-fa629b9e2566",
+      "gcode": "G1 Z87.375 F200.000"
+    },
+    {
+      "host_monotonic_ns": 336308541387500,
+      "event": "state",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "state": "holding",
+      "cycle": 7,
+      "cycle_id": "5fbed69b-21ef-4fe0-80ad-9827e5fe8b66"
+    },
+    {
+      "host_monotonic_ns": 336309042210000,
+      "event": "state",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "state": "retracting",
+      "cycle": 7,
+      "cycle_id": "5fbed69b-21ef-4fe0-80ad-9827e5fe8b66"
+    },
+    {
+      "host_monotonic_ns": 336309055493800,
+      "event": "command_submitted",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "command_id": "ffd69ad9-7de3-4ea1-9e2b-ac925dcc134f",
+      "gcode": "G1 Z90.000 F200.000"
+    },
+    {
+      "host_monotonic_ns": 336310006723500,
+      "event": "state",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "state": "inter_cycle_dwell",
+      "cycle": 7,
+      "cycle_id": ""
+    },
+    {
+      "host_monotonic_ns": 336312006849000,
+      "event": "state",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "state": "pressing_down",
+      "cycle": 8,
+      "cycle_id": "fe989b88-b35a-4e1a-890f-4883247987c0"
+    },
+    {
+      "host_monotonic_ns": 336312018686100,
+      "event": "command_submitted",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "command_id": "2dbe7ae4-e363-47ac-8d67-a344dc68e349",
+      "gcode": "G1 Z87.375 F200.000"
+    },
+    {
+      "host_monotonic_ns": 336312963295200,
+      "event": "state",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "state": "holding",
+      "cycle": 8,
+      "cycle_id": "fe989b88-b35a-4e1a-890f-4883247987c0"
+    },
+    {
+      "host_monotonic_ns": 336313463653900,
+      "event": "state",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "state": "retracting",
+      "cycle": 8,
+      "cycle_id": "fe989b88-b35a-4e1a-890f-4883247987c0"
+    },
+    {
+      "host_monotonic_ns": 336313474801300,
+      "event": "command_submitted",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "command_id": "536c528d-9226-424e-bd3a-ed0ad7c2c992",
+      "gcode": "G1 Z90.000 F200.000"
+    },
+    {
+      "host_monotonic_ns": 336314425892900,
+      "event": "state",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "state": "inter_cycle_dwell",
+      "cycle": 8,
+      "cycle_id": ""
+    },
+    {
+      "host_monotonic_ns": 336316426461200,
+      "event": "state",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "state": "pressing_down",
+      "cycle": 9,
+      "cycle_id": "a7cf682a-6b86-40e6-8fe6-d90a28c64c47"
+    },
+    {
+      "host_monotonic_ns": 336316440763100,
+      "event": "command_submitted",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "command_id": "0c30e191-d218-4b37-bbda-ee462c30587c",
+      "gcode": "G1 Z87.375 F200.000"
+    },
+    {
+      "host_monotonic_ns": 336317391939200,
+      "event": "state",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "state": "holding",
+      "cycle": 9,
+      "cycle_id": "a7cf682a-6b86-40e6-8fe6-d90a28c64c47"
+    },
+    {
+      "host_monotonic_ns": 336317895244700,
+      "event": "state",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "state": "retracting",
+      "cycle": 9,
+      "cycle_id": "a7cf682a-6b86-40e6-8fe6-d90a28c64c47"
+    },
+    {
+      "host_monotonic_ns": 336317906579100,
+      "event": "command_submitted",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "command_id": "ad15faee-65ba-4a38-a2ee-c4ad84d1c4c3",
+      "gcode": "G1 Z90.000 F200.000"
+    },
+    {
+      "host_monotonic_ns": 336318850868300,
+      "event": "state",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "state": "inter_cycle_dwell",
+      "cycle": 9,
+      "cycle_id": ""
+    },
+    {
+      "host_monotonic_ns": 336320851260400,
+      "event": "state",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "state": "pressing_down",
+      "cycle": 10,
+      "cycle_id": "49145615-cacc-4a18-8fde-c3c8bb401eb5"
+    },
+    {
+      "host_monotonic_ns": 336320862871300,
+      "event": "command_submitted",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "command_id": "d41188c4-8748-4508-a9a6-c27426cc402d",
+      "gcode": "G1 Z87.375 F200.000"
+    },
+    {
+      "host_monotonic_ns": 336321812726000,
+      "event": "state",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "state": "holding",
+      "cycle": 10,
+      "cycle_id": "49145615-cacc-4a18-8fde-c3c8bb401eb5"
+    },
+    {
+      "host_monotonic_ns": 336322315078100,
+      "event": "state",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "state": "retracting",
+      "cycle": 10,
+      "cycle_id": "49145615-cacc-4a18-8fde-c3c8bb401eb5"
+    },
+    {
+      "host_monotonic_ns": 336322327800000,
+      "event": "command_submitted",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "command_id": "c44892a5-67e8-4fdf-bcb5-a817dd41cc36",
+      "gcode": "G1 Z90.000 F200.000"
+    },
+    {
+      "host_monotonic_ns": 336323274903100,
+      "event": "state",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "state": "post_roll",
+      "cycle": 0,
+      "cycle_id": ""
+    },
+    {
+      "host_monotonic_ns": 336324285774900,
+      "event": "state",
+      "sequence_id": "aef474bc-5b52-4df6-9da7-0b0a49edbc91",
+      "generation": 2,
+      "state": "complete",
+      "cycle": 0,
+      "cycle_id": ""
+    }
+  ],
+  "commands": [
+    {
+      "command_id": "ba5a0d6a-fe19-4deb-8b97-dd279d7579e4",
+      "gcode": "M115",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 335775772166900,
+      "sent_monotonic_ns": 335775772238600,
+      "acknowledged_monotonic_ns": 335775845554200,
+      "completed_monotonic_ns": 335775855439800,
+      "response_lines": [
+        "FIRMWARE_NAME:Marlin V1.1.6 (Sep 13 2022 15:13:53) SOURCE_CODE_URL:github.com/MarlinFirmware/Marlin PROTOCOL_VERSION:1.0 MACHINE_TYPE:Ender-3 V2 Neo EXTRUDER_COUNT:1 UUID:cede2a2f-41a2-4748-9b12-c55c62f367ff",
+        "Cap:SERIAL_XON_XOFF:0",
+        "Cap:BINARY_FILE_TRANSFER:0",
+        "Cap:EEPROM:1",
+        "Cap:VOLUMETRIC:1",
+        "Cap:AUTOREPORT_POS:0",
+        "Cap:AUTOREPORT_TEMP:1",
+        "Cap:PROGRESS:0",
+        "Cap:PRINT_JOB:1",
+        "Cap:AUTOLEVEL:1",
+        "Cap:RUNOUT:0",
+        "Cap:Z_PROBE:1",
+        "Cap:LEVELING_DATA:1",
+        "Cap:BUILD_PERCENT:0",
+        "Cap:SOFTWARE_POWER:0",
+        "Cap:TOGGLE_LIGHTS:0",
+        "Cap:CASE_LIGHT_BRIGHTNESS:0",
+        "Cap:EMERGENCY_PARSER:0",
+        "Cap:HOST_ACTION_COMMANDS:0",
+        "Cap:PROMPT_SUPPORT:0",
+        "Cap:SDCARD:1",
+        "Cap:REPEAT:0",
+        "Cap:SD_WRITE:1",
+        "Cap:AUTOREPORT_SD_STATUS:0",
+        "Cap:LONG_FILENAME:1",
+        "Cap:THERMAL_PROTECTION:1",
+        "Cap:MOTION_MODES:0",
+        "Cap:ARCS:1",
+        "Cap:BABYSTEPPING:1",
+        "Cap:CHAMBER_TEMPERATURE:0",
+        "Cap:COOLER_TEMPERATURE:0",
+        "Cap:MEATPACK:0",
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "c200ac2c-5f7b-4d73-a418-72216fe2cb83",
+      "gcode": "G28",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 335980598396400,
+      "sent_monotonic_ns": 335980598470700,
+      "acknowledged_monotonic_ns": 336008799253600,
+      "completed_monotonic_ns": 336008803617700,
+      "response_lines": [
+        "echo:busy: processing",
+        "echo:busy: processing",
+        "echo:busy: processing",
+        "echo:busy: processing",
+        "echo:busy: processing",
+        "echo:busy: processing",
+        "echo:busy: processing",
+        "echo:busy: processing",
+        "echo:busy: processing",
+        "echo:busy: processing",
+        "X:149.20 Y:120.90 Z:10.00 E:0.00 Count X:11936 Y:9672 Z:4000",
+        "echo:Bed Leveling ON",
+        "echo:Fade Height 3.00",
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "71159c7a-72b9-4b7a-9fa8-959ba027621b",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336008803744100,
+      "sent_monotonic_ns": 336008803816600,
+      "acknowledged_monotonic_ns": 336008806381500,
+      "completed_monotonic_ns": 336008814576200,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "e0afcb0c-440f-4e76-8a6f-056a2644211b",
+      "gcode": "M114",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336008814709000,
+      "sent_monotonic_ns": 336008815795600,
+      "acknowledged_monotonic_ns": 336008822536900,
+      "completed_monotonic_ns": 336008826552800,
+      "response_lines": [
+        "X:149.20 Y:120.90 Z:10.00 E:0.00 Count X:11936 Y:9672 Z:4000",
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "6ba03bcf-568c-4c0a-8c48-1a1d4ddbcaf8",
+      "gcode": "G90",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336040324391300,
+      "sent_monotonic_ns": 336040324457200,
+      "acknowledged_monotonic_ns": 336040327797500,
+      "completed_monotonic_ns": 336040334837600,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "cb05ccce-81b5-46f3-8889-c14213d1b767",
+      "gcode": "G1 Z20.000 F300.000",
+      "timeout_s": 60.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336040334953700,
+      "sent_monotonic_ns": 336040334999000,
+      "acknowledged_monotonic_ns": 336040338862100,
+      "completed_monotonic_ns": 336040345357500,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "61aacd80-fd0b-42c8-b8cd-8d79a05a147c",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336040345450700,
+      "sent_monotonic_ns": 336040345758000,
+      "acknowledged_monotonic_ns": 336042578777500,
+      "completed_monotonic_ns": 336042584483200,
+      "response_lines": [
+        "echo:busy: processing",
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "84bcbea0-6740-4706-9afb-f58137282b8b",
+      "gcode": "M114",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336042585054400,
+      "sent_monotonic_ns": 336042585123800,
+      "acknowledged_monotonic_ns": 336042594035700,
+      "completed_monotonic_ns": 336042596058600,
+      "response_lines": [
+        "X:149.20 Y:120.90 Z:20.00 E:0.00 Count X:11936 Y:9672 Z:8000",
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "2506de63-2000-4c3e-8f68-7b134c6d8432",
+      "gcode": "G90",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336046338806000,
+      "sent_monotonic_ns": 336046340368100,
+      "acknowledged_monotonic_ns": 336046342702000,
+      "completed_monotonic_ns": 336046350933900,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "f1073b00-6d59-4450-affb-131e2b5956bb",
+      "gcode": "G1 Z30.000 F300.000",
+      "timeout_s": 60.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336046351141300,
+      "sent_monotonic_ns": 336046351272500,
+      "acknowledged_monotonic_ns": 336046355613900,
+      "completed_monotonic_ns": 336046361905600,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "c86e13b7-8b61-44b5-8b39-6c00eaa3a307",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336046362022400,
+      "sent_monotonic_ns": 336046362507900,
+      "acknowledged_monotonic_ns": 336048596988300,
+      "completed_monotonic_ns": 336048597905400,
+      "response_lines": [
+        "echo:busy: processing",
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "91d1d5bd-ad2b-4442-84e6-5b5284a8a328",
+      "gcode": "M114",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336048598047900,
+      "sent_monotonic_ns": 336048598077900,
+      "acknowledged_monotonic_ns": 336048605815200,
+      "completed_monotonic_ns": 336048608724600,
+      "response_lines": [
+        "X:149.20 Y:120.90 Z:30.00 E:0.00 Count X:11936 Y:9672 Z:12000",
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "0e52f579-6f3d-420f-accd-80c6e58b149d",
+      "gcode": "G90",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336049206553000,
+      "sent_monotonic_ns": 336049206630900,
+      "acknowledged_monotonic_ns": 336049213429600,
+      "completed_monotonic_ns": 336049221523500,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "63c424f4-5cec-4004-bd28-ee7ea188ad21",
+      "gcode": "G1 Z40.000 F300.000",
+      "timeout_s": 60.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336049221658700,
+      "sent_monotonic_ns": 336049221694700,
+      "acknowledged_monotonic_ns": 336049225716500,
+      "completed_monotonic_ns": 336049232532300,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "e4bb2f8f-7475-4de5-9011-6f2fe762e825",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336049232609700,
+      "sent_monotonic_ns": 336049232693900,
+      "acknowledged_monotonic_ns": 336051466135400,
+      "completed_monotonic_ns": 336051470277500,
+      "response_lines": [
+        "echo:busy: processing",
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "afc38be3-dae0-4d9d-8a8d-42d696f8b20b",
+      "gcode": "M114",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336051470834000,
+      "sent_monotonic_ns": 336051471061600,
+      "acknowledged_monotonic_ns": 336051478740000,
+      "completed_monotonic_ns": 336051481923000,
+      "response_lines": [
+        "X:149.20 Y:120.90 Z:40.00 E:0.00 Count X:11936 Y:9672 Z:16000",
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "0f206a02-0201-4a56-82c4-9fbaaaa6a28c",
+      "gcode": "G90",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336052099471100,
+      "sent_monotonic_ns": 336052101084400,
+      "acknowledged_monotonic_ns": 336052103525700,
+      "completed_monotonic_ns": 336052111590300,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "cbc46b2c-f22e-4c47-b170-693cd9644241",
+      "gcode": "G1 Z50.000 F300.000",
+      "timeout_s": 60.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336052111692700,
+      "sent_monotonic_ns": 336052112112300,
+      "acknowledged_monotonic_ns": 336052115948600,
+      "completed_monotonic_ns": 336052122593600,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "1af81fcf-b58d-465e-b8d0-d4b33cd61f93",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336052122690600,
+      "sent_monotonic_ns": 336052122978800,
+      "acknowledged_monotonic_ns": 336054355738000,
+      "completed_monotonic_ns": 336054364901600,
+      "response_lines": [
+        "echo:busy: processing",
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "1bdb585a-974a-4028-8909-2abeb3c21a1b",
+      "gcode": "M114",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336054365370300,
+      "sent_monotonic_ns": 336054365430600,
+      "acknowledged_monotonic_ns": 336054373198100,
+      "completed_monotonic_ns": 336054376090900,
+      "response_lines": [
+        "X:149.20 Y:120.90 Z:50.00 E:0.00 Count X:11936 Y:9672 Z:20000",
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "8ae9f4e5-3ad9-4bd1-a387-d86a40afa073",
+      "gcode": "G90",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336076351525100,
+      "sent_monotonic_ns": 336076353511000,
+      "acknowledged_monotonic_ns": 336076355910800,
+      "completed_monotonic_ns": 336076364062100,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "10c090b9-5b1e-4ce3-a62f-9c7b45bf4b79",
+      "gcode": "G1 Z60.000 F300.000",
+      "timeout_s": 60.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336076364170800,
+      "sent_monotonic_ns": 336076364479300,
+      "acknowledged_monotonic_ns": 336076368551700,
+      "completed_monotonic_ns": 336076375099600,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "e774a434-9f46-4421-a3bd-1107bbab8c5f",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336076375204100,
+      "sent_monotonic_ns": 336076375319000,
+      "acknowledged_monotonic_ns": 336078609097000,
+      "completed_monotonic_ns": 336078619303800,
+      "response_lines": [
+        "echo:busy: processing",
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "c7405cee-8db8-4b90-b05c-768ffd96abfe",
+      "gcode": "M114",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336078619939900,
+      "sent_monotonic_ns": 336078620021600,
+      "acknowledged_monotonic_ns": 336078627879700,
+      "completed_monotonic_ns": 336078630490000,
+      "response_lines": [
+        "X:149.20 Y:120.90 Z:60.00 E:0.00 Count X:11936 Y:9672 Z:24000",
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "f72c5b96-c6c6-4bbd-b6ff-ddb55cd24d31",
+      "gcode": "G90",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336089798042700,
+      "sent_monotonic_ns": 336089799690000,
+      "acknowledged_monotonic_ns": 336089801926600,
+      "completed_monotonic_ns": 336089810058000,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "fbffebdf-6c55-46f9-872d-16b0f9aed6e1",
+      "gcode": "G1 Z70.000 F300.000",
+      "timeout_s": 60.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336089810147000,
+      "sent_monotonic_ns": 336089810449500,
+      "acknowledged_monotonic_ns": 336089814775000,
+      "completed_monotonic_ns": 336089822607900,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "aefda731-a319-4894-90ad-73ef4281bf8f",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336089822714400,
+      "sent_monotonic_ns": 336089823003500,
+      "acknowledged_monotonic_ns": 336092054672000,
+      "completed_monotonic_ns": 336092062465500,
+      "response_lines": [
+        "echo:busy: processing",
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "a316cc17-1e60-4a01-a082-694e4f41f726",
+      "gcode": "M114",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336092062760700,
+      "sent_monotonic_ns": 336092063300200,
+      "acknowledged_monotonic_ns": 336092071160400,
+      "completed_monotonic_ns": 336092074075800,
+      "response_lines": [
+        "X:149.20 Y:120.90 Z:70.00 E:0.00 Count X:11936 Y:9672 Z:28000",
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "77e69159-57e4-4425-9940-34132c7705af",
+      "gcode": "G90",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336093484953800,
+      "sent_monotonic_ns": 336093486873300,
+      "acknowledged_monotonic_ns": 336093489195700,
+      "completed_monotonic_ns": 336093497621700,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "46b13de8-f9c1-473b-bb66-eaa5e7453108",
+      "gcode": "G1 Z80.000 F300.000",
+      "timeout_s": 60.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336093497736000,
+      "sent_monotonic_ns": 336093497813200,
+      "acknowledged_monotonic_ns": 336093501705700,
+      "completed_monotonic_ns": 336093508544200,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "e2caf9bb-32a8-46fc-9d5c-c7d51a2a9c11",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336093508636900,
+      "sent_monotonic_ns": 336093508705400,
+      "acknowledged_monotonic_ns": 336095741637600,
+      "completed_monotonic_ns": 336095750444300,
+      "response_lines": [
+        "echo:busy: processing",
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "d9ea0c61-5f8c-4e38-b30e-9b2c8dcf1e7d",
+      "gcode": "M114",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336095751155500,
+      "sent_monotonic_ns": 336095751799000,
+      "acknowledged_monotonic_ns": 336095759545300,
+      "completed_monotonic_ns": 336095762357800,
+      "response_lines": [
+        "X:149.20 Y:120.90 Z:80.00 E:0.00 Count X:11936 Y:9672 Z:32000",
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "97958ca7-cb9b-40a0-b832-b1f17ba76808",
+      "gcode": "G90",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336096113075200,
+      "sent_monotonic_ns": 336096116036500,
+      "acknowledged_monotonic_ns": 336096118251800,
+      "completed_monotonic_ns": 336096126695000,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "38f43778-17b7-4b7e-b5f1-79a0d611eb5f",
+      "gcode": "G1 Z90.000 F300.000",
+      "timeout_s": 60.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336096126873700,
+      "sent_monotonic_ns": 336096127609400,
+      "acknowledged_monotonic_ns": 336096132958800,
+      "completed_monotonic_ns": 336096138185700,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "b5d694bf-fef7-4f90-9a38-b8517d66265f",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336096138344900,
+      "sent_monotonic_ns": 336096138571400,
+      "acknowledged_monotonic_ns": 336098373952700,
+      "completed_monotonic_ns": 336098375176800,
+      "response_lines": [
+        "echo:busy: processing",
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "86f12368-e8e9-45d1-a722-092df0879738",
+      "gcode": "M114",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336098375426100,
+      "sent_monotonic_ns": 336098375501600,
+      "acknowledged_monotonic_ns": 336098383407200,
+      "completed_monotonic_ns": 336098386772700,
+      "response_lines": [
+        "X:149.20 Y:120.90 Z:90.00 E:0.00 Count X:11936 Y:9672 Z:36000",
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "c4394719-0329-4dea-b5fd-e6ef80ded772",
+      "gcode": "G90",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336100283682300,
+      "sent_monotonic_ns": 336100285546700,
+      "acknowledged_monotonic_ns": 336100287925100,
+      "completed_monotonic_ns": 336100296291700,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "5d6f1ef3-f67f-40e5-a9ea-6a49b12108e6",
+      "gcode": "G1 Z100.000 F300.000",
+      "timeout_s": 60.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336100296416200,
+      "sent_monotonic_ns": 336100296965400,
+      "acknowledged_monotonic_ns": 336100300982500,
+      "completed_monotonic_ns": 336100307934500,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "71030231-d452-40de-bf3b-c9379520aec7",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336100308040800,
+      "sent_monotonic_ns": 336100308363100,
+      "acknowledged_monotonic_ns": 336102541530900,
+      "completed_monotonic_ns": 336102542860800,
+      "response_lines": [
+        "echo:busy: processing",
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "b73a4cce-30fe-4190-b239-92aa08ba2fc9",
+      "gcode": "M114",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336102544032700,
+      "sent_monotonic_ns": 336102544186800,
+      "acknowledged_monotonic_ns": 336102553508200,
+      "completed_monotonic_ns": 336102555059000,
+      "response_lines": [
+        "X:149.20 Y:120.90 Z:100.00 E:0.00 Count X:11936 Y:9672 Z:40000",
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "ddbcec6c-1323-4a08-b13a-5f251179f24e",
+      "gcode": "G90",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336108015186800,
+      "sent_monotonic_ns": 336108018956700,
+      "acknowledged_monotonic_ns": 336108021236900,
+      "completed_monotonic_ns": 336108029855500,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "fb56b981-9f87-4e99-a60d-bb0299c41082",
+      "gcode": "G1 Z90.000 F300.000",
+      "timeout_s": 60.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336108029959300,
+      "sent_monotonic_ns": 336108030349400,
+      "acknowledged_monotonic_ns": 336108034261300,
+      "completed_monotonic_ns": 336108040766400,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "9881cba6-9d3a-43f3-97a9-a7a3df5f7718",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336108040890100,
+      "sent_monotonic_ns": 336108041317000,
+      "acknowledged_monotonic_ns": 336110274293700,
+      "completed_monotonic_ns": 336110274364000,
+      "response_lines": [
+        "echo:busy: processing",
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "e5bc79f6-00a9-448d-8fd1-6f8423c240cb",
+      "gcode": "M114",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336110275525500,
+      "sent_monotonic_ns": 336110275602600,
+      "acknowledged_monotonic_ns": 336110283337700,
+      "completed_monotonic_ns": 336110285985700,
+      "response_lines": [
+        "X:149.20 Y:120.90 Z:90.00 E:0.00 Count X:11936 Y:9672 Z:36000",
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "2ca2b5d0-9b68-4612-86f0-ca33545d9fdf",
+      "gcode": "G90",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336183297408500,
+      "sent_monotonic_ns": 336183297516600,
+      "acknowledged_monotonic_ns": 336183301210400,
+      "completed_monotonic_ns": 336183308851000,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "22e7b625-7dde-4c1f-9e58-0506f7256c27",
+      "gcode": "G1 Z90.000 F200.000",
+      "timeout_s": 60.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336183308919800,
+      "sent_monotonic_ns": 336183309024400,
+      "acknowledged_monotonic_ns": 336183314839600,
+      "completed_monotonic_ns": 336183319742500,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "724176ea-12f4-4552-ab7d-fa02a1309180",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336183319810500,
+      "sent_monotonic_ns": 336183319885900,
+      "acknowledged_monotonic_ns": 336183322155600,
+      "completed_monotonic_ns": 336183330205200,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "87164c6d-82c1-4d5f-95bf-16a80da5608e",
+      "gcode": "G90",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336183330548400,
+      "sent_monotonic_ns": 336183330587800,
+      "acknowledged_monotonic_ns": 336183332882600,
+      "completed_monotonic_ns": 336183341006900,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "7ad8ed22-6140-45e6-93bf-d53e5c695b0a",
+      "gcode": "G1 Z88.250 F200.000",
+      "timeout_s": 60.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336183341125500,
+      "sent_monotonic_ns": 336183341250200,
+      "acknowledged_monotonic_ns": 336183345360400,
+      "completed_monotonic_ns": 336183352817500,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "553c9bfd-7af3-4537-99b7-f9f74e8e230f",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336183353052900,
+      "sent_monotonic_ns": 336183353958900,
+      "acknowledged_monotonic_ns": 336184013184900,
+      "completed_monotonic_ns": 336184014679700,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "a11f986b-12ec-4712-aa9b-3a4599d3b898",
+      "gcode": "G90",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336184515681100,
+      "sent_monotonic_ns": 336184515742000,
+      "acknowledged_monotonic_ns": 336184518165600,
+      "completed_monotonic_ns": 336184526255800,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "55285eb9-b9ea-4c2b-a99c-001ca75e94af",
+      "gcode": "G1 Z90.000 F200.000",
+      "timeout_s": 60.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336184526348100,
+      "sent_monotonic_ns": 336184526642900,
+      "acknowledged_monotonic_ns": 336184530712400,
+      "completed_monotonic_ns": 336184537458100,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "75631f98-99b9-4dac-9324-115e608aa5a4",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336184537539000,
+      "sent_monotonic_ns": 336184537608500,
+      "acknowledged_monotonic_ns": 336185198248800,
+      "completed_monotonic_ns": 336185199394500,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "c4a6747a-2901-4916-b55e-4fad0c9a00bc",
+      "gcode": "G90",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336187200057500,
+      "sent_monotonic_ns": 336187200221200,
+      "acknowledged_monotonic_ns": 336187202633000,
+      "completed_monotonic_ns": 336187211147100,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "e8f68bfa-e44f-454e-b387-9b878584704b",
+      "gcode": "G1 Z88.250 F200.000",
+      "timeout_s": 60.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336187211312700,
+      "sent_monotonic_ns": 336187211779900,
+      "acknowledged_monotonic_ns": 336187215773500,
+      "completed_monotonic_ns": 336187223128000,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "f6fc931d-b599-4495-b138-dace2f73d0e2",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336187223306800,
+      "sent_monotonic_ns": 336187223784900,
+      "acknowledged_monotonic_ns": 336187883507300,
+      "completed_monotonic_ns": 336187890464900,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "9ae70d9c-36b7-493e-b501-9ba7b8e3184e",
+      "gcode": "G90",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336188392680000,
+      "sent_monotonic_ns": 336188392812100,
+      "acknowledged_monotonic_ns": 336188395261300,
+      "completed_monotonic_ns": 336188403482100,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "1fdfec21-a2de-40eb-b7d0-6a01775db76a",
+      "gcode": "G1 Z90.000 F200.000",
+      "timeout_s": 60.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336188403567000,
+      "sent_monotonic_ns": 336188403868600,
+      "acknowledged_monotonic_ns": 336188407867100,
+      "completed_monotonic_ns": 336188414316500,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "30885a80-e33b-4c1c-b7f8-c6db237b1caf",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336188414778500,
+      "sent_monotonic_ns": 336188415099300,
+      "acknowledged_monotonic_ns": 336189075667600,
+      "completed_monotonic_ns": 336189079527800,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "e7f29eb1-ad39-4b80-98c8-7948805b565a",
+      "gcode": "G90",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336191080400300,
+      "sent_monotonic_ns": 336191080551700,
+      "acknowledged_monotonic_ns": 336191083144000,
+      "completed_monotonic_ns": 336191091183100,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "0131affa-cdb4-44f6-aa47-6f5aa0d6fb78",
+      "gcode": "G1 Z88.250 F200.000",
+      "timeout_s": 60.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336191091343100,
+      "sent_monotonic_ns": 336191091869300,
+      "acknowledged_monotonic_ns": 336191096120500,
+      "completed_monotonic_ns": 336191103489400,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "2b7d130c-adfe-470a-befb-c835ef0d45bf",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336191103591300,
+      "sent_monotonic_ns": 336191104295700,
+      "acknowledged_monotonic_ns": 336191765305500,
+      "completed_monotonic_ns": 336191767024500,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "38a02aed-a925-4dbd-9956-f31387b3eac2",
+      "gcode": "G90",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336192268266100,
+      "sent_monotonic_ns": 336192268754300,
+      "acknowledged_monotonic_ns": 336192271382000,
+      "completed_monotonic_ns": 336192279619800,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "2b439a35-b1ee-4779-9678-8c45419f083b",
+      "gcode": "G1 Z90.000 F200.000",
+      "timeout_s": 60.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336192279702200,
+      "sent_monotonic_ns": 336192279997100,
+      "acknowledged_monotonic_ns": 336192283816800,
+      "completed_monotonic_ns": 336192290642600,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "1f2abc27-67c9-47d7-a344-8af4a7f735cb",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336192290779000,
+      "sent_monotonic_ns": 336192290885000,
+      "acknowledged_monotonic_ns": 336192951016100,
+      "completed_monotonic_ns": 336192952403900,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "5586d076-d928-4baf-bd87-35e7bc188e78",
+      "gcode": "G90",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336194953117300,
+      "sent_monotonic_ns": 336194953252900,
+      "acknowledged_monotonic_ns": 336194955714100,
+      "completed_monotonic_ns": 336194964022100,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "4baa2f12-bc2e-4d95-b56b-ff60c2fc4b14",
+      "gcode": "G1 Z88.250 F200.000",
+      "timeout_s": 60.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336194964164700,
+      "sent_monotonic_ns": 336194964686800,
+      "acknowledged_monotonic_ns": 336194969526200,
+      "completed_monotonic_ns": 336194976511500,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "f2318687-5ca4-4fc3-ae77-243160c72ff1",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336194976636400,
+      "sent_monotonic_ns": 336194976805100,
+      "acknowledged_monotonic_ns": 336195637057200,
+      "completed_monotonic_ns": 336195643363000,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "da2db471-7f90-4786-9241-5c2d2b2c6978",
+      "gcode": "G90",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336196144819900,
+      "sent_monotonic_ns": 336196145119100,
+      "acknowledged_monotonic_ns": 336196147480400,
+      "completed_monotonic_ns": 336196155411400,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "9d197d7a-dcb0-4595-ad07-1263db419073",
+      "gcode": "G1 Z90.000 F200.000",
+      "timeout_s": 60.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336196155558500,
+      "sent_monotonic_ns": 336196155987900,
+      "acknowledged_monotonic_ns": 336196160315900,
+      "completed_monotonic_ns": 336196166686500,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "7312a8fa-cf31-4973-8b90-ec18344443af",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336196166847200,
+      "sent_monotonic_ns": 336196167358600,
+      "acknowledged_monotonic_ns": 336196827621800,
+      "completed_monotonic_ns": 336196830179600,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "f32dc606-7d64-4f5b-a103-e650a2d3711d",
+      "gcode": "G90",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336198834808300,
+      "sent_monotonic_ns": 336198839180600,
+      "acknowledged_monotonic_ns": 336198845327700,
+      "completed_monotonic_ns": 336198850351500,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "2ab8db56-0c46-456b-97f5-442eb043b97f",
+      "gcode": "G1 Z88.250 F200.000",
+      "timeout_s": 60.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336198850643900,
+      "sent_monotonic_ns": 336198851395200,
+      "acknowledged_monotonic_ns": 336198856519000,
+      "completed_monotonic_ns": 336198863139900,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "0b5458d5-3c81-4fdc-93e2-bbd54e3ae228",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336198863794600,
+      "sent_monotonic_ns": 336198864025000,
+      "acknowledged_monotonic_ns": 336199523198900,
+      "completed_monotonic_ns": 336199526957500,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "dcad88ae-a3d7-4380-90c4-d5e4dde60e80",
+      "gcode": "G90",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336200027889800,
+      "sent_monotonic_ns": 336200027955200,
+      "acknowledged_monotonic_ns": 336200030402400,
+      "completed_monotonic_ns": 336200038916000,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "041b3398-345e-4c30-a47f-7597ff1af26b",
+      "gcode": "G1 Z90.000 F200.000",
+      "timeout_s": 60.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336200039197400,
+      "sent_monotonic_ns": 336200039907600,
+      "acknowledged_monotonic_ns": 336200043905700,
+      "completed_monotonic_ns": 336200050609900,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "36bc3a29-0f4b-4efc-9027-bdd0cf6b2429",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336200050699000,
+      "sent_monotonic_ns": 336200050944700,
+      "acknowledged_monotonic_ns": 336200711540300,
+      "completed_monotonic_ns": 336200715693600,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "c5bd04b3-09f8-40cb-bdc5-3a6e231b4331",
+      "gcode": "G90",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336202716803300,
+      "sent_monotonic_ns": 336202718510300,
+      "acknowledged_monotonic_ns": 336202721142200,
+      "completed_monotonic_ns": 336202729066100,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "23076feb-bfd5-40be-bf9b-2f97e6249b5d",
+      "gcode": "G1 Z88.250 F200.000",
+      "timeout_s": 60.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336202729182900,
+      "sent_monotonic_ns": 336202729265200,
+      "acknowledged_monotonic_ns": 336202733253100,
+      "completed_monotonic_ns": 336202740058800,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "53e8fe48-246c-4232-873b-7cbbf85629fc",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336202740169400,
+      "sent_monotonic_ns": 336202740492600,
+      "acknowledged_monotonic_ns": 336203400343300,
+      "completed_monotonic_ns": 336203402382100,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "8e958172-7bdf-4009-92b7-773ec698e35a",
+      "gcode": "G90",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336203903836500,
+      "sent_monotonic_ns": 336203904373000,
+      "acknowledged_monotonic_ns": 336203906823800,
+      "completed_monotonic_ns": 336203915020400,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "947d1ae6-4a9a-4d72-b69b-0e60573bfd5b",
+      "gcode": "G1 Z90.000 F200.000",
+      "timeout_s": 60.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336203915137500,
+      "sent_monotonic_ns": 336203915727200,
+      "acknowledged_monotonic_ns": 336203920145400,
+      "completed_monotonic_ns": 336203926579400,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "e4492c6a-3566-4190-b0ae-67725e856816",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336203926726200,
+      "sent_monotonic_ns": 336203926816500,
+      "acknowledged_monotonic_ns": 336204587528900,
+      "completed_monotonic_ns": 336204596350800,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "f799a9b2-1ef7-4b30-830d-62a496d08df5",
+      "gcode": "G90",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336206597510900,
+      "sent_monotonic_ns": 336206598313800,
+      "acknowledged_monotonic_ns": 336206600886400,
+      "completed_monotonic_ns": 336206611201600,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "d52a814b-71a8-42fb-a567-8b3760618118",
+      "gcode": "G1 Z88.250 F200.000",
+      "timeout_s": 60.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336206611648600,
+      "sent_monotonic_ns": 336206612013700,
+      "acknowledged_monotonic_ns": 336206616178100,
+      "completed_monotonic_ns": 336206622365900,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "dcddee6a-e021-400e-a711-3d21e436d776",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336206622484800,
+      "sent_monotonic_ns": 336206622545700,
+      "acknowledged_monotonic_ns": 336207284032400,
+      "completed_monotonic_ns": 336207286323700,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "9e628f92-040c-4099-ac84-813d80f5f5aa",
+      "gcode": "G90",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336207788452200,
+      "sent_monotonic_ns": 336207788911100,
+      "acknowledged_monotonic_ns": 336207791606500,
+      "completed_monotonic_ns": 336207800328200,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "96cfea60-6648-4c06-8029-c5c11b1b1547",
+      "gcode": "G1 Z90.000 F200.000",
+      "timeout_s": 60.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336207800407000,
+      "sent_monotonic_ns": 336207800791600,
+      "acknowledged_monotonic_ns": 336207804917100,
+      "completed_monotonic_ns": 336207811288500,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "e491a3b4-f3f7-455f-8d37-30d9e37bfeac",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336207811353500,
+      "sent_monotonic_ns": 336207813159100,
+      "acknowledged_monotonic_ns": 336208484240600,
+      "completed_monotonic_ns": 336208494772500,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "affeb26c-d201-4804-8ea2-fcc8a816bbbc",
+      "gcode": "G90",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336210495438600,
+      "sent_monotonic_ns": 336210495489300,
+      "acknowledged_monotonic_ns": 336210497802100,
+      "completed_monotonic_ns": 336210506659600,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "447d3d1f-b649-451f-8bbc-2ce8006e9e69",
+      "gcode": "G1 Z88.250 F200.000",
+      "timeout_s": 60.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336210506799200,
+      "sent_monotonic_ns": 336210507253000,
+      "acknowledged_monotonic_ns": 336210511506200,
+      "completed_monotonic_ns": 336210518159100,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "51fe7a86-df18-44e0-9720-9548636b6b3d",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336210518348900,
+      "sent_monotonic_ns": 336210518419300,
+      "acknowledged_monotonic_ns": 336211178844100,
+      "completed_monotonic_ns": 336211179472600,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "f7d6e021-1b93-4abf-98b7-14061c12899c",
+      "gcode": "G90",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336211683759300,
+      "sent_monotonic_ns": 336211683821100,
+      "acknowledged_monotonic_ns": 336211686048600,
+      "completed_monotonic_ns": 336211696125400,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "5f97989c-fba4-46c9-906f-00d1484c2bde",
+      "gcode": "G1 Z90.000 F200.000",
+      "timeout_s": 60.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336211696240200,
+      "sent_monotonic_ns": 336211696312600,
+      "acknowledged_monotonic_ns": 336211700108400,
+      "completed_monotonic_ns": 336211707176600,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "1686c6cb-0296-4e54-93e3-667d6bb76ce0",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336211707265200,
+      "sent_monotonic_ns": 336211707696300,
+      "acknowledged_monotonic_ns": 336212367552800,
+      "completed_monotonic_ns": 336212373362100,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "b686b19d-9c84-418c-aa20-523984d04d06",
+      "gcode": "G90",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336214374597000,
+      "sent_monotonic_ns": 336214374637300,
+      "acknowledged_monotonic_ns": 336214377137000,
+      "completed_monotonic_ns": 336214386486200,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "80e64d95-c4e7-4557-a94f-c9dbb7de5440",
+      "gcode": "G1 Z88.250 F200.000",
+      "timeout_s": 60.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336214386678900,
+      "sent_monotonic_ns": 336214386959400,
+      "acknowledged_monotonic_ns": 336214391620300,
+      "completed_monotonic_ns": 336214398961700,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "441704bb-44b4-45bd-a59e-d7f28e656167",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336214405928800,
+      "sent_monotonic_ns": 336214406509500,
+      "acknowledged_monotonic_ns": 336215059381400,
+      "completed_monotonic_ns": 336215063890400,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "10ebb4f6-e4d1-4238-bb66-4c99399ae77b",
+      "gcode": "G90",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336215564879500,
+      "sent_monotonic_ns": 336215565386600,
+      "acknowledged_monotonic_ns": 336215569365700,
+      "completed_monotonic_ns": 336215575787600,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "839fe887-751d-4a69-a827-05f3d7be8a6b",
+      "gcode": "G1 Z90.000 F200.000",
+      "timeout_s": 60.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336215575872000,
+      "sent_monotonic_ns": 336215577648000,
+      "acknowledged_monotonic_ns": 336215583714900,
+      "completed_monotonic_ns": 336215589521100,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "621b416a-9273-48bc-b959-9415af11568d",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336215590939100,
+      "sent_monotonic_ns": 336215591463000,
+      "acknowledged_monotonic_ns": 336216249598800,
+      "completed_monotonic_ns": 336216251857400,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "ca867e05-30e4-4513-9091-15dc42e0ad59",
+      "gcode": "G90",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336218253488500,
+      "sent_monotonic_ns": 336218254230000,
+      "acknowledged_monotonic_ns": 336218257245000,
+      "completed_monotonic_ns": 336218264924400,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "5cba465a-3d21-4cc3-abbd-24058323c9b9",
+      "gcode": "G1 Z88.250 F200.000",
+      "timeout_s": 60.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336218265041300,
+      "sent_monotonic_ns": 336218265109500,
+      "acknowledged_monotonic_ns": 336218269261300,
+      "completed_monotonic_ns": 336218275719100,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "f6b1cc67-185b-4232-9e7f-ca572adb1b49",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336218276050600,
+      "sent_monotonic_ns": 336218276113900,
+      "acknowledged_monotonic_ns": 336218937358200,
+      "completed_monotonic_ns": 336218947085500,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "69e6f0ac-a33d-450d-a5f0-d81b13fd591d",
+      "gcode": "G90",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336219448473200,
+      "sent_monotonic_ns": 336219448683500,
+      "acknowledged_monotonic_ns": 336219452877500,
+      "completed_monotonic_ns": 336219459355800,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "3fa0b099-a2e3-445c-a554-effce0f557d2",
+      "gcode": "G1 Z90.000 F200.000",
+      "timeout_s": 60.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336219459520700,
+      "sent_monotonic_ns": 336219459687900,
+      "acknowledged_monotonic_ns": 336219466252600,
+      "completed_monotonic_ns": 336219470282100,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "c7ce57a6-295d-473a-b2c5-68109e71195f",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336219470383000,
+      "sent_monotonic_ns": 336219470438000,
+      "acknowledged_monotonic_ns": 336220132273500,
+      "completed_monotonic_ns": 336220142146500,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "f2e6d62d-1f1f-45dd-912e-ed890c3c19bf",
+      "gcode": "G90",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336281015802600,
+      "sent_monotonic_ns": 336281015875100,
+      "acknowledged_monotonic_ns": 336281018380000,
+      "completed_monotonic_ns": 336281026752500,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "b9766c23-1fb7-413e-9d49-42247fd0d0b7",
+      "gcode": "G1 Z90.000 F200.000",
+      "timeout_s": 60.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336281026903500,
+      "sent_monotonic_ns": 336281027341900,
+      "acknowledged_monotonic_ns": 336281031355100,
+      "completed_monotonic_ns": 336281038159500,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "bb4c1add-8d26-4783-b9ca-6b9b11f00e8d",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336281038233500,
+      "sent_monotonic_ns": 336281038717400,
+      "acknowledged_monotonic_ns": 336281041500900,
+      "completed_monotonic_ns": 336281049713100,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "f8dc6a6e-c0c4-4d47-94e3-8f1991675132",
+      "gcode": "G90",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336281050125300,
+      "sent_monotonic_ns": 336281050494100,
+      "acknowledged_monotonic_ns": 336281053169400,
+      "completed_monotonic_ns": 336281061091600,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "5ad76732-f296-4e9e-af24-b14c81d180b6",
+      "gcode": "G1 Z87.375 F200.000",
+      "timeout_s": 60.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336281061284700,
+      "sent_monotonic_ns": 336281061373700,
+      "acknowledged_monotonic_ns": 336281065322200,
+      "completed_monotonic_ns": 336281073309300,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "04bf4ff7-c798-41f4-a3ab-1cfdbd7501fe",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336281073382400,
+      "sent_monotonic_ns": 336281073753800,
+      "acknowledged_monotonic_ns": 336282004694000,
+      "completed_monotonic_ns": 336282007849900,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "752d033b-6a5e-4cd1-b9ea-88fc530ae3f3",
+      "gcode": "G90",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336282508471300,
+      "sent_monotonic_ns": 336282508577100,
+      "acknowledged_monotonic_ns": 336282511082700,
+      "completed_monotonic_ns": 336282519130700,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "f3fcbaaa-2c66-4835-9e9a-8fe9a1b97d2b",
+      "gcode": "G1 Z90.000 F200.000",
+      "timeout_s": 60.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336282519319300,
+      "sent_monotonic_ns": 336282520258400,
+      "acknowledged_monotonic_ns": 336282525011500,
+      "completed_monotonic_ns": 336282530943300,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "cfe0c225-724f-495d-97f8-6de60e2ae03d",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336282531052300,
+      "sent_monotonic_ns": 336282531467000,
+      "acknowledged_monotonic_ns": 336283462610600,
+      "completed_monotonic_ns": 336283464308300,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "decefe41-9958-4696-8e3d-63f37bccc9a7",
+      "gcode": "G90",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336285464879900,
+      "sent_monotonic_ns": 336285465094600,
+      "acknowledged_monotonic_ns": 336285467861700,
+      "completed_monotonic_ns": 336285476285200,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "71f49aca-b9b4-4296-8805-77b211dbf72b",
+      "gcode": "G1 Z87.375 F200.000",
+      "timeout_s": 60.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336285476396000,
+      "sent_monotonic_ns": 336285476494800,
+      "acknowledged_monotonic_ns": 336285480543400,
+      "completed_monotonic_ns": 336285488424400,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "8ec227be-c531-4ca9-9678-17d2dd22f09b",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336285488497700,
+      "sent_monotonic_ns": 336285488805700,
+      "acknowledged_monotonic_ns": 336286418803800,
+      "completed_monotonic_ns": 336286423429100,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "f7644f59-816c-4dc7-925f-25405f6e692e",
+      "gcode": "G90",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336286925162900,
+      "sent_monotonic_ns": 336286925581600,
+      "acknowledged_monotonic_ns": 336286928178600,
+      "completed_monotonic_ns": 336286937086600,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "28f7f276-4af0-4371-b6b0-71917d4e27bf",
+      "gcode": "G1 Z90.000 F200.000",
+      "timeout_s": 60.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336286937185800,
+      "sent_monotonic_ns": 336286938431200,
+      "acknowledged_monotonic_ns": 336286942583600,
+      "completed_monotonic_ns": 336286949399000,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "151c2ef8-1f59-4f68-aca7-14e58c59772a",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336286949485200,
+      "sent_monotonic_ns": 336286949531400,
+      "acknowledged_monotonic_ns": 336287880705400,
+      "completed_monotonic_ns": 336287887338100,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "eb5bd1ee-2095-47c5-a365-6a29380ac59a",
+      "gcode": "G90",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336289889309900,
+      "sent_monotonic_ns": 336289889718500,
+      "acknowledged_monotonic_ns": 336289891924500,
+      "completed_monotonic_ns": 336289900352900,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "e64247b5-d77d-467c-b83e-c1777027f14c",
+      "gcode": "G1 Z87.375 F200.000",
+      "timeout_s": 60.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336289900478000,
+      "sent_monotonic_ns": 336289900981900,
+      "acknowledged_monotonic_ns": 336289905011400,
+      "completed_monotonic_ns": 336289911839600,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "283d64fb-60bc-4cb7-bbe7-f96e87ecb2e6",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336289911925500,
+      "sent_monotonic_ns": 336289912312200,
+      "acknowledged_monotonic_ns": 336290843274800,
+      "completed_monotonic_ns": 336290850866100,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "a5fb9e1d-4d14-45da-ab6e-afbe44b13025",
+      "gcode": "G90",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336291352245500,
+      "sent_monotonic_ns": 336291352285800,
+      "acknowledged_monotonic_ns": 336291354943300,
+      "completed_monotonic_ns": 336291363226800,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "142396f8-1722-4e77-a5d8-dd22d7a140e9",
+      "gcode": "G1 Z90.000 F200.000",
+      "timeout_s": 60.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336291363445000,
+      "sent_monotonic_ns": 336291363807400,
+      "acknowledged_monotonic_ns": 336291367719000,
+      "completed_monotonic_ns": 336291374738000,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "1d77a7b9-00e5-42f0-9513-33a273d5cc30",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336291374932500,
+      "sent_monotonic_ns": 336291375417300,
+      "acknowledged_monotonic_ns": 336292305855500,
+      "completed_monotonic_ns": 336292315079300,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "0985acac-3483-4d9c-821e-a1ea78de4680",
+      "gcode": "G90",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336294315913300,
+      "sent_monotonic_ns": 336294316054300,
+      "acknowledged_monotonic_ns": 336294319052400,
+      "completed_monotonic_ns": 336294326746500,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "f1d2b8a6-1aea-4b88-8099-1c059845da60",
+      "gcode": "G1 Z87.375 F200.000",
+      "timeout_s": 60.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336294326935700,
+      "sent_monotonic_ns": 336294327761800,
+      "acknowledged_monotonic_ns": 336294331550400,
+      "completed_monotonic_ns": 336294340582100,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "7d682297-604b-42a5-841b-f1dd52158a43",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336294340930000,
+      "sent_monotonic_ns": 336294341031400,
+      "acknowledged_monotonic_ns": 336295271242600,
+      "completed_monotonic_ns": 336295280579700,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "03e78521-781b-4f07-a405-05eca8f2494b",
+      "gcode": "G90",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336295782457800,
+      "sent_monotonic_ns": 336295783489200,
+      "acknowledged_monotonic_ns": 336295787402100,
+      "completed_monotonic_ns": 336295796139700,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "cf44771d-f2f8-4a82-ba44-d97a77e05ccd",
+      "gcode": "G1 Z90.000 F200.000",
+      "timeout_s": 60.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336295796266000,
+      "sent_monotonic_ns": 336295796971500,
+      "acknowledged_monotonic_ns": 336295801613700,
+      "completed_monotonic_ns": 336295807671400,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "bad80882-4a92-44e7-af6d-fe4687d45b3e",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336295808126300,
+      "sent_monotonic_ns": 336295808350500,
+      "acknowledged_monotonic_ns": 336296740025100,
+      "completed_monotonic_ns": 336296744051900,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "27295e86-f28c-4447-bdad-147521ebdc51",
+      "gcode": "G90",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336298745070800,
+      "sent_monotonic_ns": 336298745224900,
+      "acknowledged_monotonic_ns": 336298747839600,
+      "completed_monotonic_ns": 336298755873400,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "96d48d9e-5887-4357-a598-f241476a4873",
+      "gcode": "G1 Z87.375 F200.000",
+      "timeout_s": 60.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336298755960400,
+      "sent_monotonic_ns": 336298756053600,
+      "acknowledged_monotonic_ns": 336298760171200,
+      "completed_monotonic_ns": 336298767014700,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "76e30603-5110-49a8-97e8-7557d8e5632b",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336298767125500,
+      "sent_monotonic_ns": 336298767231800,
+      "acknowledged_monotonic_ns": 336299699606500,
+      "completed_monotonic_ns": 336299702430700,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "ea3eacb7-8520-4a41-846c-8a50e943308f",
+      "gcode": "G90",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336300203812300,
+      "sent_monotonic_ns": 336300204419500,
+      "acknowledged_monotonic_ns": 336300207370700,
+      "completed_monotonic_ns": 336300215343000,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "8f6918c5-683d-4322-a891-48416ae743d8",
+      "gcode": "G1 Z90.000 F200.000",
+      "timeout_s": 60.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336300215429900,
+      "sent_monotonic_ns": 336300215722400,
+      "acknowledged_monotonic_ns": 336300219628300,
+      "completed_monotonic_ns": 336300226411500,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "dc5d826a-ab14-4455-a49e-0ac64fb46181",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336300226493400,
+      "sent_monotonic_ns": 336300226774700,
+      "acknowledged_monotonic_ns": 336301158161600,
+      "completed_monotonic_ns": 336301161422300,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "8b344409-4c14-42b5-8dd0-601426a036f3",
+      "gcode": "G90",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336303162294300,
+      "sent_monotonic_ns": 336303162501200,
+      "acknowledged_monotonic_ns": 336303165172700,
+      "completed_monotonic_ns": 336303173611300,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "e1dcf5f8-4368-48a6-b4c7-ce154c33973c",
+      "gcode": "G1 Z87.375 F200.000",
+      "timeout_s": 60.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336303173721300,
+      "sent_monotonic_ns": 336303174147300,
+      "acknowledged_monotonic_ns": 336303178120500,
+      "completed_monotonic_ns": 336303184684700,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "a2ce99fc-d6f2-4606-a60e-fbf1c65ee24b",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336303184768900,
+      "sent_monotonic_ns": 336303185049300,
+      "acknowledged_monotonic_ns": 336304116480700,
+      "completed_monotonic_ns": 336304122719700,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "ac09f75c-3dc8-4138-92aa-aa47af02fd2c",
+      "gcode": "G90",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336304623545000,
+      "sent_monotonic_ns": 336304623707600,
+      "acknowledged_monotonic_ns": 336304626015200,
+      "completed_monotonic_ns": 336304634410000,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "f51d93f3-457f-48cc-9840-1a9da9ccea90",
+      "gcode": "G1 Z90.000 F200.000",
+      "timeout_s": 60.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336304634500400,
+      "sent_monotonic_ns": 336304634773300,
+      "acknowledged_monotonic_ns": 336304638852900,
+      "completed_monotonic_ns": 336304645220700,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "a24908c3-f7d8-4043-965d-c85a970705e1",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336304645300400,
+      "sent_monotonic_ns": 336304645330200,
+      "acknowledged_monotonic_ns": 336305577382400,
+      "completed_monotonic_ns": 336305578738900,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "72604d0e-8356-44c0-9b5f-34bfb2867df1",
+      "gcode": "G90",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336307579440000,
+      "sent_monotonic_ns": 336307579957100,
+      "acknowledged_monotonic_ns": 336307587420100,
+      "completed_monotonic_ns": 336307594824100,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "a3160fbd-bfe4-4dd7-bf00-fa629b9e2566",
+      "gcode": "G1 Z87.375 F200.000",
+      "timeout_s": 60.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336307594950200,
+      "sent_monotonic_ns": 336307595106600,
+      "acknowledged_monotonic_ns": 336307599468800,
+      "completed_monotonic_ns": 336307605828100,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "6315aee4-7aab-4613-adae-9cfd873e3cf3",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336307606042900,
+      "sent_monotonic_ns": 336307609365900,
+      "acknowledged_monotonic_ns": 336308538313500,
+      "completed_monotonic_ns": 336308539058800,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "93088144-5e51-48ef-b5a3-e70fb0b4cb82",
+      "gcode": "G90",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336309042280600,
+      "sent_monotonic_ns": 336309042400900,
+      "acknowledged_monotonic_ns": 336309044961200,
+      "completed_monotonic_ns": 336309052964200,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "ffd69ad9-7de3-4ea1-9e2b-ac925dcc134f",
+      "gcode": "G1 Z90.000 F200.000",
+      "timeout_s": 60.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336309053128800,
+      "sent_monotonic_ns": 336309055515100,
+      "acknowledged_monotonic_ns": 336309059666300,
+      "completed_monotonic_ns": 336309065994100,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "d262d276-5f1f-46a6-ac35-302cf786a67c",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336309066129600,
+      "sent_monotonic_ns": 336309066381400,
+      "acknowledged_monotonic_ns": 336310000259300,
+      "completed_monotonic_ns": 336310006631600,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "bcd91ab4-f603-4c53-af0e-ebc12ec741e0",
+      "gcode": "G90",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336312007279200,
+      "sent_monotonic_ns": 336312007354000,
+      "acknowledged_monotonic_ns": 336312009930900,
+      "completed_monotonic_ns": 336312018097500,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "2dbe7ae4-e363-47ac-8d67-a344dc68e349",
+      "gcode": "G1 Z87.375 F200.000",
+      "timeout_s": 60.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336312018538600,
+      "sent_monotonic_ns": 336312018706300,
+      "acknowledged_monotonic_ns": 336312023724900,
+      "completed_monotonic_ns": 336312029898600,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "550321bc-2ddc-4f32-9f4c-46e70679450d",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336312031663900,
+      "sent_monotonic_ns": 336312031735400,
+      "acknowledged_monotonic_ns": 336312961326200,
+      "completed_monotonic_ns": 336312962698200,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "a8839053-7114-4c5d-a5dc-46564366f4f2",
+      "gcode": "G90",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336313463733200,
+      "sent_monotonic_ns": 336313464038700,
+      "acknowledged_monotonic_ns": 336313466515700,
+      "completed_monotonic_ns": 336313474341200,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "536c528d-9226-424e-bd3a-ed0ad7c2c992",
+      "gcode": "G1 Z90.000 F200.000",
+      "timeout_s": 60.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336313474714400,
+      "sent_monotonic_ns": 336313474833500,
+      "acknowledged_monotonic_ns": 336313479293200,
+      "completed_monotonic_ns": 336313487470100,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "af067aeb-a7d2-416a-b54c-c8a896d1c64f",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336313487673800,
+      "sent_monotonic_ns": 336313488137300,
+      "acknowledged_monotonic_ns": 336314417655000,
+      "completed_monotonic_ns": 336314425675600,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "18256478-42ab-4db5-93d4-45caa061c9ad",
+      "gcode": "G90",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336316427044400,
+      "sent_monotonic_ns": 336316427208200,
+      "acknowledged_monotonic_ns": 336316429822800,
+      "completed_monotonic_ns": 336316438307800,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "0c30e191-d218-4b37-bbda-ee462c30587c",
+      "gcode": "G1 Z87.375 F200.000",
+      "timeout_s": 60.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336316438814200,
+      "sent_monotonic_ns": 336316440789400,
+      "acknowledged_monotonic_ns": 336316444782400,
+      "completed_monotonic_ns": 336316453419300,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "c5d78b99-6b38-4c48-9c68-cda9940e745f",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336316453522200,
+      "sent_monotonic_ns": 336316453579400,
+      "acknowledged_monotonic_ns": 336317382877600,
+      "completed_monotonic_ns": 336317391487500,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "1ad46771-e30e-424a-8281-24cc61efd500",
+      "gcode": "G90",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336317895666900,
+      "sent_monotonic_ns": 336317895720200,
+      "acknowledged_monotonic_ns": 336317898110300,
+      "completed_monotonic_ns": 336317906437900,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "ad15faee-65ba-4a38-a2ee-c4ad84d1c4c3",
+      "gcode": "G1 Z90.000 F200.000",
+      "timeout_s": 60.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336317906519900,
+      "sent_monotonic_ns": 336317906604300,
+      "acknowledged_monotonic_ns": 336317910462600,
+      "completed_monotonic_ns": 336317917222100,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "afb314b3-0813-400c-81fc-c5890ecf2c44",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336317917322500,
+      "sent_monotonic_ns": 336317917391200,
+      "acknowledged_monotonic_ns": 336318848666800,
+      "completed_monotonic_ns": 336318850449200,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "56478079-8797-4f4f-8b39-11f928f5ce51",
+      "gcode": "G90",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336320851712600,
+      "sent_monotonic_ns": 336320851779800,
+      "acknowledged_monotonic_ns": 336320854361900,
+      "completed_monotonic_ns": 336320862453700,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "d41188c4-8748-4508-a9a6-c27426cc402d",
+      "gcode": "G1 Z87.375 F200.000",
+      "timeout_s": 60.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336320862570900,
+      "sent_monotonic_ns": 336320863091300,
+      "acknowledged_monotonic_ns": 336320867018700,
+      "completed_monotonic_ns": 336320873412100,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "110a924f-e1d8-4b1d-99ae-dc75582b38b2",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336320873518800,
+      "sent_monotonic_ns": 336320873621600,
+      "acknowledged_monotonic_ns": 336321806143700,
+      "completed_monotonic_ns": 336321812449800,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "872ccfcf-e075-47ef-a65f-5e85b25fbe8b",
+      "gcode": "G90",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336322315238100,
+      "sent_monotonic_ns": 336322315289400,
+      "acknowledged_monotonic_ns": 336322320777300,
+      "completed_monotonic_ns": 336322327651400,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "c44892a5-67e8-4fdf-bcb5-a817dd41cc36",
+      "gcode": "G1 Z90.000 F200.000",
+      "timeout_s": 60.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336322327738300,
+      "sent_monotonic_ns": 336322327824600,
+      "acknowledged_monotonic_ns": 336322331855800,
+      "completed_monotonic_ns": 336322338493600,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "73df5fdc-edb7-4638-9a8d-1dd93b4eabba",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 336322338595700,
+      "sent_monotonic_ns": 336322338884600,
+      "acknowledged_monotonic_ns": 336323270791300,
+      "completed_monotonic_ns": 336323274740800,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    }
+  ]
+}

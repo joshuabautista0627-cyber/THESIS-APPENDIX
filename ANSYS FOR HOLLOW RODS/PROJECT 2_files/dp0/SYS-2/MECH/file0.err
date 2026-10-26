@@ -1,0 +1,47 @@
+/COM,ANSYS RELEASE 2025 R2           BUILD 25.2      UP20250519       10:13:44
+
+ *** WARNING ***                         CP =       0.703   TIME= 10:13:45
+ Element shape checking is currently inactive.  Issue SHPP,ON or         
+ SHPP,WARN to reactivate, if desired.                                    
+
+ *** WARNING ***                         CP =       0.734   TIME= 10:13:45
+ Material number 35 (used by element 9044) should normally have at least 
+ one MP or one TB type command associated with it.  Output of energy by  
+ material may not be available.                                          
+
+ *** WARNING ***                         CP =       3.047   TIME= 10:13:47
+ Coefficient ratio exceeds 1.0e8 - Check results.                        
+
+ *** WARNING ***                         CP =       3.859   TIME= 10:13:48
+ A reference force value times the tolerance is used by the              
+ Newton-Raphson method for checking convergence.  The calculated         
+ reference FORCE CONVERGENCE VALUE = 1.325013631E-03 is less than a      
+ threshold.  This threshold is internally calculated.  You can           
+ overwrite it by specifying MINREF on the CNVTOL command.  Check         
+ results carefully.                                                      
+
+ *** WARNING ***                         CP =     135.750   TIME= 10:16:03
+ Material number 35 (used by element 9044) should normally have at least 
+ one MP or one TB type command associated with it.  Output of energy by  
+ material may not be available.                                          
+
+ *** ERROR ***                           CP =     145.047   TIME= 10:16:12
+ Element 3655 (type = 9, SOLID187) (and maybe other elements) has become 
+ highly distorted.  Excessive distortion of elements is usually a        
+ symptom indicating the need for corrective action elsewhere.  Try       
+ incrementing the load more slowly (increase the number of substeps or   
+ decrease the time step size).  You may need to improve your mesh to     
+ obtain elements with better aspect ratios.  Also consider the behavior  
+ of materials, contact pairs, and/or constraint equations.  Please rule  
+ out other root causes of this failure before attempting rezoning or     
+ nonlinear adaptive solutions.  If this message appears in the first     
+ iteration of first substep, be sure to perform element shape checking.  
+
+ *** ERROR ***                           CP =     239.016   TIME= 10:17:49
+ Solution not converged at time 1.7863125 (load step 2 substep 7).       
+  Run terminated.                                                        
+
+ *** WARNING ***                         CP =     239.016   TIME= 10:17:49
+ The unconverged solution (identified as time 2 substep 999999) is       
+ output for analysis debug purposes.  Results should not be used for     
+ any other purpose.                                                      

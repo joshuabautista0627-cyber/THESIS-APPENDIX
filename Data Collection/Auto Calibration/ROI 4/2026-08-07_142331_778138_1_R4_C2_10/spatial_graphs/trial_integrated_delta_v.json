@@ -1,0 +1,69 @@
+{
+  "automatic_scale_rule": "zero_to_observed_maximum_or_one_when_all_zero",
+  "automatic_summary": true,
+  "available": true,
+  "baseline_id": "baseline-561ea7454f364a719d13352979449691",
+  "color_scale_max": 4130492.0,
+  "color_scale_min": 0.0,
+  "csv_columns": [
+    "roi",
+    "row",
+    "column",
+    "value"
+  ],
+  "elapsed_time_s": null,
+  "frame_id": null,
+  "graph_kind": "trial_integrated_heatmap",
+  "host_monotonic_ns": null,
+  "metric_description": "Integrated positive baseline-corrected value-channel intensity",
+  "metric_units": "delta V*px",
+  "plotted_values": [
+    4130492.0,
+    2569221.0,
+    3393810.0,
+    1793322.0,
+    1972691.0,
+    1665824.0,
+    1931073.0,
+    1652785.0,
+    1671127.0
+  ],
+  "render_elements": [
+    "title",
+    "metric",
+    "ROI 1-9 labels",
+    "numeric values",
+    "fixed scale",
+    "color bar",
+    "session and trial provenance"
+  ],
+  "roi_labels": [
+    "ROI 1",
+    "ROI 2",
+    "ROI 3",
+    "ROI 4",
+    "ROI 5",
+    "ROI 6",
+    "ROI 7",
+    "ROI 8",
+    "ROI 9"
+  ],
+  "roi_layout_id": "roi-9fbc67c50ee3bc7145fa",
+  "roi_order": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "selected_metric": "integrated_delta_v",
+  "session_id": "S2",
+  "title": "Trial integrated positive delta V",
+  "trial_id": "R4_C2_10",
+  "y_axis_max": 4130492.0,
+  "y_axis_min": 0.0
+}

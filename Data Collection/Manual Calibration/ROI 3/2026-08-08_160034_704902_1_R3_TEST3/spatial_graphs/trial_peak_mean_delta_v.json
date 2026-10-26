@@ -1,0 +1,69 @@
+{
+  "automatic_scale_rule": "zero_to_observed_maximum_or_one_when_all_zero",
+  "automatic_summary": true,
+  "available": true,
+  "baseline_id": "baseline-51658c86a67b4547bb12c9bc8fb3efd3",
+  "color_scale_max": 2.755954496978315,
+  "color_scale_min": 0.0,
+  "csv_columns": [
+    "roi",
+    "row",
+    "column",
+    "value"
+  ],
+  "elapsed_time_s": 33.6342674,
+  "frame_id": 250,
+  "graph_kind": "trial_peak_heatmap",
+  "host_monotonic_ns": 430982761843100,
+  "metric_description": "Mean positive baseline-corrected value-channel intensity",
+  "metric_units": "delta V (0-255)",
+  "plotted_values": [
+    0.803644834201151,
+    0.7129186602870813,
+    2.755954496978315,
+    0.7389564414345082,
+    0.5970394736842105,
+    0.663926499032882,
+    0.8080412737946985,
+    0.7077673284569836,
+    0.629976580796253
+  ],
+  "render_elements": [
+    "title",
+    "metric",
+    "ROI 1-9 labels",
+    "numeric values",
+    "fixed scale",
+    "color bar",
+    "session and trial provenance"
+  ],
+  "roi_labels": [
+    "ROI 1",
+    "ROI 2",
+    "ROI 3",
+    "ROI 4",
+    "ROI 5",
+    "ROI 6",
+    "ROI 7",
+    "ROI 8",
+    "ROI 9"
+  ],
+  "roi_layout_id": "roi-9fbc67c50ee3bc7145fa",
+  "roi_order": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "selected_metric": "mean_delta_v",
+  "session_id": "S3",
+  "title": "Trial peak mean positive delta V",
+  "trial_id": "R3_TEST3",
+  "y_axis_max": 2.755954496978315,
+  "y_axis_min": 0.0
+}

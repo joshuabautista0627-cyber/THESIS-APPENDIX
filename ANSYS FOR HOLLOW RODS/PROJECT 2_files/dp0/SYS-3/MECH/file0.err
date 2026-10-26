@@ -1,0 +1,13 @@
+/COM,ANSYS RELEASE 2025 R2           BUILD 25.2      UP20250519       10:26:14
+
+ *** WARNING ***                         CP =       0.641   TIME= 10:26:15
+ Element shape checking is currently inactive.  Issue SHPP,ON or         
+ SHPP,WARN to reactivate, if desired.                                    
+
+ *** WARNING ***                         CP =       0.656   TIME= 10:26:15
+ Material number 35 (used by element 7093) should normally have at least 
+ one MP or one TB type command associated with it.  Output of energy by  
+ material may not be available.                                          
+
+ *** WARNING ***                         CP =       2.406   TIME= 10:26:17
+ Coefficient ratio exceeds 1.0e8 - Check results.                        

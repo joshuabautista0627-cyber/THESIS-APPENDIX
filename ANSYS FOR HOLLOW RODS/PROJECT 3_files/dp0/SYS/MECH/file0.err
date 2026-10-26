@@ -1,0 +1,116 @@
+/COM,ANSYS RELEASE 2026 R1           BUILD 26.1      UP20260202       14:52:44
+
+ *** WARNING ***                         ELAPSED TIME =       5.386   TIME= 14:52:45
+ Element shape checking is currently inactive.  Issue SHPP,ON or         
+ SHPP,WARN to reactivate, if desired.                                    
+
+ *** WARNING ***                         ELAPSED TIME =       5.404   TIME= 14:52:45
+ Material number 8 (used by element 7081) should normally have at least  
+ one MP or one TB type command associated with it.  Output of energy by  
+ material may not be available.                                          
+
+ *** WARNING ***                         ELAPSED TIME =       6.363   TIME= 14:52:46
+ Coefficient ratio exceeds 1.0e8 - Check results.                        
+
+ *** ERROR ***                           ELAPSED TIME =       6.764   TIME= 14:52:47
+ Element 1919 (type = 1, SOLID187) (and maybe other elements) has become 
+ highly distorted.  Excessive distortion of elements is usually a        
+ symptom indicating the need for corrective action elsewhere.  Try       
+ incrementing the load more slowly (increase the number of substeps or   
+ decrease the time step size).  You may need to improve your mesh to     
+ obtain elements with better aspect ratios.  Also consider the behavior  
+ of materials, contact pairs, and/or constraint equations.  Please rule  
+ out other root causes of this failure before attempting rezoning or     
+ nonlinear adaptive solutions.  If this message appears in the first     
+ iteration of first substep, be sure to perform element shape checking.  
+
+ *** ERROR ***                           ELAPSED TIME =       6.764   TIME= 14:52:47
+ Element 2514 (type = 1, SOLID187) (and maybe other elements) has become 
+ highly distorted.  Excessive distortion of elements is usually a        
+ symptom indicating the need for corrective action elsewhere.  Try       
+ incrementing the load more slowly (increase the number of substeps or   
+ decrease the time step size).  You may need to improve your mesh to     
+ obtain elements with better aspect ratios.  Also consider the behavior  
+ of materials, contact pairs, and/or constraint equations.  Please rule  
+ out other root causes of this failure before attempting rezoning or     
+ nonlinear adaptive solutions.  If this message appears in the first     
+ iteration of first substep, be sure to perform element shape checking.  
+
+ *** WARNING ***                         ELAPSED TIME =       7.031   TIME= 14:52:47
+ Coefficient ratio exceeds 1.0e8 - Check results.                        
+
+ *** ERROR ***                           ELAPSED TIME =       7.306   TIME= 14:52:47
+ Element 1919 (type = 1, SOLID187) (and maybe other elements) has become 
+ highly distorted.  Excessive distortion of elements is usually a        
+ symptom indicating the need for corrective action elsewhere.  Try       
+ incrementing the load more slowly (increase the number of substeps or   
+ decrease the time step size).  You may need to improve your mesh to     
+ obtain elements with better aspect ratios.  Also consider the behavior  
+ of materials, contact pairs, and/or constraint equations.  Please rule  
+ out other root causes of this failure before attempting rezoning or     
+ nonlinear adaptive solutions.  If this message appears in the first     
+ iteration of first substep, be sure to perform element shape checking.  
+
+ *** ERROR ***                           ELAPSED TIME =       7.307   TIME= 14:52:47
+ Element 2514 (type = 1, SOLID187) (and maybe other elements) has become 
+ highly distorted.  Excessive distortion of elements is usually a        
+ symptom indicating the need for corrective action elsewhere.  Try       
+ incrementing the load more slowly (increase the number of substeps or   
+ decrease the time step size).  You may need to improve your mesh to     
+ obtain elements with better aspect ratios.  Also consider the behavior  
+ of materials, contact pairs, and/or constraint equations.  Please rule  
+ out other root causes of this failure before attempting rezoning or     
+ nonlinear adaptive solutions.  If this message appears in the first     
+ iteration of first substep, be sure to perform element shape checking.  
+
+ *** WARNING ***                         ELAPSED TIME =       7.558   TIME= 14:52:47
+ Coefficient ratio exceeds 1.0e8 - Check results.                        
+
+ *** ERROR ***                           ELAPSED TIME =       7.874   TIME= 14:52:48
+ Element 2514 (type = 1, SOLID187) (and maybe other elements) has become 
+ highly distorted.  Excessive distortion of elements is usually a        
+ symptom indicating the need for corrective action elsewhere.  Try       
+ incrementing the load more slowly (increase the number of substeps or   
+ decrease the time step size).  You may need to improve your mesh to     
+ obtain elements with better aspect ratios.  Also consider the behavior  
+ of materials, contact pairs, and/or constraint equations.  Please rule  
+ out other root causes of this failure before attempting rezoning or     
+ nonlinear adaptive solutions.  If this message appears in the first     
+ iteration of first substep, be sure to perform element shape checking.  
+
+ *** WARNING ***                         ELAPSED TIME =       8.129   TIME= 14:52:48
+ Coefficient ratio exceeds 1.0e8 - Check results.                        
+
+ *** WARNING ***                         ELAPSED TIME =       8.495   TIME= 14:52:48
+ Contact element 7056 (real ID 5) status changes abruptly from           
+ no-contact -> contact (with target element 7077).  It may represent a   
+ spurious contact.                                                       
+
+ *** ERROR ***                           ELAPSED TIME =       9.039   TIME= 14:52:49
+ Element 1919 (type = 1, SOLID187) (and maybe other elements) has become 
+ highly distorted.  Excessive distortion of elements is usually a        
+ symptom indicating the need for corrective action elsewhere.  Try       
+ incrementing the load more slowly (increase the number of substeps or   
+ decrease the time step size).  You may need to improve your mesh to     
+ obtain elements with better aspect ratios.  Also consider the behavior  
+ of materials, contact pairs, and/or constraint equations.  Please rule  
+ out other root causes of this failure before attempting rezoning or     
+ nonlinear adaptive solutions.  If this message appears in the first     
+ iteration of first substep, be sure to perform element shape checking.  
+
+ *** ERROR ***                           ELAPSED TIME =       9.039   TIME= 14:52:49
+ Element 2514 (type = 1, SOLID187) (and maybe other elements) has become 
+ highly distorted.  Excessive distortion of elements is usually a        
+ symptom indicating the need for corrective action elsewhere.  Try       
+ incrementing the load more slowly (increase the number of substeps or   
+ decrease the time step size).  You may need to improve your mesh to     
+ obtain elements with better aspect ratios.  Also consider the behavior  
+ of materials, contact pairs, and/or constraint equations.  Please rule  
+ out other root causes of this failure before attempting rezoning or     
+ nonlinear adaptive solutions.  If this message appears in the first     
+ iteration of first substep, be sure to perform element shape checking.  
+
+ *** WARNING ***                         ELAPSED TIME =       9.045   TIME= 14:52:49
+ The unconverged solution (identified as time 1 substep 999999) is       
+ output for analysis debug purposes.  Results should not be used for     
+ any other purpose.                                                      

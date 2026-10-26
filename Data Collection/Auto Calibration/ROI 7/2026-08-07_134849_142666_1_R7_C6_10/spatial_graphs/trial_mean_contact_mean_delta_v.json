@@ -1,0 +1,69 @@
+{
+  "automatic_scale_rule": "zero_to_observed_maximum_or_one_when_all_zero",
+  "automatic_summary": true,
+  "available": true,
+  "baseline_id": "baseline-de237de171874e08bcff4bc025b3d5f7",
+  "color_scale_max": 0.9160087885849652,
+  "color_scale_min": 0.0,
+  "csv_columns": [
+    "roi",
+    "row",
+    "column",
+    "value"
+  ],
+  "elapsed_time_s": null,
+  "frame_id": null,
+  "graph_kind": "trial_mean_contact_heatmap",
+  "host_monotonic_ns": null,
+  "metric_description": "Mean positive baseline-corrected value-channel intensity",
+  "metric_units": "delta V (0-255)",
+  "plotted_values": [
+    0.8250943884787335,
+    0.9160087885849652,
+    0.8102918155680706,
+    0.7288993609157574,
+    0.8013458124477861,
+    0.701306376838292,
+    0.6148474727113102,
+    0.6518320356795858,
+    0.5284047888509864
+  ],
+  "render_elements": [
+    "title",
+    "metric",
+    "ROI 1-9 labels",
+    "numeric values",
+    "fixed scale",
+    "color bar",
+    "session and trial provenance"
+  ],
+  "roi_labels": [
+    "ROI 1",
+    "ROI 2",
+    "ROI 3",
+    "ROI 4",
+    "ROI 5",
+    "ROI 6",
+    "ROI 7",
+    "ROI 8",
+    "ROI 9"
+  ],
+  "roi_layout_id": "roi-9fbc67c50ee3bc7145fa",
+  "roi_order": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "selected_metric": "mean_delta_v",
+  "session_id": "S2",
+  "title": "Trial mean contact mean positive delta V",
+  "trial_id": "R7_C6_10",
+  "y_axis_max": 0.9160087885849652,
+  "y_axis_min": 0.0
+}

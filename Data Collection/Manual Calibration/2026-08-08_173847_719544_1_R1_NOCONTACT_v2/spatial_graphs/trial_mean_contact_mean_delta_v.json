@@ -1,0 +1,20 @@
+{
+  "available": false,
+  "baseline_id": "baseline-73cfb3c3e0794019ad697f9a5acae3d3",
+  "graph_kind": "trial_mean_contact_heatmap",
+  "reason": "No valid frames had contact_state_derived equal to true.",
+  "roi_layout_id": "roi-9fbc67c50ee3bc7145fa",
+  "roi_order": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "session_id": "S3",
+  "trial_id": "R1_NOCONTACT_v2"
+}

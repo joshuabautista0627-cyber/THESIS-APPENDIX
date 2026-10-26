@@ -1,0 +1,186 @@
+{
+  "backend": "DirectShow",
+  "baseline_id": "baseline-561ea7454f364a719d13352979449691",
+  "camera_device": "Arducam IMX179 Camera Module candidate at camera index 0; operator confirmation required",
+  "camera_fingerprint": "4cde17769ad834a7ff4b578d714cb13c8e8f28b980762587caadaaa8e6808b25",
+  "camera_settings": {
+    "backend": "DirectShow",
+    "camera_device": "Arducam IMX179 Camera Module candidate at camera index 0; operator confirmation required",
+    "controls": {
+      "current_driver_values": {
+        "auto_exposure": false,
+        "auto_focus": true,
+        "auto_white_balance": true,
+        "backlight_compensation": 4.0,
+        "brightness": 228.0,
+        "contrast": 148.0,
+        "exposure": -6.0,
+        "focus": 0.0,
+        "gain": 0.0,
+        "gamma": 110.0,
+        "hue": 128.0,
+        "iris": -1.0,
+        "pan": 0.0,
+        "roll": 0.0,
+        "saturation": 54.0,
+        "sharpness": 87.0,
+        "temperature": -1.0,
+        "tilt": 0.0,
+        "white_balance": 4600.0,
+        "zoom": 0.0
+      },
+      "frame_source": "unannotated camera image after configured orientation",
+      "mirror_horizontal": true,
+      "property_control": "current driver values read for provenance; changes are operator-initiated through the DirectShow native dialog",
+      "rotation_degrees_clockwise": 90
+    },
+    "frame_height": 640,
+    "frame_width": 480,
+    "processing_settings": {
+      "active_delta_v_threshold": 10.0,
+      "localization_min_mean_delta_v": 5.0,
+      "minimum_saturation_for_h": 10
+    }
+  },
+  "capture_timestamp_iso": "2026-08-07T06:23:31.616124+00:00",
+  "frame_height": 640,
+  "frame_width": 480,
+  "invalid_reason": "",
+  "processing_fingerprint": "18047f9513dd8fd5bb06932cb2f783270914b34b8049a1ecf014cb864a332b60",
+  "processing_settings": {
+    "active_delta_v_threshold": 10.0,
+    "localization_min_mean_delta_v": 5.0,
+    "minimum_saturation_for_h": 10
+  },
+  "roi_layout_id": "roi-9fbc67c50ee3bc7145fa",
+  "rois": [
+    {
+      "array_shape": [
+        89,
+        82
+      ],
+      "capture_timestamp_iso": "2026-08-07T06:23:31.616124+00:00",
+      "circular_mean_h": 64.80954495296578,
+      "mean_s": 121.40061303275466,
+      "mean_v": 9.663326462282699,
+      "median_v": 10.0,
+      "roi_id": 1,
+      "std_v": 3.979602862096981,
+      "valid_frame_count": 46
+    },
+    {
+      "array_shape": [
+        99,
+        76
+      ],
+      "capture_timestamp_iso": "2026-08-07T06:23:31.616124+00:00",
+      "circular_mean_h": 63.124310520226025,
+      "mean_s": 132.44572729584172,
+      "mean_v": 8.839828490858238,
+      "median_v": 10.0,
+      "roi_id": 2,
+      "std_v": 3.7400125235783253,
+      "valid_frame_count": 46
+    },
+    {
+      "array_shape": [
+        97,
+        58
+      ],
+      "capture_timestamp_iso": "2026-08-07T06:23:31.616124+00:00",
+      "circular_mean_h": 61.6002786874925,
+      "mean_s": 119.22624770089182,
+      "mean_v": 9.85774896057126,
+      "median_v": 10.0,
+      "roi_id": 3,
+      "std_v": 4.029093435589822,
+      "valid_frame_count": 46
+    },
+    {
+      "array_shape": [
+        89,
+        73
+      ],
+      "capture_timestamp_iso": "2026-08-07T06:23:31.616124+00:00",
+      "circular_mean_h": 65.25420012877262,
+      "mean_s": 132.43641881537297,
+      "mean_v": 8.866071966325595,
+      "median_v": 10.0,
+      "roi_id": 4,
+      "std_v": 3.4893462414658667,
+      "valid_frame_count": 46
+    },
+    {
+      "array_shape": [
+        96,
+        76
+      ],
+      "capture_timestamp_iso": "2026-08-07T06:23:31.616124+00:00",
+      "circular_mean_h": 63.3648045663244,
+      "mean_s": 133.73760488176964,
+      "mean_v": 8.807467462814646,
+      "median_v": 10.0,
+      "roi_id": 5,
+      "std_v": 3.4559164135992595,
+      "valid_frame_count": 46
+    },
+    {
+      "array_shape": [
+        94,
+        66
+      ],
+      "capture_timestamp_iso": "2026-08-07T06:23:31.616124+00:00",
+      "circular_mean_h": 62.044717727960226,
+      "mean_s": 135.06952386959324,
+      "mean_v": 8.908393603005074,
+      "median_v": 10.0,
+      "roi_id": 6,
+      "std_v": 3.4684606675730163,
+      "valid_frame_count": 46
+    },
+    {
+      "array_shape": [
+        77,
+        73
+      ],
+      "capture_timestamp_iso": "2026-08-07T06:23:31.616124+00:00",
+      "circular_mean_h": 64.50175588794002,
+      "mean_s": 129.04867229256746,
+      "mean_v": 9.233097158945878,
+      "median_v": 10.0,
+      "roi_id": 7,
+      "std_v": 3.5645207521658135,
+      "valid_frame_count": 46
+    },
+    {
+      "array_shape": [
+        66,
+        87
+      ],
+      "capture_timestamp_iso": "2026-08-07T06:23:31.616124+00:00",
+      "circular_mean_h": 62.450641779829006,
+      "mean_s": 132.37782245241016,
+      "mean_v": 9.026036224312087,
+      "median_v": 10.0,
+      "roi_id": 8,
+      "std_v": 3.495564854625215,
+      "valid_frame_count": 46
+    },
+    {
+      "array_shape": [
+        77,
+        61
+      ],
+      "capture_timestamp_iso": "2026-08-07T06:23:31.616124+00:00",
+      "circular_mean_h": 60.569766429923035,
+      "mean_s": 129.71821051364887,
+      "mean_v": 9.456026510908906,
+      "median_v": 10.0,
+      "roi_id": 9,
+      "std_v": 3.592294752907395,
+      "valid_frame_count": 46
+    }
+  ],
+  "schema_version": "1.0",
+  "valid": true
+}

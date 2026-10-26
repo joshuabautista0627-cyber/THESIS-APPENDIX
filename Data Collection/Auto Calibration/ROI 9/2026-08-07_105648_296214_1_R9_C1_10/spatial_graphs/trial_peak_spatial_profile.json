@@ -1,0 +1,69 @@
+{
+  "automatic_summary": true,
+  "available": true,
+  "baseline_id": "baseline-4a51d33bf0124a26a4857d33cbca4e53",
+  "color_scale_max": 4.022593844511653,
+  "color_scale_min": 0.0,
+  "csv_columns": [
+    "roi",
+    "row",
+    "column",
+    "value"
+  ],
+  "elapsed_time_s": 0.5437943,
+  "frame_id": 6,
+  "graph_kind": "trial_peak_spatial_profile",
+  "host_monotonic_ns": 326310382493200,
+  "metric_description": "Mean positive baseline-corrected value-channel intensity",
+  "metric_units": "delta V (0-255)",
+  "plotted_values": [
+    3.935324746505892,
+    3.461988304093567,
+    3.999822253821543,
+    3.955517931352932,
+    3.2047697368421053,
+    3.1831076724693745,
+    4.022593844511653,
+    3.339080459770115,
+    3.6410474771130508
+  ],
+  "render_elements": [
+    "title",
+    "metric",
+    "ROI 1-9 labels",
+    "numeric values",
+    "fixed scale",
+    "axes",
+    "spatial-profile legend",
+    "session and trial provenance"
+  ],
+  "roi_labels": [
+    "ROI 1",
+    "ROI 2",
+    "ROI 3",
+    "ROI 4",
+    "ROI 5",
+    "ROI 6",
+    "ROI 7",
+    "ROI 8",
+    "ROI 9"
+  ],
+  "roi_layout_id": "roi-9fbc67c50ee3bc7145fa",
+  "roi_order": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "selected_metric": "mean_delta_v",
+  "session_id": "S2",
+  "title": "Trial peak-frame spatial profile",
+  "trial_id": "R9_C1_10",
+  "y_axis_max": 4.022593844511653,
+  "y_axis_min": 0.0
+}

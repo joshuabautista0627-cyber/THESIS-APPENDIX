@@ -1,0 +1,30 @@
+/COM,ANSYS RELEASE 2025 R2           BUILD 25.2      UP20250519       15:16:03
+
+ *** WARNING ***                         CP =       0.516   TIME= 15:16:05
+ Element shape checking is currently inactive.  Issue SHPP,ON or         
+ SHPP,WARN to reactivate, if desired.                                    
+
+ *** WARNING ***                         CP =       0.547   TIME= 15:16:05
+ Material number 9 (used by element 1392) should normally have at least  
+ one MP or one TB type command associated with it.  Output of energy by  
+ material may not be available.                                          
+
+ *** WARNING ***                         CP =       1.203   TIME= 15:16:06
+ Coefficient ratio exceeds 1.0e8 - Check results.                        
+
+ *** WARNING ***                         CP =       1.375   TIME= 15:16:06
+ A reference force value times the tolerance is used by the              
+ Newton-Raphson method for checking convergence.  The calculated         
+ reference FORCE CONVERGENCE VALUE = 1.125800891E-06 is less than a      
+ threshold.  This threshold is internally calculated.  You can           
+ overwrite it by specifying MINREF on the CNVTOL command.  Check         
+ results carefully.                                                      
+
+ *** WARNING ***                         CP =      20.062   TIME= 15:16:27
+ The default values that can be modified on the CNVTOL command have been 
+ internally reset to CNVTOL tolerance TOLER = 5.0E-2 due to convergence  
+ difficulties and the analysis is continued.  Please verify the          
+ analysis with this adjusted value of TOLER.  You may need to specify    
+ the NSUBST or CNVTOL commands for convergence and accuracy of the       
+ solution.  This automatic resetting of TOLER and VALUE can be turned    
+ off if you include the CNVTOL command in the input.                     

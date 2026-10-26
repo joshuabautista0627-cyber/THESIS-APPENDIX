@@ -1,0 +1,167 @@
+# encoding: utf-8
+# 2026 R1
+SetScriptVersion(Version="26.1.174")
+template1 = GetTemplate(
+    TemplateName="Static Structural",
+    Solver="ANSYS")
+system1 = template1.CreateSystem()
+engineeringData1 = system1.GetContainer(ComponentName="Engineering Data")
+matl1 = engineeringData1.CreateMaterial(Name="ECOFLEX 00-45")
+matlProp1 = matl1.CreateProperty(
+    Name="Density",
+    Qualifiers={"Definition": "", "Behavior": ""})
+matlProp2 = matl1.CreateProperty(
+    Name="Neo-Hookean",
+    Qualifiers={"Definition": "", "Behavior": ""})
+matlProp1.SetData(
+    Index=-1,
+    Variables=["Density"],
+    Values=[["1060 [kg m^-3]"]])
+matlProp2.SetVariableProperty(
+    VariableName="Initial Shear Modulus Mu",
+    Property="Unit",
+    Value="MPa")
+matlProp2.SetVariableProperty(
+    VariableName="Incompressibility Parameter D1",
+    Property="Unit",
+    Value="MPa^-1")
+matlProp2.SetData(
+    Index=-1,
+    Variables=["Initial Shear Modulus Mu"],
+    Values=[["0.0473 [MPa]"]])
+matlProp2.SetData(
+    Variables=["Incompressibility Parameter D1"],
+    Values=[["0.424 [MPa^-1]"]])
+geometry1 = system1.GetContainer(ComponentName="Geometry")
+geometry1.SetFile(FilePath="C:/Users/DLSU/Downloads/RUN 6_SOLID.step")
+modelComponent1 = system1.GetComponent(Name="Model")
+modelComponent1.Refresh()
+model1 = system1.GetContainer(ComponentName="Model")
+model1.Edit()
+model1.Exit()
+geometry1.SetFile(FilePath="C:/Users/DLSU/Downloads/run 6 solid.step")
+modelComponent1.Refresh()
+model1.Edit()
+system2 = system1.Duplicate(
+    ComponentsToShare=[],
+    RelativeTo=system1)
+system1.Delete()
+system2.Delete()
+system3 = template1.CreateSystem()
+engineeringData2 = system3.GetContainer(ComponentName="Engineering Data")
+matl2 = engineeringData2.CreateMaterial(Name="ecoflex 00-45")
+matlProp3 = matl2.CreateProperty(
+    Name="Density",
+    Qualifiers={"Definition": "", "Behavior": ""})
+matlProp3.SetData(
+    Index=-1,
+    Variables=["Density"],
+    Values=[["1060 [kg m^-3]"]])
+matlProp4 = matl2.CreateProperty(
+    Name="Neo-Hookean",
+    Qualifiers={"Definition": "", "Behavior": ""})
+matlProp4.SetVariableProperty(
+    VariableName="Initial Shear Modulus Mu",
+    Property="Unit",
+    Value="hbar")
+matlProp4.SetVariableProperty(
+    VariableName="Initial Shear Modulus Mu",
+    Property="Unit",
+    Value="MPa")
+matlProp4.SetVariableProperty(
+    VariableName="Incompressibility Parameter D1",
+    Property="Unit",
+    Value="MPa^-1")
+matlProp4.SetData(
+    Index=-1,
+    Variables=["Initial Shear Modulus Mu"],
+    Values=[["0.0473 [MPa]"]])
+matlProp4.SetData(
+    Variables=["Incompressibility Parameter D1"],
+    Values=[["0.424 [MPa^-1]"]])
+geometry2 = system3.GetContainer(ComponentName="Geometry")
+geometry2.SetFile(FilePath="C:/Users/DLSU/Downloads/run 6 solid.step")
+modelComponent2 = system3.GetComponent(Name="Model")
+modelComponent2.Refresh()
+model2 = system3.GetContainer(ComponentName="Model")
+model2.Edit()
+system3.Delete()
+system4 = template1.CreateSystem()
+engineeringData3 = system4.GetContainer(ComponentName="Engineering Data")
+matl3 = engineeringData3.CreateMaterial(Name="ecoflex 00-45")
+matlProp5 = matl3.CreateProperty(
+    Name="Density",
+    Qualifiers={"Definition": "", "Behavior": ""})
+matlProp5.SetData(
+    Index=-1,
+    Variables=["Density"],
+    Values=[["1060 [kg m^-3]"]])
+matlProp6 = matl3.CreateProperty(
+    Name="Neo-Hookean",
+    Qualifiers={"Definition": "", "Behavior": ""})
+matlProp6.SetVariableProperty(
+    VariableName="Initial Shear Modulus Mu",
+    Property="Unit",
+    Value="MPa")
+matlProp6.SetVariableProperty(
+    VariableName="Incompressibility Parameter D1",
+    Property="Unit",
+    Value="MPa^-1")
+matlProp6.SetData(
+    Index=-1,
+    Variables=["Initial Shear Modulus Mu"],
+    Values=[["0.0473 [MPa]"]])
+matlProp6.SetData(
+    Variables=["Incompressibility Parameter D1"],
+    Values=[["0.424 [MPa^-1]"]])
+geometry3 = system4.GetContainer(ComponentName="Geometry")
+geometry3.SetFile(FilePath="C:/Users/DLSU/Downloads/run 6 solid.step")
+modelComponent3 = system4.GetComponent(Name="Model")
+modelComponent3.Refresh()
+model3 = system4.GetContainer(ComponentName="Model")
+model3.Edit()
+model3.Exit()
+system5 = template1.CreateSystem()
+engineeringData4 = system5.GetContainer(ComponentName="Engineering Data")
+matl4 = engineeringData4.CreateMaterial(Name="ecoflex 00-45")
+matlProp7 = matl4.CreateProperty(
+    Name="Density",
+    Qualifiers={"Definition": "", "Behavior": ""})
+matlProp7.SetData(
+    Index=-1,
+    Variables=["Density"],
+    Values=[["1060 [kg m^-3]"]])
+matlProp8 = matl4.CreateProperty(
+    Name="Neo-Hookean",
+    Qualifiers={"Definition": "", "Behavior": ""})
+matlProp8.SetVariableProperty(
+    VariableName="Initial Shear Modulus Mu",
+    Property="Unit",
+    Value="MPa")
+matlProp8.SetVariableProperty(
+    VariableName="Incompressibility Parameter D1",
+    Property="Unit",
+    Value="MPa^-1")
+matlProp8.SetData(
+    Index=-1,
+    Variables=["Initial Shear Modulus Mu"],
+    Values=[["0.0473 [MPa]"]])
+matlProp8.SetData(
+    Variables=["Incompressibility Parameter D1"],
+    Values=[["0.424 [MPa^-1]"]])
+system5.Copy(KeepConnections=True)
+geometry4 = system5.GetContainer(ComponentName="Geometry")
+geometry4.SetFile(FilePath="C:/Users/DLSU/Downloads/RUN 6 (8MM).step")
+system6 = GetSystem(Name="SYS 2")
+geometry5 = system6.GetContainer(ComponentName="Geometry")
+geometry5.SetFile(FilePath="C:/Users/DLSU/Downloads/RUN 6 (6MM).step")
+modelComponent4 = system5.GetComponent(Name="Model")
+modelComponent4.Refresh()
+model4 = system5.GetContainer(ComponentName="Model")
+model4.Edit()
+modelComponent5 = system6.GetComponent(Name="Model")
+modelComponent5.Refresh()
+model5 = system6.GetContainer(ComponentName="Model")
+model5.Edit()
+model5.Exit()
+Save(Overwrite=True)

@@ -1,0 +1,3 @@
+{"component": "session_recorder", "event": "recording_started", "message": "Recording outputs opened", "session_id": "S3", "severity": "INFO", "timestamp": "2026-08-08T09:03:12.833934+00:00"}
+{"component": "session_recorder", "event": "finalizing", "message": "Closing raw files and validating outputs", "session_id": "S3", "severity": "INFO", "timestamp": "2026-08-08T09:03:28.641300+00:00"}
+{"component": "session_recorder", "event": "recording_complete", "message": "Session finalized successfully", "session_id": "S3", "severity": "INFO", "timestamp": "2026-08-08T09:03:29.856596+00:00"}

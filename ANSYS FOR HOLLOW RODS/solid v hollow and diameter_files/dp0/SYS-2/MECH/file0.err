@@ -1,0 +1,21 @@
+/COM,ANSYS RELEASE 2026 R1           BUILD 26.1      UP20260202       13:14:47
+
+ *** WARNING ***                         ELAPSED TIME =       5.402   TIME= 13:14:48
+ Element shape checking is currently inactive.  Issue SHPP,ON or         
+ SHPP,WARN to reactivate, if desired.                                    
+
+ *** WARNING ***                         ELAPSED TIME =       5.426   TIME= 13:14:48
+ Material number 33 (used by element 5810) should normally have at least 
+ one MP or one TB type command associated with it.  Output of energy by  
+ material may not be available.                                          
+
+ *** WARNING ***                         ELAPSED TIME =       7.276   TIME= 13:14:50
+ Coefficient ratio exceeds 1.0e8 - Check results.                        
+
+ *** WARNING ***                         ELAPSED TIME =       8.275   TIME= 13:14:51
+ A reference force value times the tolerance is used by the              
+ Newton-Raphson method for checking convergence.  The calculated         
+ reference FORCE CONVERGENCE VALUE = 1.191248084E-06 is less than a      
+ threshold.  This threshold is internally calculated.  You can           
+ overwrite it by specifying MINREF on the CNVTOL command.  Check         
+ results carefully.                                                      

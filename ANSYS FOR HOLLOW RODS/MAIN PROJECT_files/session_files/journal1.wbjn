@@ -1,0 +1,151 @@
+# encoding: utf-8
+# 2025 R2
+SetScriptVersion(Version="25.2.170")
+template1 = GetTemplate(
+    TemplateName="Static Structural",
+    Solver="ANSYS")
+system1 = template1.CreateSystem()
+system2 = system1.Duplicate(
+    ComponentsToShare=[],
+    RelativeTo=system1)
+system2.Delete()
+engineeringData1 = system1.GetContainer(ComponentName="Engineering Data")
+matl1 = engineeringData1.CreateMaterial(Name="ECOFLEX 00-45")
+matlProp1 = matl1.CreateProperty(
+    Name="Density",
+    Qualifiers={"Definition": "", "Behavior": ""})
+matlProp1.SetData(
+    Index=-1,
+    Variables=["Density"],
+    Values=[["1060 [kg m^-3]"]])
+matlProp2 = matl1.CreateProperty(
+    Name="Elasticity",
+    Behavior="Isotropic",
+    Qualifiers={"Definition": "", "Behavior": "Isotropic"})
+matlProp2.SetVariableProperty(
+    VariableName="Young's Modulus",
+    Property="Unit",
+    Value="MPa")
+matlProp2.SetData(
+    Index=-1,
+    Variables=["Young's Modulus"],
+    Values=[["3000 [MPa]"]])
+matlProp2.SetData(
+    Variables=["Poisson's Ratio"],
+    Values=[["0.36"]])
+matlProp2.Delete(Behavior="Isotropic")
+matlProp3 = matl1.CreateProperty(
+    Name="Neo-Hookean",
+    Qualifiers={"Definition": "", "Behavior": ""})
+matlProp3.SetVariableProperty(
+    VariableName="Initial Shear Modulus Mu",
+    Property="Unit",
+    Value="MPa")
+matlProp3.SetVariableProperty(
+    VariableName="Incompressibility Parameter D1",
+    Property="Unit",
+    Value="MPa^-1")
+matlProp3.SetData(
+    Index=-1,
+    Variables=["Incompressibility Parameter D1"],
+    Values=[["0.424 [MPa^-1]"]])
+matlProp3.SetData(
+    Variables=["Initial Shear Modulus Mu"],
+    Values=[["0.0473 [MPa]"]])
+system1.Copy(KeepConnections=True)
+system3 = GetSystem(Name="SYS 1")
+system3.Copy(KeepConnections=True)
+system3.Copy(KeepConnections=True)
+system3.Copy(KeepConnections=True)
+system4 = GetSystem(Name="SYS 2")
+system4.Copy(KeepConnections=True)
+system5 = GetSystem(Name="SYS 5")
+system5.Copy(KeepConnections=True)
+system5.Copy(KeepConnections=True)
+system5.Copy(KeepConnections=True)
+geometry1 = system1.GetContainer(ComponentName="Geometry")
+geometry1.SetFile(FilePath="C:/Users/DLSU/Downloads/ANSYS FOR HOLLOW RODS/RUN 1.step")
+modelComponent1 = system1.GetComponent(Name="Model")
+modelComponent1.Refresh()
+model1 = system1.GetContainer(ComponentName="Model")
+model1.Edit()
+model1.Exit()
+geometry2 = system3.GetContainer(ComponentName="Geometry")
+geometry2.SetFile(FilePath="C:/Users/DLSU/Downloads/ANSYS FOR HOLLOW RODS/RUN 2.step")
+modelComponent2 = system3.GetComponent(Name="Model")
+modelComponent2.Refresh()
+model2 = system3.GetContainer(ComponentName="Model")
+model2.Edit()
+Save(Overwrite=True)
+model2.Exit()
+Save(Overwrite=True)
+modelComponent1.Refresh()
+model1.Edit()
+model1.Exit()
+engineeringDataComponent1 = system4.GetComponent(Name="Engineering Data")
+system6 = system4.Duplicate(
+    ComponentsToShare=[engineeringDataComponent1],
+    RelativeTo=system4)
+geometry3 = system4.GetContainer(ComponentName="Geometry")
+geometry3.SetFile(FilePath="C:/Users/DLSU/Downloads/ANSYS FOR HOLLOW RODS/RUN 3.step")
+modelComponent3 = system4.GetComponent(Name="Model")
+modelComponent3.Refresh()
+model3 = system4.GetContainer(ComponentName="Model")
+model3.Edit()
+model3.Exit()
+geometry4 = system6.GetContainer(ComponentName="Geometry")
+geometry4.SetFile(FilePath="C:/Users/DLSU/Downloads/ANSYS FOR HOLLOW RODS/RUN 4.step")
+modelComponent4 = system6.GetComponent(Name="Model")
+modelComponent4.Refresh()
+model4 = system6.GetContainer(ComponentName="Model")
+model4.Edit()
+modelComponent3.Refresh()
+model3.Edit()
+modelComponent2.Refresh()
+model2.Edit()
+model1.Edit()
+model2.Exit()
+model2.Edit()
+model2.Exit()
+model1.Exit()
+system7 = GetSystem(Name="SYS 3")
+geometry5 = system7.GetContainer(ComponentName="Geometry")
+geometry5.SetFile(FilePath="C:/Users/DLSU/Downloads/ANSYS FOR HOLLOW RODS/RUN 5.step")
+modelComponent5 = system7.GetComponent(Name="Model")
+modelComponent5.Refresh()
+model5 = system7.GetContainer(ComponentName="Model")
+model5.Edit()
+model5.Exit()
+system8 = GetSystem(Name="SYS 4")
+geometry6 = system8.GetContainer(ComponentName="Geometry")
+geometry6.SetFile(FilePath="C:/Users/DLSU/Downloads/ANSYS FOR HOLLOW RODS/RUN 6.step")
+modelComponent6 = system8.GetComponent(Name="Model")
+modelComponent6.Refresh()
+model6 = system8.GetContainer(ComponentName="Model")
+model6.Edit()
+model6.Exit()
+geometry7 = system5.GetContainer(ComponentName="Geometry")
+geometry7.SetFile(FilePath="C:/Users/DLSU/Downloads/ANSYS FOR HOLLOW RODS/RUN 7.step")
+modelComponent7 = system5.GetComponent(Name="Model")
+modelComponent7.Refresh()
+model7 = system5.GetContainer(ComponentName="Model")
+model7.Edit()
+system9 = GetSystem(Name="SYS 6")
+geometry8 = system9.GetContainer(ComponentName="Geometry")
+geometry8.SetFile(FilePath="C:/Users/DLSU/Downloads/ANSYS FOR HOLLOW RODS/RUN 8.step")
+model7.Exit()
+modelComponent8 = system9.GetComponent(Name="Model")
+modelComponent8.Refresh()
+model8 = system9.GetContainer(ComponentName="Model")
+model8.Edit()
+model8.Exit()
+Save(Overwrite=True)
+system10 = GetSystem(Name="SYS 7")
+geometry9 = system10.GetContainer(ComponentName="Geometry")
+geometry9.SetFile(FilePath="C:/Users/DLSU/Downloads/ANSYS FOR HOLLOW RODS/RUN 9.step")
+modelComponent9 = system10.GetComponent(Name="Model")
+modelComponent9.Refresh()
+model9 = system10.GetContainer(ComponentName="Model")
+model9.Edit()
+model9.Exit()
+Save(Overwrite=True)

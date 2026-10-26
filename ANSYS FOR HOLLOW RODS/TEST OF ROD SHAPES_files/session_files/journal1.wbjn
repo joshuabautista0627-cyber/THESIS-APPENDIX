@@ -1,0 +1,90 @@
+# encoding: utf-8
+# 2025 R2
+SetScriptVersion(Version="25.2.170")
+template1 = GetTemplate(
+    TemplateName="Static Structural",
+    Solver="ANSYS")
+system1 = template1.CreateSystem()
+engineeringData1 = system1.GetContainer(ComponentName="Engineering Data")
+matl1 = engineeringData1.CreateMaterial(Name="ECOFLEX-0045")
+matlProp1 = matl1.CreateProperty(
+    Name="Density",
+    Qualifiers={"Definition": "", "Behavior": ""})
+matlProp2 = matl1.CreateProperty(
+    Name="Neo-Hookean",
+    Qualifiers={"Definition": "", "Behavior": ""})
+matlProp2.SetVariableProperty(
+    VariableName="Initial Shear Modulus Mu",
+    Property="Unit",
+    Value="MPa")
+matlProp2.SetVariableProperty(
+    VariableName="Incompressibility Parameter D1",
+    Property="Unit",
+    Value="MPa^-1")
+matlProp1.SetData(
+    Index=-1,
+    Variables=["Density"],
+    Values=[["1060 [kg m^-3]"]])
+matlProp2.SetData(
+    Index=-1,
+    Variables=["Initial Shear Modulus Mu"],
+    Values=[["0.0473 [MPa]"]])
+matlProp2.SetData(
+    Variables=["Incompressibility Parameter D1"],
+    Values=[["0.424 [MPa^-1]"]])
+system1.Copy(KeepConnections=True)
+system1.Copy(KeepConnections=True)
+system1.Copy(KeepConnections=True)
+geometry1 = system1.GetContainer(ComponentName="Geometry")
+geometry1.SetFile(FilePath="C:/Users/DLSU/Downloads/TEST RODS/FLAT TOP ROD.step")
+system2 = GetSystem(Name="SYS 1")
+geometry2 = system2.GetContainer(ComponentName="Geometry")
+geometry2.SetFile(FilePath="C:/Users/DLSU/Downloads/TEST RODS/SPHERICAL TOP ROD.step")
+system3 = GetSystem(Name="SYS 2")
+geometry3 = system3.GetContainer(ComponentName="Geometry")
+geometry3.SetFile(FilePath="C:/Users/DLSU/Downloads/TEST RODS/SQUARE TOP ROD.step")
+system4 = GetSystem(Name="SYS 3")
+geometry4 = system4.GetContainer(ComponentName="Geometry")
+geometry4.SetFile(FilePath="C:/Users/DLSU/Downloads/TEST RODS/TRIANGLE TOP ROD.step")
+modelComponent1 = system1.GetComponent(Name="Model")
+modelComponent1.Refresh()
+model1 = system1.GetContainer(ComponentName="Model")
+model1.Edit()
+modelComponent2 = system2.GetComponent(Name="Model")
+modelComponent2.Refresh()
+model2 = system2.GetContainer(ComponentName="Model")
+model2.Edit()
+modelComponent3 = system3.GetComponent(Name="Model")
+modelComponent3.Refresh()
+model3 = system3.GetContainer(ComponentName="Model")
+model3.Edit()
+modelComponent4 = system4.GetComponent(Name="Model")
+modelComponent4.Refresh()
+model4 = system4.GetContainer(ComponentName="Model")
+model4.Edit()
+Save(Overwrite=True)
+Reset()
+Extensions.UnloadExtension(
+    Id="5e7e01a6-8601-11e8-9f8c-28f10e13ffe6",
+    Version="2025.2",
+    Format="Binary")
+Extensions.UnloadExtension(
+    Id="5f463412-bd3e-484b-87e7-cbc0a665e474",
+    Version="2025.2",
+    Format="Binary")
+Extensions.UnloadExtension(
+    Id="ba012e44-4f35-4a97-aeff-8fe60efc33c9",
+    Version="25.2",
+    Format="Binary")
+Extensions.UnloadExtension(
+    Id="7b0e9e84-396d-4099-9602-2ced9dddc253",
+    Version="2025.2",
+    Format="Binary")
+Extensions.UnloadExtension(
+    Id="20180725-3f81-49eb-9f31-41364844c769",
+    Version="2025.2",
+    Format="Binary")
+Extensions.UnloadExtension(
+    Id="f3e3da52-fb02-4910-8cc9-980efd047bc6",
+    Version="2023.1",
+    Format="Binary")

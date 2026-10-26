@@ -1,0 +1,21 @@
+/COM,ANSYS RELEASE 2025 R2           BUILD 25.2      UP20250519       20:44:05
+
+ *** WARNING ***                         CP =       0.797   TIME= 20:44:07
+ Element shape checking is currently inactive.  Issue SHPP,ON or         
+ SHPP,WARN to reactivate, if desired.                                    
+
+ *** WARNING ***                         CP =       0.828   TIME= 20:44:07
+ Material number 35 (used by element 9906) should normally have at least 
+ one MP or one TB type command associated with it.  Output of energy by  
+ material may not be available.                                          
+
+ *** WARNING ***                         CP =       1.969   TIME= 20:44:08
+ Coefficient ratio exceeds 1.0e8 - Check results.                        
+
+ *** WARNING ***                         CP =       3.266   TIME= 20:44:09
+ A reference force value times the tolerance is used by the              
+ Newton-Raphson method for checking convergence.  The calculated         
+ reference FORCE CONVERGENCE VALUE = 2.802782039E-03 is less than a      
+ threshold.  This threshold is internally calculated.  You can           
+ overwrite it by specifying MINREF on the CNVTOL command.  Check         
+ results carefully.                                                      

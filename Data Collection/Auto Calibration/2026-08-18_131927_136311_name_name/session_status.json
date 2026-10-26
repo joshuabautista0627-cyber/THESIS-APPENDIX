@@ -1,0 +1,51 @@
+{
+  "accepted_frame_count": 208,
+  "artifact_paths": {
+    "baseline_data": "C:\\Users\\DLSU\\Downloads\\THESIS DATA\\Data Collection\\Auto Calibration\\2026-08-18_131927_136311_name_name\\baseline_data.npz",
+    "baseline_summary": "C:\\Users\\DLSU\\Downloads\\THESIS DATA\\Data Collection\\Auto Calibration\\2026-08-18_131927_136311_name_name\\baseline_summary.json",
+    "camera_settings": "C:\\Users\\DLSU\\Downloads\\THESIS DATA\\Data Collection\\Auto Calibration\\2026-08-18_131927_136311_name_name\\camera_settings.json",
+    "data_dictionary": "C:\\Users\\DLSU\\Downloads\\THESIS DATA\\Data Collection\\Auto Calibration\\2026-08-18_131927_136311_name_name\\data_dictionary.csv",
+    "loadcell_calibration": "C:\\Users\\DLSU\\Downloads\\THESIS DATA\\Data Collection\\Auto Calibration\\2026-08-18_131927_136311_name_name\\loadcell_calibration.json",
+    "roi_layout": "C:\\Users\\DLSU\\Downloads\\THESIS DATA\\Data Collection\\Auto Calibration\\2026-08-18_131927_136311_name_name\\roi_layout.json",
+    "spatial_graphs": "C:\\Users\\DLSU\\Downloads\\THESIS DATA\\Data Collection\\Auto Calibration\\2026-08-18_131927_136311_name_name\\spatial_graphs"
+  },
+  "automatic_graph_summary": {
+    "automatic_heatmap_summary_status": "pending",
+    "automatic_spatial_profile_status": "pending",
+    "automatic_temporal_line_status": "pending",
+    "generated_files": [],
+    "status": "pending",
+    "trial_mean_contact_mean_delta_v_status": "pending"
+  },
+  "automatic_heatmap_summary_status": "pending",
+  "automatic_spatial_profile_status": "pending",
+  "automatic_temporal_line_status": "pending",
+  "auxiliary_video_frame_counts": {},
+  "complete": false,
+  "errors": [
+    {
+      "error_code": "FINALIZATION_FAILED",
+      "message": "raw_adc must contain signed integer counts",
+      "timestamp": "2026-08-18T05:19:41.330595+00:00"
+    }
+  ],
+  "feature_row_count": 208,
+  "ingress_accepted_frame_count": 208,
+  "ingress_accepted_loadcell_sample_count": 151,
+  "lifecycle": "ERROR",
+  "loadcell_sample_count": 151,
+  "manual_line_graph_count": 0,
+  "manual_spatial_graph_count": 0,
+  "output_fps": 14.987553895167693,
+  "partial": true,
+  "recording_started_monotonic_ns": 259358480986300,
+  "required_artifacts_written": true,
+  "session_directory": "C:\\Users\\DLSU\\Downloads\\THESIS DATA\\Data Collection\\Auto Calibration\\2026-08-18_131927_136311_name_name",
+  "session_status": "partial",
+  "trial_mean_contact_mean_delta_v_status": "pending",
+  "updated_wall_clock_iso": "2026-08-18T05:19:41.339219+00:00",
+  "video_codec": "mp4v",
+  "video_filename": "session_video.mp4",
+  "video_frame_count": 208,
+  "video_partial_filename": "session_video.partial.mp4"
+}

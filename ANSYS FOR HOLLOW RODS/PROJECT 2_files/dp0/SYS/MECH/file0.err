@@ -1,0 +1,37 @@
+/COM,ANSYS RELEASE 2025 R2           BUILD 25.2      UP20250519       09:40:04
+
+ *** WARNING ***                         CP =       0.531   TIME= 09:40:06
+ Element shape checking is currently inactive.  Issue SHPP,ON or         
+ SHPP,WARN to reactivate, if desired.                                    
+
+ *** WARNING ***                         CP =       0.531   TIME= 09:40:06
+ Material number 35 (used by element 4929) should normally have at least 
+ one MP or one TB type command associated with it.  Output of energy by  
+ material may not be available.                                          
+
+ *** WARNING ***                         CP =       1.609   TIME= 09:40:07
+ Coefficient ratio exceeds 1.0e8 - Check results.                        
+
+ *** ERROR ***                           CP =       6.422   TIME= 09:40:12
+ Element 1598 (type = 9, SOLID187) (and maybe other elements) has become 
+ highly distorted.  Excessive distortion of elements is usually a        
+ symptom indicating the need for corrective action elsewhere.  Try       
+ incrementing the load more slowly (increase the number of substeps or   
+ decrease the time step size).  You may need to improve your mesh to     
+ obtain elements with better aspect ratios.  Also consider the behavior  
+ of materials, contact pairs, and/or constraint equations.  Please rule  
+ out other root causes of this failure before attempting rezoning or     
+ nonlinear adaptive solutions.  If this message appears in the first     
+ iteration of first substep, be sure to perform element shape checking.  
+
+ *** ERROR ***                           CP =      13.484   TIME= 09:40:19
+ Element 1598 (type = 9, SOLID187) (and maybe other elements) has become 
+ highly distorted.  Excessive distortion of elements is usually a        
+ symptom indicating the need for corrective action elsewhere.  Try       
+ incrementing the load more slowly (increase the number of substeps or   
+ decrease the time step size).  You may need to improve your mesh to     
+ obtain elements with better aspect ratios.  Also consider the behavior  
+ of materials, contact pairs, and/or constraint equations.  Please rule  
+ out other root causes of this failure before attempting rezoning or     
+ nonlinear adaptive solutions.  If this message appears in the first     
+ iteration of first substep, be sure to perform element shape checking.  
