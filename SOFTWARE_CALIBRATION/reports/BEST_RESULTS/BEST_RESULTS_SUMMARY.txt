@@ -1,0 +1,58 @@
+BEST RESULTS — MANUAL CALIBRATION ONLY
+
+Use these three models and the corresponding figures for the main results.
+
+LOCALIZATION — TUNED LOGISTIC REGRESSION
+Accuracy: 84.88%
+Macro F1: 85.00%
+Evaluation: 7,154 frames, 54 recordings, nine taxels.
+
+CONTACT DETECTION — TUNED RBF SVC
+Accuracy: 99.24%
+Balanced accuracy: 99.54%
+Contact recall: 99.09%
+Precision: 100.00%
+Specificity: 100.00%
+Contact F1: 99.54%
+Macro F1: 98.67%
+Raw counts [TN, FP; FN, TP]: [[1352, 0], [39, 7115]]
+Evaluation: 8,506 frames, 65 recordings.
+
+FORCE ESTIMATION — TUNED ENSEMBLE
+MAE: 0.4972 N
+RMSE: 0.6299 N
+R-squared: 0.3113
+Bias: +0.0827 N
+Evaluation: 7,154 frames, 54 recordings.
+
+METHOD
+These are the highest-accuracy evaluated classifiers and the lowest-MAE force estimator on the manual calibration data. Every reported metric gives each recording equal total weight. Predictions come from six outer TEST-group-held-out folds. All recordings are retained in their assigned folds; positive eligibility is the original aligned force interval 0.05-3 N. Contact negatives are the 11 dedicated no-contact recordings. Automatic and replay-only recordings are excluded.
+
+Model-family ranking uses the observed held-out results and is retrospective. The figures summarize fold models; they are not an independent prospective test of a final full-data fit. No new model fitting or score-changing filtering was performed for this consolidation. A single winning model supplies all metrics for each task. Force is regression, so its main result is error in N rather than a classification accuracy percentage.
+
+FIGURES
+01: best localization, 9 x 9, row-normalized percentages.
+02: best localization, 9 x 9, separately labeled raw counts.
+03: best contact detection, 2 x 2, row-normalized percentages.
+04: best contact detection, 2 x 2, separately labeled raw counts.
+05: spatial taxel performance heatmaps for the two winning classifiers.
+06-08: optical response distribution, light metrics, and force-light correlation.
+
+Normalized classification matrices give each frame weight 1/n for its recording, sum weighted outcomes, then normalize each actual-class row to 100%. Raw-count matrices are integer frame totals. Thus a weighted percentage is not obtained simply by dividing the unweighted counts. Rows are actual labels and columns predicted labels. Diagonal normalized values are recall. Accuracy and balanced accuracy are separately labeled.
+
+LIGHT METRICS
+No-contact temporal noise: 0.0518-0.0567 camera V levels.
+Mean target excess response: 0.129-0.791 camera V levels.
+Response-to-noise proxy: 2.43-13.98.
+Mean active area: 0.109-1.354% of ROI pixels.
+
+Optical diagnostics use original acquisition frame_features.csv values matched exactly to the same held-out frame identities; these are not claimed to be numerically identical to video-recomputed model features. D is mean positive pixel change from the saved baseline. The reference floor is the median of no-contact recording medians outside the held-out group; excess E=max(D-floor,0). Noise is the RMS of within-recording sample SDs of D in controls. The response/noise proxy uses only out-of-group control noise. Active pixels have delta V >=10. Spatial response profiles normalize each recording's nine mean E values to 100%, then average the six profiles for each pressed taxel; all eligible frames remain included. Force-light correlations are per-recording Spearman correlations using the original aligned force, with no additional lag search. These quantities use camera units, not lux or calibrated physical contact area; manual force histories differ between recordings.
+
+FILES FOR THESIS WRITING
+BEST_METRICS.csv and BEST_METRICS.json contain the exact consolidated results.
+BEST_MODEL_CONFIGURATIONS.json contains the six winning-family fold configurations and segmentation geometry.
+Figure_Captions.txt contains captions for the included PNG and SVG figures.
+data/ contains matrices, held-out predictions, taxel metrics and optical diagnostics.
+reference/all_competing_models_ranked.csv retains every evaluated model comparison.
+
+All existing reports and competing versions remain in their original locations unchanged.

@@ -1,0 +1,14 @@
+{
+  "pdf": "C:\\Users\\DLSU\\OneDrive\\Documents\\SOFTWARE CALIBRATION\\output\\pdf\\BAURods_Manual_Calibration_Technical_Report.pdf",
+  "pdf_sha256": "ce81d5ad9a8ab6d9382c2cd33da4d96a92e4d49c4f2e500fea7ebb4ed4622f6d",
+  "pages": 39,
+  "all_key_statistics_present": true,
+  "all_pages_nonblank": true,
+  "latest_chart_pixels_match": true,
+  "text_within_page_bounds": true,
+  "rendered_pages": 39,
+  "contact_sheets": 4,
+  "visual_inspection": "passed",
+  "render_directory": "C:\\Users\\DLSU\\OneDrive\\Documents\\SOFTWARE CALIBRATION\\tmp\\pdfs\\manual_calibration_repeatability_v1_1",
+  "visual_review": "All pages reviewed in contact sheets; revised tables and chart pages inspected individually; no clipping or overlap."
+}

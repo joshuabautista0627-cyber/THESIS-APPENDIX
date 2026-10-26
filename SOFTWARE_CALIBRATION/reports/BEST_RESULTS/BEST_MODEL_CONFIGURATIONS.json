@@ -1,0 +1,1031 @@
+{
+  "scope": "Configurations of the six held-out fold models used for the reported winning family metrics",
+  "metric_source": "Saved outer-fold predictions; inner-selection scores are deliberately not reported as test metrics",
+  "roi_layout": {
+    "schema_version": "1.0",
+    "roi_layout_id": "roi-9fbc67c50ee3bc7145fa",
+    "frame_width": 480,
+    "frame_height": 640,
+    "raw_frame_width": 640,
+    "raw_frame_height": 480,
+    "transform_order": [
+      "rotate_90_clockwise",
+      "mirror_horizontal"
+    ],
+    "camera_orientation": {
+      "rotation_degrees": 90,
+      "mirror_horizontal": true
+    },
+    "roi_order": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "rois": [
+      {
+        "roi_id": 1,
+        "row": 1,
+        "column": 1,
+        "x": 98,
+        "y": 161,
+        "width": 82,
+        "height": 89,
+        "area": 7298,
+        "center_x": 139.0,
+        "center_y": 205.5
+      },
+      {
+        "roi_id": 2,
+        "row": 1,
+        "column": 2,
+        "x": 197,
+        "y": 156,
+        "width": 76,
+        "height": 99,
+        "area": 7524,
+        "center_x": 235.0,
+        "center_y": 205.5
+      },
+      {
+        "roi_id": 3,
+        "row": 1,
+        "column": 3,
+        "x": 312,
+        "y": 154,
+        "width": 58,
+        "height": 97,
+        "area": 5626,
+        "center_x": 341.0,
+        "center_y": 202.5
+      },
+      {
+        "roi_id": 4,
+        "row": 2,
+        "column": 1,
+        "x": 100,
+        "y": 268,
+        "width": 73,
+        "height": 89,
+        "area": 6497,
+        "center_x": 136.5,
+        "center_y": 312.5
+      },
+      {
+        "roi_id": 5,
+        "row": 2,
+        "column": 2,
+        "x": 204,
+        "y": 264,
+        "width": 76,
+        "height": 96,
+        "area": 7296,
+        "center_x": 242.0,
+        "center_y": 312.0
+      },
+      {
+        "roi_id": 6,
+        "row": 2,
+        "column": 3,
+        "x": 314,
+        "y": 260,
+        "width": 66,
+        "height": 94,
+        "area": 6204,
+        "center_x": 347.0,
+        "center_y": 307.0
+      },
+      {
+        "roi_id": 7,
+        "row": 3,
+        "column": 1,
+        "x": 104,
+        "y": 383,
+        "width": 73,
+        "height": 77,
+        "area": 5621,
+        "center_x": 140.5,
+        "center_y": 421.5
+      },
+      {
+        "roi_id": 8,
+        "row": 3,
+        "column": 2,
+        "x": 194,
+        "y": 394,
+        "width": 87,
+        "height": 66,
+        "area": 5742,
+        "center_x": 237.5,
+        "center_y": 427.0
+      },
+      {
+        "roi_id": 9,
+        "row": 3,
+        "column": 3,
+        "x": 312,
+        "y": 379,
+        "width": 61,
+        "height": 77,
+        "area": 4697,
+        "center_x": 342.5,
+        "center_y": 417.5
+      }
+    ]
+  },
+  "segmentation": {
+    "positive_pixel_delta": "max(V_current - V_baseline, 0), evaluated per pixel",
+    "active_delta_v_threshold": 10.0,
+    "active_fraction": "Active pixel count / ROI area",
+    "morphology": "none"
+  },
+  "fold_model_configurations": {
+    "1": {
+      "localization": {
+        "id": "loc_048",
+        "family": "Logistic regression",
+        "tau": 0.3,
+        "h": 1,
+        "candidate": {
+          "task": "localization",
+          "family": "Logistic regression",
+          "features": "temporal",
+          "params": {
+            "C": 0.03
+          },
+          "weights": "session",
+          "id": "loc_048"
+        },
+        "explicit_estimator_parameters": {
+          "max_iter": 2500,
+          "random_state": 1741,
+          "C": 0.03
+        },
+        "feature_count": 288
+      },
+      "contact": {
+        "id": "con_022",
+        "family": "RBF SVC",
+        "tau": 1.0,
+        "h": 2,
+        "threshold": 0.33409756422042847,
+        "threshold_policy": "balanced",
+        "candidate": {
+          "task": "contact",
+          "family": "RBF SVC",
+          "features": "shape",
+          "params": {
+            "C": 1,
+            "gamma_multiplier": 1.0
+          },
+          "weights": "session",
+          "id": "con_022"
+        },
+        "explicit_estimator_parameters": {
+          "cache_size": 256,
+          "decision_function_shape": "ovr",
+          "random_state": 1741,
+          "C": 1,
+          "gamma": 0.011111111111111112
+        },
+        "feature_count": 90
+      },
+      "force": {
+        "id": "ensemble",
+        "family": "Ensemble",
+        "combination": "Unweighted arithmetic mean of member predictions after their selected causal EMA and corrections",
+        "members": [
+          {
+            "id": "for_050",
+            "family": "Extra Trees",
+            "tau": 0.0,
+            "h": 0,
+            "offset": 0.11000364382382512,
+            "correction": "median",
+            "candidate": {
+              "task": "force",
+              "family": "Extra Trees",
+              "features": "temporal",
+              "params": {
+                "min_samples_leaf": 3,
+                "max_features": 0.75
+              },
+              "weights": "session",
+              "id": "for_050"
+            },
+            "explicit_estimator_parameters": {
+              "n_estimators": 180,
+              "n_jobs": 1,
+              "random_state": 1741,
+              "min_samples_leaf": 3,
+              "max_features": 0.75
+            },
+            "feature_count": 288
+          },
+          {
+            "id": "for_056",
+            "family": "HistGB",
+            "tau": 0.0,
+            "h": 0,
+            "offset": 0.07882320945789201,
+            "correction": "median",
+            "candidate": {
+              "task": "force",
+              "family": "HistGB",
+              "features": "temporal",
+              "params": {
+                "max_leaf_nodes": 31,
+                "loss": "squared_error",
+                "l2_regularization": 10
+              },
+              "weights": "session",
+              "id": "for_056"
+            },
+            "explicit_estimator_parameters": {
+              "max_iter": 180,
+              "learning_rate": 0.05,
+              "min_samples_leaf": 20,
+              "early_stopping": false,
+              "random_state": 1741,
+              "max_leaf_nodes": 31,
+              "loss": "squared_error",
+              "l2_regularization": 10
+            },
+            "feature_count": 288
+          },
+          {
+            "id": "for_059",
+            "family": "XGBoost",
+            "tau": 0.0,
+            "h": 0,
+            "offset": 0.09625087054912093,
+            "correction": "median",
+            "candidate": {
+              "task": "force",
+              "family": "XGBoost",
+              "features": "temporal",
+              "params": {
+                "max_depth": 5,
+                "reg_lambda": 20
+              },
+              "weights": "session",
+              "id": "for_059"
+            },
+            "explicit_estimator_parameters": {
+              "n_estimators": 220,
+              "learning_rate": 0.04,
+              "min_child_weight": 5,
+              "tree_method": "hist",
+              "n_jobs": 1,
+              "random_state": 1741,
+              "max_depth": 5,
+              "reg_lambda": 20
+            },
+            "feature_count": 288
+          }
+        ]
+      }
+    },
+    "2": {
+      "localization": {
+        "id": "loc_036",
+        "family": "Logistic regression",
+        "tau": 1.0,
+        "h": 2,
+        "candidate": {
+          "task": "localization",
+          "family": "Logistic regression",
+          "features": "invariant",
+          "params": {
+            "C": 0.03
+          },
+          "weights": "session",
+          "id": "loc_036"
+        },
+        "explicit_estimator_parameters": {
+          "max_iter": 2500,
+          "random_state": 1741,
+          "C": 0.03
+        },
+        "feature_count": 117
+      },
+      "contact": {
+        "id": "con_022",
+        "family": "RBF SVC",
+        "tau": 1.0,
+        "h": 2,
+        "threshold": 0.3497229218482971,
+        "threshold_policy": "balanced",
+        "candidate": {
+          "task": "contact",
+          "family": "RBF SVC",
+          "features": "shape",
+          "params": {
+            "C": 1,
+            "gamma_multiplier": 1.0
+          },
+          "weights": "session",
+          "id": "con_022"
+        },
+        "explicit_estimator_parameters": {
+          "cache_size": 256,
+          "decision_function_shape": "ovr",
+          "random_state": 1741,
+          "C": 1,
+          "gamma": 0.011111111111111112
+        },
+        "feature_count": 90
+      },
+      "force": {
+        "id": "ensemble",
+        "family": "Ensemble",
+        "combination": "Unweighted arithmetic mean of member predictions after their selected causal EMA and corrections",
+        "members": [
+          {
+            "id": "for_055",
+            "family": "HistGB",
+            "tau": 0.0,
+            "h": 0,
+            "offset": 0.10901741162705457,
+            "correction": "median",
+            "candidate": {
+              "task": "force",
+              "family": "HistGB",
+              "features": "temporal",
+              "params": {
+                "max_leaf_nodes": 15,
+                "loss": "squared_error",
+                "l2_regularization": 10
+              },
+              "weights": "session",
+              "id": "for_055"
+            },
+            "explicit_estimator_parameters": {
+              "max_iter": 180,
+              "learning_rate": 0.05,
+              "min_samples_leaf": 20,
+              "early_stopping": false,
+              "random_state": 1741,
+              "max_leaf_nodes": 15,
+              "loss": "squared_error",
+              "l2_regularization": 10
+            },
+            "feature_count": 288
+          },
+          {
+            "id": "for_050",
+            "family": "Extra Trees",
+            "tau": 0.0,
+            "h": 0,
+            "offset": 0.10593629488925335,
+            "correction": "median",
+            "candidate": {
+              "task": "force",
+              "family": "Extra Trees",
+              "features": "temporal",
+              "params": {
+                "min_samples_leaf": 3,
+                "max_features": 0.75
+              },
+              "weights": "session",
+              "id": "for_050"
+            },
+            "explicit_estimator_parameters": {
+              "n_estimators": 180,
+              "n_jobs": 1,
+              "random_state": 1741,
+              "min_samples_leaf": 3,
+              "max_features": 0.75
+            },
+            "feature_count": 288
+          },
+          {
+            "id": "for_059",
+            "family": "XGBoost",
+            "tau": 0.0,
+            "h": 0,
+            "offset": 0.0970969430474912,
+            "correction": "median",
+            "candidate": {
+              "task": "force",
+              "family": "XGBoost",
+              "features": "temporal",
+              "params": {
+                "max_depth": 5,
+                "reg_lambda": 20
+              },
+              "weights": "session",
+              "id": "for_059"
+            },
+            "explicit_estimator_parameters": {
+              "n_estimators": 220,
+              "learning_rate": 0.04,
+              "min_child_weight": 5,
+              "tree_method": "hist",
+              "n_jobs": 1,
+              "random_state": 1741,
+              "max_depth": 5,
+              "reg_lambda": 20
+            },
+            "feature_count": 288
+          }
+        ]
+      }
+    },
+    "3": {
+      "localization": {
+        "id": "loc_036",
+        "family": "Logistic regression",
+        "tau": 1.0,
+        "h": 2,
+        "candidate": {
+          "task": "localization",
+          "family": "Logistic regression",
+          "features": "invariant",
+          "params": {
+            "C": 0.03
+          },
+          "weights": "session",
+          "id": "loc_036"
+        },
+        "explicit_estimator_parameters": {
+          "max_iter": 2500,
+          "random_state": 1741,
+          "C": 0.03
+        },
+        "feature_count": 117
+      },
+      "contact": {
+        "id": "con_022",
+        "family": "RBF SVC",
+        "tau": 1.0,
+        "h": 2,
+        "threshold": 0.32444050908088684,
+        "threshold_policy": "balanced",
+        "candidate": {
+          "task": "contact",
+          "family": "RBF SVC",
+          "features": "shape",
+          "params": {
+            "C": 1,
+            "gamma_multiplier": 1.0
+          },
+          "weights": "session",
+          "id": "con_022"
+        },
+        "explicit_estimator_parameters": {
+          "cache_size": 256,
+          "decision_function_shape": "ovr",
+          "random_state": 1741,
+          "C": 1,
+          "gamma": 0.011111111111111112
+        },
+        "feature_count": 90
+      },
+      "force": {
+        "id": "ensemble",
+        "family": "Ensemble",
+        "combination": "Unweighted arithmetic mean of member predictions after their selected causal EMA and corrections",
+        "members": [
+          {
+            "id": "for_056",
+            "family": "HistGB",
+            "tau": 0.0,
+            "h": 0,
+            "offset": 0.09374066103661953,
+            "correction": "median",
+            "candidate": {
+              "task": "force",
+              "family": "HistGB",
+              "features": "temporal",
+              "params": {
+                "max_leaf_nodes": 31,
+                "loss": "squared_error",
+                "l2_regularization": 10
+              },
+              "weights": "session",
+              "id": "for_056"
+            },
+            "explicit_estimator_parameters": {
+              "max_iter": 180,
+              "learning_rate": 0.05,
+              "min_samples_leaf": 20,
+              "early_stopping": false,
+              "random_state": 1741,
+              "max_leaf_nodes": 31,
+              "loss": "squared_error",
+              "l2_regularization": 10
+            },
+            "feature_count": 288
+          },
+          {
+            "id": "for_059",
+            "family": "XGBoost",
+            "tau": 0.0,
+            "h": 0,
+            "offset": 0.11504363333800048,
+            "correction": "median",
+            "candidate": {
+              "task": "force",
+              "family": "XGBoost",
+              "features": "temporal",
+              "params": {
+                "max_depth": 5,
+                "reg_lambda": 20
+              },
+              "weights": "session",
+              "id": "for_059"
+            },
+            "explicit_estimator_parameters": {
+              "n_estimators": 220,
+              "learning_rate": 0.04,
+              "min_child_weight": 5,
+              "tree_method": "hist",
+              "n_jobs": 1,
+              "random_state": 1741,
+              "max_depth": 5,
+              "reg_lambda": 20
+            },
+            "feature_count": 288
+          },
+          {
+            "id": "for_050",
+            "family": "Extra Trees",
+            "tau": 0.0,
+            "h": 0,
+            "offset": 0.14190227448836593,
+            "correction": "median",
+            "candidate": {
+              "task": "force",
+              "family": "Extra Trees",
+              "features": "temporal",
+              "params": {
+                "min_samples_leaf": 3,
+                "max_features": 0.75
+              },
+              "weights": "session",
+              "id": "for_050"
+            },
+            "explicit_estimator_parameters": {
+              "n_estimators": 180,
+              "n_jobs": 1,
+              "random_state": 1741,
+              "min_samples_leaf": 3,
+              "max_features": 0.75
+            },
+            "feature_count": 288
+          }
+        ]
+      }
+    },
+    "4": {
+      "localization": {
+        "id": "loc_036",
+        "family": "Logistic regression",
+        "tau": 1.0,
+        "h": 2,
+        "candidate": {
+          "task": "localization",
+          "family": "Logistic regression",
+          "features": "invariant",
+          "params": {
+            "C": 0.03
+          },
+          "weights": "session",
+          "id": "loc_036"
+        },
+        "explicit_estimator_parameters": {
+          "max_iter": 2500,
+          "random_state": 1741,
+          "C": 0.03
+        },
+        "feature_count": 117
+      },
+      "contact": {
+        "id": "con_022",
+        "family": "RBF SVC",
+        "tau": 1.0,
+        "h": 2,
+        "threshold": 0.29617786407470703,
+        "threshold_policy": "balanced",
+        "candidate": {
+          "task": "contact",
+          "family": "RBF SVC",
+          "features": "shape",
+          "params": {
+            "C": 1,
+            "gamma_multiplier": 1.0
+          },
+          "weights": "session",
+          "id": "con_022"
+        },
+        "explicit_estimator_parameters": {
+          "cache_size": 256,
+          "decision_function_shape": "ovr",
+          "random_state": 1741,
+          "C": 1,
+          "gamma": 0.011111111111111112
+        },
+        "feature_count": 90
+      },
+      "force": {
+        "id": "ensemble",
+        "family": "Ensemble",
+        "combination": "Unweighted arithmetic mean of member predictions after their selected causal EMA and corrections",
+        "members": [
+          {
+            "id": "for_056",
+            "family": "HistGB",
+            "tau": 0.3,
+            "h": 1,
+            "offset": 0.10363438450784854,
+            "correction": "median",
+            "candidate": {
+              "task": "force",
+              "family": "HistGB",
+              "features": "temporal",
+              "params": {
+                "max_leaf_nodes": 31,
+                "loss": "squared_error",
+                "l2_regularization": 10
+              },
+              "weights": "session",
+              "id": "for_056"
+            },
+            "explicit_estimator_parameters": {
+              "max_iter": 180,
+              "learning_rate": 0.05,
+              "min_samples_leaf": 20,
+              "early_stopping": false,
+              "random_state": 1741,
+              "max_leaf_nodes": 31,
+              "loss": "squared_error",
+              "l2_regularization": 10
+            },
+            "feature_count": 288
+          },
+          {
+            "id": "for_059",
+            "family": "XGBoost",
+            "tau": 0.3,
+            "h": 1,
+            "offset": 0.12177224632432046,
+            "correction": "median",
+            "candidate": {
+              "task": "force",
+              "family": "XGBoost",
+              "features": "temporal",
+              "params": {
+                "max_depth": 5,
+                "reg_lambda": 20
+              },
+              "weights": "session",
+              "id": "for_059"
+            },
+            "explicit_estimator_parameters": {
+              "n_estimators": 220,
+              "learning_rate": 0.04,
+              "min_child_weight": 5,
+              "tree_method": "hist",
+              "n_jobs": 1,
+              "random_state": 1741,
+              "max_depth": 5,
+              "reg_lambda": 20
+            },
+            "feature_count": 288
+          },
+          {
+            "id": "for_050",
+            "family": "Extra Trees",
+            "tau": 0.0,
+            "h": 0,
+            "offset": 0.1408816589434914,
+            "correction": "median",
+            "candidate": {
+              "task": "force",
+              "family": "Extra Trees",
+              "features": "temporal",
+              "params": {
+                "min_samples_leaf": 3,
+                "max_features": 0.75
+              },
+              "weights": "session",
+              "id": "for_050"
+            },
+            "explicit_estimator_parameters": {
+              "n_estimators": 180,
+              "n_jobs": 1,
+              "random_state": 1741,
+              "min_samples_leaf": 3,
+              "max_features": 0.75
+            },
+            "feature_count": 288
+          }
+        ]
+      }
+    },
+    "5": {
+      "localization": {
+        "id": "loc_036",
+        "family": "Logistic regression",
+        "tau": 1.0,
+        "h": 2,
+        "candidate": {
+          "task": "localization",
+          "family": "Logistic regression",
+          "features": "invariant",
+          "params": {
+            "C": 0.03
+          },
+          "weights": "session",
+          "id": "loc_036"
+        },
+        "explicit_estimator_parameters": {
+          "max_iter": 2500,
+          "random_state": 1741,
+          "C": 0.03
+        },
+        "feature_count": 117
+      },
+      "contact": {
+        "id": "con_022",
+        "family": "RBF SVC",
+        "tau": 1.0,
+        "h": 2,
+        "threshold": 0.3024323284626007,
+        "threshold_policy": "balanced",
+        "candidate": {
+          "task": "contact",
+          "family": "RBF SVC",
+          "features": "shape",
+          "params": {
+            "C": 1,
+            "gamma_multiplier": 1.0
+          },
+          "weights": "session",
+          "id": "con_022"
+        },
+        "explicit_estimator_parameters": {
+          "cache_size": 256,
+          "decision_function_shape": "ovr",
+          "random_state": 1741,
+          "C": 1,
+          "gamma": 0.011111111111111112
+        },
+        "feature_count": 90
+      },
+      "force": {
+        "id": "ensemble",
+        "family": "Ensemble",
+        "combination": "Unweighted arithmetic mean of member predictions after their selected causal EMA and corrections",
+        "members": [
+          {
+            "id": "for_056",
+            "family": "HistGB",
+            "tau": 0.3,
+            "h": 1,
+            "offset": 0.10187709111648936,
+            "correction": "median",
+            "candidate": {
+              "task": "force",
+              "family": "HistGB",
+              "features": "temporal",
+              "params": {
+                "max_leaf_nodes": 31,
+                "loss": "squared_error",
+                "l2_regularization": 10
+              },
+              "weights": "session",
+              "id": "for_056"
+            },
+            "explicit_estimator_parameters": {
+              "max_iter": 180,
+              "learning_rate": 0.05,
+              "min_samples_leaf": 20,
+              "early_stopping": false,
+              "random_state": 1741,
+              "max_leaf_nodes": 31,
+              "loss": "squared_error",
+              "l2_regularization": 10
+            },
+            "feature_count": 288
+          },
+          {
+            "id": "for_050",
+            "family": "Extra Trees",
+            "tau": 0.0,
+            "h": 0,
+            "offset": 0.11651780258932955,
+            "correction": "median",
+            "candidate": {
+              "task": "force",
+              "family": "Extra Trees",
+              "features": "temporal",
+              "params": {
+                "min_samples_leaf": 3,
+                "max_features": 0.75
+              },
+              "weights": "session",
+              "id": "for_050"
+            },
+            "explicit_estimator_parameters": {
+              "n_estimators": 180,
+              "n_jobs": 1,
+              "random_state": 1741,
+              "min_samples_leaf": 3,
+              "max_features": 0.75
+            },
+            "feature_count": 288
+          },
+          {
+            "id": "for_059",
+            "family": "XGBoost",
+            "tau": 0.0,
+            "h": 0,
+            "offset": 0.0732525453464563,
+            "correction": "median",
+            "candidate": {
+              "task": "force",
+              "family": "XGBoost",
+              "features": "temporal",
+              "params": {
+                "max_depth": 5,
+                "reg_lambda": 20
+              },
+              "weights": "session",
+              "id": "for_059"
+            },
+            "explicit_estimator_parameters": {
+              "n_estimators": 220,
+              "learning_rate": 0.04,
+              "min_child_weight": 5,
+              "tree_method": "hist",
+              "n_jobs": 1,
+              "random_state": 1741,
+              "max_depth": 5,
+              "reg_lambda": 20
+            },
+            "feature_count": 288
+          }
+        ]
+      }
+    },
+    "6": {
+      "localization": {
+        "id": "loc_036",
+        "family": "Logistic regression",
+        "tau": 1.0,
+        "h": 2,
+        "candidate": {
+          "task": "localization",
+          "family": "Logistic regression",
+          "features": "invariant",
+          "params": {
+            "C": 0.03
+          },
+          "weights": "session",
+          "id": "loc_036"
+        },
+        "explicit_estimator_parameters": {
+          "max_iter": 2500,
+          "random_state": 1741,
+          "C": 0.03
+        },
+        "feature_count": 117
+      },
+      "contact": {
+        "id": "con_022",
+        "family": "RBF SVC",
+        "tau": 1.0,
+        "h": 2,
+        "threshold": 0.3111855387687683,
+        "threshold_policy": "balanced",
+        "candidate": {
+          "task": "contact",
+          "family": "RBF SVC",
+          "features": "shape",
+          "params": {
+            "C": 1,
+            "gamma_multiplier": 1.0
+          },
+          "weights": "session",
+          "id": "con_022"
+        },
+        "explicit_estimator_parameters": {
+          "cache_size": 256,
+          "decision_function_shape": "ovr",
+          "random_state": 1741,
+          "C": 1,
+          "gamma": 0.011111111111111112
+        },
+        "feature_count": 90
+      },
+      "force": {
+        "id": "ensemble",
+        "family": "Ensemble",
+        "combination": "Unweighted arithmetic mean of member predictions after their selected causal EMA and corrections",
+        "members": [
+          {
+            "id": "for_059",
+            "family": "XGBoost",
+            "tau": 0.3,
+            "h": 1,
+            "offset": 0.11652466294880082,
+            "correction": "median",
+            "candidate": {
+              "task": "force",
+              "family": "XGBoost",
+              "features": "temporal",
+              "params": {
+                "max_depth": 5,
+                "reg_lambda": 20
+              },
+              "weights": "session",
+              "id": "for_059"
+            },
+            "explicit_estimator_parameters": {
+              "n_estimators": 220,
+              "learning_rate": 0.04,
+              "min_child_weight": 5,
+              "tree_method": "hist",
+              "n_jobs": 1,
+              "random_state": 1741,
+              "max_depth": 5,
+              "reg_lambda": 20
+            },
+            "feature_count": 288
+          },
+          {
+            "id": "for_056",
+            "family": "HistGB",
+            "tau": 0.3,
+            "h": 1,
+            "offset": 0.10905367485922174,
+            "correction": "median",
+            "candidate": {
+              "task": "force",
+              "family": "HistGB",
+              "features": "temporal",
+              "params": {
+                "max_leaf_nodes": 31,
+                "loss": "squared_error",
+                "l2_regularization": 10
+              },
+              "weights": "session",
+              "id": "for_056"
+            },
+            "explicit_estimator_parameters": {
+              "max_iter": 180,
+              "learning_rate": 0.05,
+              "min_samples_leaf": 20,
+              "early_stopping": false,
+              "random_state": 1741,
+              "max_leaf_nodes": 31,
+              "loss": "squared_error",
+              "l2_regularization": 10
+            },
+            "feature_count": 288
+          },
+          {
+            "id": "for_050",
+            "family": "Extra Trees",
+            "tau": 0.0,
+            "h": 0,
+            "offset": 0.16707105034631944,
+            "correction": "median",
+            "candidate": {
+              "task": "force",
+              "family": "Extra Trees",
+              "features": "temporal",
+              "params": {
+                "min_samples_leaf": 3,
+                "max_features": 0.75
+              },
+              "weights": "session",
+              "id": "for_050"
+            },
+            "explicit_estimator_parameters": {
+              "n_estimators": 180,
+              "n_jobs": 1,
+              "random_state": 1741,
+              "min_samples_leaf": 3,
+              "max_features": 0.75
+            },
+            "feature_count": 288
+          }
+        ]
+      }
+    }
+  },
+  "training_scale": "StandardScaler fitted with training weights only",
+  "history": "Causal EMA; reset at recording boundary, nonpositive dt, or gap greater than 0.3 s",
+  "selection_criterion_for_this_report": {
+    "classification": "Highest equal-recording accuracy",
+    "force": "Lowest equal-recording MAE"
+  }
+}

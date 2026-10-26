@@ -1,0 +1,30 @@
+{
+  "contact": {
+    "accuracy": 0.992416224751909,
+    "balanced_accuracy": 0.9954356908229083,
+    "macro_f1": 0.9867496034837684
+  },
+  "force": {
+    "mae_N": 0.49718116328456063,
+    "rmse_N": 0.6299466857213563,
+    "bias_N": 0.0826997062786284,
+    "r2": 0.3112870973724726
+  },
+  "localization": {
+    "accuracy": 0.8488180870453352,
+    "balanced_accuracy": 0.8488180870453353,
+    "macro_f1": 0.8500260129390657
+  },
+  "quality_ols": {
+    "recordings": 72,
+    "rank": 17,
+    "force_coefficient": 0.08107190668585028,
+    "residual_sd": 0.1946000532538671
+  },
+  "sources": {
+    "output\\pdf\\complete_thesis_report_2026-10-18\\Manual_Calibration_Complete_Thesis_Technical_Report.pdf": "5d3d2635060a0cd2609b50e6dc3e7868e11c3bbf626d6058451db7769788333b",
+    "output\\pdf\\BAURods_Manual_Calibration_Technical_Report.pdf": "ce81d5ad9a8ab6d9382c2cd33da4d96a92e4d49c4f2e500fea7ebb4ed4622f6d",
+    "reports\\BEST_RESULTS\\BEST_METRICS.json": "0f74601199ca2b644e9abc2f83ab402f516a37d99c1da70728616f564e754332",
+    "baurods_quality\\outputs\\repeatability_20261018\\summary.json": "7c8fad7b696b6877754b3b27dd6ddaf2903276f713bf61880cff871c18308c17"
+  }
+}

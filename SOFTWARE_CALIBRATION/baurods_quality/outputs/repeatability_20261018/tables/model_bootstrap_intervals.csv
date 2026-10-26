@@ -1,0 +1,7 @@
+statistic,estimate,ci95_lower,ci95_upper,interval
+force_coefficient,0.08107190668585006,0.024383510968633296,0.16188721076735602,whole-round BCa bootstrap
+pooled_within_taxel_sd,0.2670989043405962,0.21257894690270412,0.3463840698786883,whole-round BCa bootstrap
+taxel_round_residual_sd,0.2063052004733692,0.1701001000975107,0.24555589644555118,whole-round BCa bootstrap
+force_adjusted_residual_sd,0.1946000532538671,0.15971361143459206,0.23518291575409286,whole-round BCa bootstrap
+in_sample_r_squared,0.7617347014678206,0.6657795032599814,0.8209017762351594,whole-round BCa bootstrap
+partial_r_squared_force_given_taxel_round,0.1261432993295567,0.010864185556348434,0.3358852148772722,whole-round BCa bootstrap

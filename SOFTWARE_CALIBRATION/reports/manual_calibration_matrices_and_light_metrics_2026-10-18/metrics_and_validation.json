@@ -1,0 +1,1138 @@
+{
+  "created_on": "2026-10-18",
+  "matrix_summaries": {
+    "localization": {
+      "model": "Tuned selected",
+      "frames": 7154,
+      "recordings": 54,
+      "raw_counts": [
+        [
+          575,
+          0,
+          0,
+          17,
+          6,
+          2,
+          4,
+          0,
+          92
+        ],
+        [
+          6,
+          162,
+          0,
+          257,
+          0,
+          12,
+          0,
+          0,
+          56
+        ],
+        [
+          0,
+          0,
+          245,
+          4,
+          0,
+          4,
+          0,
+          0,
+          13
+        ],
+        [
+          5,
+          0,
+          2,
+          1011,
+          3,
+          0,
+          0,
+          0,
+          71
+        ],
+        [
+          0,
+          0,
+          0,
+          10,
+          1014,
+          6,
+          0,
+          0,
+          433
+        ],
+        [
+          5,
+          0,
+          0,
+          18,
+          1,
+          874,
+          0,
+          0,
+          23
+        ],
+        [
+          0,
+          0,
+          0,
+          4,
+          18,
+          0,
+          709,
+          0,
+          293
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          5,
+          6,
+          2,
+          421,
+          269
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          495
+        ]
+      ],
+      "row_normalized_percent": [
+        [
+          82.61494252873564,
+          0.0,
+          0.0,
+          2.442528735632184,
+          0.8620689655172413,
+          0.28735632183908044,
+          0.5747126436781609,
+          0.0,
+          13.218390804597702
+        ],
+        [
+          1.2170385395537524,
+          32.86004056795132,
+          0.0,
+          52.129817444219064,
+          0.0,
+          2.434077079107505,
+          0.0,
+          0.0,
+          11.359026369168356
+        ],
+        [
+          0.0,
+          0.0,
+          92.10526315789474,
+          1.5037593984962405,
+          0.0,
+          1.5037593984962405,
+          0.0,
+          0.0,
+          4.887218045112782
+        ],
+        [
+          0.4578754578754579,
+          0.0,
+          0.18315018315018314,
+          92.58241758241759,
+          0.27472527472527475,
+          0.0,
+          0.0,
+          0.0,
+          6.501831501831503
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.683526999316473,
+          69.30963773069037,
+          0.4101161995898838,
+          0.0,
+          0.0,
+          29.59671907040328
+        ],
+        [
+          0.5428881650380022,
+          0.0,
+          0.0,
+          1.9543973941368076,
+          0.10857763300760044,
+          94.89685124864278,
+          0.0,
+          0.0,
+          2.49728555917481
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.390625,
+          1.7578125,
+          0.0,
+          69.23828125,
+          0.0,
+          28.61328125
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.7112375533428165,
+          0.8534850640113799,
+          0.2844950213371266,
+          59.88620199146515,
+          38.26458036984353
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.20161290322580644,
+          99.79838709677419
+        ]
+      ],
+      "equal_recording_row_percent": [
+        [
+          82.36047231385209,
+          0.0,
+          0.0,
+          9.076143182288432,
+          3.639291465378421,
+          0.5376344086021504,
+          1.531089294062646,
+          0.0,
+          2.8553693358162606
+        ],
+        [
+          2.213352685050803,
+          56.00268659481823,
+          0.0,
+          26.979503775620294,
+          0.0,
+          11.783960720130954,
+          0.0,
+          0.0,
+          3.020496224379725
+        ],
+        [
+          0.0,
+          0.0,
+          92.99328568334415,
+          0.8230452674897134,
+          0.0,
+          3.5087719298245683,
+          0.0,
+          0.0,
+          2.674897119341569
+        ],
+        [
+          0.41254125412541587,
+          0.0,
+          0.12121212121212219,
+          93.43118913571405,
+          0.31847133757962043,
+          0.0,
+          0.0,
+          0.0,
+          5.716586151368809
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.3422313483915126,
+          84.36816614062356,
+          0.47098512563254386,
+          0.0,
+          0.0,
+          14.818617385352372
+        ],
+        [
+          0.6127450980392255,
+          0.0,
+          0.0,
+          4.1666666666667345,
+          0.12254901960784509,
+          89.77396514161202,
+          0.0,
+          0.0,
+          5.324074074074161
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.22296544035674562,
+          1.455749524873142,
+          0.0,
+          81.98906652863852,
+          0.0,
+          16.332218506131607
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.6946423482473648,
+          1.790633608815429,
+          0.5165289256198353,
+          79.04729964601454,
+          17.95089547130282
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.32679738562091315,
+          99.67320261437908
+        ]
+      ],
+      "metrics": {
+        "frame_weighted": {
+          "accuracy": 0.7696393625943528,
+          "balanced_accuracy": 0.7703244701717463,
+          "macro_f1": 0.772525903741533
+        },
+        "equal_recording": {
+          "accuracy": 0.8440437042211071,
+          "balanced_accuracy": 0.8440437042211069,
+          "macro_f1": 0.8475379322592568
+        }
+      }
+    },
+    "contact": {
+      "model": "Tuned selected",
+      "frames": 8506,
+      "recordings": 65,
+      "raw_counts": [
+        [
+          1352,
+          0
+        ],
+        [
+          308,
+          6846
+        ]
+      ],
+      "row_normalized_percent": [
+        [
+          100.0,
+          0.0
+        ],
+        [
+          4.305283757338552,
+          95.69471624266144
+        ]
+      ],
+      "equal_recording_row_percent": [
+        [
+          100.0,
+          0.0
+        ],
+        [
+          2.996357842538835,
+          97.00364215746116
+        ]
+      ],
+      "metrics": {
+        "frame_weighted": {
+          "accuracy": 0.9637902656948036,
+          "balanced_accuracy": 0.9784735812133072,
+          "macro_f1": 0.937871181938911,
+          "precision": 1.0,
+          "recall": 0.9569471624266145,
+          "contact_f1": 0.978,
+          "specificity": 1.0,
+          "false_positive_rate": 0.0
+        },
+        "equal_recording": {
+          "accuracy": 0.9751071810004465,
+          "balanced_accuracy": 0.9850182107873058,
+          "macro_f1": 0.9581409806243167,
+          "precision": 1.0,
+          "recall": 0.970036421574594,
+          "contact_f1": 0.9847903429107889,
+          "specificity": 1.0,
+          "false_positive_rate": 0.0
+        }
+      }
+    },
+    "supplement_localization_ensemble": {
+      "model": "Tuned ensemble",
+      "frames": 7154,
+      "recordings": 54,
+      "raw_counts": [
+        [
+          577,
+          0,
+          0,
+          20,
+          2,
+          2,
+          3,
+          0,
+          92
+        ],
+        [
+          6,
+          162,
+          0,
+          257,
+          0,
+          12,
+          0,
+          0,
+          56
+        ],
+        [
+          0,
+          1,
+          246,
+          6,
+          0,
+          0,
+          0,
+          0,
+          13
+        ],
+        [
+          5,
+          0,
+          4,
+          1009,
+          3,
+          0,
+          0,
+          0,
+          71
+        ],
+        [
+          0,
+          0,
+          0,
+          10,
+          1014,
+          6,
+          0,
+          0,
+          433
+        ],
+        [
+          6,
+          0,
+          0,
+          18,
+          1,
+          873,
+          0,
+          0,
+          23
+        ],
+        [
+          0,
+          0,
+          0,
+          4,
+          17,
+          0,
+          710,
+          0,
+          293
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          4,
+          4,
+          3,
+          423,
+          269
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          496
+        ]
+      ],
+      "row_normalized_percent": [
+        [
+          82.90229885057471,
+          0.0,
+          0.0,
+          2.8735632183908044,
+          0.28735632183908044,
+          0.28735632183908044,
+          0.43103448275862066,
+          0.0,
+          13.218390804597702
+        ],
+        [
+          1.2170385395537524,
+          32.86004056795132,
+          0.0,
+          52.129817444219064,
+          0.0,
+          2.434077079107505,
+          0.0,
+          0.0,
+          11.359026369168356
+        ],
+        [
+          0.0,
+          0.37593984962406013,
+          92.4812030075188,
+          2.2556390977443606,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          4.887218045112782
+        ],
+        [
+          0.4578754578754579,
+          0.0,
+          0.3663003663003663,
+          92.3992673992674,
+          0.27472527472527475,
+          0.0,
+          0.0,
+          0.0,
+          6.501831501831503
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.683526999316473,
+          69.30963773069037,
+          0.4101161995898838,
+          0.0,
+          0.0,
+          29.59671907040328
+        ],
+        [
+          0.6514657980456027,
+          0.0,
+          0.0,
+          1.9543973941368076,
+          0.10857763300760044,
+          94.78827361563518,
+          0.0,
+          0.0,
+          2.49728555917481
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.390625,
+          1.66015625,
+          0.0,
+          69.3359375,
+          0.0,
+          28.61328125
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.5689900426742532,
+          0.5689900426742532,
+          0.42674253200568996,
+          60.17069701280228,
+          38.26458036984353
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          100.0
+        ]
+      ],
+      "equal_recording_row_percent": [
+        [
+          83.80974767617093,
+          0.0,
+          0.0,
+          11.250056225766693,
+          0.7407407407407407,
+          0.5376344086021504,
+          0.8064516129032256,
+          0.0,
+          2.8553693358162606
+        ],
+        [
+          2.213352685050803,
+          56.00268659481823,
+          0.0,
+          26.979503775620294,
+          0.0,
+          11.783960720130954,
+          0.0,
+          0.0,
+          3.020496224379725
+        ],
+        [
+          0.0,
+          0.8771929824561421,
+          93.8704786658003,
+          2.577431232401998,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          2.674897119341569
+        ],
+        [
+          0.4125412541254157,
+          0.0,
+          0.2424242424242443,
+          93.30997701450191,
+          0.3184713375796203,
+          0.0,
+          0.0,
+          0.0,
+          5.716586151368807
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.3422313483915126,
+          84.36816614062356,
+          0.47098512563254386,
+          0.0,
+          0.0,
+          14.818617385352372
+        ],
+        [
+          0.7352941176470706,
+          0.0,
+          0.0,
+          4.166666666666735,
+          0.1225490196078451,
+          89.65141612200418,
+          0.0,
+          0.0,
+          5.3240740740741614
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.22296544035674562,
+          1.377867904935447,
+          0.0,
+          82.0669481485762,
+          0.0,
+          16.332218506131607
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.5569013014154087,
+          1.515151515151517,
+          0.6542699724517914,
+          79.32278173967846,
+          17.95089547130282
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          100.0
+        ]
+      ],
+      "metrics": {
+        "frame_weighted": {
+          "accuracy": 0.7701984903550462,
+          "balanced_accuracy": 0.771385950760489,
+          "macro_f1": 0.7730461931994171
+        },
+        "equal_recording": {
+          "accuracy": 0.8471135578913044,
+          "balanced_accuracy": 0.8471135578913043,
+          "macro_f1": 0.8511643920274206
+        }
+      }
+    },
+    "supplement_contact_svc": {
+      "model": "Tuned RBF SVC",
+      "frames": 8506,
+      "recordings": 65,
+      "raw_counts": [
+        [
+          1352,
+          0
+        ],
+        [
+          39,
+          7115
+        ]
+      ],
+      "row_normalized_percent": [
+        [
+          100.0,
+          0.0
+        ],
+        [
+          0.5451495666759855,
+          99.45485043332401
+        ]
+      ],
+      "equal_recording_row_percent": [
+        [
+          100.0,
+          0.0
+        ],
+        [
+          0.9128618354183329,
+          99.08713816458167
+        ]
+      ],
+      "metrics": {
+        "frame_weighted": {
+          "accuracy": 0.9954150011756407,
+          "balanced_accuracy": 0.99727425216662,
+          "macro_f1": 0.9915243963399263,
+          "precision": 1.0,
+          "recall": 0.9945485043332402,
+          "contact_f1": 0.9972668021585255,
+          "specificity": 1.0,
+          "false_positive_rate": 0.0
+        },
+        "equal_recording": {
+          "accuracy": 0.992416224751909,
+          "balanced_accuracy": 0.9954356908229083,
+          "macro_f1": 0.9867496034837682,
+          "precision": 1.0,
+          "recall": 0.9908713816458123,
+          "contact_f1": 0.9954147623807615,
+          "specificity": 1.0,
+          "false_positive_rate": 0.0
+        }
+      }
+    }
+  },
+  "optical_summary_by_taxel": [
+    {
+      "taxel": 1,
+      "press_recordings": 6,
+      "press_frames": 696,
+      "control_recordings": 11,
+      "control_frames": 1352,
+      "mean_target_positive_delta_v": 1.0290951065395053,
+      "mean_target_excess_delta_v": 0.29691637171264534,
+      "no_contact_mean_positive_delta_v": 0.7676112591080123,
+      "no_contact_rms_within_recording_sd_delta_v": 0.051836268513689346,
+      "no_contact_median_robust_sigma_delta_v": 0.05149891751164695,
+      "mean_active_area_percent": 0.36505254328122994,
+      "mean_target_response_share_percent": 79.91891107781765,
+      "mean_off_target_response_share_percent": 20.081088922182346,
+      "mean_response_to_noise_ratio": 5.723460455677714,
+      "median_force_light_spearman_rho": 0.49955488123713565,
+      "min_recording_force_light_rho": 0.05467720685111989,
+      "max_recording_force_light_rho": 0.6904761904761906,
+      "median_no_contact_raw_v_quartile_drift": -0.009728692792545957,
+      "target_max_v_255_frames": 0,
+      "zero_total_excess_frames": 51
+    },
+    {
+      "taxel": 2,
+      "press_recordings": 6,
+      "press_frames": 493,
+      "control_recordings": 11,
+      "control_frames": 1352,
+      "mean_target_positive_delta_v": 0.9392253059929434,
+      "mean_target_excess_delta_v": 0.22683018344935094,
+      "no_contact_mean_positive_delta_v": 0.8027078046019145,
+      "no_contact_rms_within_recording_sd_delta_v": 0.05444402775501586,
+      "no_contact_median_robust_sigma_delta_v": 0.056848763955342954,
+      "mean_active_area_percent": 0.29206085649077523,
+      "mean_target_response_share_percent": 71.57008622078497,
+      "mean_off_target_response_share_percent": 28.429913779215028,
+      "mean_response_to_noise_ratio": 4.157842642441664,
+      "median_force_light_spearman_rho": 0.31707567672276615,
+      "min_recording_force_light_rho": -0.6,
+      "max_recording_force_light_rho": 0.5931623931623932,
+      "median_no_contact_raw_v_quartile_drift": -0.01661350345560919,
+      "target_max_v_255_frames": 0,
+      "zero_total_excess_frames": 67
+    },
+    {
+      "taxel": 3,
+      "press_recordings": 6,
+      "press_frames": 266,
+      "control_recordings": 11,
+      "control_frames": 1352,
+      "mean_target_positive_delta_v": 1.563702139206477,
+      "mean_target_excess_delta_v": 0.7910018346505977,
+      "no_contact_mean_positive_delta_v": 0.7849914417358992,
+      "no_contact_rms_within_recording_sd_delta_v": 0.05668035900592151,
+      "no_contact_median_robust_sigma_delta_v": 0.05902993245645219,
+      "mean_active_area_percent": 1.35422387948931,
+      "mean_target_response_share_percent": 84.52980992460557,
+      "mean_off_target_response_share_percent": 15.470190075394427,
+      "mean_response_to_noise_ratio": 13.97977297501729,
+      "median_force_light_spearman_rho": 0.42176226644113946,
+      "min_recording_force_light_rho": 0.26926505145450125,
+      "max_recording_force_light_rho": 0.7186813186813187,
+      "median_no_contact_raw_v_quartile_drift": -0.001688588695344606,
+      "target_max_v_255_frames": 0,
+      "zero_total_excess_frames": 8
+    },
+    {
+      "taxel": 4,
+      "press_recordings": 6,
+      "press_frames": 1092,
+      "control_recordings": 11,
+      "control_frames": 1352,
+      "mean_target_positive_delta_v": 0.9592160986393886,
+      "mean_target_excess_delta_v": 0.20215589724137992,
+      "no_contact_mean_positive_delta_v": 0.7778663944375327,
+      "no_contact_rms_within_recording_sd_delta_v": 0.054034078792869686,
+      "no_contact_median_robust_sigma_delta_v": 0.05134446667692774,
+      "mean_active_area_percent": 0.12292842465635397,
+      "mean_target_response_share_percent": 21.500838419289952,
+      "mean_off_target_response_share_percent": 78.49916158071005,
+      "mean_response_to_noise_ratio": 3.74519279318686,
+      "median_force_light_spearman_rho": 0.2146388732696657,
+      "min_recording_force_light_rho": 0.0949290850153956,
+      "max_recording_force_light_rho": 0.3780504716710769,
+      "median_no_contact_raw_v_quartile_drift": -0.027166384485148853,
+      "target_max_v_255_frames": 0,
+      "zero_total_excess_frames": 2
+    },
+    {
+      "taxel": 5,
+      "press_recordings": 6,
+      "press_frames": 1463,
+      "control_recordings": 11,
+      "control_frames": 1352,
+      "mean_target_positive_delta_v": 0.8573926021896693,
+      "mean_target_excess_delta_v": 0.12907691654808057,
+      "no_contact_mean_positive_delta_v": 0.804747440285081,
+      "no_contact_rms_within_recording_sd_delta_v": 0.05324492102820149,
+      "no_contact_median_robust_sigma_delta_v": 0.04876973684210533,
+      "mean_active_area_percent": 0.10927831432600754,
+      "mean_target_response_share_percent": 80.22981973225095,
+      "mean_off_target_response_share_percent": 19.770180267749055,
+      "mean_response_to_noise_ratio": 2.4281303682850877,
+      "median_force_light_spearman_rho": 0.33946793004138004,
+      "min_recording_force_light_rho": 0.12781954556766795,
+      "max_recording_force_light_rho": 0.3873776939629352,
+      "median_no_contact_raw_v_quartile_drift": -0.022615131578948677,
+      "target_max_v_255_frames": 0,
+      "zero_total_excess_frames": 434
+    },
+    {
+      "taxel": 6,
+      "press_recordings": 6,
+      "press_frames": 921,
+      "control_recordings": 11,
+      "control_frames": 1352,
+      "mean_target_positive_delta_v": 1.135068520345147,
+      "mean_target_excess_delta_v": 0.35185455656921366,
+      "no_contact_mean_positive_delta_v": 0.7918458468399827,
+      "no_contact_rms_within_recording_sd_delta_v": 0.0537470186773162,
+      "no_contact_median_robust_sigma_delta_v": 0.053649854932301615,
+      "mean_active_area_percent": 0.503310102331056,
+      "mean_target_response_share_percent": 90.26769875585352,
+      "mean_off_target_response_share_percent": 9.732301244146484,
+      "mean_response_to_noise_ratio": 6.609965163830533,
+      "median_force_light_spearman_rho": 0.2981122769864181,
+      "min_recording_force_light_rho": 0.0229719109942072,
+      "max_recording_force_light_rho": 0.39462381878733616,
+      "median_no_contact_raw_v_quartile_drift": 0.012572533849127154,
+      "target_max_v_255_frames": 0,
+      "zero_total_excess_frames": 329
+    },
+    {
+      "taxel": 7,
+      "press_recordings": 6,
+      "press_frames": 1024,
+      "control_recordings": 11,
+      "control_frames": 1352,
+      "mean_target_positive_delta_v": 1.1624716262679597,
+      "mean_target_excess_delta_v": 0.38998366166620496,
+      "no_contact_mean_positive_delta_v": 0.7702779511886707,
+      "no_contact_rms_within_recording_sd_delta_v": 0.05580209309804457,
+      "no_contact_median_robust_sigma_delta_v": 0.05538978829389777,
+      "mean_active_area_percent": 0.15926217986074645,
+      "mean_target_response_share_percent": 87.42258913436406,
+      "mean_off_target_response_share_percent": 12.57741086563594,
+      "mean_response_to_noise_ratio": 6.986725774797223,
+      "median_force_light_spearman_rho": 0.07788229253388737,
+      "min_recording_force_light_rho": -0.15469221901217275,
+      "max_recording_force_light_rho": 0.48352991849510024,
+      "median_no_contact_raw_v_quartile_drift": -0.0007116171499710333,
+      "target_max_v_255_frames": 0,
+      "zero_total_excess_frames": 210
+    },
+    {
+      "taxel": 8,
+      "press_recordings": 6,
+      "press_frames": 703,
+      "control_recordings": 11,
+      "control_frames": 1352,
+      "mean_target_positive_delta_v": 1.4990063323535736,
+      "mean_target_excess_delta_v": 0.6900869086916653,
+      "no_contact_mean_positive_delta_v": 0.7996783008611433,
+      "no_contact_rms_within_recording_sd_delta_v": 0.051936498826501955,
+      "no_contact_median_robust_sigma_delta_v": 0.04983312434691748,
+      "mean_active_area_percent": 0.3373815284402068,
+      "mean_target_response_share_percent": 82.1715371195972,
+      "mean_off_target_response_share_percent": 17.828462880402796,
+      "mean_response_to_noise_ratio": 13.2436442049832,
+      "median_force_light_spearman_rho": 0.28950993951464654,
+      "min_recording_force_light_rho": 0.2208440590705866,
+      "max_recording_force_light_rho": 0.5844001896633475,
+      "median_no_contact_raw_v_quartile_drift": -0.014280738418673167,
+      "target_max_v_255_frames": 0,
+      "zero_total_excess_frames": 52
+    },
+    {
+      "taxel": 9,
+      "press_recordings": 6,
+      "press_frames": 496,
+      "control_recordings": 11,
+      "control_frames": 1352,
+      "mean_target_positive_delta_v": 1.5232650618629122,
+      "mean_target_excess_delta_v": 0.7136731162175559,
+      "no_contact_mean_positive_delta_v": 0.7412394267771382,
+      "no_contact_rms_within_recording_sd_delta_v": 0.054850846215004856,
+      "no_contact_median_robust_sigma_delta_v": 0.056185394932935916,
+      "mean_active_area_percent": 0.2682206103127575,
+      "mean_target_response_share_percent": 63.98180431439613,
+      "mean_off_target_response_share_percent": 36.01819568560387,
+      "mean_response_to_noise_ratio": 13.029042707133131,
+      "median_force_light_spearman_rho": 0.31714136314275454,
+      "min_recording_force_light_rho": 0.16305721305721305,
+      "max_recording_force_light_rho": 0.4614260400119619,
+      "median_no_contact_raw_v_quartile_drift": -0.0032999787098120237,
+      "target_max_v_255_frames": 0,
+      "zero_total_excess_frames": 0
+    }
+  ],
+  "checks": [
+    "localization unique IDs",
+    "localization held-out groups",
+    "localization complete recordings",
+    "localization manual roles",
+    "localization counts reconcile",
+    "localization normalized rows",
+    "localization independent raw counts",
+    "localization independent equal-recording percentages",
+    "localization agrees with original report",
+    "contact unique IDs",
+    "contact held-out groups",
+    "contact complete recordings",
+    "contact manual roles",
+    "contact counts reconcile",
+    "contact normalized rows",
+    "contact independent raw counts",
+    "contact independent equal-recording percentages",
+    "contact agrees with original report",
+    "supplement_localization_ensemble unique IDs",
+    "supplement_localization_ensemble held-out groups",
+    "supplement_localization_ensemble complete recordings",
+    "supplement_localization_ensemble manual roles",
+    "supplement_localization_ensemble counts reconcile",
+    "supplement_localization_ensemble normalized rows",
+    "supplement_localization_ensemble independent raw counts",
+    "supplement_localization_ensemble independent equal-recording percentages",
+    "supplement_localization_ensemble agrees with original report",
+    "supplement_contact_svc unique IDs",
+    "supplement_contact_svc held-out groups",
+    "supplement_contact_svc complete recordings",
+    "supplement_contact_svc manual roles",
+    "supplement_contact_svc counts reconcile",
+    "supplement_contact_svc normalized rows",
+    "supplement_contact_svc independent raw counts",
+    "supplement_contact_svc independent equal-recording percentages",
+    "supplement_contact_svc agrees with original report",
+    "Correct primary frame counts",
+    "Contact and localization positive IDs agree",
+    "Optical input contains exactly the evaluated contact rows",
+    "Manual light diagnostic cohort",
+    "Aligned force range",
+    "2026-08-08_165945_733163_1_R9_NOCONTACT chronological no-contact timestamps",
+    "2026-08-08_170033_095779_1_R8_NOCONTACT chronological no-contact timestamps",
+    "2026-08-08_170110_241265_1_R7_NOCONTACT chronological no-contact timestamps",
+    "2026-08-08_170144_520372_1_R6_NOCONTACT chronological no-contact timestamps",
+    "2026-08-08_170226_232257_1_R5_NOCONTACT chronological no-contact timestamps",
+    "2026-08-08_170312_681393_1_R4_NOCONTACT chronological no-contact timestamps",
+    "2026-08-08_170412_350589_1_R3_NOCONTACT chronological no-contact timestamps",
+    "2026-08-08_170446_985345_1_R2_NOCONTACT chronological no-contact timestamps",
+    "2026-08-08_173847_719544_1_R1_NOCONTACT_v2 chronological no-contact timestamps",
+    "2026-08-08_174143_480272_1_R1_NOCONTACT_v2_2 chronological no-contact timestamps",
+    "2026-08-08_174209_473656_1_R1_NOCONTACT_v2_3 chronological no-contact timestamps",
+    "Fold 1 optical floor excludes held-out recordings",
+    "Fold 1 finite positive noise",
+    "Fold 2 optical floor excludes held-out recordings",
+    "Fold 2 finite positive noise",
+    "Fold 3 optical floor excludes held-out recordings",
+    "Fold 3 finite positive noise",
+    "Fold 4 optical floor excludes held-out recordings",
+    "Fold 4 finite positive noise",
+    "Fold 5 optical floor excludes held-out recordings",
+    "Fold 5 finite positive noise",
+    "Fold 6 optical floor excludes held-out recordings",
+    "Fold 6 finite positive noise",
+    "2026-08-08_142130_319119_1_R1_TEST1 nonzero recording response denominator",
+    "2026-08-08_142601_715359_1_R2_TEST1 nonzero recording response denominator",
+    "2026-08-08_143408_738677_1_R3_TEST1 nonzero recording response denominator",
+    "2026-08-08_144407_344158_1_R4_TEST1 nonzero recording response denominator",
+    "2026-08-08_145009_272251_1_R5_TEST1 nonzero recording response denominator",
+    "2026-08-08_145348_428397_1_R6_TEST1 nonzero recording response denominator",
+    "2026-08-08_145646_442250_1_R7_TEST1 nonzero recording response denominator",
+    "2026-08-08_145956_684487_1_R8_TEST1 nonzero recording response denominator",
+    "2026-08-08_150408_799581_1_R9_TEST1 nonzero recording response denominator",
+    "2026-08-08_152554_893849_1_R1_TEST2 nonzero recording response denominator",
+    "2026-08-08_153239_266323_1_R1_TEST3 nonzero recording response denominator",
+    "2026-08-08_153748_136127_1_R1_TEST4 nonzero recording response denominator",
+    "2026-08-08_154243_860887_1_R1_TEST5 nonzero recording response denominator",
+    "2026-08-08_154344_572251_1_R1_TEST6 nonzero recording response denominator",
+    "2026-08-08_154515_918611_1_R2_TEST2 nonzero recording response denominator",
+    "2026-08-08_154647_413072_1_R2_TEST3 nonzero recording response denominator",
+    "2026-08-08_155028_937924_1_R2_TEST4 nonzero recording response denominator",
+    "2026-08-08_155132_412966_1_R2_TEST5 nonzero recording response denominator",
+    "2026-08-08_155430_315930_1_R2_TEST6 nonzero recording response denominator",
+    "2026-08-08_155939_090816_1_R3_TEST2 nonzero recording response denominator",
+    "2026-08-08_160034_704902_1_R3_TEST3 nonzero recording response denominator",
+    "2026-08-08_160147_552782_1_R3_TEST4 nonzero recording response denominator",
+    "2026-08-08_160247_228233_1_R3_TEST5 nonzero recording response denominator",
+    "2026-08-08_160344_644134_1_R3_TEST6 nonzero recording response denominator",
+    "2026-08-08_160643_341315_1_R4_TEST2 nonzero recording response denominator",
+    "2026-08-08_160814_583552_1_R4_TEST3 nonzero recording response denominator",
+    "2026-08-08_160912_929778_1_R4_TEST4 nonzero recording response denominator",
+    "2026-08-08_161018_609760_1_R4_TEST5 nonzero recording response denominator",
+    "2026-08-08_161131_254032_1_R4_TEST6 nonzero recording response denominator",
+    "2026-08-08_161335_934176_1_R5_TEST2 nonzero recording response denominator",
+    "2026-08-08_161454_348568_1_R5_TEST3 nonzero recording response denominator",
+    "2026-08-08_161644_548982_1_R5_TEST4 nonzero recording response denominator",
+    "2026-08-08_161801_886702_1_R5_TEST5 nonzero recording response denominator",
+    "2026-08-08_161904_181801_1_R5_TEST6 nonzero recording response denominator",
+    "2026-08-08_162501_247149_1_R6_TEST2 nonzero recording response denominator",
+    "2026-08-08_162908_674758_1_R6_TEST3 nonzero recording response denominator",
+    "2026-08-08_163226_958318_1_R6_TEST4 nonzero recording response denominator",
+    "2026-08-08_163341_567723_1_R6_TEST5 nonzero recording response denominator",
+    "2026-08-08_163440_118112_1_R6_TEST6 nonzero recording response denominator",
+    "2026-08-08_163730_874069_1_R7_TEST2 nonzero recording response denominator",
+    "2026-08-08_163837_086088_1_R7_TEST3 nonzero recording response denominator",
+    "2026-08-08_163931_866280_1_R7_TEST4 nonzero recording response denominator",
+    "2026-08-08_164047_397752_1_R7_TEST5 nonzero recording response denominator",
+    "2026-08-08_164148_938417_1_R7_TEST6 nonzero recording response denominator",
+    "2026-08-08_164447_078602_1_R8_TEST2 nonzero recording response denominator",
+    "2026-08-08_164601_437352_1_R8_TEST3 nonzero recording response denominator",
+    "2026-08-08_164959_888615_1_R8_TEST4 nonzero recording response denominator",
+    "2026-08-08_165117_429951_1_R8_TEST5 nonzero recording response denominator",
+    "2026-08-08_165208_088150_1_R8_TEST6 nonzero recording response denominator",
+    "2026-08-08_165304_567552_1_R9_TEST2 nonzero recording response denominator",
+    "2026-08-08_165433_326903_1_R9_TEST3 nonzero recording response denominator",
+    "2026-08-08_165519_988311_1_R9_TEST4 nonzero recording response denominator",
+    "2026-08-08_165607_836382_1_R9_TEST5 nonzero recording response denominator",
+    "2026-08-08_165709_643597_1_R9_TEST6 nonzero recording response denominator",
+    "All force correlations defined",
+    "Optical response share rows sum to 100 percent"
+  ],
+  "visual_review": {
+    "status": "passed",
+    "method": "Inspected all nine rendered PNG figures; checked labels, values, readable annotations, scales and boundaries; contact and correlation spacing repaired before delivery",
+    "figures": [
+      {
+        "figure": "01_localization_9x9_row_normalized",
+        "status": "passed",
+        "png_sha256": "cf4e4a7db9da3baba9929fbb571cb757bce8b02afd5628f3ce7a01ee8ebe5a80"
+      },
+      {
+        "figure": "02_localization_9x9_raw_counts",
+        "status": "passed",
+        "png_sha256": "38733dfeb563dbd37b36691ca66a0c363357ffe761a380c0d5242fb3fd9eb9cf"
+      },
+      {
+        "figure": "03_contact_2x2_row_normalized",
+        "status": "passed",
+        "png_sha256": "31d5e0188833ae1cb770d17cbb1f0ac607f717405c82f7a81e171bf7a59fd4dc"
+      },
+      {
+        "figure": "04_contact_2x2_raw_counts",
+        "status": "passed",
+        "png_sha256": "9aa76d80ac270c900b496116550d08fd4fef2cb3b59b427ff5f24f3bd863b8ed"
+      },
+      {
+        "figure": "05_supplement_localization_equal_recording",
+        "status": "passed",
+        "png_sha256": "f77918e29f802d977729bfbfa66a0a7bba5450237225b47a73b5322d4c2bb0e5"
+      },
+      {
+        "figure": "06_supplement_contact_equal_recording",
+        "status": "passed",
+        "png_sha256": "594c34f6a34057ee36fc08f409f81acf47a63e40c98e04b0bc0cdaba0c9d61c3"
+      },
+      {
+        "figure": "07_light_response_distribution",
+        "status": "passed",
+        "png_sha256": "7079150144e2d1aaa1c373fa0c2b59c5353b30dfc9bcdc28f983c300a61f1437"
+      },
+      {
+        "figure": "08_light_metrics_by_taxel",
+        "status": "passed",
+        "png_sha256": "4513e07f91dac5ad37cbca6ca580ba9e88a5d849e6ecf650a1a5ea99efeed677"
+      },
+      {
+        "figure": "09_light_force_correlation",
+        "status": "passed",
+        "png_sha256": "f1106a787168385703dd8db63f01a12e7bd5e33fdcf9015acb3579b5c5cbe728"
+      }
+    ]
+  },
+  "versions": {
+    "python": "3.12.14",
+    "numpy": "2.5.1",
+    "pandas": "3.0.5",
+    "matplotlib": "3.11.1"
+  }
+}

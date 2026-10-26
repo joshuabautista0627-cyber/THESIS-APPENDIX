@@ -1,0 +1,172 @@
+Inner cache ready for outer fold 6; evaluating sealed choices
+C:\Users\DLSU\OneDrive\Documents\SOFTWARE CALIBRATION\calibration_gui\.venv\Lib\site-packages\sklearn\preprocessing\_data.py:1077: RuntimeWarning: invalid value encountered in sqrt
+  xp.sqrt(self.var_), copy=False, constant_mask=constant_mask
+C:\Users\DLSU\OneDrive\Documents\SOFTWARE CALIBRATION\calibration_gui\.venv\Lib\site-packages\sklearn\preprocessing\_data.py:1077: RuntimeWarning: invalid value encountered in sqrt
+  xp.sqrt(self.var_), copy=False, constant_mask=constant_mask
+C:\Users\DLSU\OneDrive\Documents\SOFTWARE CALIBRATION\calibration_gui\.venv\Lib\site-packages\sklearn\preprocessing\_data.py:1077: RuntimeWarning: invalid value encountered in sqrt
+  xp.sqrt(self.var_), copy=False, constant_mask=constant_mask
+C:\Users\DLSU\OneDrive\Documents\SOFTWARE CALIBRATION\calibration_gui\.venv\Lib\site-packages\sklearn\preprocessing\_data.py:1077: RuntimeWarning: invalid value encountered in sqrt
+  xp.sqrt(self.var_), copy=False, constant_mask=constant_mask
+C:\Users\DLSU\OneDrive\Documents\SOFTWARE CALIBRATION\calibration_gui\.venv\Lib\site-packages\sklearn\preprocessing\_data.py:1077: RuntimeWarning: invalid value encountered in sqrt
+  xp.sqrt(self.var_), copy=False, constant_mask=constant_mask
+C:\Users\DLSU\OneDrive\Documents\SOFTWARE CALIBRATION\calibration_gui\.venv\Lib\site-packages\sklearn\preprocessing\_data.py:1077: RuntimeWarning: invalid value encountered in sqrt
+  xp.sqrt(self.var_), copy=False, constant_mask=constant_mask
+C:\Users\DLSU\OneDrive\Documents\SOFTWARE CALIBRATION\calibration_gui\.venv\Lib\site-packages\sklearn\preprocessing\_data.py:1077: RuntimeWarning: invalid value encountered in sqrt
+  xp.sqrt(self.var_), copy=False, constant_mask=constant_mask
+C:\Users\DLSU\OneDrive\Documents\SOFTWARE CALIBRATION\calibration_gui\.venv\Lib\site-packages\sklearn\preprocessing\_data.py:1077: RuntimeWarning: invalid value encountered in sqrt
+  xp.sqrt(self.var_), copy=False, constant_mask=constant_mask
+C:\Users\DLSU\OneDrive\Documents\SOFTWARE CALIBRATION\calibration_gui\.venv\Lib\site-packages\sklearn\preprocessing\_data.py:1077: RuntimeWarning: invalid value encountered in sqrt
+  xp.sqrt(self.var_), copy=False, constant_mask=constant_mask
+C:\Users\DLSU\OneDrive\Documents\SOFTWARE CALIBRATION\calibration_gui\.venv\Lib\site-packages\sklearn\preprocessing\_data.py:1077: RuntimeWarning: invalid value encountered in sqrt
+  xp.sqrt(self.var_), copy=False, constant_mask=constant_mask
+C:\Users\DLSU\OneDrive\Documents\SOFTWARE CALIBRATION\calibration_gui\.venv\Lib\site-packages\sklearn\preprocessing\_data.py:1077: RuntimeWarning: invalid value encountered in sqrt
+  xp.sqrt(self.var_), copy=False, constant_mask=constant_mask
+C:\Users\DLSU\OneDrive\Documents\SOFTWARE CALIBRATION\calibration_gui\.venv\Lib\site-packages\sklearn\preprocessing\_data.py:1077: RuntimeWarning: invalid value encountered in sqrt
+  xp.sqrt(self.var_), copy=False, constant_mask=constant_mask
+OUTER 6/6 finished; lag=300 ms, fitted=18
+Inner cache ready for outer fold 5; evaluating sealed choices
+C:\Users\DLSU\OneDrive\Documents\SOFTWARE CALIBRATION\calibration_gui\.venv\Lib\site-packages\sklearn\preprocessing\_data.py:1077: RuntimeWarning: invalid value encountered in sqrt
+  xp.sqrt(self.var_), copy=False, constant_mask=constant_mask
+C:\Users\DLSU\OneDrive\Documents\SOFTWARE CALIBRATION\calibration_gui\.venv\Lib\site-packages\sklearn\preprocessing\_data.py:1077: RuntimeWarning: invalid value encountered in sqrt
+  xp.sqrt(self.var_), copy=False, constant_mask=constant_mask
+C:\Users\DLSU\OneDrive\Documents\SOFTWARE CALIBRATION\calibration_gui\.venv\Lib\site-packages\sklearn\preprocessing\_data.py:1077: RuntimeWarning: invalid value encountered in sqrt
+  xp.sqrt(self.var_), copy=False, constant_mask=constant_mask
+C:\Users\DLSU\OneDrive\Documents\SOFTWARE CALIBRATION\calibration_gui\.venv\Lib\site-packages\sklearn\preprocessing\_data.py:1077: RuntimeWarning: invalid value encountered in sqrt
+  xp.sqrt(self.var_), copy=False, constant_mask=constant_mask
+C:\Users\DLSU\OneDrive\Documents\SOFTWARE CALIBRATION\calibration_gui\.venv\Lib\site-packages\sklearn\preprocessing\_data.py:1077: RuntimeWarning: invalid value encountered in sqrt
+  xp.sqrt(self.var_), copy=False, constant_mask=constant_mask
+C:\Users\DLSU\OneDrive\Documents\SOFTWARE CALIBRATION\calibration_gui\.venv\Lib\site-packages\sklearn\preprocessing\_data.py:1077: RuntimeWarning: invalid value encountered in sqrt
+  xp.sqrt(self.var_), copy=False, constant_mask=constant_mask
+C:\Users\DLSU\OneDrive\Documents\SOFTWARE CALIBRATION\calibration_gui\.venv\Lib\site-packages\sklearn\preprocessing\_data.py:1077: RuntimeWarning: invalid value encountered in sqrt
+  xp.sqrt(self.var_), copy=False, constant_mask=constant_mask
+C:\Users\DLSU\OneDrive\Documents\SOFTWARE CALIBRATION\calibration_gui\.venv\Lib\site-packages\sklearn\preprocessing\_data.py:1077: RuntimeWarning: invalid value encountered in sqrt
+  xp.sqrt(self.var_), copy=False, constant_mask=constant_mask
+C:\Users\DLSU\OneDrive\Documents\SOFTWARE CALIBRATION\calibration_gui\.venv\Lib\site-packages\sklearn\preprocessing\_data.py:1077: RuntimeWarning: invalid value encountered in sqrt
+  xp.sqrt(self.var_), copy=False, constant_mask=constant_mask
+C:\Users\DLSU\OneDrive\Documents\SOFTWARE CALIBRATION\calibration_gui\.venv\Lib\site-packages\sklearn\preprocessing\_data.py:1077: RuntimeWarning: invalid value encountered in sqrt
+  xp.sqrt(self.var_), copy=False, constant_mask=constant_mask
+C:\Users\DLSU\OneDrive\Documents\SOFTWARE CALIBRATION\calibration_gui\.venv\Lib\site-packages\sklearn\preprocessing\_data.py:1077: RuntimeWarning: invalid value encountered in sqrt
+  xp.sqrt(self.var_), copy=False, constant_mask=constant_mask
+C:\Users\DLSU\OneDrive\Documents\SOFTWARE CALIBRATION\calibration_gui\.venv\Lib\site-packages\sklearn\preprocessing\_data.py:1077: RuntimeWarning: invalid value encountered in sqrt
+  xp.sqrt(self.var_), copy=False, constant_mask=constant_mask
+C:\Users\DLSU\OneDrive\Documents\SOFTWARE CALIBRATION\calibration_gui\.venv\Lib\site-packages\sklearn\preprocessing\_data.py:1077: RuntimeWarning: invalid value encountered in sqrt
+  xp.sqrt(self.var_), copy=False, constant_mask=constant_mask
+OUTER 5/6 finished; lag=300 ms, fitted=18
+Inner cache ready for outer fold 4; evaluating sealed choices
+C:\Users\DLSU\OneDrive\Documents\SOFTWARE CALIBRATION\calibration_gui\.venv\Lib\site-packages\sklearn\preprocessing\_data.py:1077: RuntimeWarning: invalid value encountered in sqrt
+  xp.sqrt(self.var_), copy=False, constant_mask=constant_mask
+C:\Users\DLSU\OneDrive\Documents\SOFTWARE CALIBRATION\calibration_gui\.venv\Lib\site-packages\sklearn\preprocessing\_data.py:1077: RuntimeWarning: invalid value encountered in sqrt
+  xp.sqrt(self.var_), copy=False, constant_mask=constant_mask
+C:\Users\DLSU\OneDrive\Documents\SOFTWARE CALIBRATION\calibration_gui\.venv\Lib\site-packages\sklearn\preprocessing\_data.py:1077: RuntimeWarning: invalid value encountered in sqrt
+  xp.sqrt(self.var_), copy=False, constant_mask=constant_mask
+C:\Users\DLSU\OneDrive\Documents\SOFTWARE CALIBRATION\calibration_gui\.venv\Lib\site-packages\sklearn\preprocessing\_data.py:1077: RuntimeWarning: invalid value encountered in sqrt
+  xp.sqrt(self.var_), copy=False, constant_mask=constant_mask
+OUTER 4/6 finished; lag=300 ms, fitted=18
+Inner cache ready for outer fold 3; evaluating sealed choices
+C:\Users\DLSU\OneDrive\Documents\SOFTWARE CALIBRATION\calibration_gui\.venv\Lib\site-packages\sklearn\preprocessing\_data.py:1077: RuntimeWarning: invalid value encountered in sqrt
+  xp.sqrt(self.var_), copy=False, constant_mask=constant_mask
+C:\Users\DLSU\OneDrive\Documents\SOFTWARE CALIBRATION\calibration_gui\.venv\Lib\site-packages\sklearn\preprocessing\_data.py:1077: RuntimeWarning: invalid value encountered in sqrt
+  xp.sqrt(self.var_), copy=False, constant_mask=constant_mask
+C:\Users\DLSU\OneDrive\Documents\SOFTWARE CALIBRATION\calibration_gui\.venv\Lib\site-packages\sklearn\preprocessing\_data.py:1077: RuntimeWarning: invalid value encountered in sqrt
+  xp.sqrt(self.var_), copy=False, constant_mask=constant_mask
+OUTER 3/6 finished; lag=200 ms, fitted=18
+Inner cache ready for outer fold 2; evaluating sealed choices
+C:\Users\DLSU\OneDrive\Documents\SOFTWARE CALIBRATION\calibration_gui\.venv\Lib\site-packages\sklearn\preprocessing\_data.py:1077: RuntimeWarning: invalid value encountered in sqrt
+  xp.sqrt(self.var_), copy=False, constant_mask=constant_mask
+C:\Users\DLSU\OneDrive\Documents\SOFTWARE CALIBRATION\calibration_gui\.venv\Lib\site-packages\sklearn\preprocessing\_data.py:1077: RuntimeWarning: invalid value encountered in sqrt
+  xp.sqrt(self.var_), copy=False, constant_mask=constant_mask
+C:\Users\DLSU\OneDrive\Documents\SOFTWARE CALIBRATION\calibration_gui\.venv\Lib\site-packages\sklearn\preprocessing\_data.py:1077: RuntimeWarning: invalid value encountered in sqrt
+  xp.sqrt(self.var_), copy=False, constant_mask=constant_mask
+C:\Users\DLSU\OneDrive\Documents\SOFTWARE CALIBRATION\calibration_gui\.venv\Lib\site-packages\sklearn\preprocessing\_data.py:1077: RuntimeWarning: invalid value encountered in sqrt
+  xp.sqrt(self.var_), copy=False, constant_mask=constant_mask
+OUTER 2/6 finished; lag=300 ms, fitted=18
+Inner cache ready for outer fold 1; evaluating sealed choices
+C:\Users\DLSU\OneDrive\Documents\SOFTWARE CALIBRATION\calibration_gui\.venv\Lib\site-packages\sklearn\preprocessing\_data.py:1077: RuntimeWarning: invalid value encountered in sqrt
+  xp.sqrt(self.var_), copy=False, constant_mask=constant_mask
+C:\Users\DLSU\OneDrive\Documents\SOFTWARE CALIBRATION\calibration_gui\.venv\Lib\site-packages\sklearn\preprocessing\_data.py:1077: RuntimeWarning: invalid value encountered in sqrt
+  xp.sqrt(self.var_), copy=False, constant_mask=constant_mask
+C:\Users\DLSU\OneDrive\Documents\SOFTWARE CALIBRATION\calibration_gui\.venv\Lib\site-packages\sklearn\preprocessing\_data.py:1077: RuntimeWarning: invalid value encountered in sqrt
+  xp.sqrt(self.var_), copy=False, constant_mask=constant_mask
+C:\Users\DLSU\OneDrive\Documents\SOFTWARE CALIBRATION\calibration_gui\.venv\Lib\site-packages\sklearn\preprocessing\_data.py:1077: RuntimeWarning: invalid value encountered in sqrt
+  xp.sqrt(self.var_), copy=False, constant_mask=constant_mask
+OUTER 1/6 finished; lag=300 ms, fitted=18
+        task          model  frames  sessions  accuracy  balanced_accuracy  macro_f1   recall      fpr  precision    mae_N   rmse_N   bias_N       r2
+     contact Tuned FPR <=5%    8506        65  0.981623           0.954047  0.966422 0.995731 0.087638   0.982387      NaN      NaN      NaN      NaN
+     contact Tuned selected    8506        65  0.975107           0.985018  0.958141 0.970036 0.000000   1.000000      NaN      NaN      NaN      NaN
+       force Tuned selected    7154        54       NaN                NaN       NaN      NaN      NaN        NaN 0.499056 0.632331 0.078359 0.306063
+localization Tuned selected    7154        54  0.844044           0.844044  0.847538      NaN      NaN        NaN      NaN      NaN      NaN      NaN
+Refitting final training-selected models
+Evaluating the predeclared current-frame-only policy
+Frame-only outer fold 1/6 completed
+Frame-only outer fold 2/6 completed
+C:\Users\DLSU\OneDrive\Documents\SOFTWARE CALIBRATION\calibration_gui\.venv\Lib\site-packages\sklearn\preprocessing\_data.py:1077: RuntimeWarning: invalid value encountered in sqrt
+  xp.sqrt(self.var_), copy=False, constant_mask=constant_mask
+Frame-only outer fold 3/6 completed
+C:\Users\DLSU\OneDrive\Documents\SOFTWARE CALIBRATION\calibration_gui\.venv\Lib\site-packages\sklearn\preprocessing\_data.py:1077: RuntimeWarning: invalid value encountered in sqrt
+  xp.sqrt(self.var_), copy=False, constant_mask=constant_mask
+Frame-only outer fold 4/6 completed
+C:\Users\DLSU\OneDrive\Documents\SOFTWARE CALIBRATION\calibration_gui\.venv\Lib\site-packages\sklearn\preprocessing\_data.py:1077: RuntimeWarning: invalid value encountered in sqrt
+  xp.sqrt(self.var_), copy=False, constant_mask=constant_mask
+C:\Users\DLSU\OneDrive\Documents\SOFTWARE CALIBRATION\calibration_gui\.venv\Lib\site-packages\sklearn\preprocessing\_data.py:1077: RuntimeWarning: invalid value encountered in sqrt
+  xp.sqrt(self.var_), copy=False, constant_mask=constant_mask
+Frame-only outer fold 5/6 completed
+C:\Users\DLSU\OneDrive\Documents\SOFTWARE CALIBRATION\calibration_gui\.venv\Lib\site-packages\sklearn\preprocessing\_data.py:1077: RuntimeWarning: invalid value encountered in sqrt
+  xp.sqrt(self.var_), copy=False, constant_mask=constant_mask
+C:\Users\DLSU\OneDrive\Documents\SOFTWARE CALIBRATION\calibration_gui\.venv\Lib\site-packages\sklearn\preprocessing\_data.py:1077: RuntimeWarning: invalid value encountered in sqrt
+  xp.sqrt(self.var_), copy=False, constant_mask=constant_mask
+C:\Users\DLSU\OneDrive\Documents\SOFTWARE CALIBRATION\calibration_gui\.venv\Lib\site-packages\sklearn\preprocessing\_data.py:1077: RuntimeWarning: invalid value encountered in sqrt
+  xp.sqrt(self.var_), copy=False, constant_mask=constant_mask
+Frame-only outer fold 6/6 completed
+        task            model  frames  sessions  accuracy  balanced_accuracy  macro_f1   recall     fpr  precision    mae_N   rmse_N   bias_N       r2
+     contact Tuned frame-only    8506        65  0.962463           0.970891  0.937819 0.958151 0.01637   0.996532      NaN      NaN      NaN      NaN
+       force Tuned frame-only    7154        54       NaN                NaN       NaN      NaN     NaN        NaN 0.539341 0.682749 0.111762 0.190993
+localization Tuned frame-only    7154        54  0.828377           0.828377  0.826802      NaN     NaN        NaN      NaN      NaN      NaN      NaN
+Running independent metric and saved-inference audit
+C:\Users\DLSU\OneDrive\Documents\SOFTWARE CALIBRATION\calibration_gui\.venv\Lib\site-packages\sklearn\preprocessing\_data.py:1077: RuntimeWarning: invalid value encountered in sqrt
+  xp.sqrt(self.var_), copy=False, constant_mask=constant_mask
+{
+  "audit": {
+    "status": "passed",
+    "completed_at": "2026-09-09T06:57:33.789261+00:00",
+    "metric_checks": 114,
+    "max_metric_difference": 1.2490009027033011e-15,
+    "same_held_out_frames_and_truth_as_before": true,
+    "manual_source_hashes_verified": true,
+    "whole_sessions_held_out": true,
+    "verified_inner_split_boundaries": 30,
+    "source_and_lag_hashes_unchanged": true,
+    "outer_fold1_refit_reproduced_tasks": [
+      "force",
+      "localization",
+      "contact"
+    ],
+    "final_models_checksum_verified": true,
+    "reference_and_target_invariance": true,
+    "labels_not_required_for_inference": true,
+    "causal_prefix_and_future_invariance": true,
+    "session_reset_inference_parity": true,
+    "current_frame_batch_single_parity": true,
+    "streaming_sequence_parity": true,
+    "saved_scaler_parameters_finite": true,
+    "caveats": [
+      "Retrospective manual-only development; no unused prospective test recordings remain",
+      "0.05-3 N remains an exploratory evaluation interval",
+      "Temporal smoothing is causal but may delay responses, and ROI is stationary within each recording",
+      "No live GUI bundle was replaced; continuous-location millimetre error and deployed onset delay are unavailable",
+      "Contact AUC is omitted for adaptive families/thresholds with uncalibrated cross-fold score scales"
+    ]
+  },
+  "end_to_end": {
+    "mae_N": 0.5224754698889653,
+    "rmse_N": 0.6842307494697262,
+    "bias_N": 0.02580663790327508,
+    "r2": 0.1874767373749423,
+    "joint_contact_and_roi_accuracy": 0.836110369328783,
+    "contact_recall": 0.9700364215746115,
+    "frames": 7154,
+    "sessions": 54
+  }
+}
+Building the before/after report
+{"report": "C:\\Users\\DLSU\\OneDrive\\Documents\\SOFTWARE CALIBRATION\\calibration_gui\\analysis_outputs\\live_sensor_manual_only\\model_runs\\tuning_20260909\\artifact.json", "charts": 4, "tables": 6, "blocks": 22}
+All training, comparisons, final refits, and audits complete

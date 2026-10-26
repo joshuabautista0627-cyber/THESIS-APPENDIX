@@ -1,0 +1,17 @@
+{
+  "simulation_mode": true,
+  "source": "deterministic synthetic camera",
+  "device_index": 0,
+  "backend": "Synthetic Camera (Simulation)",
+  "requested_width": 320,
+  "requested_height": 240,
+  "requested_fps": 30.0,
+  "actual_width": 320,
+  "actual_height": 240,
+  "actual_fps": 30.0,
+  "controls": {
+    "auto_exposure": false,
+    "auto_white_balance": false,
+    "auto_focus": false
+  }
+}

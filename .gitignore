@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.venv/
+node_modules/
+*.zip.part*
+SPARE_Thesis_Appendix_2026-10-19.zip

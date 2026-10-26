@@ -1,0 +1,86 @@
+{
+  "date": "2026-10-18",
+  "archive": "C:\\Users\\DLSU\\Downloads\\THESIS DATA\\Data Collection\\Manual Calibration (2).zip",
+  "archive_sha256": "e039dcd49f3390d34dc979490dcf46a6ecc43d9e6a2aec08e4952acc14b5006a",
+  "recording_summary_sha256": "9bb6f898f7fcf202b04fa5dc61c813227a5f0224dfc6b77ee43ae1666a91c62f",
+  "n_recordings": 72,
+  "n_taxels": 9,
+  "n_rounds": 8,
+  "source_session": "S3",
+  "physical_press_count": "unknown",
+  "acceptance_limit": null,
+  "seed": 20261018,
+  "resamples": 50000,
+  "interval_level": 0.95,
+  "bootstrap": "BCa; paired whole rounds with all nine taxels; no frame resampling",
+  "force_reference_N": 3.5,
+  "common_force_range_N": [
+    2.9758495970385512,
+    3.811786608583147
+  ],
+  "force_effect_round_jackknife": {
+    "estimate": 0.0810719066858499,
+    "se": 0.037961892032564594,
+    "lower": -0.008693703850699216,
+    "upper": 0.17083751722239904,
+    "clusters": 8,
+    "df": 7,
+    "method": "delete-one-cluster CV3J with t(G-1)"
+  },
+  "force_effect_taxel_jackknife": {
+    "estimate": 0.0810719066858499,
+    "se": 0.0803544639099026,
+    "lower": -0.10422581937249939,
+    "upper": 0.2663696327441992,
+    "clusters": 9,
+    "df": 8,
+    "method": "delete-one-cluster CV3J with t(G-1)"
+  },
+  "model_rank": 17,
+  "residual_df": 55,
+  "sse": 2.0828049399524353,
+  "blocked_sse": 2.3834628015719947,
+  "residual_sd": 0.19460005325386712,
+  "residual_sd_BCa": [
+    0.15971361143459206,
+    0.23518291575409286
+  ],
+  "pooled_within_taxel_sd": 0.2670989043405962,
+  "pooled_sd_BCa": [
+    0.21257894690270412,
+    0.3463840698786883
+  ],
+  "blocked_residual_sd": 0.2063052004733692,
+  "r_squared": 0.7617347014678206,
+  "partial_r_squared_force": 0.1261432993295567,
+  "adjusted_round_deviation_range": [
+    -0.19322653573251392,
+    0.23401006762573062
+  ],
+  "max_cooks_distance": 0.20623741788448857,
+  "max_leverage": 0.3334128100692748,
+  "residual_rms_taxel_range": [
+    0.0697668543553442,
+    0.27933605680061996
+  ],
+  "normal_qq_correlation": 0.9926862994591569,
+  "mean_source_verification_cells": 144,
+  "max_source_mean_difference": 8.881784197001252e-16,
+  "qr_coefficient_max_difference": 2.275957200481571e-15,
+  "cv_percentile_endpoint_MC_half_difference_pp": 2.036660095014123,
+  "limitations": [
+    "Eight rounds only; BCa and t intervals are approximate, conditional on exchangeable/independent rounds.",
+    "Same session and repeated physical taxels may induce dependence across rounds; taxel-jackknife sensitivity is not simultaneous two-way clustering.",
+    "Round labels are matched condition groups, not always contiguous temporal blocks; baseline and acquisition order are partly confounded.",
+    "One recording per taxel-round cell; taxel-by-round interaction and residual variation cannot be separated.",
+    "Variable force and motion-magnified signals prevent intrinsic fixed-force sensor repeatability claims.",
+    "No acceptance limit, equivalence test, pass/fail decision, or trained-model evaluation."
+  ],
+  "software": {
+    "python": "3.12.14",
+    "numpy": "2.5.1",
+    "pandas": "3.0.5",
+    "scipy": "1.18.0",
+    "matplotlib": "3.11.1"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "session_directory": "C:\\Users\\DLSU\\OneDrive\\Documents\\SOFTWARE CALIBRATION\\spare_calibration_gui\\output\\physical-arducam-com3-20260803T105013Z",
+  "accepted_frames": 161,
+  "video_frames": 161,
+  "loadcell_samples": 125,
+  "master_rows": 161,
+  "missing_force_rows": 0,
+  "peak_force_N": 5.093533788965867,
+  "median_force_N": -0.0083563900599751,
+  "camera_measured_fps_before_recording": 15.594906703403037,
+  "median_processing_and_write_ms": 13.247300001239637,
+  "video_codec": "mp4v",
+  "auxiliary_streams": [
+    "original_overlays",
+    "processed",
+    "motion_magnified"
+  ],
+  "calibration_id": "c87fc15d-2a7e-49fb-b07c-acf4c43f440e",
+  "serial_identity": {
+    "port": "COM3",
+    "baud_rate": 115200,
+    "device_name": "HX711_NANO",
+    "protocol_version": "1.0",
+    "firmware_version": "1.0.0",
+    "device_session_id": "hx711-a234554dfaee40d9a8c2c8b9d9cc4b32-0",
+    "simulation_mode": false
+  },
+  "unloaded_preflight": {
+    "sample_count": 25,
+    "raw_mean": 88540.6,
+    "raw_std": 26.380232498343656,
+    "raw_min": 88479.0,
+    "raw_max": 88595.0,
+    "force_mean_N": -0.01061263134869729,
+    "force_median_N": -0.01057409354394927,
+    "force_std_N": 0.0004235984371785568,
+    "force_min_N": -0.0116017683372298,
+    "force_max_N": -0.00973910777440884,
+    "force_first_N": -0.010558036125304263,
+    "force_last_N": -0.011103988359234544,
+    "sample_id_gaps": 0,
+    "absolute_force_limit_N": 0.2,
+    "stability_limit_N": 0.05,
+    "passed": true
+  }
+}

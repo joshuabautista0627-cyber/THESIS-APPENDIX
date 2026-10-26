@@ -1,0 +1,11 @@
+{
+  "version": "1.1",
+  "date": "2026-10-18",
+  "words": 13926,
+  "original_parts_retained": 7,
+  "statistical_supplement_tables": 13,
+  "new_figure_pairs": 4,
+  "report_sha256": "ae583a466985b42325a80dbec16fdd418ac56de4403fe475f48f35d72341107d",
+  "acceptance_limit": null,
+  "pass_fail_judgment": false
+}

@@ -1,0 +1,34 @@
+{
+  "status": "passed",
+  "output_pdf": "C:\\Users\\DLSU\\OneDrive\\Documents\\SOFTWARE CALIBRATION\\output\\pdf\\complete_thesis_report_2026-10-18\\Manual_Calibration_Complete_Thesis_Technical_Report.pdf",
+  "pages": 59,
+  "new_analysis_pages": [
+    35,
+    36,
+    37,
+    38,
+    39,
+    40
+  ],
+  "analysis_checks": 534,
+  "report_checks": 447,
+  "pooled_signal_fits": 27,
+  "within_recording_signal_fits": 162,
+  "existing_figures_preserved": 13,
+  "pdf_sha256": "5d3d2635060a0cd2609b50e6dc3e7868e11c3bbf626d6058451db7769788333b",
+  "visual_review": {
+    "status": "passed",
+    "pages": [
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      44,
+      46,
+      59
+    ],
+    "notes": "Rendered methods, comparison tables, all 18 transformed panels, baseline lineage, findings, Writing prompt and source register inspected. No clipping or overlap. Original 13 figure hashes preserved and 33 unchanged pages text-verified."
+  }
+}

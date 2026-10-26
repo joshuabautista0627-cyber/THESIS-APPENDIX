@@ -1,0 +1,268 @@
+{
+  "pdf": "C:\\Users\\DLSU\\OneDrive\\Documents\\SOFTWARE CALIBRATION\\output\\pdf\\complete_thesis_report_2026-10-18\\Manual_Calibration_Complete_Thesis_Technical_Report.pdf",
+  "sections": [
+    "1. Purpose, system and dataset",
+    "2. Exact image segmentation and ROI geometry",
+    "3. Feature construction and preprocessing",
+    "4. Alignment, validation and metric definitions",
+    "5. Models, search and improvement strategy",
+    "6. Complete model comparisons",
+    "7. Localization confusion matrices and spatial performance",
+    "8. Contact-detection confusion matrices",
+    "9. Force errors and variation across held-out groups",
+    "10. Optical and light-response diagnostics",
+    "11. Exact winning model configurations",
+    "12. Findings, limitations and next experiments",
+    "13. Verification and computational reproducibility",
+    "14. Ready-to-use ChatGPT Writing instructions",
+    "Appendix A. Exhaustive tuning configuration grid",
+    "Appendix B. Exact estimator settings and saved components",
+    "Appendix C. Exact feature-construction source",
+    "Appendix D. Evidence register and artifact integrity"
+  ],
+  "tables": [
+    "Recommended headline models and held-out metrics",
+    "Task definitions and evaluation population",
+    "Manual archive composition",
+    "Primary-frame eligibility after fold-specific force alignment",
+    "Fixed taxel rectangles; ROI layout roi-9fbc67c50ee3bc7145fa",
+    "Pixel operations and their exact settings",
+    "Feature packs and exact dimensions",
+    "Metric definitions; e = predicted force − reference force",
+    "Search mechanisms and exact decision rules",
+    "All force models on 7,154 frames / 54 recordings",
+    "All localization models on 7,154 frames / 54 recordings",
+    "All contact models on 8,506 frames / 65 recordings",
+    "Localization row-normalized weighted percentages (%)",
+    "Localization raw counts (integer frames)",
+    "Exact taxel support and recall for the two winning classifiers",
+    "Contact weighted row-normalized percentages (%)",
+    "Contact raw counts (integer frames)",
+    "All headline contact metrics for Tuned RBF SVC",
+    "Force ensemble errors by reference-force interval",
+    "Winning-model performance by outer TEST group",
+    "Force ensemble errors by pressed taxel",
+    "Direct V-channel metric definitions",
+    "Direct brightness and baseline-referenced change, in camera V levels",
+    "Temporal variation and observed contact brightness range",
+    "Additional direct-V summaries",
+    "Light metrics supported by the available data",
+    "Target optical measurements by taxel",
+    "Response concentration and within-recording correlation summaries",
+    "Excess-response distribution, mean recording-normalized shares (%)",
+    "Spearman ρ for every TEST group and taxel",
+    "Raw V versus force: recording-weighted Pearson correlation and linear fit",
+    "Raw-V Pearson r within each recording",
+    "Raw-V linear-fit R² within each recording",
+    "Eligible paired frames for every taxel and TEST recording",
+    "Winning classifier configuration in each held-out fold",
+    "Force member estimator settings (additional defaults in Appendix B)",
+    "All 18 force-ensemble member settings used for held-out scoring",
+    "Available full-pool best-family components",
+    "Recorded experiment environment",
+    "Complete force candidate grid",
+    "Complete localization candidate grid",
+    "Complete contact candidate grid"
+  ],
+  "figures": [
+    {
+      "number": 1,
+      "name": "01_best_localization_9x9_normalized",
+      "title": "Localization: recording-weighted row-normalized 9 × 9 matrix",
+      "path": "C:\\Users\\DLSU\\OneDrive\\Documents\\SOFTWARE CALIBRATION\\reports\\BEST_RESULTS\\figures\\01_best_localization_9x9_normalized.png",
+      "sha256": "00f46dad866feab56c603c192f36f252744df1dffae87be6a54478e1fca31873"
+    },
+    {
+      "number": 2,
+      "name": "02_best_localization_9x9_raw_counts",
+      "title": "Localization: separately labeled 9 × 9 raw frame counts",
+      "path": "C:\\Users\\DLSU\\OneDrive\\Documents\\SOFTWARE CALIBRATION\\reports\\BEST_RESULTS\\figures\\02_best_localization_9x9_raw_counts.png",
+      "sha256": "6ac97e283268e6c1c0de7a6482597cd28da064fcaea313be9d087b31b50d34c6"
+    },
+    {
+      "number": 3,
+      "name": "05_best_models_taxel_heatmaps",
+      "title": "Winning-model recall mapped to the nine physical image ROIs",
+      "path": "C:\\Users\\DLSU\\OneDrive\\Documents\\SOFTWARE CALIBRATION\\reports\\BEST_RESULTS\\figures\\05_best_models_taxel_heatmaps.png",
+      "sha256": "3c5b1ff1892018a0b9b46ba78d29c6ad855995d834e55ca3b6478c3e9b187d58"
+    },
+    {
+      "number": 4,
+      "name": "03_best_contact_2x2_normalized",
+      "title": "Contact detection: recording-weighted row-normalized 2 × 2 matrix",
+      "path": "C:\\Users\\DLSU\\OneDrive\\Documents\\SOFTWARE CALIBRATION\\reports\\BEST_RESULTS\\figures\\03_best_contact_2x2_normalized.png",
+      "sha256": "a17358d2ac3d75a03a46550624b5139f3fe8f99c332f42967efdcad5f9172525"
+    },
+    {
+      "number": 5,
+      "name": "04_best_contact_2x2_raw_counts",
+      "title": "Contact detection: separately labeled raw frame counts",
+      "path": "C:\\Users\\DLSU\\OneDrive\\Documents\\SOFTWARE CALIBRATION\\reports\\BEST_RESULTS\\figures\\04_best_contact_2x2_raw_counts.png",
+      "sha256": "b9f605366bb57e217762e72b94eb0273716db5c35e65a1ff6a8fb3b760d6cfd3"
+    },
+    {
+      "number": 6,
+      "name": "force_diagnostics",
+      "title": "Winning force ensemble: predicted force and error by reference interval",
+      "path": "C:\\Users\\DLSU\\OneDrive\\Documents\\SOFTWARE CALIBRATION\\reports\\complete_thesis_report_2026-10-18\\force_diagnostics.png",
+      "sha256": "7388bfa894259ecdfe9e0079233b713214132e7d4dffdc07ce2a8689648494fa"
+    },
+    {
+      "number": 7,
+      "name": "v_channel_heatmaps",
+      "title": "Direct raw-V brightness, signed baseline change and temporal noise",
+      "path": "C:\\Users\\DLSU\\OneDrive\\Documents\\SOFTWARE CALIBRATION\\reports\\manual_v_channel_metrics_2026-10-18\\v_channel_heatmaps.png",
+      "sha256": "e898f06933d5b6e602b80115d71e9c505ec7dbc8c07d14f89ebbfe7be7ef1950"
+    },
+    {
+      "number": 8,
+      "name": "06_light_response_distribution",
+      "title": "Spatial distribution of excess optical response",
+      "path": "C:\\Users\\DLSU\\OneDrive\\Documents\\SOFTWARE CALIBRATION\\reports\\BEST_RESULTS\\figures\\06_light_response_distribution.png",
+      "sha256": "7079150144e2d1aaa1c373fa0c2b59c5353b30dfc9bcdc28f983c300a61f1437"
+    },
+    {
+      "number": 9,
+      "name": "07_light_metrics_by_taxel",
+      "title": "Optical response, temporal noise, active area and response-to-noise proxy",
+      "path": "C:\\Users\\DLSU\\OneDrive\\Documents\\SOFTWARE CALIBRATION\\reports\\BEST_RESULTS\\figures\\07_light_metrics_by_taxel.png",
+      "sha256": "4513e07f91dac5ad37cbca6ca580ba9e88a5d849e6ecf650a1a5ea99efeed677"
+    },
+    {
+      "number": 10,
+      "name": "08_light_force_correlation",
+      "title": "Within-recording force–light Spearman correlations",
+      "path": "C:\\Users\\DLSU\\OneDrive\\Documents\\SOFTWARE CALIBRATION\\reports\\BEST_RESULTS\\figures\\08_light_force_correlation.png",
+      "sha256": "f1106a787168385703dd8db63f01a12e7bd5e33fdcf9015acb3579b5c5cbe728"
+    },
+    {
+      "number": 11,
+      "name": "v_force_taxels_1_3",
+      "title": "Raw HSV V versus aligned reference force, T1-T3",
+      "path": "C:\\Users\\DLSU\\OneDrive\\Documents\\SOFTWARE CALIBRATION\\reports\\manual_v_force_relationship_2026-10-19\\v_force_taxels_1_3.png",
+      "sha256": "0103b1a82de938f8a16963e65afb821cf95ffecb735173973442ba9fddf9a6a4"
+    },
+    {
+      "number": 12,
+      "name": "v_force_taxels_4_6",
+      "title": "Raw HSV V versus aligned reference force, T4-T6",
+      "path": "C:\\Users\\DLSU\\OneDrive\\Documents\\SOFTWARE CALIBRATION\\reports\\manual_v_force_relationship_2026-10-19\\v_force_taxels_4_6.png",
+      "sha256": "7aa4f206259f8ed80d0923e54551b3a3cbcc120b6b5b0eaf07829ccb1500422b"
+    },
+    {
+      "number": 13,
+      "name": "v_force_taxels_7_9",
+      "title": "Raw HSV V versus aligned reference force, T7-T9",
+      "path": "C:\\Users\\DLSU\\OneDrive\\Documents\\SOFTWARE CALIBRATION\\reports\\manual_v_force_relationship_2026-10-19\\v_force_taxels_7_9.png",
+      "sha256": "f23c1f2da503cd7eb3f765aac74cf7ebe205901f9a14910d8c844d45fe453674"
+    }
+  ],
+  "sources": [
+    {
+      "id": "S1",
+      "title": "Consolidated best metrics, matrices and fold configurations",
+      "path": "reports/BEST_RESULTS/BEST_METRICS.json",
+      "sha256": "0f74601199ca2b644e9abc2f83ab402f516a37d99c1da70728616f564e754332"
+    },
+    {
+      "id": "S2",
+      "title": "All 50 fixed and tuned comparison rows",
+      "path": "reports/BEST_RESULTS/reference/all_competing_models_ranked.csv",
+      "sha256": "0a4e85fb7d19ae7b50601480951f5484c56876d2fe613ad238f4f16e13326370"
+    },
+    {
+      "id": "S3",
+      "title": "Winning-model held-out prediction rows",
+      "path": "reports/BEST_RESULTS/data/best_models_held_out_predictions.parquet",
+      "sha256": "84ba96166137f8ab1c71c6c8d9303b1e75297bfc18e5e89f55e2e373596b9560"
+    },
+    {
+      "id": "S4",
+      "title": "Fixed benchmark protocol",
+      "path": "calibration_gui/analysis_outputs/live_sensor_manual_only/model_runs/retraining_20260909/protocol.json",
+      "sha256": "31924ffc9ba96124719f2fe4f4e057492716827a0ef4bbbde995f501b5b9f28a"
+    },
+    {
+      "id": "S5",
+      "title": "Tuning protocol and full 178-candidate grid",
+      "path": "calibration_gui/analysis_outputs/live_sensor_manual_only/model_runs/tuning_20260909/protocol.json",
+      "sha256": "81ecf501fb217d40f33dc352da1fe123f6a888c4f0a2effad6398375488a523e"
+    },
+    {
+      "id": "S6",
+      "title": "Fixed-run dataset and feature provenance",
+      "path": "calibration_gui/analysis_outputs/live_sensor_manual_only/model_runs/retraining_20260909/provenance.json",
+      "sha256": "f0fa7fdc78bdaae23dd9b1fc2bd47c21530b20f0c5389c8c7b7392429319f3af"
+    },
+    {
+      "id": "S7",
+      "title": "Fixed estimator parameter export",
+      "path": "calibration_gui/analysis_outputs/live_sensor_manual_only/model_runs/retraining_20260909/estimator_parameters.json",
+      "sha256": "df26dd967959929a56b3b98100c1dc007e2f09e45d269902434ea497b3cf5c75"
+    },
+    {
+      "id": "S8",
+      "title": "Exact segmentation, model defaults and feature source",
+      "path": "reports/manual_calibration_thesis_report_2026-10-05/Exact_Segmentation_and_Model_Configurations.json",
+      "sha256": "f11515378af507a6d7b064c257d84a3739060818085860987632e7de62750a15"
+    },
+    {
+      "id": "S9",
+      "title": "Tuning validation audit",
+      "path": "calibration_gui/analysis_outputs/live_sensor_manual_only/model_runs/tuning_20260909/validation_audit.json",
+      "sha256": "e1400aa5a1b91b788751c6ff217e88647594e1a829c80aafa383080fd03db3a5"
+    },
+    {
+      "id": "S10",
+      "title": "Optical source validation",
+      "path": "reports/manual_calibration_matrices_and_light_metrics_2026-10-18/source_validation.json",
+      "sha256": "abac5f5948e7e2f278bf3942e7eae5c2530e3db695c9f887d8b7381843ddb285"
+    },
+    {
+      "id": "S11",
+      "title": "Optical analysis methods and interpretation",
+      "path": "reports/manual_calibration_matrices_and_light_metrics_2026-10-18/Technical_Notes_for_Thesis.txt",
+      "sha256": "48ae27c36b1a6eca4415b36213bf50ec535872adf0ea07b3b6f3985c76ac210a"
+    },
+    {
+      "id": "S12",
+      "title": "Optical metric calculations and validation",
+      "path": "reports/manual_calibration_matrices_and_light_metrics_2026-10-18/metrics_and_validation.json",
+      "sha256": "f65eb208b539728ccca25747df1e41c6abf4272759727d190de6a3b03a15abe0"
+    },
+    {
+      "id": "S13",
+      "title": "Independent winner-metric and matrix recomputation for this report",
+      "path": "reports/complete_thesis_report_2026-10-18/derived_evidence.json",
+      "sha256": "cb7514a3dc2432b2a1cdbb871fecff843fda36533bdc17aaef9cd3685dbfb8c0"
+    },
+    {
+      "id": "S14",
+      "title": "Saved original-bundle timing audit",
+      "path": "calibration_gui/analysis_outputs/live_sensor_manual_only/model_runs/tuning_20260909/inference_timing.json",
+      "sha256": "5de2b3fd743678edb665916ce290188fce8a1cb8587e06a781f5c78a6f97f1c0"
+    },
+    {
+      "id": "S15",
+      "title": "Prior report: acquisition context and hardware evidence register",
+      "path": "reports/manual_calibration_thesis_report_2026-10-05/Manual_Calibration_Models_Technical_Report.txt",
+      "sha256": "29720f548ca9fec0a1523da485e902d0f8da144480d3d3733ce6e8a09828cc8d"
+    },
+    {
+      "id": "S16",
+      "title": "Direct HSV V metrics, baseline provenance and calculation checks",
+      "path": "reports/manual_v_channel_metrics_2026-10-18/v_channel_metrics.json",
+      "sha256": "8c44db5108c12856b8df0d213eb4dacbe9dd84f49d2694fd2ebf5fe47f49408b"
+    },
+    {
+      "id": "S17",
+      "title": "Raw-V versus force analysis, coefficients and recording-level correlations",
+      "path": "reports/manual_v_force_relationship_2026-10-19/v_force_analysis.json",
+      "sha256": "485ea4d47581f64a36c8aa9e7416305e800e1a1a78df6665503cb7f731f12964"
+    }
+  ],
+  "model_comparison_rows": 50,
+  "candidate_count": 178,
+  "pdf_sha256": "f593cb9f9023f595142dae5b42443a8b7baa7a79cc3fa78bd96a964fe4cbc44c",
+  "pdf_bytes": 5728397
+}

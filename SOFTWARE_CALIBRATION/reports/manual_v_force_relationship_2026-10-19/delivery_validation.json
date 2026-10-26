@@ -1,0 +1,33 @@
+{
+  "status": "passed",
+  "output_pdf": "C:\\Users\\DLSU\\OneDrive\\Documents\\SOFTWARE CALIBRATION\\output\\pdf\\complete_thesis_report_2026-10-18\\Manual_Calibration_Complete_Thesis_Technical_Report.pdf",
+  "pdf_sha256": "f593cb9f9023f595142dae5b42443a8b7baa7a79cc3fa78bd96a964fe4cbc44c",
+  "preserved_prior_pdf_sha256": "2c9f318b1dd1323c770edb88ff5bbadb1c8693f3022cc5f9dd4c693377e5d811",
+  "report_checks_passed": 398,
+  "pages": 53,
+  "new_analysis_pages": [
+    29,
+    30,
+    31,
+    32,
+    33,
+    34
+  ],
+  "visual_review": {
+    "status": "passed",
+    "reviewed_pages": [
+      1,
+      2,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      38,
+      40,
+      53
+    ],
+    "notes": "Rendered updated pages inspected: charts, numeric tables, captions, sources and contents are legible with no clipping or overlap. All prior model comparisons retained."
+  }
+}

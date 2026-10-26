@@ -1,0 +1,28 @@
+{
+  "session_directory": "C:\\Users\\DLSU\\OneDrive\\Documents\\SOFTWARE CALIBRATION\\spare_calibration_gui\\output\\physical-arducam-com3-20260803T085832Z",
+  "accepted_frames": 160,
+  "video_frames": 160,
+  "loadcell_samples": 132,
+  "master_rows": 160,
+  "missing_force_rows": 0,
+  "peak_force_N": 7.674384964527915,
+  "median_force_N": 2.482842605599213,
+  "camera_measured_fps_before_recording": 15.591381084491607,
+  "median_processing_and_write_ms": 16.839649999838002,
+  "video_codec": "mp4v",
+  "auxiliary_streams": [
+    "original_overlays",
+    "processed",
+    "motion_magnified"
+  ],
+  "calibration_id": "c87fc15d-2a7e-49fb-b07c-acf4c43f440e",
+  "serial_identity": {
+    "port": "COM3",
+    "baud_rate": 115200,
+    "device_name": "HX711_NANO",
+    "protocol_version": "1.0",
+    "firmware_version": "1.0.0",
+    "device_session_id": "hx711-ed32476294cd4fa18bc26630d71cd745-0",
+    "simulation_mode": false
+  }
+}

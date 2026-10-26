@@ -1,0 +1,4 @@
+2026-10-18 22:40:37,408 Verified 144 recording means from original archive; max error 8.88e-16
+2026-10-18 22:40:39,759 Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2026-10-18 22:40:39,760 Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2026-10-18 22:40:40,191 Completed source verification, BCa bootstrap and cluster-jackknife model. No records excluded.

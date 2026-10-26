@@ -1,0 +1,50 @@
+{
+  "test_type": "physical_read_only_printer_smoke",
+  "started_utc": "2026-08-04T06:35:23.029522+00:00",
+  "finished_utc": "2026-08-04T06:35:27.441102+00:00",
+  "operating_system": "Windows-11-10.0.26200-SP0",
+  "printer_port": "COM4",
+  "loadcell_port_reserved_not_opened": "COM3",
+  "ports_are_separate": true,
+  "enumerated_ports": [
+    {
+      "device": "COM3",
+      "description": "USB-SERIAL CH340 (COM3)",
+      "manufacturer": "wch.cn",
+      "vid": 6790,
+      "pid": 29987,
+      "serial_number": ""
+    },
+    {
+      "device": "COM4",
+      "description": "USB-SERIAL CH340 (COM4)",
+      "manufacturer": "wch.cn",
+      "vid": 6790,
+      "pid": 29987,
+      "serial_number": ""
+    }
+  ],
+  "connection": {
+    "port": "COM4",
+    "baud_rate": 115200,
+    "firmware_name": "Marlin V1.1.6 (Sep 13 2022 15:13:53)",
+    "firmware_version": "",
+    "marlin_verified": true,
+    "connected_monotonic_ns": 80225590237400
+  },
+  "position": {
+    "reported_x_mm": 149.2,
+    "reported_y_mm": 120.9,
+    "reported_z_mm": 0.0,
+    "reported_valid": true,
+    "homed_claimed": false,
+    "press_zero_valid": false
+  },
+  "commands_actually_sent": [
+    "M115",
+    "M114"
+  ],
+  "motion_commands_sent": false,
+  "homing_performed": false,
+  "hardware_claim_scope": "COM4 transport, Marlin M115 identity, and M114 parsing only; no camera/load-cell acquisition and no printer motion"
+}

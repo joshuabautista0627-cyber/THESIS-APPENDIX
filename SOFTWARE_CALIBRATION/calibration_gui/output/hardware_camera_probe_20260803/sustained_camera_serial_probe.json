@@ -1,0 +1,95 @@
+{
+  "timestamp_utc": "2026-08-03T10:54:38.818470+00:00",
+  "duration_requested_s": 60.0,
+  "camera": {
+    "identity": "Arducam IMX179 Camera Module",
+    "pnp_id": "USB VID_1BCF&PID_0B12",
+    "requested": {
+      "device_index": 0,
+      "backend_preference": [
+        "DirectShow"
+      ],
+      "requested_width": 640,
+      "requested_height": 480,
+      "requested_fps": 30.0,
+      "warmup_seconds": 0.0,
+      "baseline_drift_mean_v": 5.0,
+      "property_readback_tolerance": 0.05
+    },
+    "actual": {
+      "device_index": 0,
+      "backend": "DirectShow",
+      "requested_width": 640,
+      "requested_height": 480,
+      "requested_fps": 30.0,
+      "actual_width": 640,
+      "actual_height": 480,
+      "actual_fps": 30.00003000003,
+      "simulation_mode": false,
+      "source_label": "GXIVISION-S2M05 candidate at camera index 0; operator confirmation required"
+    },
+    "frame_count": 901,
+    "overall": {
+      "rate_hz": 14.98484871956066,
+      "minimum_interval_ms": 60.514,
+      "median_interval_ms": 64.10495,
+      "p95_interval_ms": 79.9795,
+      "maximum_interval_ms": 81.1047
+    },
+    "beginning_middle_end": [
+      {
+        "start_s": 0.0,
+        "end_s": 20.0,
+        "frames": 300,
+        "rate_hz": 14.988220411696437,
+        "minimum_interval_ms": 60.882,
+        "median_interval_ms": 64.1043,
+        "p95_interval_ms": 79.9215,
+        "maximum_interval_ms": 81.1047
+      },
+      {
+        "start_s": 20.0,
+        "end_s": 40.0,
+        "frames": 300,
+        "rate_hz": 14.974085442081451,
+        "minimum_interval_ms": 62.1398,
+        "median_interval_ms": 64.1003,
+        "p95_interval_ms": 80.0135,
+        "maximum_interval_ms": 80.8564
+      },
+      {
+        "start_s": 40.0,
+        "end_s": 60.0,
+        "frames": 300,
+        "rate_hz": 14.985236284599608,
+        "minimum_interval_ms": 60.514,
+        "median_interval_ms": 64.1139,
+        "p95_interval_ms": 80.0231,
+        "maximum_interval_ms": 80.9047
+      }
+    ],
+    "read_block_median_ms": 64.0997,
+    "read_block_p95_ms": 79.9832,
+    "read_block_maximum_ms": 81.0931
+  },
+  "loadcell": {
+    "identity": {
+      "port": "COM3",
+      "baud_rate": 115200,
+      "device_name": "HX711_NANO",
+      "protocol_version": "1.0",
+      "firmware_version": "1.0.0",
+      "device_session_id": "hx711-ec711609b81943d59d7a9663f34be8d8-0",
+      "simulation_mode": false
+    },
+    "sample_count": 661,
+    "rate_hz": 10.991175990816545,
+    "minimum_interval_ms": 0.1897,
+    "median_interval_ms": 91.84745000000001,
+    "p95_interval_ms": 92.1283,
+    "maximum_interval_ms": 93.6913,
+    "sample_id_gaps": 0
+  },
+  "usb_contention_passed": true,
+  "serial_errors": []
+}

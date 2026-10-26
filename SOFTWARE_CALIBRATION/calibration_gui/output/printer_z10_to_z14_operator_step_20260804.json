@@ -1,0 +1,270 @@
+{
+  "test_type": "physical_explicit_home_and_single_positive_z",
+  "started_utc": "2026-08-04T06:49:43.598251+00:00",
+  "finished_utc": "2026-08-04T06:50:08.304300+00:00",
+  "printer_port": "COM4",
+  "loadcell_port_reserved_not_opened": "COM3",
+  "ports_are_separate": true,
+  "enumerated_ports": [
+    {
+      "device": "COM3",
+      "description": "USB-SERIAL CH340 (COM3)",
+      "manufacturer": "wch.cn",
+      "vid": 6790,
+      "pid": 29987,
+      "serial_number": ""
+    },
+    {
+      "device": "COM4",
+      "description": "USB-SERIAL CH340 (COM4)",
+      "manufacturer": "wch.cn",
+      "vid": 6790,
+      "pid": 29987,
+      "serial_number": ""
+    }
+  ],
+  "connection": {
+    "port": "COM4",
+    "baud_rate": 115200,
+    "firmware_name": "Marlin V1.1.6 (Sep 13 2022 15:13:53)",
+    "firmware_version": "",
+    "marlin_verified": true,
+    "connected_monotonic_ns": 81086187984000
+  },
+  "position_before_home": {
+    "tracked_x_mm": 149.2,
+    "tracked_y_mm": 120.9,
+    "tracked_z_mm": 10.0,
+    "reported_x_mm": 149.2,
+    "reported_y_mm": 120.9,
+    "reported_z_mm": 10.0,
+    "tracked_valid": true,
+    "reported_valid": true,
+    "homed": false,
+    "press_zero_x_mm": null,
+    "press_zero_y_mm": null,
+    "press_zero_z_mm": null,
+    "press_zero_valid": false
+  },
+  "position_after_home": {
+    "tracked_x_mm": 149.2,
+    "tracked_y_mm": 120.9,
+    "tracked_z_mm": 10.0,
+    "reported_x_mm": 149.2,
+    "reported_y_mm": 120.9,
+    "reported_z_mm": 10.0,
+    "tracked_valid": true,
+    "reported_valid": true,
+    "homed": true,
+    "press_zero_x_mm": null,
+    "press_zero_y_mm": null,
+    "press_zero_z_mm": null,
+    "press_zero_valid": false
+  },
+  "requested_target_z_mm": 14.0,
+  "requested_feed_rate_mm_min": 120.0,
+  "position_after_z_move": {
+    "tracked_x_mm": 149.2,
+    "tracked_y_mm": 120.9,
+    "tracked_z_mm": 14.0,
+    "reported_x_mm": 149.2,
+    "reported_y_mm": 120.9,
+    "reported_z_mm": 14.0,
+    "tracked_valid": true,
+    "reported_valid": true,
+    "homed": true,
+    "press_zero_x_mm": null,
+    "press_zero_y_mm": null,
+    "press_zero_z_mm": null,
+    "press_zero_valid": false
+  },
+  "commands_actually_sent": [
+    "M115",
+    "M114",
+    "G28",
+    "M400",
+    "M114",
+    "G90",
+    "G1 Z14.000 F120.000",
+    "M400",
+    "M114"
+  ],
+  "command_history": [
+    {
+      "command_id": "3e716dc5-e958-4dc8-b4dd-94daa701e78b",
+      "gcode": "M115",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 81088189067700,
+      "sent_monotonic_ns": 81088189161600,
+      "acknowledged_monotonic_ns": 81088458927700,
+      "completed_monotonic_ns": 81088468889400,
+      "response_lines": [
+        "FIRMWARE_NAME:Marlin V1.1.6 (Sep 13 2022 15:13:53) SOURCE_CODE_URL:github.com/MarlinFirmware/Marlin PROTOCOL_VERSION:1.0 MACHINE_TYPE:Ender-3 V2 Neo EXTRUDER_COUNT:1 UUID:cede2a2f-41a2-4748-9b12-c55c62f367ff",
+        "Cap:SERIAL_XON_XOFF:0",
+        "Cap:BINARY_FILE_TRANSFER:0",
+        "Cap:EEPROM:1",
+        "Cap:VOLUMETRIC:1",
+        "Cap:AUTOREPORT_POS:0",
+        "Cap:AUTOREPORT_TEMP:1",
+        "Cap:PROGRESS:0",
+        "Cap:PRINT_JOB:1",
+        "Cap:AUTOLEVEL:1",
+        "Cap:RUNOUT:0",
+        "Cap:Z_PROBE:1",
+        "Cap:LEVELING_DATA:1",
+        "Cap:BUILD_PERCENT:0",
+        "Cap:SOFTWARE_POWER:0",
+        "Cap:TOGGLE_LIGHTS:0",
+        "Cap:CASE_LIGHT_BRIGHTNESS:0",
+        "Cap:EMERGENCY_PARSER:0",
+        "Cap:HOST_ACTION_COMMANDS:0",
+        "Cap:PROMPT_SUPPORT:0",
+        "Cap:SDCARD:1",
+        "Cap:REPEAT:0",
+        "Cap:SD_WRITE:1",
+        "Cap:AUTOREPORT_SD_STATUS:0",
+        "Cap:LONG_FILENAME:1",
+        "Cap:THERMAL_PROTECTION:1",
+        "Cap:MOTION_MODES:0",
+        "Cap:ARCS:1",
+        "Cap:BABYSTEPPING:1",
+        "Cap:CHAMBER_TEMPERATURE:0",
+        "Cap:COOLER_TEMPERATURE:0",
+        "Cap:MEATPACK:0",
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "ccfb1fef-6e69-4522-918c-b838923582d5",
+      "gcode": "M114",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 81088469863400,
+      "sent_monotonic_ns": 81088469939400,
+      "acknowledged_monotonic_ns": 81088476989000,
+      "completed_monotonic_ns": 81088480476400,
+      "response_lines": [
+        "X:149.20 Y:120.90 Z:10.00 E:0.00 Count X:11936 Y:9672 Z:4000",
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "c7e9235b-9226-4478-bc64-1d319817d89a",
+      "gcode": "G28",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 81088480764200,
+      "sent_monotonic_ns": 81088480852700,
+      "acknowledged_monotonic_ns": 81107009908200,
+      "completed_monotonic_ns": 81107010196000,
+      "response_lines": [
+        "echo:busy: processing",
+        "echo:busy: processing",
+        "echo:busy: processing",
+        "echo:busy: processing",
+        "echo:busy: processing",
+        "echo:busy: processing",
+        "echo:busy: processing",
+        "echo:busy: processing",
+        "X:149.20 Y:120.90 Z:10.00 E:0.00 Count X:11936 Y:9672 Z:4000",
+        "echo:Bed Leveling ON",
+        "echo:Fade Height 3.00",
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "66696657-99e1-4a46-a8d8-395606a34da8",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 81107010342800,
+      "sent_monotonic_ns": 81107010391000,
+      "acknowledged_monotonic_ns": 81107012891500,
+      "completed_monotonic_ns": 81107021165800,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "44fdd0ba-7e1e-4cc4-828b-7f5d528fd507",
+      "gcode": "M114",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 81107021463800,
+      "sent_monotonic_ns": 81107021533000,
+      "acknowledged_monotonic_ns": 81107029359700,
+      "completed_monotonic_ns": 81107033270800,
+      "response_lines": [
+        "X:149.20 Y:120.90 Z:10.00 E:0.00 Count X:11936 Y:9672 Z:4000",
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "357e65b7-4073-4a75-b7c5-0ec7f75ffef6",
+      "gcode": "G90",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 81107033509900,
+      "sent_monotonic_ns": 81107033570300,
+      "acknowledged_monotonic_ns": 81107035920800,
+      "completed_monotonic_ns": 81107044026100,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "5e132354-cbd0-4eb4-9e96-b14b7f94baea",
+      "gcode": "G1 Z14.000 F120.000",
+      "timeout_s": 60.0,
+      "state": "completed",
+      "queued_monotonic_ns": 81107044144700,
+      "sent_monotonic_ns": 81107044201300,
+      "acknowledged_monotonic_ns": 81107048128600,
+      "completed_monotonic_ns": 81107055137500,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "8fa320a9-e3a9-4365-b147-1c5ac2125827",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 81107055260700,
+      "sent_monotonic_ns": 81107055320900,
+      "acknowledged_monotonic_ns": 81109237736700,
+      "completed_monotonic_ns": 81109247724000,
+      "response_lines": [
+        "echo:busy: processing",
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "c1ea39b4-3ee8-4070-94df-f478159f6efd",
+      "gcode": "M114",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 81109247877700,
+      "sent_monotonic_ns": 81109247915800,
+      "acknowledged_monotonic_ns": 81109254880800,
+      "completed_monotonic_ns": 81109258615500,
+      "response_lines": [
+        "X:149.20 Y:120.90 Z:14.00 E:0.00 Count X:11936 Y:9672 Z:5600",
+        "ok"
+      ],
+      "error": ""
+    }
+  ],
+  "x_or_y_jog_sent": false,
+  "press_zero_set": false,
+  "emergency_commands_sent": false
+}

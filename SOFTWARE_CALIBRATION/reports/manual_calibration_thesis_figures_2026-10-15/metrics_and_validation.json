@@ -1,0 +1,632 @@
+{
+  "created_on": "2026-10-15",
+  "experiment": "tuning_20260909",
+  "primary_model": "Tuned selected",
+  "source_prediction_sha256": "fda648280f60ca250e10a2e34e546a1677ae0a7cf0e7a6261c1bb9a3982e1817",
+  "definitions": {
+    "primary": "Nested selection evaluated on six complete outer TEST groups",
+    "weighted_matrix": "Each frame gets weight 1/(eligible frames in its recording); normalize each actual-class row to 100%.",
+    "raw_matrix": "Unweighted integer frame counts",
+    "spatial_map": "Performance per true ROI, not a pixelwise prediction or force map",
+    "refit": "No final full-data estimator is evaluated on its own training rows here."
+  },
+  "summaries": {
+    "localization_selected": {
+      "task": "localization",
+      "model": "Tuned selected",
+      "frames": 7154,
+      "recordings": 54,
+      "metrics_recording_weighted": {
+        "accuracy": 0.8440437042211071,
+        "balanced_accuracy": 0.8440437042211069,
+        "macro_f1": 0.8475379322592568
+      },
+      "raw_frame_accuracy": 0.7696393625943528,
+      "raw_confusion_matrix": [
+        [
+          575,
+          0,
+          0,
+          17,
+          6,
+          2,
+          4,
+          0,
+          92
+        ],
+        [
+          6,
+          162,
+          0,
+          257,
+          0,
+          12,
+          0,
+          0,
+          56
+        ],
+        [
+          0,
+          0,
+          245,
+          4,
+          0,
+          4,
+          0,
+          0,
+          13
+        ],
+        [
+          5,
+          0,
+          2,
+          1011,
+          3,
+          0,
+          0,
+          0,
+          71
+        ],
+        [
+          0,
+          0,
+          0,
+          10,
+          1014,
+          6,
+          0,
+          0,
+          433
+        ],
+        [
+          5,
+          0,
+          0,
+          18,
+          1,
+          874,
+          0,
+          0,
+          23
+        ],
+        [
+          0,
+          0,
+          0,
+          4,
+          18,
+          0,
+          709,
+          0,
+          293
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          5,
+          6,
+          2,
+          421,
+          269
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          495
+        ]
+      ],
+      "weighted_row_percent": [
+        [
+          82.36047231385209,
+          0.0,
+          0.0,
+          9.076143182288432,
+          3.6392914653784216,
+          0.5376344086021504,
+          1.5310892940626457,
+          0.0,
+          2.8553693358162606
+        ],
+        [
+          2.213352685050803,
+          56.00268659481822,
+          0.0,
+          26.979503775620294,
+          0.0,
+          11.783960720130956,
+          0.0,
+          0.0,
+          3.020496224379725
+        ],
+        [
+          0.0,
+          0.0,
+          92.99328568334415,
+          0.8230452674897135,
+          0.0,
+          3.508771929824568,
+          0.0,
+          0.0,
+          2.674897119341569
+        ],
+        [
+          0.4125412541254158,
+          0.0,
+          0.12121212121212219,
+          93.43118913571405,
+          0.31847133757962043,
+          0.0,
+          0.0,
+          0.0,
+          5.716586151368809
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.34223134839151254,
+          84.36816614062356,
+          0.47098512563254386,
+          0.0,
+          0.0,
+          14.818617385352374
+        ],
+        [
+          0.6127450980392255,
+          0.0,
+          0.0,
+          4.1666666666667345,
+          0.12254901960784509,
+          89.77396514161202,
+          0.0,
+          0.0,
+          5.324074074074161
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.2229654403567456,
+          1.4557495248731418,
+          0.0,
+          81.98906652863852,
+          0.0,
+          16.332218506131603
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.6946423482473648,
+          1.7906336088154293,
+          0.5165289256198353,
+          79.04729964601454,
+          17.95089547130282
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.32679738562091315,
+          99.6732026143791
+        ]
+      ]
+    },
+    "contact_selected": {
+      "task": "contact",
+      "model": "Tuned selected",
+      "frames": 8506,
+      "recordings": 65,
+      "metrics_recording_weighted": {
+        "accuracy": 0.9751071810004465,
+        "balanced_accuracy": 0.9850182107873058,
+        "macro_f1": 0.9581409806243167
+      },
+      "raw_frame_accuracy": 0.9637902656948036,
+      "raw_confusion_matrix": [
+        [
+          1352,
+          0
+        ],
+        [
+          308,
+          6846
+        ]
+      ],
+      "weighted_row_percent": [
+        [
+          100.0,
+          0.0
+        ],
+        [
+          2.996357842538835,
+          97.00364215746116
+        ]
+      ]
+    },
+    "localization_ensemble_family": {
+      "task": "localization",
+      "model": "Tuned ensemble",
+      "frames": 7154,
+      "recordings": 54,
+      "metrics_recording_weighted": {
+        "accuracy": 0.8471135578913044,
+        "balanced_accuracy": 0.8471135578913043,
+        "macro_f1": 0.8511643920274206
+      },
+      "raw_frame_accuracy": 0.7701984903550462,
+      "raw_confusion_matrix": [
+        [
+          577,
+          0,
+          0,
+          20,
+          2,
+          2,
+          3,
+          0,
+          92
+        ],
+        [
+          6,
+          162,
+          0,
+          257,
+          0,
+          12,
+          0,
+          0,
+          56
+        ],
+        [
+          0,
+          1,
+          246,
+          6,
+          0,
+          0,
+          0,
+          0,
+          13
+        ],
+        [
+          5,
+          0,
+          4,
+          1009,
+          3,
+          0,
+          0,
+          0,
+          71
+        ],
+        [
+          0,
+          0,
+          0,
+          10,
+          1014,
+          6,
+          0,
+          0,
+          433
+        ],
+        [
+          6,
+          0,
+          0,
+          18,
+          1,
+          873,
+          0,
+          0,
+          23
+        ],
+        [
+          0,
+          0,
+          0,
+          4,
+          17,
+          0,
+          710,
+          0,
+          293
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          4,
+          4,
+          3,
+          423,
+          269
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          496
+        ]
+      ],
+      "weighted_row_percent": [
+        [
+          83.80974767617093,
+          0.0,
+          0.0,
+          11.250056225766695,
+          0.7407407407407407,
+          0.5376344086021504,
+          0.8064516129032258,
+          0.0,
+          2.8553693358162606
+        ],
+        [
+          2.213352685050803,
+          56.00268659481822,
+          0.0,
+          26.979503775620294,
+          0.0,
+          11.783960720130956,
+          0.0,
+          0.0,
+          3.020496224379725
+        ],
+        [
+          0.0,
+          0.8771929824561421,
+          93.8704786658003,
+          2.577431232401998,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          2.674897119341569
+        ],
+        [
+          0.4125412541254157,
+          0.0,
+          0.2424242424242443,
+          93.30997701450191,
+          0.3184713375796203,
+          0.0,
+          0.0,
+          0.0,
+          5.716586151368808
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.34223134839151254,
+          84.36816614062356,
+          0.47098512563254386,
+          0.0,
+          0.0,
+          14.818617385352374
+        ],
+        [
+          0.7352941176470708,
+          0.0,
+          0.0,
+          4.166666666666735,
+          0.1225490196078451,
+          89.65141612200418,
+          0.0,
+          0.0,
+          5.3240740740741614
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.2229654403567456,
+          1.377867904935447,
+          0.0,
+          82.0669481485762,
+          0.0,
+          16.332218506131603
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.5569013014154087,
+          1.5151515151515171,
+          0.6542699724517914,
+          79.32278173967846,
+          17.95089547130282
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          100.0
+        ]
+      ]
+    },
+    "contact_svc_family": {
+      "task": "contact",
+      "model": "Tuned RBF SVC",
+      "frames": 8506,
+      "recordings": 65,
+      "metrics_recording_weighted": {
+        "accuracy": 0.992416224751909,
+        "balanced_accuracy": 0.9954356908229083,
+        "macro_f1": 0.9867496034837682
+      },
+      "raw_frame_accuracy": 0.9954150011756407,
+      "raw_confusion_matrix": [
+        [
+          1352,
+          0
+        ],
+        [
+          39,
+          7115
+        ]
+      ],
+      "weighted_row_percent": [
+        [
+          100.0,
+          0.0
+        ],
+        [
+          0.9128618354183328,
+          99.08713816458167
+        ]
+      ]
+    }
+  },
+  "top_localization_confusions": [
+    {
+      "actual_roi": 2,
+      "predicted_roi": 4,
+      "weighted_percent": 26.979503775620294,
+      "raw_frames": 257
+    },
+    {
+      "actual_roi": 8,
+      "predicted_roi": 9,
+      "weighted_percent": 17.95089547130282,
+      "raw_frames": 269
+    },
+    {
+      "actual_roi": 7,
+      "predicted_roi": 9,
+      "weighted_percent": 16.332218506131603,
+      "raw_frames": 293
+    },
+    {
+      "actual_roi": 5,
+      "predicted_roi": 9,
+      "weighted_percent": 14.818617385352374,
+      "raw_frames": 433
+    },
+    {
+      "actual_roi": 2,
+      "predicted_roi": 6,
+      "weighted_percent": 11.783960720130956,
+      "raw_frames": 12
+    }
+  ],
+  "checks": [
+    "localizationTuned selected unique frame IDs",
+    "localizationTuned selected held-out groups",
+    "localizationTuned selected six groups",
+    "localizationTuned selected whole sessions",
+    "localizationTuned selected complete labels",
+    "contactTuned selected unique frame IDs",
+    "contactTuned selected held-out groups",
+    "contactTuned selected six groups",
+    "contactTuned selected whole sessions",
+    "contactTuned selected complete labels",
+    "eligible manual roles only",
+    "positive frame identities agree",
+    "localization_selected independently calculated matrix",
+    "localization_selected count total",
+    "localization_selected percentage row totals",
+    "localization_selected equal-recording weight total",
+    "localization_selected accuracy matches original report",
+    "localization_selected balanced_accuracy matches original report",
+    "localization_selected macro_f1 matches original report",
+    "contact_selected independently calculated matrix",
+    "contact_selected count total",
+    "contact_selected percentage row totals",
+    "contact_selected equal-recording weight total",
+    "contact_selected accuracy matches original report",
+    "contact_selected balanced_accuracy matches original report",
+    "contact_selected macro_f1 matches original report",
+    "ROI 1 recall equals confusion diagonal",
+    "ROI 2 recall equals confusion diagonal",
+    "ROI 3 recall equals confusion diagonal",
+    "ROI 4 recall equals confusion diagonal",
+    "ROI 5 recall equals confusion diagonal",
+    "ROI 6 recall equals confusion diagonal",
+    "ROI 7 recall equals confusion diagonal",
+    "ROI 8 recall equals confusion diagonal",
+    "ROI 9 recall equals confusion diagonal",
+    "localizationTuned ensemble unique frame IDs",
+    "localizationTuned ensemble held-out groups",
+    "localizationTuned ensemble six groups",
+    "localizationTuned ensemble whole sessions",
+    "localizationTuned ensemble complete labels",
+    "localization_ensemble_family independently calculated matrix",
+    "localization_ensemble_family count total",
+    "localization_ensemble_family percentage row totals",
+    "localization_ensemble_family equal-recording weight total",
+    "localization_ensemble_family accuracy matches original report",
+    "localization_ensemble_family balanced_accuracy matches original report",
+    "localization_ensemble_family macro_f1 matches original report",
+    "contactTuned RBF SVC unique frame IDs",
+    "contactTuned RBF SVC held-out groups",
+    "contactTuned RBF SVC six groups",
+    "contactTuned RBF SVC whole sessions",
+    "contactTuned RBF SVC complete labels",
+    "contact_svc_family independently calculated matrix",
+    "contact_svc_family count total",
+    "contact_svc_family percentage row totals",
+    "contact_svc_family equal-recording weight total",
+    "contact_svc_family accuracy matches original report",
+    "contact_svc_family balanced_accuracy matches original report",
+    "contact_svc_family macro_f1 matches original report"
+  ],
+  "visual_review": "All seven figures inspected. Contact xlabel/caption collision corrected and re-rendered. PNG and SVG files checked; fixed blue sequential scale and numeric annotations preserve meaning without hue discrimination.",
+  "outputs": {
+    "01_localization_confusion_weighted": {
+      "png": "0c1da1f3af1d2e07e5f70d2bdc264ed6a8ff7e6d469c0a14393045fbd4edad21",
+      "svg": "3b405e71067479ed6e1d90a3299d0b354e8e1ad6002be504e7dc5b4fd3e95ff8"
+    },
+    "02_localization_confusion_counts": {
+      "png": "163e23825723ec0165e943ae96720759359c2477bfe899be62782edf35d81ecb",
+      "svg": "0f24bfc9affba7941bbc6372d9eb09ab3928120bb2cd59a8ed5e6c4843899a37"
+    },
+    "03_contact_confusion_matrices": {
+      "png": "ff3da313644dfe5519a04e0479a9c966463b5bc5c02df40c6a4cc7a5f3619b3a",
+      "svg": "82908525e02acdc90edeaafae8faaa9b1d8eb450685f9122e7f2a9df77c16f29"
+    },
+    "04_roi_performance_heatmaps": {
+      "png": "c4cfb32ebddf9b3e915f00d44b4e49e969661d81d6dad2797f8045fb1e71c6c6",
+      "svg": "4efa2b87f85cd006c9b5e0d402be6a513cf390326f24209ad52e9416fcf3c2a4"
+    },
+    "05_localization_group_roi_heatmap": {
+      "png": "51c5aa8e5f745c01cf5e0fc6db3ef7719d3f021a4104ea49477c29c1c6aa63c5",
+      "svg": "bf1837b269e29ec1365b9bb782a3cf4f391d19152dfcfe5de94130488dc7a4d3"
+    },
+    "06_supplement_localization_ensemble": {
+      "png": "b4f65378d3b8995ce9bb621fded271fb5ef1b0185737b3512f193aa2b467d958",
+      "svg": "1300fea2ad6a374589d8ba1dbd7b12d8f2953e48261241cf788c12bec87ff4bd"
+    },
+    "07_supplement_contact_svc": {
+      "png": "f9420c66b5362ce1794ac851d751595bcf2ce30c2a2cab64428d22fe6f801bea",
+      "svg": "1d3ba78e1ecd211721addc822cdf0e3a4513482e2c121155d6ac8a1042951acc"
+    }
+  },
+  "status": "passed"
+}

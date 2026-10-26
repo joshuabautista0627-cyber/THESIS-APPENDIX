@@ -1,0 +1,18 @@
+# Locally installed third-party tooling (not project source or thesis data)
+Arduino IDE/
+arduino-cli.exe
+
+# Generated Python and plotting caches
+**/__pycache__/
+*.py[cod]
+**/.pytest_cache/
+**/.mplconfig/
+**/.matplotlib/
+
+# Local artifact-authoring dependencies and inspection scratch
+.codex-slide-*/
+**/node_modules/
+**/.data-app-offline/
+**/chrome_print_profile/
+*.inspect.ndjson
+/tmp/

@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0.0",
+  "timestamp_utc": "2026-08-17T07:29:33.976525+00:00",
+  "mode": "preview_only",
+  "scientific_claim_allowed": false,
+  "bundle_id": "live-sensor-experimental-hybrid-v4",
+  "sensor_mode": "hybrid_force_event",
+  "force_output_available": true,
+  "canonical_layout": {
+    "roi_layout_id": "roi-9fbc67c50ee3bc7145fa",
+    "frame_size": [
+      480,
+      640
+    ],
+    "rotation_degrees": 90,
+    "mirror_horizontal": true
+  },
+  "camera": {
+    "requested": {
+      "device_index": 0,
+      "backend_preference": [
+        "DirectShow"
+      ],
+      "requested_width": 640,
+      "requested_height": 480,
+      "requested_fps": 30.0,
+      "rotation_degrees": 90,
+      "mirror_horizontal": true,
+      "warmup_seconds": 0.0,
+      "baseline_drift_mean_v": 5.0,
+      "property_readback_tolerance": 0.05
+    },
+    "actual": {
+      "device_index": 0,
+      "backend": "DirectShow",
+      "requested_width": 640,
+      "requested_height": 480,
+      "requested_fps": 30.0,
+      "actual_width": 640,
+      "actual_height": 480,
+      "actual_fps": 30.00003000003,
+      "simulation_mode": false,
+      "source_label": "Arducam IMX179 Camera Module candidate at camera index 0; operator confirmation required"
+    },
+    "oriented_frame_shape": [
+      640,
+      480,
+      3
+    ],
+    "preview_mean_bgr": [
+      7.517578125,
+      20.848668619791667,
+      21.643229166666668
+    ],
+    "preview_std_bgr": [
+      24.958802062288996,
+      57.60697911006137,
+      61.720884401723424
+    ],
+    "median_blocking_read_ms": 61.994
+  },
+  "preview_path": "C:\\Users\\DLSU\\OneDrive\\Documents\\SOFTWARE CALIBRATION\\spare_calibration_gui\\output\\hardware_hybrid_v4_preview_20260817T1515Z\\canonical_roi_preview.png",
+  "interpretation": "Acquisition and ROI geometry only; no unloaded-state or event-performance claim."
+}

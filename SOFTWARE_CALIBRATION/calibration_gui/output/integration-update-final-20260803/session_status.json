@@ -1,0 +1,99 @@
+{
+  "accepted_frame_count": 60,
+  "artifact_paths": {
+    "baseline_data": "C:\\Users\\DLSU\\OneDrive\\Documents\\SOFTWARE CALIBRATION\\spare_calibration_gui\\output\\integration-update-final-20260803\\baseline_data.npz",
+    "baseline_summary": "C:\\Users\\DLSU\\OneDrive\\Documents\\SOFTWARE CALIBRATION\\spare_calibration_gui\\output\\integration-update-final-20260803\\baseline_summary.json",
+    "camera_settings": "C:\\Users\\DLSU\\OneDrive\\Documents\\SOFTWARE CALIBRATION\\spare_calibration_gui\\output\\integration-update-final-20260803\\camera_settings.json",
+    "data_dictionary": "C:\\Users\\DLSU\\OneDrive\\Documents\\SOFTWARE CALIBRATION\\spare_calibration_gui\\output\\integration-update-final-20260803\\data_dictionary.csv",
+    "loadcell_calibration": "C:\\Users\\DLSU\\OneDrive\\Documents\\SOFTWARE CALIBRATION\\spare_calibration_gui\\output\\integration-update-final-20260803\\loadcell_calibration.json",
+    "roi_layout": "C:\\Users\\DLSU\\OneDrive\\Documents\\SOFTWARE CALIBRATION\\spare_calibration_gui\\output\\integration-update-final-20260803\\roi_layout.json",
+    "spatial_graphs": "C:\\Users\\DLSU\\OneDrive\\Documents\\SOFTWARE CALIBRATION\\spare_calibration_gui\\output\\integration-update-final-20260803\\spatial_graphs"
+  },
+  "automatic_graph_summary": {
+    "artifacts": {
+      "trial_integrated_heatmap": {
+        "available": true,
+        "csv": "spatial_graphs/trial_integrated_delta_v.csv",
+        "frame_id": null,
+        "json": "spatial_graphs/trial_integrated_delta_v.json",
+        "png": "spatial_graphs/trial_integrated_delta_v.png"
+      },
+      "trial_mean_contact_heatmap": {
+        "available": true,
+        "csv": "spatial_graphs/trial_mean_contact_mean_delta_v.csv",
+        "frame_id": null,
+        "json": "spatial_graphs/trial_mean_contact_mean_delta_v.json",
+        "png": "spatial_graphs/trial_mean_contact_mean_delta_v.png"
+      },
+      "trial_peak_heatmap": {
+        "available": true,
+        "csv": "spatial_graphs/trial_peak_mean_delta_v.csv",
+        "frame_id": 32,
+        "json": "spatial_graphs/trial_peak_mean_delta_v.json",
+        "png": "spatial_graphs/trial_peak_mean_delta_v.png"
+      },
+      "trial_peak_spatial_profile": {
+        "available": true,
+        "csv": "spatial_graphs/trial_peak_spatial_profile.csv",
+        "frame_id": 32,
+        "json": "spatial_graphs/trial_peak_spatial_profile.json",
+        "png": "spatial_graphs/trial_peak_spatial_profile.png"
+      },
+      "trial_temporal_lines": {
+        "available": true,
+        "csv": "spatial_graphs/trial_roi_intensity_over_time.csv",
+        "frame_id": null,
+        "json": "spatial_graphs/trial_roi_intensity_over_time.json",
+        "png": "spatial_graphs/trial_roi_intensity_over_time.png"
+      }
+    },
+    "automatic_heatmap_summary_status": "complete",
+    "automatic_spatial_profile_status": "complete",
+    "automatic_temporal_line_status": "complete",
+    "generated_files": [
+      "spatial_graphs/trial_integrated_delta_v.csv",
+      "spatial_graphs/trial_integrated_delta_v.json",
+      "spatial_graphs/trial_integrated_delta_v.png",
+      "spatial_graphs/trial_mean_contact_mean_delta_v.csv",
+      "spatial_graphs/trial_mean_contact_mean_delta_v.json",
+      "spatial_graphs/trial_mean_contact_mean_delta_v.png",
+      "spatial_graphs/trial_peak_mean_delta_v.csv",
+      "spatial_graphs/trial_peak_mean_delta_v.json",
+      "spatial_graphs/trial_peak_mean_delta_v.png",
+      "spatial_graphs/trial_peak_spatial_profile.csv",
+      "spatial_graphs/trial_peak_spatial_profile.json",
+      "spatial_graphs/trial_peak_spatial_profile.png",
+      "spatial_graphs/trial_roi_intensity_over_time.csv",
+      "spatial_graphs/trial_roi_intensity_over_time.json",
+      "spatial_graphs/trial_roi_intensity_over_time.png"
+    ],
+    "peak_frame_id": 32,
+    "status": "complete",
+    "trial_mean_contact_mean_delta_v_status": "available"
+  },
+  "automatic_heatmap_summary_status": "complete",
+  "automatic_spatial_profile_status": "complete",
+  "automatic_temporal_line_status": "complete",
+  "auxiliary_video_frame_counts": {},
+  "complete": true,
+  "errors": [],
+  "feature_row_count": 60,
+  "ingress_accepted_frame_count": 60,
+  "ingress_accepted_loadcell_sample_count": 158,
+  "lifecycle": "COMPLETE",
+  "loadcell_sample_count": 158,
+  "manual_line_graph_count": 0,
+  "manual_spatial_graph_count": 0,
+  "output_fps": 30.0,
+  "partial": false,
+  "recording_started_monotonic_ns": 10000000000,
+  "required_artifacts_written": true,
+  "session_directory": "C:\\Users\\DLSU\\OneDrive\\Documents\\SOFTWARE CALIBRATION\\spare_calibration_gui\\output\\integration-update-final-20260803",
+  "session_status": "complete",
+  "trial_mean_contact_mean_delta_v_status": "available",
+  "updated_wall_clock_iso": "2026-08-03T07:58:09.551642+00:00",
+  "video_codec": "mp4v",
+  "video_filename": "session_video.mp4",
+  "video_frame_count": 60,
+  "video_partial_filename": "session_video.partial.mp4"
+}

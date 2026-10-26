@@ -1,0 +1,22 @@
+THESIS FIGURE CAPTIONS
+
+01_localization_confusion_weighted
+Confusion matrix of tuned nested selection procedure for nine-ROI localization. Rows are true ROI and columns predicted ROI. Rows sum to 100%; each recording has equal total weight. Cells are percentages. Evaluation comprises 7,154 positive frames from 54 manual recordings under six outer TEST-group folds. The 0.05–3 N interval remains exploratory.
+
+02_localization_confusion_counts
+Confusion matrix of tuned nested selection procedure for nine-ROI localization. Rows are true ROI and columns predicted ROI. Each cell is an integer frame count. These counts do not apply recording weights. Evaluation comprises 7,154 positive frames from 54 manual recordings under six outer TEST-group folds. The 0.05–3 N interval remains exploratory.
+
+03_contact_confusion_matrices
+Binary confusion matrices for the tuned nested selection procedure. Rows denote actual status and columns predicted status. The left panel uses equal-recording row percentages; the right panel reports raw frame counts. Contact positives are aligned press frames in 0.05–3 N; negatives are dedicated no-contact frames. Zero observed false positives is limited to 11 archived no-contact recordings.
+
+04_roi_performance_heatmaps
+Localization and positive-contact recall mapped to the nine fixed ROI rectangles in the 480 by 640 oriented image, shown as a zoomed view. Each value averages six recording-specific recalls. The contact panel excludes no-contact recordings. Colors represent historical classification performance, not instantaneous model output, optical intensity, force or a continuous spatial field.
+
+05_localization_group_roi_heatmap
+Localization accuracy within each of 54 held-out press recordings, arranged by TEST group and true ROI. Each cell represents one recording and all cells use a fixed 0–100% scale. The figure shows recording-level variation that is obscured by pooled accuracy; per-cell frame denominators are provided in localization_by_group_roi.csv.
+
+06_supplement_localization_ensemble
+Confusion matrix of tuned ensemble family procedure (supplement) for nine-ROI localization. Rows are true ROI and columns predicted ROI. Rows sum to 100%; each recording has equal total weight. Cells are percentages. Evaluation comprises 7,154 positive frames from 54 manual recordings under six outer TEST-group folds. The 0.05–3 N interval remains exploratory.
+
+07_supplement_contact_svc
+Binary confusion matrices for the tuned rbf svc family procedure (supplement). Rows denote actual status and columns predicted status. The left panel uses equal-recording row percentages; the right panel reports raw frame counts. Contact positives are aligned press frames in 0.05–3 N; negatives are dedicated no-contact frames. Zero observed false positives is limited to 11 archived no-contact recordings.

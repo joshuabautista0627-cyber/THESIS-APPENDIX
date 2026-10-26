@@ -1,0 +1,4358 @@
+19 October 2026  •  Manual dataset only
+1
+Manual Calibration
+Complete Technical Report
+Force estimation, contact detection and nine-taxel localization
+A self-contained source document for thesis writing
+Updated: 19 October 2026
+Model experiments: 9 September 2026
+Dataset: Manual Calibration (2).zip only
+Best evaluated results
+Table 1. Recommended headline models and held-out metrics
+Task
+Best model
+Primary result
+Supporting results
+Localization
+Tuned Logistic regression
+84.88% accuracy
+85.00% macro F1
+Contact detection
+Tuned RBF SVC
+99.24% accuracy
+99.54% balanced accuracy; 99.09% recall
+Force estimation
+Tuned ensemble
+0.4972 N MAE
+0.6299 N RMSE; R² = 0.3113
+The two classifiers have the highest observed recording-weighted accuracy among the evaluated models. The force
+ensemble has the lowest observed recording-weighted mean absolute error. Each task uses one winning model for all
+its headline metrics. [S1–S3]
+Predictions were generated with six complete TEST groups held out in turn. Force and localization cover 7,154 eligible
+frames from 54 recordings; contact detection covers 8,506 frames from 65 recordings. All reported model metrics give
+each recording equal total weight.
+Model-family ranking is retrospective on these outer cross-validation results. These are held-out fold predictions, not
+an untouched prospective test of a final full-data model. The report preserves all 50 evaluated comparison rows and all
+178 tuning configurations.
+This file contains the complete methodology, exact segmentation, winning fold configurations, full model comparisons, separately labeled
+normalized and raw-count confusion matrices, spatial and optical heatmaps, limitations, reproducibility details, and a ready-to-use
+thesis-writing prompt. Existing reports and competing model artifacts remain intact.
+
+
+MANUAL CALIBRATION  |  COMPLETE THESIS SOURCE REPORT
+19 October 2026  •  Manual dataset only
+2
+Contents
+3
+1. Purpose, system and dataset
+4
+2. Exact image segmentation and ROI geometry
+5
+3. Feature construction and preprocessing
+6
+4. Alignment, validation and metric definitions
+7
+5. Models, search and improvement strategy
+8
+6. Complete model comparisons
+11
+7. Localization confusion matrices and spatial performance
+15
+8. Contact-detection confusion matrices
+18
+9. Force errors and variation across held-out groups
+20
+10. Optical and light-response diagnostics
+41
+11. Exact winning model configurations
+44
+12. Findings, limitations and next experiments
+45
+13. Verification and computational reproducibility
+46
+14. Ready-to-use ChatGPT Writing instructions
+47
+Appendix A. Exhaustive tuning configuration grid
+53
+Appendix B. Exact estimator settings and saved components
+57
+Appendix C. Exact feature-construction source
+58
+Appendix D. Evidence register and artifact integrity
+Percentages in metric and normalized-matrix tables are displayed on a 0–100 scale. Force errors are in newtons. Raw confusion matrices
+contain integer frames. Internal source IDs [S1–S18] resolve in the evidence register at the end.
+
+
+MANUAL CALIBRATION  |  COMPLETE THESIS SOURCE REPORT
+19 October 2026  •  Manual dataset only
+3
+1. Purpose, system and dataset
+The study estimates applied force from optical measurements, detects contact, and identifies the contacted taxel in a
+fixed 3 × 3 array. It compares model families under a common grouped validation design and evaluates improvements
+from richer optical features, hyperparameter search, causal history, threshold selection and ensembles.
+The SPARE application records a camera stream alongside an Arduino Nano/HX711 reference-force stream, unloaded
+optical baselines, timestamps and nine regions of interest (ROIs). Reference force provides supervision and evaluation
+targets; it is absent from optical model inputs. The separate printer-driven automatic-calibration path is excluded.
+Historical hardware records identify an Arducam IMX179 module, but do not establish identical camera controls or a
+traceable force-uncertainty budget for every archived recording. [S4, S5, S15]
+Table 2. Task definitions and evaluation population
+Task
+Target
+Evaluation population
+Force estimation
+Continuous reference force, N
+Eligible manual press frames
+Localization
+Discrete taxel class T1–T9
+Same eligible manual press frames
+Contact detection
+0 = dedicated no contact; 1 = eligible press
+Eligible press plus dedicated no-contact frames
+Table 3. Manual archive composition
+Role
+Recordings
+Frames
+Analysis use
+Primary press
+54
+24,453
+Eligible frames supply all positive tasks
+Dedicated no contact
+11
+1,352
+Contact negatives; training-only optical floors
+Replay only
+18
+3,513
+Excluded from fitting and scoring
+Total
+83
+29,318
+Manual archive only
+Six TEST groups each contain one primary recording per taxel. Dedicated no-contact recordings remain whole and are
+assigned two each to TEST1–TEST5 and one to TEST6. The preserved feature store is feature-store-fa2500440adab6ca.
+Archive and partition provenance were checked in the training audit. [S4–S6]
+Table 4. Primary-frame eligibility after fold-specific force alignment
+Category
+Frames
+All primary frames
+24,453
+Unpaired with valid reference force
+142
+Aligned force below 0.05 N
+723
+Aligned force above 3 N
+16,434
+Eligible press frames, inclusive 0.05–3 N
+7,154
+Frames outside the eligible press interval are excluded, not relabeled as no contact. The 0.05–3 N interval is an
+exploratory analysis restriction; it is not an established detection limit or validated full operating range. Most primary
+frames are outside this interval.
+
+
+MANUAL CALIBRATION  |  COMPLETE THESIS SOURCE REPORT
+19 October 2026  •  Manual dataset only
+4
+2. Exact image segmentation and ROI geometry
+The quantitative image source is session_video.mp4. Overlay, processed and motion-magnified videos are excluded. A
+raw 640 × 480 frame is rotated 90° clockwise and then mirrored horizontally, producing a 480 × 640 oriented frame.
+Already oriented frames are not transformed again. Coordinates below are oriented camera pixels; the origin is the
+upper-left corner. [S6, S8]
+Table 5. Fixed taxel rectangles; ROI layout roi-9fbc67c50ee3bc7145fa
+Taxel
+Row
+Col.
+x
+y
+Width
+Height
+Area (px²)
+1
+1
+1
+98
+161
+82
+89
+7298
+2
+1
+2
+197
+156
+76
+99
+7524
+3
+1
+3
+312
+154
+58
+97
+5626
+4
+2
+1
+100
+268
+73
+89
+6497
+5
+2
+2
+204
+264
+76
+96
+7296
+6
+2
+3
+314
+260
+66
+94
+6204
+7
+3
+1
+104
+383
+73
+77
+5621
+8
+3
+2
+194
+394
+87
+66
+5742
+9
+3
+3
+312
+379
+61
+77
+4697
+Rectangles use the array slice image[y:y+height, x:x+width]. Taxels T1–T3 are the first row, T4–T6 the second, and
+T7–T9 the third. These are fixed manually configured regions, not learned segmentation masks.
+Table 6. Pixel operations and their exact settings
+Operation
+Definition / setting
+Color conversion
+BGR to OpenCV HSV; use the 8-bit V channel
+Unloaded baseline B(x,y)
+Per-recording saved per-pixel median V from baseline_data.npz
+Signed change
+ΔV(x,y,t) = V(x,y,t) − B(x,y)
+Positive change
+ΔV+(x,y,t) = max(ΔV(x,y,t), 0), applied per pixel
+Active mask
+ΔV+ ≥ 10.0 camera V levels
+Active fraction
+Active-pixel count divided by fixed ROI area
+Centroid
+Intensity centroid weighted by all ΔV+ values; not only active-mask pixels
+Hue-only saturation setting
+Minimum saturation = 10.0; this is not the V activity threshold
+Morphology / learned segmentation
+None / none
+Per-ROI measurements retain positive and signed light sums, active fractions, signed median and median absolute
+deviation (MAD), raw V mean/median/maximum and centroid coordinates. Signed features preserve intensity
+decreases. A missing centroid is represented by the normalized ROI center (0.5, 0.5) and a separate absence flag.
+Optical activity is an image statistic. It does not establish physical contact area, calibrated illuminance or the anatomical/mechanical boundary
+of contact.
+
+
+MANUAL CALIBRATION  |  COMPLETE THESIS SOURCE REPORT
+19 October 2026  •  Manual dataset only
+5
+3. Feature construction and preprocessing
+Training-only normalization
+For each taxel, the fitted positive-light floor is the median of the within-recording medians of positive-light sums in
+training no-contact recordings. The positive feature is max(raw positive sum − floor, 0) / ROI area. Signed light is
+divided by area without clipping. Floors are refitted at each inner and outer training boundary. [S5, S8, S9]
+Weighted StandardScaler uses training rows only. For feature k, z_k = (x_k − μ_k) / σ_k, with weighted mean and
+population variance fitted on training data. Centering is disabled only for the positive-only force pack; variance scaling
+remains enabled. Zero-variance scale follows the library implementation. The selected best models all use centered
+and scaled features.
+Table 7. Feature packs and exact dimensions
+Pack
+Dimensions
+Contents
+positive
+9
+Floor-corrected positive light per pixel, T1–T9
+optical
+27
+positive + signed light per pixel + active fraction
+shape
+90
+optical plus seven 9-channel normalized/centered pattern blocks
+spatial
+180
+shape plus signed statistics, centroids, presence and intensity transforms
+invariant
+117
+63 pattern channels plus six 9-channel spatial/statistical blocks
+temporal
+288
+spatial plus four 27-channel causal-history/difference blocks
+Across the nine taxels, unit(x) = x / (Σ|x| + 10⁻⁶), and contrast(x) = x − median(x). The seven pattern blocks are
+unit(positive), unit(contrast(signed)), unit(active), contrast(signed), contrast(active), unit(contrast(raw V mean)), and
+unit(contrast(signed median)).
+Spatial adds signed median, signed MAD, normalized centroid x and y, centroid-presence flags, contrast(raw V mean),
+contrast(raw V median), raw V maximum / (raw V mean + 1), log(1 + positive), and sign(signed)·log(1 + |signed|).
+Invariant contains the seven pattern blocks plus unit(MAD), centroid x/y, presence, unit(contrast(raw V median)), and
+the maximum-to-mean ratio. Its name does not prove invariance to all illumination or geometry changes.
+Causal temporal history
+The optical pack supplies fast and slow exponential moving averages (EMAs), with time constants 0.3 s and 1.0 s.
+Temporal concatenates spatial, fast, slow, optical − fast, and fast − slow. At positive time step Δt, α = 1 − exp(−Δt/τ) and
+h_t = h_(t−1) + α(x_t − h_(t−1)). History restarts on a new recording, nonpositive Δt, or a gap greater than 0.3 s. Output
+smoothing is a separate selection over τ   {0, 0.3, 1.0} s.
+Inputs contain no reference force, true taxel, TEST number, session identity, absolute time or recording duration.
+Identity and relative timestamps only partition/reset history and supply time differences. The exact ordered
+feature-construction function is printed in Appendix C.
+
+
+MANUAL CALIBRATION  |  COMPLETE THESIS SOURCE REPORT
+19 October 2026  •  Manual dataset only
+6
+4. Alignment, validation and metric definitions
+Reference-force alignment
+At optical time t, the target is reference force at t − L. Linear interpolation remains within a recording; duplicate
+reference timestamps are reduced by their median. Extrapolation and interpolation over gaps greater than 300 ms are
+prohibited. Lag candidates are 0, 100, 200, 300, 400 and 500 ms. Inner grouped NNLS MAE selects the smallest lag
+within 0.5% of the best error. TEST1–TEST6 use outer lags 300, 300, 200, 300, 300 and 300 ms, respectively. Tuning
+reuses these fold-local alignment decisions to retain identical evaluated rows and targets. [S4, S5]
+Nested whole-group evaluation
+Each outer fold holds out one complete TEST group and its assigned no-contact recordings. The other five groups form
+five inner folds: four groups fit, one validates. Preprocessing, hyperparameters, feature pack, history, correction,
+thresholds and model choice are determined without the outer group. Fifteen possible four-group fits are cached; only
+the relevant inner-validation group is consumed for an outer selection. Thirty inner train/validation boundaries were
+audited. The final research refit uses all 15 leave-two-groups-out splits for selection, then fits the full pool. [S5, S9]
+Earlier optical rows from a held-out recording can initialize causal history, even if their force lies outside the scored
+interval. Their labels are not consumed. These are chronological stream predictions at stationary per-recording target
+taxels, not independent cold-start frames or demonstrated moving-contact localization.
+One weighting convention for reported results
+For an evaluated recording s with n_s eligible rows, each row receives weight w_i = 1/n_s. Each recording therefore
+contributes one total unit. All headline, comparison and confusion-matrix percentages use these weights. For a
+force-bin subgroup, n_s is recomputed using only that bin. Raw matrix counts are deliberately unweighted integers.
+Training may use additional class/bin balancing; that is separate from evaluation weighting.
+Table 8. Metric definitions; e = predicted force − reference force
+Metric
+Definition
+MAE; RMSE; bias
+Σw|e|/Σw; sqrt(Σwe²/Σw); Σwe/Σw
+R²
+1 − Σwe² / Σw(y − weighted mean of y)²
+Accuracy
+Weighted correct predictions / total weight
+Recall; precision
+TP/(TP+FN); TP/(TP+FP), using weighted outcomes
+Specificity; FPR
+TN/(TN+FP); FP/(TN+FP)
+Balanced accuracy
+Mean of class recalls; contact: (recall + specificity)/2
+Class F1; macro F1
+2TP/(2TP+FP+FN); arithmetic mean of class F1 scores
+Row-normalized confusion
+matrix
+100 × weighted cell / weighted actual-class row total
+Pooled macro F1 need not equal the mean of six fold macro F1 values. Nine-class accuracy equals balanced accuracy here because each taxel
+has six equally weighted recordings. Contact accuracy and balanced accuracy differ because there are 54 positive and 11 negative recordings.
+No new confidence interval or significance claim is inferred from thousands of temporally correlated frames.
+
+
+MANUAL CALIBRATION  |  COMPLETE THESIS SOURCE REPORT
+19 October 2026  •  Manual dataset only
+7
+5. Models, search and improvement strategy
+The fixed benchmark evaluates nine force regressors and six classifiers for each classification task. Seed 1729, 22
+training subsets and 21 task-specific estimators yield 462 fits. Force uses the positive 9-feature pack; classifiers use
+optical 27. Force fitting balances recordings and 0.25 N bins, localization balances recordings, and contact balances
+classes and recordings. Fixed models use native decision rules without temporal smoothing, threshold tuning or
+force-output clipping. [S4, S7]
+The tuning run uses seed 1741 and a finite grid of 178 estimator/feature configurations: 62 force, 64 localization and
+52 contact. Fifteen four-group training subsets yield 2,670 inner estimator fits. Additional output-history, correction,
+threshold and ensemble variants reuse cached inner predictions and are not counted as additional grid candidates.
+Appendix A lists every candidate, not only the winning settings. [S5, S8]
+Table 9. Search mechanisms and exact decision rules
+Mechanism
+Rule
+Estimator and feature search
+Candidate grids in Appendix A; common factory settings in Appendix B
+Output history
+τ = 0, 0.3 or 1.0 s; index h = 0, 1 or 2
+Force output
+Clip raw prediction to ≥0, apply selected output EMA, add inner-OOF residual offset, clip to ≥0 again
+Force offsets
+None (=0), recording-weighted mean residual, or weighted median residual; select by inner MAE
+Localization
+Smooth per-class scores, then argmax in class order T1–T9; select internally by macro F1
+Contact score
+For SVC: sigmoid(decision_function); otherwise class-1 predict_proba; then selected output EMA
+Contact threshold
+Exact weighted ROC operating points from inner OOF scores; balanced policy maximizes balanced accuracy
+Alternative contact policy
+Maximize inner recall subject to inner FPR ≤5%; select family by recall, then FPR
+Ensembles
+Equal mean of three best distinct tuned families; each member has its own selected history/correction
+Training weights
+Recording weights, plus class balancing for contact; force for_000 alone uses bin weights in the tuning grid
+The tuned selector chooses across families using inner MAE, localization macro F1 or contact balanced accuracy; it
+adopts an ensemble only if the inner criterion improves. The tuned family rows instead restrict that inner search to one
+family. The present headline ranking follows the requested highest classification accuracy and lowest force MAE across
+the evaluated outer results.
+SVC sigmoid/softmax transformations provide score representations, not calibrated probabilities. A 1.0 s EMA time
+constant does not prove a measured 1.0 s event delay. The FPR ≤5% condition is an inner-selection constraint, not a
+guaranteed outer FPR.
+
+
+MANUAL CALIBRATION  |  COMPLETE THESIS SOURCE REPORT
+19 October 2026  •  Manual dataset only
+8
+6. Complete model comparisons
+All 50 saved comparison rows are retained below: 19 force, 15 localization and 16 contact. Rows are ordered by the
+requested criterion. “Tuned” identifies the expanded search, while unprefixed family names identify the fixed
+benchmark. “Nested selected” and “Tuned selected” are evaluated selection procedures, not new estimator families.
+[S2, S3]
+6.1 Force estimation — rank by lowest MAE
+Table 10. All force models on 7,154 frames / 54 recordings
+Rank
+Model / procedure
+MAE (N)
+RMSE (N)
+Bias (N)
+R²
+1
+Tuned ensemble
+0.4972
+0.6299
+0.0827
+0.3113
+2
+Tuned selected
+0.4991
+0.6323
+0.0784
+0.3061
+3
+Tuned HistGB
+0.5030
+0.6374
+0.0739
+0.2949
+4
+Tuned XGBoost
+0.5035
+0.6404
+0.0924
+0.2883
+5
+Tuned Extra Trees
+0.5046
+0.6359
+0.0819
+0.2982
+6
+Tuned RBF SVR
+0.5135
+0.6397
+0.0662
+0.2899
+7
+Tuned Random Forest
+0.5221
+0.6606
+0.1007
+0.2427
+8
+Tuned frame-only
+0.5393
+0.6827
+0.1118
+0.1910
+9
+Tuned MLP
+0.5431
+0.6884
+0.1207
+0.1775
+10
+Extra Trees
+0.6372
+0.7705
+-0.2894
+-0.0303
+11
+Nested selected
+0.6372
+0.7705
+-0.2894
+-0.0303
+12
+RBF SVR
+0.7015
+0.8617
+-0.3291
+-0.2885
+13
+Monotonic HistGB
+0.7084
+0.8449
+-0.3268
+-0.2388
+14
+Monotonic XGBoost
+0.7159
+0.8457
+-0.3400
+-0.2412
+15
+Isotonic
+0.7233
+0.8487
+-0.3801
+-0.2500
+16
+Median baseline
+0.7536
+0.8633
+-0.4111
+-0.2935
+17
+Positive Ridge
+1.5292
+1.9017
+-0.9075
+-5.2762
+18
+NNLS
+1.5295
+1.9027
+-0.9063
+-5.2829
+19
+Total light linear
+1.5614
+1.8776
+-0.9492
+-5.1186
+The tuned ensemble reduces MAE from the strongest fixed model’s 0.6372 N to 0.4972 N: a 0.1400 N absolute
+reduction and 21.97% relative reduction. RMSE falls from 0.7705 N to 0.6299 N. Bias changes from −0.2894 N to
++0.0827 N, and R² rises from −0.0303 to 0.3113. These describe the overall evaluation; low-force error remains
+substantial.
+No classification accuracy is assigned to a continuous force regressor. Negative fixed-model R² values mean worse squared error than the
+evaluation-set weighted mean reference. They do not mean negative physical accuracy.
+
+
+MANUAL CALIBRATION  |  COMPLETE THESIS SOURCE REPORT
+19 October 2026  •  Manual dataset only
+9
+6.2 Localization — rank by highest accuracy
+Table 11. All localization models on 7,154 frames / 54 recordings
+Rank
+Model / procedure
+Accuracy (%)
+Balanced accuracy (%)
+Macro F1 (%)
+1
+Tuned Logistic regression
+84.88
+84.88
+85.00
+2
+Tuned ensemble
+84.71
+84.71
+85.12
+3
+Tuned selected
+84.40
+84.40
+84.75
+4
+Tuned frame-only
+82.84
+82.84
+82.68
+5
+Tuned Extra Trees
+81.96
+81.96
+83.35
+6
+Tuned HistGB
+81.75
+81.75
+82.94
+7
+Tuned MLP
+81.65
+81.65
+82.46
+8
+Tuned RBF SVC
+77.80
+77.80
+78.71
+9
+RBF SVC
+73.87
+73.87
+73.92
+10
+Logistic regression
+73.79
+73.79
+74.00
+11
+HistGB
+71.31
+71.31
+72.33
+12
+Extra Trees
+71.04
+71.04
+71.70
+13
+Random Forest
+70.66
+70.66
+71.49
+14
+XGBoost
+70.37
+70.37
+71.38
+15
+Nested selected
+70.29
+70.29
+70.14
+Tuned Logistic regression leads accuracy at 84.88%, compared with 73.87% for the most accurate fixed family, RBF
+SVC: an improvement of 11.01 percentage points. Tuned Logistic regression has 85.00% macro F1. The tuned ensemble
+has a slightly higher macro F1 (85.12%) but slightly lower accuracy (84.71%); Logistic regression is the headline winner
+under the requested accuracy criterion.
+The frame-only result excludes temporal features and output smoothing from its inner selection. It is an evaluated
+constrained selection procedure; its difference from the main winner cannot be attributed solely to one feature or one
+smoothing setting because selected models may also differ.
+
+
+MANUAL CALIBRATION  |  COMPLETE THESIS SOURCE REPORT
+19 October 2026  •  Manual dataset only
+10
+6.3 Contact detection — rank by highest accuracy
+Table 12. All contact models on 8,506 frames / 65 recordings
+Rank
+Model / procedure
+Acc. (%)
+Bal. acc. (%)
+Macro F1 (%)
+Recall (%)
+Precision (%)
+FPR (%)
+1
+Tuned RBF SVC
+99.24
+99.54
+98.67
+99.09
+100.00
+0.00
+2
+Tuned XGBoost
+99.03
+99.41
+98.31
+98.83
+100.00
+0.00
+3
+Tuned Random Forest
+98.76
+99.17
+97.86
+98.56
+99.95
+0.23
+4
+Tuned FPR <=5%
+98.16
+95.40
+96.64
+99.57
+98.24
+8.76
+5
+Tuned Extra Trees
+97.65
+96.04
+95.84
+98.47
+98.70
+6.39
+6
+Tuned selected
+97.51
+98.50
+95.81
+97.00
+100.00
+0.00
+7
+Tuned Logistic regression
+97.41
+98.44
+95.66
+96.89
+100.00
+0.00
+8
+Tuned HistGB
+97.12
+96.12
+95.00
+97.63
+98.89
+5.40
+9
+Tuned frame-only
+96.25
+97.09
+93.78
+95.82
+99.65
+1.64
+10
+Random Forest
+91.91
+91.86
+87.15
+91.93
+98.22
+8.20
+11
+HistGB
+89.03
+90.31
+83.52
+88.38
+98.24
+7.76
+12
+XGBoost
+88.52
+90.03
+82.91
+87.74
+98.25
+7.69
+13
+Logistic regression
+88.28
+90.44
+82.76
+87.17
+98.55
+6.29
+14
+RBF SVC
+88.20
+90.97
+82.81
+86.78
+98.88
+4.83
+15
+Nested selected
+87.95
+89.54
+82.20
+87.14
+98.15
+8.05
+16
+Extra Trees
+87.78
+89.77
+82.08
+86.76
+98.33
+7.23
+Tuned RBF SVC leads at 99.24% accuracy, compared with 91.91% for fixed Random Forest: +7.34 percentage points.
+Balanced accuracy rises from 91.86% to 99.54% (+7.68 points). Its contact recall is 99.09%, precision is 100.00%,
+specificity is 100.00%, and FPR is 0.00% on these held-out recordings.
+The “Tuned FPR ≤5%” procedure attains 99.57% recall but 8.76% outer FPR. Its name describes the inner constraint;
+the observed outer value is preserved explicitly. It is not the accuracy winner. Tuned contact AUC is not reported
+because adaptive fold models and uncalibrated score scales make pooled discrimination scores difficult to interpret
+consistently. No missing AUC is treated as zero.
+
+
+MANUAL CALIBRATION  |  COMPLETE THESIS SOURCE REPORT
+19 October 2026  •  Manual dataset only
+11
+7. Localization confusion matrices and spatial performance
+Figure 1. Localization: recording-weighted row-normalized 9 × 9 matrix. Tuned Logistic regression. Actual taxel is the row; predicted
+taxel is the column. Each frame receives weight 1/n for its recording before row normalization. The diagonal is taxel recall. Six held-out
+TEST groups, 7,154 frames and 54 recordings. Numeric values appear in Table 13.
+
+
+MANUAL CALIBRATION  |  COMPLETE THESIS SOURCE REPORT
+19 October 2026  •  Manual dataset only
+12
+Figure 2. Localization: separately labeled 9 × 9 raw frame counts. The same winning-model held-out predictions, counted as integers
+without recording weights. Raw row totals differ because recordings contain unequal numbers of eligible frames. These counts must
+not be divided to reconstruct the weighted percentages.
+
+
+MANUAL CALIBRATION  |  COMPLETE THESIS SOURCE REPORT
+19 October 2026  •  Manual dataset only
+13
+Machine-readable localization matrix values
+Table 13. Localization row-normalized weighted percentages (%)
+Actual / predicted
+T1
+T2
+T3
+T4
+T5
+T6
+T7
+T8
+T9
+T1
+84.69
+0.00
+0.00
+11.03
+0.00
+1.86
+0.81
+0.00
+1.61
+T2
+9.05
+53.49
+6.67
+22.30
+0.00
+4.13
+0.00
+0.00
+4.37
+T3
+0.00
+1.75
+94.64
+1.75
+0.00
+0.00
+0.00
+0.00
+1.85
+T4
+0.49
+0.00
+0.36
+93.85
+1.38
+0.00
+0.00
+0.00
+3.91
+T5
+0.42
+0.69
+0.00
+0.00
+84.47
+0.09
+0.26
+0.00
+14.07
+T6
+0.74
+0.37
+0.00
+0.69
+0.23
+91.95
+0.00
+0.00
+6.02
+T7
+0.10
+0.00
+0.00
+0.11
+1.37
+0.08
+82.12
+0.00
+16.22
+T8
+0.76
+0.14
+0.00
+0.00
+0.41
+1.52
+0.38
+78.73
+18.07
+T9
+0.00
+0.00
+0.00
+0.00
+0.00
+0.00
+0.00
+0.00
+100.00
+Table 14. Localization raw counts (integer frames)
+Actual / predicted
+T1
+T2
+T3
+T4
+T5
+T6
+T7
+T8
+T9
+T1
+614
+0
+0
+24
+0
+3
+3
+0
+52
+T2
+10
+163
+2
+231
+0
+6
+0
+0
+81
+T3
+0
+2
+253
+2
+0
+0
+0
+0
+9
+T4
+6
+0
+6
+1019
+13
+0
+0
+0
+48
+T5
+6
+8
+0
+0
+1034
+1
+3
+0
+411
+T6
+6
+3
+0
+3
+1
+882
+0
+0
+26
+T7
+1
+0
+0
+2
+17
+1
+712
+0
+291
+T8
+2
+1
+0
+0
+3
+4
+1
+421
+271
+T9
+0
+0
+0
+0
+0
+0
+0
+0
+496
+Taxel 2 has the lowest weighted recall, 53.49%; 22.30% of its weighted predictions are assigned to T4. The next largest
+systematic routes include T8→T9 (18.07%), T7→T9 (16.22%) and T5→T9 (14.07%). Taxel 9 has 100.00% recall, which
+does not mean every prediction of T9 is correct: other taxels are also assigned to T9.
+
+
+MANUAL CALIBRATION  |  COMPLETE THESIS SOURCE REPORT
+19 October 2026  •  Manual dataset only
+14
+Figure 3. Winning-model recall mapped to the nine physical image ROIs. Left: Logistic-regression localization recall. Right: RBF-SVC
+positive-contact recall. Each taxel averages six held-out recording recalls. The rectangles retain saved pixel geometry. No-contact
+specificity is a separate class-level result, not a per-pressed-taxel value.
+Table 15. Exact taxel support and recall for the two winning classifiers
+Taxel
+Eligible frames
+Localization recall (%)
+Contact recall (%)
+1
+696
+84.69
+100.00
+2
+493
+53.49
+100.00
+3
+266
+94.64
+100.00
+4
+1092
+93.85
+100.00
+5
+1463
+84.47
+100.00
+6
+921
+91.95
+100.00
+7
+1024
+82.12
+100.00
+8
+703
+78.73
+96.65
+9
+496
+100.00
+95.14
+
+
+MANUAL CALIBRATION  |  COMPLETE THESIS SOURCE REPORT
+19 October 2026  •  Manual dataset only
+15
+8. Contact-detection confusion matrices
+Figure 4. Contact detection: recording-weighted row-normalized 2 × 2 matrix. Tuned RBF SVC. Rows are actual labels and columns
+predicted labels. No-contact specificity is 100.00%; contact recall is 99.09%. Overall accuracy is 99.24%, while balanced accuracy is
+99.54%. Six held-out groups, 8,506 frames and 65 recordings.
+
+
+MANUAL CALIBRATION  |  COMPLETE THESIS SOURCE REPORT
+19 October 2026  •  Manual dataset only
+16
+Figure 5. Contact detection: separately labeled raw frame counts. The 1,352 dedicated no-contact frames contain 1,352 true negatives
+and 0 false positives. The 7,154 eligible press frames contain 39 false negatives and 7,115 true positives. These are raw counts; the
+headline percentages use equal recording weights.
+
+
+MANUAL CALIBRATION  |  COMPLETE THESIS SOURCE REPORT
+19 October 2026  •  Manual dataset only
+17
+Contact matrix values and full metric set
+Table 16. Contact weighted row-normalized percentages (%)
+Actual / predicted
+No contact
+Contact
+No contact
+100.00
+0.00
+Contact
+0.91
+99.09
+Table 17. Contact raw counts (integer frames)
+Actual / predicted
+No contact
+Contact
+No contact
+1352
+0
+Contact
+39
+7115
+Table 18. All headline contact metrics for Tuned RBF SVC
+Metric
+Value (%)
+Accuracy
+99.24
+Balanced accuracy
+99.54
+Contact recall / sensitivity
+99.09
+Contact precision
+100.00
+No-contact specificity
+100.00
+False-positive rate
+0.00
+Contact-class F1
+99.54
+Two-class macro F1
+98.67
+Contact-class F1 (99.54%) and macro F1 (98.67%) are different summaries. Macro F1 also includes the no-contact class,
+whose precision is reduced by missed positive frames. Reporting either simply as “F1” would be ambiguous.
+The positive-contact recall is 100.00% for T1–T7, 96.65% for T8 and 95.14% for T9. Zero observed false positives
+supports 100.00% specificity on these 11 controls; it does not establish a universal zero false-alarm rate. The dataset
+does not directly validate contact onset timing, intermittent releases or all excluded low-force/high-force frames.
+As a supplementary combined positive-frame measure, contact must be detected and the taxel must be correct on the
+same held-out frame. Its recording-weighted success is 84.23% across the 7,154 eligible press frames. This is a joint
+success metric, not a replacement for either task’s standalone accuracy.
+
+
+MANUAL CALIBRATION  |  COMPLETE THESIS SOURCE REPORT
+19 October 2026  •  Manual dataset only
+18
+9. Force errors and variation across held-out groups
+Figure 6. Winning force ensemble: predicted force and error by reference interval. Scatter: all held-out frames, with a dashed identity
+line; point density is descriptive and unweighted. Bars: recording-weighted MAE, with recording weights recomputed within each bin.
+The lowest-force intervals show marked overestimation.
+Table 19. Force ensemble errors by reference-force interval
+Interval (N)
+Frames
+Recordings
+MAE (N)
+RMSE (N)
+Bias (N)
+[0.05, 0.5)
+263
+52
+1.2538
+1.2961
+1.2538
+[0.5, 1)
+672
+51
+0.9390
+1.0113
+0.9390
+[1, 1.5)
+1102
+52
+0.6944
+0.7819
+0.6841
+[1.5, 2)
+1490
+53
+0.4029
+0.4789
+0.3008
+[2, 2.5)
+1749
+52
+0.2789
+0.3437
+-0.0572
+[2.5, 3]
+1878
+54
+0.5298
+0.6372
+-0.5236
+The overall 0.4972 N MAE is not uniform over the interval. MAE is 1.2538 N below 0.5 N, 0.279 N at 2–2.5 N, and 0.530
+N at 2.5–3 N. Positive low-force bias and negative high-force bias suggest compression toward intermediate force
+values. This pattern is a descriptive finding, not a proven causal explanation of the model behavior.
+A low pooled force error does not establish an accurate detection limit, calibrated linearity or acceptable error at every
+force. Dense upper-range coverage, weighting choices, timing, and manual loading trajectories may all affect model
+comparisons. A controlled matched-force experiment is needed to separate their effects.
+
+
+MANUAL CALIBRATION  |  COMPLETE THESIS SOURCE REPORT
+19 October 2026  •  Manual dataset only
+19
+Performance in each complete held-out TEST group
+Table 20. Winning-model performance by outer TEST group
+TEST
+Press frames
+Contact
+frames
+Force MAE (N)
+Loc. acc. (%)
+Loc. F1 (%)
+Contact acc. (%)
+Contact bal. acc.
+(%)
+1
+2365
+2609
+0.5683
+48.41
+44.11
+100.00
+100.00
+2
+1025
+1268
+0.4937
+88.35
+87.97
+99.29
+99.56
+3
+686
+939
+0.5056
+96.00
+95.97
+98.68
+99.19
+4
+1117
+1361
+0.4678
+90.86
+90.61
+98.61
+99.15
+5
+1016
+1265
+0.4678
+98.20
+98.21
+99.43
+99.65
+6
+945
+1064
+0.4799
+87.46
+83.04
+99.46
+99.70
+Localization varies from 48.41% in TEST1 to 98.20% in TEST5. Contact accuracy stays between 98.61% and 100.00%,
+while force MAE ranges from 0.4678 to 0.5683 N. TEST1 is the major localization weakness despite perfect observed
+contact detection there. Contact detection and identifying the correct taxel therefore have distinct difficulty profiles.
+These six groups are the relevant units for assessing generalization variability. Their training sets overlap, and frames
+within recordings are correlated. The displayed range is descriptive; it is not a confidence interval. A new independent
+collection is needed to estimate prospective performance after the final model choice.
+Table 21. Force ensemble errors by pressed taxel
+Taxel
+Frames
+MAE (N)
+RMSE (N)
+Bias (N)
+R²
+1
+696
+0.5960
+0.7574
+0.0321
+0.2160
+2
+493
+0.4333
+0.5764
+0.0894
+0.4636
+3
+266
+0.4708
+0.6224
+0.1055
+0.4310
+4
+1092
+0.5767
+0.7003
+0.0702
+0.0403
+5
+1463
+0.5270
+0.6313
+0.1395
+0.1085
+6
+921
+0.5021
+0.6168
+-0.0035
+0.0573
+7
+1024
+0.4869
+0.6076
+0.1008
+0.1986
+8
+703
+0.4742
+0.5881
+0.0637
+0.3105
+9
+496
+0.4077
+0.5420
+0.1466
+0.5000
+All subgroup values on this page were recomputed from the three winning models’ saved predictions. They are not copied from the distinct
+nested-selector procedure. Equal recording weighting is retained within every displayed subgroup.
+
+
+MANUAL CALIBRATION  |  COMPLETE THESIS SOURCE REPORT
+19 October 2026  •  Manual dataset only
+20
+10. Optical and light-response diagnostics
+10.1 Direct HSV V brightness measurements
+V is the camera image brightness channel in its 8-bit 0-255 encoding. The direct metrics below quantify the recorded V
+values themselves: ROI mean brightness, baseline brightness, signed mean-brightness change, temporal variability,
+observed intensity range and peak pixel value. They are distinct from classifier accuracy and from the positive-only
+optical response used in the preceding feature analysis. [S16]
+The sample is unchanged: 7,154 eligible contact frames from 54 manual press recordings and 1,352 frames from 11
+dedicated no-contact recordings. A taxel contact mean averages its six target-press recording means; its no-contact
+mean averages the 11 control recording means. Each recording has equal weight. These measurements describe the
+evaluated manual subset, not every archived frame.
+Table 22. Direct V-channel metric definitions
+Metric
+Definition
+Raw ROI mean V
+m_sjt = mean V over the fixed taxel pixels in one frame; recorded roi_j_mean_v
+Baseline mean V
+b_sj = mean V across pixels and captured baseline frames, from that recording's baseline_summary.json mean_v
+Contact mean V
+Average m_sjt over eligible contact frames within each recording, then average six recording means
+Signed mean-brightness change
+For each recording, mean(m_sjt) - b_sj; then average six recordings. Negative values are retained
+Mean positive pixel change
+Mean of max(V_pixel - baseline_median_pixel, 0); this existing positive-only statistic is not the signed
+mean-brightness change
+Temporal noise of raw V
+RMS of within-control-recording sample SDs of m_sjt, ddof=1; 11 control recordings
+No-contact CV
+100 x temporal noise SD / no-contact mean V; a relative temporal-stability descriptor
+Table 23. Direct brightness and baseline-referenced change, in camera V levels
+Taxel
+Baseline mean V
+No-contact mean V
+Contact mean V
+Signed change V
+Positive pixel change V
+1
+27.404
+26.199
+27.017
+-0.386
+1.029
+2
+27.388
+26.091
+26.846
+-0.542
+0.939
+3
+27.576
+26.419
+27.939
+0.362
+1.564
+4
+27.795
+26.549
+27.308
+-0.487
+0.959
+5
+27.883
+26.504
+27.238
+-0.645
+0.857
+6
+27.820
+26.574
+27.535
+-0.285
+1.135
+7
+27.782
+26.571
+27.636
+-0.146
+1.162
+8
+27.693
+26.576
+27.997
+0.304
+1.499
+9
+27.716
+26.755
+28.085
+0.370
+1.523
+Mean raw V spans 26.091-26.755 without contact and 26.846-28.085 during eligible contact. The baseline column refers to the six press
+recordings' own unloaded captures. Dedicated no-contact recordings are separate acquisitions and are not substituted for those
+per-recording baselines.
+
+
+MANUAL CALIBRATION  |  COMPLETE THESIS SOURCE REPORT
+19 October 2026  •  Manual dataset only
+21
+Figure 7. Direct raw-V brightness, signed baseline change and temporal noise. Each 3 x 3 map follows taxel order T1-T9. Raw contact
+and no-contact panels share the same 25-29 V scale, so their colors are comparable. The signed-change panel retains both decreases
+and increases from the per-recording baseline-capture mean. Noise is the temporal SD of ROI mean V, not the SD of positive-clipped
+delta V.
+A positive-only response can coexist with a negative mean-brightness change. Some pixels brighten while others
+darken, and the baseline may differ from the recording's later brightness level. Clipping negative pixel changes discards
+the decreases; taking an ROI mean first retains them. These two operations answer different questions and must not
+share one ambiguous "delta V" label.
+The baseline mean in the direct-V table is the saved mean over baseline frames and pixels. The positive-change feature uses the saved
+per-pixel median baseline. They are explicitly different reference constructions. The signs in this report are measured outcomes; a source of
+drift or illumination change is not established by these descriptive comparisons.
+
+
+MANUAL CALIBRATION  |  COMPLETE THESIS SOURCE REPORT
+19 October 2026  •  Manual dataset only
+22
+Raw-V variability, ranges and pixel peaks
+Table 24. Temporal variation and observed contact brightness range
+Taxel
+Control noise SD V
+Contact temporal SD
+V
+Control CV (%)
+Min ROI mean V
+Max ROI mean V
+Peak pixel V
+1
+0.1045
+0.6140
+0.399
+25.304
+35.904
+132
+2
+0.1064
+0.5521
+0.408
+25.258
+33.053
+47
+3
+0.1131
+0.8815
+0.428
+25.600
+34.359
+72
+4
+0.1208
+0.5452
+0.455
+25.506
+33.952
+57
+5
+0.1132
+0.5080
+0.427
+25.522
+33.764
+55
+6
+0.1127
+0.7443
+0.424
+25.598
+35.772
+163
+7
+0.1197
+0.7102
+0.450
+25.590
+34.404
+90
+8
+0.1094
+0.8358
+0.411
+25.534
+34.971
+59
+9
+0.1246
+0.8581
+0.466
+25.738
+34.461
+46
+No-contact temporal noise of raw ROI mean V ranges from 0.1045 to 0.1246 V levels, with CV 0.399-0.466%. This
+quantifies short-term within-recording variability. It is not a pixel-level spatial standard deviation, a cross-recording SD,
+or the baseline_summary std_v field, which pools baseline pixels and frames.
+Contact temporal SD includes intentional force-related variation and therefore is not labeled sensor noise. Min/max
+ROI means are extrema over eligible frames; peak pixel V is the largest recorded ROI pixel maximum. A peak of 163 at
+T6, for example, does not imply an ROI mean of 163. No target peak reaches the encoded maximum of 255 in the
+evaluated press subset.
+Table 25. Additional direct-V summaries
+Taxel
+Median of recording medians V
+Baseline change (%)
+Contact-control contrast V
+Contact mean /255 (%)
+1
+25.965
+-1.518
+0.818
+10.595
+2
+25.915
+-2.036
+0.755
+10.528
+3
+27.195
+1.276
+1.520
+10.956
+4
+26.360
+-1.818
+0.759
+10.709
+5
+26.353
+-2.350
+0.734
+10.682
+6
+26.577
+-1.100
+0.961
+10.798
+7
+26.862
+-0.566
+1.065
+10.838
+8
+27.350
+1.105
+1.422
+10.979
+9
+27.378
+1.337
+1.331
+11.014
+Baseline-change percent averages 100 x (recording mean V - own baseline mean V) / own baseline mean V. The
+contact-control contrast compares independent recording groups and is not a paired causal contact effect. The /255
+percentage describes the digital encoding only; it is not percent optical power, calibrated illuminance or sensor
+accuracy.
+These raw V metrics, together with positive-only response, active area and spatial distribution below, provide a direct brightness
+characterization. Physical sensitivity in V/N, calibrated lux, long-term drift and a detection limit require separate controlled measurements.
+
+
+MANUAL CALIBRATION  |  COMPLETE THESIS SOURCE REPORT
+19 October 2026  •  Manual dataset only
+23
+10.2 Positive optical response and spatial distribution
+Light diagnostics use the original manual acquisition frame_features.csv files matched exactly to the same 8,506
+held-out frame identities. All 65 source CSVs were found; archive lineage, source hashes, unique frame joins and
+timestamps were checked. A stable identity combines archive hash, recording directory, zero-based row/video index
+and capture-frame identifier. [S10–S12]
+These acquisition-time CSV measurements are a companion optical analysis. Model training used video-recomputed
+features, so acquisition values are not claimed to be numerically identical to compressed-video measurements. The
+optical diagnostics are not an additional model training run.
+Table 26. Light metrics supported by the available data
+Metric
+Exact construction and aggregation
+Positive mean ΔV: D_jt
+Mean of per-pixel max(V−baseline,0) over taxel j
+Reference floor: b_j,−g
+Median of recording medians of D_jt in no-contact controls outside held-out group g
+Excess response: E_jt
+max(D_jt − b_j,−g, 0); mean within press recording, then equal mean over six recordings per target taxel
+Temporal noise: σ_j
+Square root of the mean of within-recording sample variances (ddof=1) of D_jt across 11 no-contact recordings
+Robust noise
+Per-control 1.4826 × MAD(D_jt); median across control recordings
+Response-to-noise proxy
+Each press recording’s mean target E divided by RMS control SD outside its held-out group; mean over six presses
+Active-area fraction
+Fraction of ROI pixels with ΔV≥10; average within recording, then over six presses; report as %
+Spatial response share
+Average E_j over all eligible frames in a recording; normalize nine means to sum to 100%; average six profiles per
+pressed taxel
+Force–light association
+Spearman correlation of target D_jt with the existing lag-aligned force within each recording; median over six
+records per taxel
+Drift / clipping diagnostics
+No-contact raw-V last-quartile median minus first-quartile median; target raw maximum reaching 255 is a frame
+flag
+All 7,154 eligible press frames remain in the distribution calculation, including 1,153 with zero total excess. Each
+recording has a nonzero mean-response denominator. The spatial mean-then-normalize rule avoids dropping
+zero-response frames or implicitly weighting recordings by their length.
+Camera V levels are not lux or optical power. The response-to-noise ratio is an exploratory proxy, not calibrated
+photometric SNR. Off-target response is a spatial-spread/cross-talk proxy, not a measured mechanical transfer
+coefficient. Different manual force histories mean taxel averages cannot establish intrinsic sensitivity at matched force.
+
+
+MANUAL CALIBRATION  |  COMPLETE THESIS SOURCE REPORT
+19 October 2026  •  Manual dataset only
+24
+Figure 8. Spatial distribution of excess optical response. Rows identify the pressed taxel; columns identify the measured taxel. Values
+are recording-averaged shares of the nine mean excess responses, in percent. This is an optical response matrix, not a classifier
+confusion matrix. Taxel 4 spreads strongly toward T1–T3.
+
+
+MANUAL CALIBRATION  |  COMPLETE THESIS SOURCE REPORT
+19 October 2026  •  Manual dataset only
+25
+Figure 9. Optical response, temporal noise, active area and response-to-noise proxy. Press measures average six recording means for
+each target taxel. Descriptive control noise uses all 11 controls; the response/noise proxy uses only controls outside each press group.
+Units and aggregation are defined in Section 10.
+
+
+MANUAL CALIBRATION  |  COMPLETE THESIS SOURCE REPORT
+19 October 2026  •  Manual dataset only
+26
+Figure 10. Within-recording force–light Spearman correlations. Each cell compares the target taxel’s acquisition-time mean positive ΔV
+with the pre-existing aligned force in one TEST/taxel recording. No additional lag or signal threshold was optimized. The fixed −1 to +1
+scale preserves negative associations; temporal dependence precludes independent-frame significance claims.
+
+
+MANUAL CALIBRATION  |  COMPLETE THESIS SOURCE REPORT
+19 October 2026  •  Manual dataset only
+27
+Light measurements as searchable tables
+Table 27. Target optical measurements by taxel
+Taxel
+Mean positive ΔV
+Mean excess ΔV
+Noise SD ΔV
+Robust σ ΔV
+Active area (%)
+Response / noise
+1
+1.0291
+0.2969
+0.0518
+0.0515
+0.3651
+5.723
+2
+0.9392
+0.2268
+0.0544
+0.0568
+0.2921
+4.158
+3
+1.5637
+0.7910
+0.0567
+0.0590
+1.3542
+13.980
+4
+0.9592
+0.2022
+0.0540
+0.0513
+0.1229
+3.745
+5
+0.8574
+0.1291
+0.0532
+0.0488
+0.1093
+2.428
+6
+1.1351
+0.3519
+0.0537
+0.0536
+0.5033
+6.610
+7
+1.1625
+0.3900
+0.0558
+0.0554
+0.1593
+6.987
+8
+1.4990
+0.6901
+0.0519
+0.0498
+0.3374
+13.244
+9
+1.5233
+0.7137
+0.0549
+0.0562
+0.2682
+13.029
+Table 28. Response concentration and within-recording correlation summaries
+Taxel
+Target share (%)
+Off-target share (%)
+Median ρ
+Min ρ
+Max ρ
+1
+79.92
+20.08
+0.500
+0.055
+0.690
+2
+71.57
+28.43
+0.317
+-0.600
+0.593
+3
+84.53
+15.47
+0.422
+0.269
+0.719
+4
+21.50
+78.50
+0.215
+0.095
+0.378
+5
+80.23
+19.77
+0.339
+0.128
+0.387
+6
+90.27
+9.73
+0.298
+0.023
+0.395
+7
+87.42
+12.58
+0.078
+-0.155
+0.484
+8
+82.17
+17.83
+0.290
+0.221
+0.584
+9
+63.98
+36.02
+0.317
+0.163
+0.461
+No-contact noise spans 0.0518–0.0567 camera V levels. Mean target excess spans 0.1291–0.7910 levels;
+response/noise proxy spans 2.43–13.98; active area spans 0.1093–1.3542%. These are observed descriptive ranges,
+not validated detection limits.
+Taxel 4 retains only 21.50% of total excess response in its own region, yet has 93.85% localization recall. The classifier
+can exploit the pattern across all regions; its accuracy need not track target-only optical concentration. Taxel 7 has the
+lowest median force–light correlation (ρ = 0.078), while T1 has the highest (ρ = 0.500).
+
+
+MANUAL CALIBRATION  |  COMPLETE THESIS SOURCE REPORT
+19 October 2026  •  Manual dataset only
+28
+Exact optical matrix values
+Table 29. Excess-response distribution, mean recording-normalized shares (%)
+Actual / predicted
+T1
+T2
+T3
+T4
+T5
+T6
+T7
+T8
+T9
+T1
+79.92
+4.34
+10.08
+0.63
+0.62
+1.55
+1.34
+0.62
+0.91
+T2
+5.52
+71.57
+14.99
+1.41
+0.41
+0.98
+3.41
+0.74
+0.96
+T3
+3.26
+2.67
+84.53
+2.50
+0.64
+0.88
+3.72
+1.01
+0.79
+T4
+13.95
+20.07
+26.04
+21.50
+4.56
+7.79
+2.48
+1.28
+2.32
+T5
+3.63
+1.95
+7.64
+1.24
+80.23
+1.96
+1.54
+0.47
+1.33
+T6
+1.73
+1.04
+2.15
+1.23
+0.75
+90.27
+1.43
+0.66
+0.73
+T7
+1.99
+1.41
+2.35
+1.72
+1.54
+1.66
+87.42
+0.80
+1.11
+T8
+2.34
+1.65
+3.27
+2.67
+2.20
+2.20
+2.26
+82.17
+1.24
+T9
+3.40
+3.42
+4.84
+5.80
+5.53
+3.87
+4.47
+4.69
+63.98
+Table 30. Spearman ρ for every TEST group and taxel
+TEST
+T1
+T2
+T3
+T4
+T5
+T6
+T7
+T8
+T9
+1
+0.210
+0.239
+0.406
+0.378
+0.264
+0.196
+0.196
+0.294
+0.340
+2
+0.557
+0.486
+0.675
+0.246
+0.333
+0.395
+-0.155
+0.221
+0.363
+3
+0.055
+0.593
+0.269
+0.095
+0.380
+0.332
+0.484
+0.573
+0.461
+4
+0.690
+0.366
+0.719
+0.103
+0.128
+0.023
+-0.108
+0.230
+0.294
+5
+0.442
+0.268
+0.437
+0.183
+0.387
+0.346
+0.003
+0.285
+0.163
+6
+0.590
+-0.600
+0.355
+0.296
+0.346
+0.264
+0.153
+0.584
+0.232
+The correlation calculation has 5–537 paired eligible frames per recording, with different temporal dependence and
+force trajectories. Small-sample cells can be unstable. No p-values, causal sensitivity or linearity claims are inferred
+from these correlations.
+The recorded target maximum-V flag never reaches 255 in the evaluated press subset. This indicates no observed
+target-ROI raw maximum of 255 in these CSV rows; it does not prove that the complete optical system is free of
+saturation. Median no-contact raw-V quartile drift ranges from −0.0272 to +0.0126 levels across taxels. Neither value
+supplies long-term stability or recalibration intervals.
+
+
+MANUAL CALIBRATION  |  COMPLETE THESIS SOURCE REPORT
+19 October 2026  •  Manual dataset only
+29
+10.3 Raw V against reference force for every taxel
+The following plots pair the pressed taxel's raw ROI mean HSV V with its existing lag-aligned reference force. All 7,154
+eligible press frames from the 54 manual recordings are retained. Each taxel contains six TEST recordings. No-contact
+recordings are excluded because this analysis examines measured press-force variation; they are not assigned artificial
+zero-force values. No additional lag, smoothing, baseline subtraction, response threshold, force binning or outlier
+removal is applied. [S17]
+The x-axis is aligned reference force F in newtons, and the y-axis is raw ROI mean V in the 0-255 digital encoding. All
+nine panels share identical limits, with the V axis focused on the observed brightness range rather than spanning the
+full encoding. Colors and marker shapes identify TEST1-TEST6. Each point is a recorded frame; point density reflects
+raw sample counts, while fitted lines and pooled statistics give each recording equal total weight.
+Correlation and fitted-line definitions
+For a recording with n_s eligible frames, w_i = 1/n_s. Pearson r is the weighted covariance of F and V divided by the
+square root of their weighted variances, centered at their weighted means. The line V_hat = a + bF minimizes Σw_i(V_i
+- a - bF_i)². R² = 1 - Σw_i(V_i - V_hat_i)² / Σw_i(V_i - weighted mean V)². With this single-predictor, intercept-inclusive fit
+and the same weights, R² equals r²; both are reported because r retains direction.
+These are descriptive fits on the plotted samples. The samples coincide with the earlier held-out frame identities, but
+the new straight lines are fitted and summarized on those same samples. Their R² values describe raw-V linear
+association and must not be presented as held-out accuracy, prospective validation, or the force ensemble's R² of
+0.3113.
+Table 31. Raw V versus force: recording-weighted Pearson correlation and linear fit
+Taxel
+Frames
+Pearson r
+Linear-fit R²
+a (V levels)
+b (V levels/N)
+1
+696
+-0.1795
+0.032224
+27.9638
+-0.4741
+2
+493
+0.0065
+0.000042
+26.8136
+0.0165
+3
+266
+0.3153
+0.099412
+26.2329
+0.7897
+4
+1092
+0.1698
+0.028839
+26.4059
+0.4951
+5
+1463
+0.0177
+0.000314
+27.1526
+0.0504
+6
+921
+0.2969
+0.088139
+25.3641
+1.0144
+7
+1024
+0.0127
+0.000161
+27.5544
+0.0380
+8
+703
+0.1100
+0.012101
+27.3339
+0.3122
+9
+496
+0.1367
+0.018680
+27.2948
+0.3575
+T3 has the strongest pooled association: r = +0.3153 and R² = 0.099412. T6 follows with r = +0.2969 and R² = 0.088139. The remaining pooled
+R² values are below 0.033. T2, T5 and T7 are nearly flat. Thus a single raw-V straight line explains less than 10% of recording-weighted V
+variance for every taxel.
+
+
+MANUAL CALIBRATION  |  COMPLETE THESIS SOURCE REPORT
+19 October 2026  •  Manual dataset only
+30
+Raw V versus force: taxels T1-T3
+Figure 11. Raw HSV V versus aligned reference force, T1-T3. All eligible frames are shown, distinguished by TEST recording. Dashed
+lines are equal-recording weighted least-squares fits with an intercept. Panel labels show weighted Pearson r, descriptive fit R² and raw
+frame count n. Each taxel has six recordings; axes are identical across all nine panels. Point density is unweighted; the line and reported
+statistics are recording-weighted.
+
+
+MANUAL CALIBRATION  |  COMPLETE THESIS SOURCE REPORT
+19 October 2026  •  Manual dataset only
+31
+Raw V versus force: taxels T4-T6
+Figure 12. Raw HSV V versus aligned reference force, T4-T6. All eligible frames are shown, distinguished by TEST recording. Dashed
+lines are equal-recording weighted least-squares fits with an intercept. Panel labels show weighted Pearson r, descriptive fit R² and raw
+frame count n. Each taxel has six recordings; axes are identical across all nine panels. Point density is unweighted; the line and reported
+statistics are recording-weighted.
+
+
+MANUAL CALIBRATION  |  COMPLETE THESIS SOURCE REPORT
+19 October 2026  •  Manual dataset only
+32
+Raw V versus force: taxels T7-T9
+Figure 13. Raw HSV V versus aligned reference force, T7-T9. All eligible frames are shown, distinguished by TEST recording. Dashed
+lines are equal-recording weighted least-squares fits with an intercept. Panel labels show weighted Pearson r, descriptive fit R² and raw
+frame count n. Each taxel has six recordings; axes are identical across all nine panels. Point density is unweighted; the line and reported
+statistics are recording-weighted.
+
+
+MANUAL CALIBRATION  |  COMPLETE THESIS SOURCE REPORT
+19 October 2026  •  Manual dataset only
+33
+Within-recording association and the effect of pooling
+Different recording brightness levels can dominate a pooled scatter plot. To expose this, Pearson correlation and a
+separate intercept-inclusive linear-fit R² are also calculated inside each of the 54 recordings. Equal weights within a
+recording give ordinary Pearson/OLS results. No recording is selected or removed based on its correlation.
+Table 32. Raw-V Pearson r within each recording
+Taxel
+TEST 1
+TEST 2
+TEST 3
+TEST 4
+TEST 5
+TEST 6
+1
+0.2300
+0.4876
+0.0965
+0.4980
+0.3113
+0.4584
+2
+0.2824
+0.5522
+0.5465
+0.4087
+0.2987
+-0.5993
+3
+0.2948
+0.8251
+0.5299
+0.7941
+0.4438
+0.3855
+4
+0.3555
+0.2478
+0.0237
+0.1009
+0.2228
+0.3141
+5
+0.2850
+0.3536
+0.3845
+0.1216
+0.3806
+0.3621
+6
+0.1890
+0.4395
+0.4173
+0.0874
+0.4461
+0.2670
+7
+0.2134
+-0.1035
+0.5020
+0.0884
+0.2261
+0.2351
+8
+0.3137
+0.2846
+0.6077
+0.3851
+0.3432
+0.6382
+9
+0.3745
+0.5788
+0.4583
+0.3920
+0.2954
+0.3163
+Table 33. Raw-V linear-fit R² within each recording
+Taxel
+TEST 1
+TEST 2
+TEST 3
+TEST 4
+TEST 5
+TEST 6
+1
+0.0529
+0.2377
+0.0093
+0.2480
+0.0969
+0.2102
+2
+0.0798
+0.3049
+0.2987
+0.1670
+0.0893
+0.3592
+3
+0.0869
+0.6809
+0.2808
+0.6306
+0.1970
+0.1486
+4
+0.1263
+0.0614
+0.0006
+0.0102
+0.0496
+0.0986
+5
+0.0812
+0.1250
+0.1479
+0.0148
+0.1449
+0.1311
+6
+0.0357
+0.1931
+0.1742
+0.0076
+0.1990
+0.0713
+7
+0.0455
+0.0107
+0.2520
+0.0078
+0.0511
+0.0553
+8
+0.0984
+0.0810
+0.3693
+0.1483
+0.1178
+0.4073
+9
+0.1402
+0.3350
+0.2101
+0.1537
+0.0872
+0.1000
+T1 illustrates the aggregation effect: every individual recording has positive Pearson r (0.0965 to 0.4980), yet the
+pooled recording-weighted r is -0.1795. The sign reversal shows that a pooled slope cannot be interpreted as a
+universal within-recording response. The plots expose a distinct higher-brightness TEST1 band; they do not establish
+whether exposure, illumination, baseline drift or another acquisition factor caused the offsets.
+R² alone hides direction: T2/TEST6 has r = -0.5993 and R² = 0.3592. A larger R² is not evidence of increasing brightness with force unless the
+correlation/slope sign is also reported.
+
+
+MANUAL CALIBRATION  |  COMPLETE THESIS SOURCE REPORT
+19 October 2026  •  Manual dataset only
+34
+Sample support and interpretation of the V-force plots
+Table 34. Eligible paired frames for every taxel and TEST recording
+Taxel
+TEST 1
+TEST 2
+TEST 3
+TEST 4
+TEST 5
+TEST 6
+Total
+1
+537
+23
+45
+8
+62
+21
+696
+2
+309
+6
+26
+53
+94
+5
+493
+3
+81
+19
+42
+14
+53
+57
+266
+4
+207
+275
+128
+157
+202
+123
+1092
+5
+487
+180
+201
+239
+191
+165
+1463
+6
+72
+136
+71
+286
+80
+276
+921
+7
+299
+214
+60
+182
+110
+159
+1024
+8
+272
+121
+44
+116
+113
+37
+703
+9
+101
+51
+69
+62
+111
+102
+496
+Support varies from 5 to 537 paired frames per recording. Short recordings, such as T2/TEST6 with five frames and
+T2/TEST2 with six frames, produce unstable descriptive correlations. The frames are temporally dependent; neither
+these frame counts nor the displayed scatter clouds justify independent-frame significance tests or confidence
+intervals.
+Findings for the thesis
+First, raw mean brightness is a weak pooled linear descriptor of force in this manual subset. The largest pooled R² is
+0.099412 at T3, so the straight-line fit accounts for approximately 9.94% of its weighted raw-V variance. A raw mean V
+measurement by itself does not support a reliable common linear calibration across these recordings.
+Second, association is often clearer within a recording than after pooling recordings with different brightness offsets.
+The strongest individual fit is T3/TEST2 (r = 0.8251; R² = 0.6809), based on 19 paired frames. This is retained as one of
+all 54 recording-level results, rather than substituted for T3's pooled result. Differences in force coverage and recording
+length also affect the observed associations.
+Third, these findings motivate the saved-baseline correction comparison in Section 10.4 and controlled acquisition in a
+future calibration study. They do not prove a physical sensitivity, a linear optical transfer function, or a specific cause of
+brightness offsets. The fitted slope has units of camera V levels/N and is descriptive of this dataset, not a traceable
+sensitivity calibration.
+Finally, this analysis uses original acquisition-time raw V. The trained force ensemble uses richer video-recomputed
+optical patterns and causal history to predict force, so its held-out force R² cannot be equated with the R² of a
+raw-V-against-force line. The existing best-model metrics and all competing-model comparisons remain unchanged.
+
+
+MANUAL CALIBRATION  |  COMPLETE THESIS SOURCE REPORT
+19 October 2026  •  Manual dataset only
+35
+10.4 Baseline-corrected and normalized V versus force
+This comparison retains every raw-V plot in Section 10.3 and uses exactly the same 7,154 manual press frames, 54
+recordings, nine taxels, six TEST groups and aligned 0.05-3 N reference-force values. Each point uses the pressed taxel's
+acquisition-time mean V. The associated saved baseline supplies V₀; no force values are used to estimate the
+normalization. [S18]
+Table 35. Signal definitions used in the V-force comparison
+Signal
+Exact expression
+Units / interpretation
+Raw V
+V
+ROI mean V in the 0-255 encoding
+Baseline-corrected V
+ΔV = V - V₀
+Signed change in camera V levels
+Normalized V
+N = 100 × (V - V₀) / V₀
+Percent change relative to the saved baseline
+V₀ is the ROI mean_v in the recording's saved baseline_summary.json, averaged across baseline pixels and 24 baseline
+frames. All 54 baseline files were checked against their source hashes and predate their corresponding recordings.
+They reuse three baseline captures, so they are not 54 independent baseline measurements. All V₀ values are positive.
+Signed changes are retained, including values below zero.
+For each taxel and signal Y, fit Y_hat = a + bF with an intercept and weights w_i = 1/n_s. Weighted Pearson r and R² = 1
+- weighted SSE / weighted variance sum are calculated as in Section 10.3; R² = r². These are descriptive fits on the
+plotted samples, not new held-out force-model results. No new alignment, smoothing, thresholds, outlier filtering,
+model tuning or force-dependent rescaling is applied.
+Table 36. Raw, baseline-corrected and normalized V: pooled correlation and R²
+Taxel
+Raw r
+Raw R²
+ΔV r
+ΔV R²
+Norm. r
+Norm. R²
+1
+-0.1795
+0.032224
+0.0596
+0.003554
+0.0724
+0.005247
+2
+0.0065
+0.000042
+0.2784
+0.077514
+0.2784
+0.077504
+3
+0.3153
+0.099412
+0.5444
+0.296338
+0.5501
+0.302639
+4
+0.1698
+0.028839
+0.2570
+0.066035
+0.2558
+0.065417
+5
+0.0177
+0.000314
+0.2771
+0.076793
+0.2711
+0.073498
+6
+0.2969
+0.088139
+0.3255
+0.105923
+0.3349
+0.112165
+7
+0.0127
+0.000161
+0.1946
+0.037856
+0.1973
+0.038925
+8
+0.1100
+0.012101
+0.3535
+0.124959
+0.3553
+0.126243
+9
+0.1367
+0.018680
+0.4125
+0.170186
+0.4189
+0.175493
+All three columns use identical samples and weights. R² values refer to the variance of their respective response signal, so cross-signal
+differences describe association after transformation; they are not reductions in force-prediction error.
+
+
+MANUAL CALIBRATION  |  COMPLETE THESIS SOURCE REPORT
+19 October 2026  •  Manual dataset only
+36
+Corrected and normalized V: taxels T1-T3
+Figure 14. Baseline-corrected and normalized V versus force, T1-T3. Left: signed ΔV = V - V₀. Right: normalized percentage N = 100 × (V
+- V₀) / V₀. Colors and marker shapes identify TEST recordings. All eligible points are retained; raw point density is unweighted. Dashed
+lines and labels use equal-recording weights. Each taxel has six recordings. Limits are shared across all nine taxels within each signal
+column; the columns have different units. R² is descriptive, not held-out predictive accuracy.
+
+
+MANUAL CALIBRATION  |  COMPLETE THESIS SOURCE REPORT
+19 October 2026  •  Manual dataset only
+37
+Corrected and normalized V: taxels T4-T6
+Figure 15. Baseline-corrected and normalized V versus force, T4-T6. Left: signed ΔV = V - V₀. Right: normalized percentage N = 100 × (V
+- V₀) / V₀. Colors and marker shapes identify TEST recordings. All eligible points are retained; raw point density is unweighted. Dashed
+lines and labels use equal-recording weights. Each taxel has six recordings. Limits are shared across all nine taxels within each signal
+column; the columns have different units. R² is descriptive, not held-out predictive accuracy.
+
+
+MANUAL CALIBRATION  |  COMPLETE THESIS SOURCE REPORT
+19 October 2026  •  Manual dataset only
+38
+Corrected and normalized V: taxels T7-T9
+Figure 16. Baseline-corrected and normalized V versus force, T7-T9. Left: signed ΔV = V - V₀. Right: normalized percentage N = 100 × (V
+- V₀) / V₀. Colors and marker shapes identify TEST recordings. All eligible points are retained; raw point density is unweighted. Dashed
+lines and labels use equal-recording weights. Each taxel has six recordings. Limits are shared across all nine taxels within each signal
+column; the columns have different units. R² is descriptive, not held-out predictive accuracy.
+
+
+MANUAL CALIBRATION  |  COMPLETE THESIS SOURCE REPORT
+19 October 2026  •  Manual dataset only
+39
+Saved baseline values and reuse across recordings
+Table 37. Baseline V₀ for each taxel and TEST recording (camera V levels)
+Taxel
+TEST 1
+TEST 2
+TEST 3
+TEST 4
+TEST 5
+TEST 6
+1
+31.101723
+26.663926
+26.663926
+26.663926
+26.663926
+26.663926
+2
+31.122403
+26.641586
+26.641586
+26.641586
+26.641586
+26.641586
+3
+31.256703
+26.840251
+26.840251
+26.840251
+26.840251
+26.840251
+4
+31.588310
+27.035985
+27.035985
+27.035985
+27.035985
+27.035985
+5
+31.647838
+27.130311
+27.130311
+27.130311
+27.130311
+27.130311
+6
+31.554978
+27.073568
+27.073568
+27.073568
+27.073568
+27.073568
+7
+31.580598
+27.022119
+27.022119
+27.022119
+27.022119
+27.022119
+8
+31.689314
+27.117236
+27.117236
+26.745450
+26.745450
+26.745450
+9
+31.733837
+26.911930
+26.911930
+26.911930
+26.911930
+26.911930
+Values above are rounded for display; computations use the full saved JSON values. Repeated values reflect shared
+baseline captures, not missing data or imputation. V₀ is a scalar mean across baseline pixels and frames; this operation
+differs from subtracting a per-pixel median baseline and clipping positive values in Section 10.2.
+Table 38. Three original baseline captures associated with the 54 press recordings
+Capture
+Captured at (UTC)
+Records
+TEST groups
+B1
+2026-08-08T06:13:25.246101+00:00
+9
+1
+B2
+2026-08-08T07:25:06.504654+00:00
+37
+2, 3, 4, 5, 6
+B3
+2026-08-08T08:49:41.118195+00:00
+8
+2, 3, 4, 5, 6
+B1: baseline-94bc554616954e3e994c1b9ae607805d
+B2: baseline-51658c86a67b4547bb12c9bc8fb3efd3
+B3: baseline-c342b333520d438d9221602432ae6aa6
+Each baseline capture has 24 valid frames per ROI. TEST1 uses B1; the remaining recordings use B2 or B3 as recorded in
+their own saved files. Baseline reuse is preserved rather than assigning one new baseline per TEST group. The evidence
+file includes the complete session-to-baseline mapping and hashes of all 54 archived JSON members. [S18]
+What normalization can and cannot change
+Within a recording, V₀ is a fixed positive constant. Subtracting it or dividing by it is an affine transformation, so Pearson
+r and an intercept-inclusive linear-fit R² are unchanged. This was numerically checked for all 54 recordings.
+Consequently, the within-recording tables in Section 10.3 also apply to both transformed signals. Their slopes,
+intercepts and units do change.
+Across pooled recordings, different V₀ values change relative offsets and scales, so pooled r and R² can change.
+Reporting V/V₀ instead of 100 × (V - V₀)/V₀ would yield exactly the same r and R² because these two representations
+are related by a single positive affine transformation. Dividing every raw value by 255 alone would also leave its raw r
+and R² unchanged.
+
+
+MANUAL CALIBRATION  |  COMPLETE THESIS SOURCE REPORT
+19 October 2026  •  Manual dataset only
+40
+Exact corrected fits and interpretation
+Table 39. Corrected and normalized fitted lines: Y_hat = a + bF
+Taxel
+ΔV intercept a
+ΔV slope b
+Norm. intercept a
+Norm. slope b
+1
+-0.498320
+0.056082
+-1.990883
+0.236740
+2
+-0.985107
+0.224430
+-3.669157
+0.827423
+3
+-0.957588
+0.611030
+-3.563982
+2.240670
+4
+-0.914468
+0.234755
+-3.326307
+0.827859
+5
+-1.017829
+0.219628
+-3.683277
+0.785497
+6
+-1.209486
+0.431806
+-4.391668
+1.538055
+7
+-0.617135
+0.219760
+-2.272049
+0.795788
+8
+-0.677087
+0.461703
+-2.493484
+1.693617
+9
+-0.661833
+0.466569
+-2.413090
+1.695995
+Corrected intercepts are in camera V levels and slopes in V levels/N. Normalized intercepts are percentage change from baseline, and
+normalized slopes are percentage points of relative change per N. These empirical slopes are not traceable physical sensitivity calibrations.
+Findings for the thesis
+Correction helps eight taxels, with a clear exception. Both corrected and normalized pooled R² exceed raw R² for
+T2-T9. T1 changes from negative raw r = -0.1795 to positive corrected r = +0.0596 and normalized r = +0.0724, but its
+R² decreases from 0.032224 to 0.003554 and 0.005247. The sign change does not establish a strong force association.
+T3 has the strongest pooled association. Its raw r/R² of 0.3153/0.099412 become 0.5444/0.296338 after subtraction
+and 0.5501/0.302639 after normalization. The normalized line accounts for approximately 30.26% of weighted
+normalized-V variance, an absolute R² increase of 0.203227 over raw V. T9 follows with normalized r = 0.4189 and R² =
+0.175493.
+Most of the improvement comes from baseline subtraction. Normalization adds only small changes relative to
+correction: it has slightly higher R² for T1, T3 and T6-T9, and slightly lower R² for T2, T4 and T5. Among these three
+descriptive signals, raw V has the highest R² at T1; corrected V at T2, T4 and T5; normalized V at T3 and T6-T9. All
+alternatives are retained; these retrospective comparisons do not establish a prospectively validated selection rule.
+Residual variation remains substantial. All corrected/normalized pooled R² values remain below 0.31.
+Recording-specific force coverage, correlated frames, and three reused baselines limit interpretation. The results
+support saved-baseline adjustment for comparison across recordings, while unchanged within-recording correlations
+show that this operation adds no new within-recording force information. Independent recordings with controlled
+loading and freshly measured baselines are needed to test transfer.
+The existing force, localization and contact-model metrics, comparisons, configurations, confusion matrices and raw-V plots remain intact.
+This analysis does not retrain the force ensemble or measure a new held-out force-prediction R².
+
+
+MANUAL CALIBRATION  |  COMPLETE THESIS SOURCE REPORT
+19 October 2026  •  Manual dataset only
+41
+11. Exact winning model configurations
+The outer-fold configurations below generated the headline scores. Configuration IDs refer to the exhaustive grid in
+Appendix A. All members use weighted StandardScaler fitted on the corresponding training rows. Lag/floor fitting is
+training-only. The output-history index h maps 0→0 s, 1→0.3 s, 2→1.0 s. [S1, S8]
+Table 40. Winning classifier configuration in each held-out fold
+TEST
+Localization ID / pack
+Loc. τ (s)
+Contact ID / pack
+Contact τ (s)
+Contact threshold
+1
+loc_048 / temporal
+0.3
+con_022 / shape
+1.0
+0.33409756422042847
+2
+loc_036 / invariant
+1.0
+con_022 / shape
+1.0
+0.3497229218482971
+3
+loc_036 / invariant
+1.0
+con_022 / shape
+1.0
+0.32444050908088684
+4
+loc_036 / invariant
+1.0
+con_022 / shape
+1.0
+0.29617786407470703
+5
+loc_036 / invariant
+1.0
+con_022 / shape
+1.0
+0.3024323284626007
+6
+loc_036 / invariant
+1.0
+con_022 / shape
+1.0
+0.3111855387687683
+Localization uses LogisticRegression(C=0.03, max_iter=2500, random_state=1741). TEST1 uses temporal features (288
+dimensions) and τ=0.3 s. TEST2–TEST6 use invariant features (117 dimensions); their exact output time constants are
+listed above. Classification uses argmax of smoothed class scores.
+Contact uses SVC(C=1, kernel="rbf", gamma=1/90=0.011111111111111112, cache_size=256,
+decision_function_shape="ovr", random_state=1741) on shape features (90 dimensions). Its score is
+sigmoid(decision_function), followed by the listed EMA, then contact if score ≥ fold threshold. Thresholds were
+selected by the balanced-accuracy policy on inner OOF predictions.
+Force ensemble composition
+Each outer prediction averages three separately tuned force families after their selected output EMA and residual
+correction. All winning force members use temporal features (288 dimensions). Most folds use for_050, for_056 and
+for_059; TEST2 uses for_055 in place of for_056. The exact folds, offsets and time constants follow on the next page.
+Table 41. Force member estimator settings (additional defaults in Appendix B)
+ID
+Estimator
+Explicit settings
+for_050
+ExtraTreesRegressor
+180 trees; min_samples_leaf=3; max_features=0.75; n_jobs=1; random_state=1741
+for_055
+HistGradientBoostingRegressor
+max_iter=180; learning_rate=0.05; min_samples_leaf=20; max_leaf_nodes=15;
+loss=squared_error; l2_regularization=10; early_stopping=False; random_state=1741
+for_056
+HistGradientBoostingRegressor
+As for_055, but max_leaf_nodes=31
+for_059
+XGBRegressor
+220 trees; learning_rate=0.04; min_child_weight=5; max_depth=5; reg_lambda=20;
+tree_method=hist; n_jobs=1; random_state=1741
+
+
+MANUAL CALIBRATION  |  COMPLETE THESIS SOURCE REPORT
+19 October 2026  •  Manual dataset only
+42
+Exact force corrections and output history
+Table 42. All 18 force-ensemble member settings used for held-out scoring
+TEST
+Candidate
+Family
+τ (s)
+Correction
+Offset (N)
+1
+for_050
+Extra Trees
+0.0
+median
+0.11000364382382512
+1
+for_056
+HistGB
+0.0
+median
+0.07882320945789201
+1
+for_059
+XGBoost
+0.0
+median
+0.09625087054912093
+2
+for_055
+HistGB
+0.0
+median
+0.10901741162705457
+2
+for_050
+Extra Trees
+0.0
+median
+0.10593629488925335
+2
+for_059
+XGBoost
+0.0
+median
+0.0970969430474912
+3
+for_056
+HistGB
+0.0
+median
+0.09374066103661953
+3
+for_059
+XGBoost
+0.0
+median
+0.11504363333800048
+3
+for_050
+Extra Trees
+0.0
+median
+0.14190227448836593
+4
+for_056
+HistGB
+0.3
+median
+0.10363438450784854
+4
+for_059
+XGBoost
+0.3
+median
+0.12177224632432046
+4
+for_050
+Extra Trees
+0.0
+median
+0.1408816589434914
+5
+for_056
+HistGB
+0.3
+median
+0.10187709111648936
+5
+for_050
+Extra Trees
+0.0
+median
+0.11651780258932955
+5
+for_059
+XGBoost
+0.0
+median
+0.0732525453464563
+6
+for_059
+XGBoost
+0.3
+median
+0.11652466294880082
+6
+for_056
+HistGB
+0.3
+median
+0.10905367485922174
+6
+for_050
+Extra Trees
+0.0
+median
+0.16707105034631944
+Offsets are added after the selected EMA; the result is clipped at zero. “Median” means the weighted 0.5 quantile of
+inner OOF residuals y−prediction. The implementation sorts residuals and interpolates at q·Σw against cumulative
+weight minus half the current weight. It is not an outer-test residual correction.
+Training no-contact floors and scaler means/scales vary across folds and are learned preprocessing parameters rather
+than selected hyperparameters. Their estimator boundary is fixed by whole-recording group assignment; no held-out
+recording contributes. No single all-data configuration should be substituted for the six fold configurations when
+describing the source of these performance figures.
+
+
+MANUAL CALIBRATION  |  COMPLETE THESIS SOURCE REPORT
+19 October 2026  •  Manual dataset only
+43
+Full-pool research configurations available for inference
+After evaluation, full-pool research models were fitted. The available Logistic-regression component matches the
+winning family, while the saved localization manifest still routes the competing ensemble. This report does not change
+that manifest or the live GUI. These full-data settings are provided for reproducibility; their internal selection scores are
+not additional held-out test results.
+Table 43. Available full-pool best-family components
+File / candidate
+Pack
+τ (s)
+Threshold or force offset
+force_for_056.joblib
+temporal
+0.3
+offset=0.10292978395171193
+force_for_050.joblib
+temporal
+0.0
+offset=0.12944881296122535
+force_for_059.joblib
+temporal
+0.3
+offset=0.10841652905616302
+localization_loc_036.joblib
+invariant
+1.0
+argmax
+contact_con_022.joblib
+shape
+1.0
+threshold=0.32685983180999756
+Full-pool lag: 300 ms. Positive-light sum floors, in T1–T9 order: [3786, 4026, 2952, 3509, 3999, 3470, 3096, 3218, 2608].
+Divide floor-corrected sums by the exact ROI areas before feature construction. Each saved estimator includes its fitted
+scaler; learned scalers must not be refitted on test data.
+Inference order: obtain correctly oriented V measurements and the saved baseline; compute ROI measurements;
+subtract the stored floor in the specified feature formula; update causal feature histories; apply the stored scaler;
+generate estimator scores; apply member-specific output history and force correction/contact threshold; average
+force member outputs; return force, contact and taxel. Reset state between recordings or at the specified time
+discontinuities.
+Exact scalar estimator parameters and relevant saved component hashes are printed in Appendix B. Model binary files retain learned
+weights/trees and scaler arrays. This document provides the complete scientific description and configuration; it does not replace the trained
+estimator binaries for running inference.
+
+
+MANUAL CALIBRATION  |  COMPLETE THESIS SOURCE REPORT
+19 October 2026  •  Manual dataset only
+44
+12. Findings, limitations and next experiments
+Findings supported by the measurements
+Expanded optical patterns, causal history, hyperparameter tuning and output policies improve the pooled best results
+over the fixed benchmark. The most accurate localization family is regularized Logistic regression, the most accurate
+contact family is RBF SVC, and the lowest-MAE force model is a three-family ensemble. Increased model complexity
+alone is not an explanation: tree and MLP classifiers do not lead localization accuracy.
+The improvement is measured for the combined development strategy. The run does not contain a full factorial
+ablation that isolates the causal contribution of each feature, correction, weighting choice or model. Differences
+between the frame-only selector and the best family suggest useful temporal information, but are not a controlled
+estimate of a single EMA effect.
+Contact detection is consistently strong within the defined press/control comparison. Localization errors concentrate
+in TEST1 and specific taxel confusions, especially T2. Force regression remains the weakest task: overall R² is 0.3113
+and low-force errors are large. Optical distributions show measurable off-target response, but classifiers can use
+distributed patterns successfully.
+Raw-V pooled fits have R² below 0.10 for all nine taxels. Saved-baseline subtraction and normalization improve pooled
+R² for eight taxels; normalized T3 reaches r = 0.5501 and R² = 0.302639. T1 remains weak and its R² decreases.
+Within-recording correlations are unchanged by these affine transformations. These descriptive findings support
+baseline adjustment across recordings, while independent calibration validation remains necessary.
+Limits that must remain in the thesis
+The dataset contains one archived manual collection with six TEST groups and 11 no-contact controls, not an
+independent multi-device or multi-day prospective trial. Family ranking uses observed outer results, so winner
+selection can be optimistic. Temporal smoothing benefits stationary recorded contacts; moving and multiple
+simultaneous contacts were not evaluated. Contact prevalence, dedicated-control design and restricted force eligibility
+limit transfer to continuous deployment.
+Reference-force uncertainty, physical taxel coordinates in millimetres, calibrated illumination, controlled
+matched-force sweeps, onset/release annotations and deployment latency were not established in this analysis.
+Accordingly, this report does not claim millimetre localization error, lux response, force detection limit, hysteresis,
+full-scale linearity, dynamic response time or a validated operating range.
+Specific next experiments
+Freeze the three headline model families and all preprocessing before collecting a new manual test dataset. Repeat
+complete sessions across days, camera settings and mechanical reassemblies; include continuous no-contact periods,
+moving contacts and controlled onset/release transitions. Keep new test recordings outside all threshold and
+hyperparameter selection.
+For force, collect balanced repeated loading/unloading plateaus near 0.05–1 N and throughout 1–3 N; preserve loading
+direction and synchronized timing. For localization, prioritize T2 and the TEST1 acquisition conditions and record
+matched-force contacts to separate lighting spread from force effects. For contact, evaluate false alarms per unit time
+and missed events once episode annotations exist. Benchmark the exact intended winner stack with camera
+acquisition and feature extraction included before making latency claims.
+
+
+MANUAL CALIBRATION  |  COMPLETE THESIS SOURCE REPORT
+19 October 2026  •  Manual dataset only
+45
+13. Verification and computational reproducibility
+Training artifacts record a successful validation audit covering 114 aggregate metric comparisons (maximum absolute
+discrepancy approximately 1.25×10⁻¹⁵), 30 inner boundaries, source lineage, whole-recording splits, finite scalers,
+model checksums, refitted fold-1 predictions, label-independent inference, causal-prefix and future-invariance tests,
+state reset, and batch/streaming agreement. [S9]
+The optical analysis records 430 source validation checks and 120 analysis checks, with additional response-distribution
+verification. For this consolidation, the best-model prediction rows were loaded independently, all headline metrics
+recomputed, and both raw and weighted normalized matrices reproduced. New fold, force-bin and force-taxel
+diagnostics use those same winner rows. Existing artifacts were hashed before report generation and checked for
+preservation. [S1, S10–S13]
+Table 44. Recorded experiment environment
+Component
+Version / setting
+Python
+3.12.14; Windows 11 build 26200; 24 logical CPUs
+NumPy / pandas
+2.5.1 / 3.0.5
+scikit-learn / XGBoost
+1.9.0 / 3.4.0
+SciPy / joblib
+1.18.0 / 1.5.3
+threadpoolctl / PyArrow
+3.6.0 / 21.0.0
+pytest
+9.1.1
+Random seeds
+1729 fixed benchmark; 1741 tuning
+Tuned estimator execution
+n_jobs=1 where explicitly set; threadpool_limits(limits=1) during fit
+A stored timing audit measured the original saved multi-task bundle, including the competing localization ensemble
+and alternate contact output: streaming median 41.10 ms and p95 44.46 ms, excluding camera acquisition and pixel
+feature extraction. That is not a new measurement of the standalone winning-family stack; it must not be cited as its
+deployed end-to-end latency. [S14]
+The immutable feature partitions were not re-read during this report update because their Windows access
+permissions deny access in the current session. The report relies on preserved training provenance, prediction tables,
+executed source snapshots and exact configuration exports; the raw archive was accessible in the optical audit. This
+update consolidates and verifies saved evidence without retraining or changing deployment.
+Reproduction sequence
+1. Verify the manual archive hash and exclude automatic/replay-only lineage. 2. Extract the original-video ROI feature
+contract and saved baselines. 3. Preserve whole-recording TEST assignments and reproduce fold-local force alignment.
+4. Fit floor/scaler and candidates only on each training boundary. 5. Apply inner selection and score each outer group
+once. 6. Pool predictions with recording weights and reproduce the comparison tables. 7. Rank families by the report’s
+stated criterion. 8. Produce confusion and optical figures from the corresponding saved rows. 9. Use independent new
+recordings for prospective validation.
+
+
+MANUAL CALIBRATION  |  COMPLETE THESIS SOURCE REPORT
+19 October 2026  •  Manual dataset only
+46
+14. Ready-to-use ChatGPT Writing instructions
+The following prompt can be pasted into ChatGPT Writing together with this PDF. It specifies the evidence hierarchy
+and prevents accidental mixing of different model scores.
+Writing prompt
+Use the attached “Manual Calibration: Complete Technical Report” as the technical source for my thesis. Follow a
+standard thesis structure: Introduction and objectives, Related work, System and experimental design, Methodology,
+Results, Discussion, Conclusions and future work. Write formal academic prose with clear equations and numbered
+tables/figures. Keep methodological detail sufficient for replication.
+Use the following models consistently in the abstract, results, discussion and conclusion: localization = Tuned Logistic
+regression, 84.88% accuracy and 85.00% macro F1; contact detection = Tuned RBF SVC, 99.24% accuracy, 99.54%
+balanced accuracy, 99.09% recall, 100.00% precision and specificity, 99.54% contact-class F1 and 98.67% macro F1;
+force = Tuned ensemble, MAE 0.4972 N, RMSE 0.6299 N, bias +0.0827 N and R² 0.3113. Do not combine metrics from
+different models or substitute internal selection scores for held-out scores.
+State that only Manual Calibration (2).zip was used. Evaluation used six complete TEST groups, 7,154 eligible press
+frames from 54 recordings for force/localization and 8,506 frames from 65 recordings for contact. Explain equal
+recording weighting, the inclusive 0.05–3 N interval, train-only preprocessing, nested group selection, causal history
+and the retrospective final family ranking. Keep all competing models in comparison tables while emphasizing the
+three headline winners.
+Include the 9 × 9 localization and 2 × 2 contact matrices in separately labeled row-normalized and raw-count views.
+Rows are actual labels; columns predicted labels. The normalized matrices use recording weights, so their values
+cannot be reconstructed by dividing raw counts. Include ROI performance heatmaps, the optical response-distribution
+matrix and light diagnostics. Distinguish optical response share from classification accuracy, and camera V units from
+lux or calibrated optical power.
+Use the exact ROI coordinates, segmentation threshold, feature definitions, fold configurations, training seeds,
+candidate grid and estimator parameters in this report. Describe the evaluation fold configurations separately from the
+available full-data research fit. Do not say the winning models were deployed in the live GUI. Force is regression; do not
+invent a force-accuracy percentage.
+Report the direct HSV V metrics in Section 10.1 separately from the positive-clipped response in Section 10.2. Retain
+the nine raw-V plots in Section 10.3 and the corrected/normalized comparisons in Section 10.4. Define ΔV = V - V₀ and
+N = 100 × ΔV/V₀ using the three saved baseline captures reused across 54 recordings. Compare pooled Pearson r and
+R² for all taxels, including T1's R² decrease; normalized T3 reaches r = 0.5501 and R² = 0.302639. Within-recording r/R²
+are unchanged. These linear fits are descriptive, not held-out model results. Preserve signed changes, noise/CV
+definitions and units; do not call V or normalized change lux, optical power or accuracy.
+Discuss TEST1 localization weakness, T2 confusion, low-force overestimation, limited force R², dedicated control
+recordings, temporal dependence, the restricted force interval and the lack of untouched prospective validation.
+Attribute improvements to the combined search strategy; do not invent causal ablation results, statistical significance,
+confidence intervals, physical detection limits, calibrated sensitivity, millimetre errors or end-to-end latency.
+Use this report’s project source IDs as internal evidence. For the Related work chapter, obtain and verify scholarly
+sources separately; do not invent authors, publications, hardware specifications, citations or unrecorded experimental
+details. Mark genuinely missing thesis information for the researcher to supply. Preserve every supplied numeric result
+and its units. End with specific future experiments grounded in the reported limitations.
+
+
+MANUAL CALIBRATION  |  COMPLETE THESIS SOURCE REPORT
+19 October 2026  •  Manual dataset only
+47
+Appendix A. Exhaustive tuning configuration grid
+This appendix contains all 178 estimator/feature candidates. Each row specifies its task-local ID, family, feature pack,
+training-weight code and varied parameters. Common constructor settings in Appendix B and feature definitions in
+Section 3 complete the configuration. Grid membership does not imply that every candidate has its own reported
+outer test row; inner selection produces the 50 family/procedure comparisons.
+Weight code “session” means recording weights, with additional class balancing for contact. “bins” is force
+bin/recording balancing. Feature dimensions: positive=9, optical=27, shape=90, spatial=180, invariant=117,
+temporal=288. Parameters such as gamma_multiplier are translated by the factory: SVC gamma = multiplier / feature
+dimension.
+Force — 62 candidates
+Table 45. Complete force candidate grid
+ID
+Family
+Features
+Weights
+Varied parameters
+for_000
+Extra Trees
+positive
+bins
+min_samples_leaf=10; max_features=1.0
+for_001
+Extra Trees
+positive
+session
+min_samples_leaf=10; max_features=1.0
+for_002
+Extra Trees
+optical
+session
+min_samples_leaf=3; max_features=0.75
+for_003
+Extra Trees
+optical
+session
+min_samples_leaf=15; max_features=0.75
+for_004
+Extra Trees
+optical
+session
+min_samples_leaf=30; max_features=1.0
+for_005
+Random Forest
+optical
+session
+min_samples_leaf=5; max_features=0.75
+for_006
+Random Forest
+optical
+session
+min_samples_leaf=20; max_features=0.75
+for_007
+HistGB
+optical
+session
+max_leaf_nodes=15; loss="squared_error"; l2_regularization=10
+for_008
+HistGB
+optical
+session
+max_leaf_nodes=31; loss="squared_error"; l2_regularization=10
+for_009
+HistGB
+optical
+session
+max_leaf_nodes=15; loss="absolute_error"; l2_regularization=10
+for_010
+XGBoost
+optical
+session
+max_depth=3; reg_lambda=20
+for_011
+XGBoost
+optical
+session
+max_depth=5; reg_lambda=20
+for_012
+RBF SVR
+optical
+session
+C=2; epsilon=0.05; gamma="scale"
+for_013
+RBF SVR
+optical
+session
+C=20; epsilon=0.05; gamma="scale"
+for_014
+Extra Trees
+shape
+session
+min_samples_leaf=3; max_features=0.75
+for_015
+Extra Trees
+shape
+session
+min_samples_leaf=15; max_features=0.75
+for_016
+Extra Trees
+shape
+session
+min_samples_leaf=30; max_features=1.0
+for_017
+Random Forest
+shape
+session
+min_samples_leaf=5; max_features=0.75
+for_018
+Random Forest
+shape
+session
+min_samples_leaf=20; max_features=0.75
+for_019
+HistGB
+shape
+session
+max_leaf_nodes=15; loss="squared_error"; l2_regularization=10
+for_020
+HistGB
+shape
+session
+max_leaf_nodes=31; loss="squared_error"; l2_regularization=10
+for_021
+HistGB
+shape
+session
+max_leaf_nodes=15; loss="absolute_error"; l2_regularization=10
+for_022
+XGBoost
+shape
+session
+max_depth=3; reg_lambda=20
+for_023
+XGBoost
+shape
+session
+max_depth=5; reg_lambda=20
+for_024
+RBF SVR
+shape
+session
+C=2; epsilon=0.05; gamma="scale"
+for_025
+RBF SVR
+shape
+session
+C=20; epsilon=0.05; gamma="scale"
+for_026
+Extra Trees
+spatial
+session
+min_samples_leaf=3; max_features=0.75
+for_027
+Extra Trees
+spatial
+session
+min_samples_leaf=15; max_features=0.75
+
+
+MANUAL CALIBRATION  |  COMPLETE THESIS SOURCE REPORT
+19 October 2026  •  Manual dataset only
+48
+ID
+Family
+Features
+Weights
+Varied parameters
+for_028
+Extra Trees
+spatial
+session
+min_samples_leaf=30; max_features=1.0
+for_029
+Random Forest
+spatial
+session
+min_samples_leaf=5; max_features=0.75
+for_030
+Random Forest
+spatial
+session
+min_samples_leaf=20; max_features=0.75
+for_031
+HistGB
+spatial
+session
+max_leaf_nodes=15; loss="squared_error"; l2_regularization=10
+for_032
+HistGB
+spatial
+session
+max_leaf_nodes=31; loss="squared_error"; l2_regularization=10
+for_033
+HistGB
+spatial
+session
+max_leaf_nodes=15; loss="absolute_error"; l2_regularization=10
+for_034
+XGBoost
+spatial
+session
+max_depth=3; reg_lambda=20
+for_035
+XGBoost
+spatial
+session
+max_depth=5; reg_lambda=20
+for_036
+RBF SVR
+spatial
+session
+C=2; epsilon=0.05; gamma="scale"
+for_037
+RBF SVR
+spatial
+session
+C=20; epsilon=0.05; gamma="scale"
+for_038
+Extra Trees
+invariant
+session
+min_samples_leaf=3; max_features=0.75
+for_039
+Extra Trees
+invariant
+session
+min_samples_leaf=15; max_features=0.75
+for_040
+Extra Trees
+invariant
+session
+min_samples_leaf=30; max_features=1.0
+for_041
+Random Forest
+invariant
+session
+min_samples_leaf=5; max_features=0.75
+for_042
+Random Forest
+invariant
+session
+min_samples_leaf=20; max_features=0.75
+for_043
+HistGB
+invariant
+session
+max_leaf_nodes=15; loss="squared_error"; l2_regularization=10
+for_044
+HistGB
+invariant
+session
+max_leaf_nodes=31; loss="squared_error"; l2_regularization=10
+for_045
+HistGB
+invariant
+session
+max_leaf_nodes=15; loss="absolute_error"; l2_regularization=10
+for_046
+XGBoost
+invariant
+session
+max_depth=3; reg_lambda=20
+for_047
+XGBoost
+invariant
+session
+max_depth=5; reg_lambda=20
+for_048
+RBF SVR
+invariant
+session
+C=2; epsilon=0.05; gamma="scale"
+for_049
+RBF SVR
+invariant
+session
+C=20; epsilon=0.05; gamma="scale"
+for_050
+Extra Trees
+temporal
+session
+min_samples_leaf=3; max_features=0.75
+for_051
+Extra Trees
+temporal
+session
+min_samples_leaf=15; max_features=0.75
+for_052
+Extra Trees
+temporal
+session
+min_samples_leaf=30; max_features=1.0
+for_053
+Random Forest
+temporal
+session
+min_samples_leaf=5; max_features=0.75
+for_054
+Random Forest
+temporal
+session
+min_samples_leaf=20; max_features=0.75
+for_055
+HistGB
+temporal
+session
+max_leaf_nodes=15; loss="squared_error"; l2_regularization=10
+for_056
+HistGB
+temporal
+session
+max_leaf_nodes=31; loss="squared_error"; l2_regularization=10
+for_057
+HistGB
+temporal
+session
+max_leaf_nodes=15; loss="absolute_error"; l2_regularization=10
+for_058
+XGBoost
+temporal
+session
+max_depth=3; reg_lambda=20
+for_059
+XGBoost
+temporal
+session
+max_depth=5; reg_lambda=20
+for_060
+MLP
+optical
+session
+hidden_layer_sizes=[64, 32]; alpha=1.0
+for_061
+MLP
+spatial
+session
+hidden_layer_sizes=[64, 32]; alpha=1.0
+
+
+MANUAL CALIBRATION  |  COMPLETE THESIS SOURCE REPORT
+19 October 2026  •  Manual dataset only
+49
+Localization — 64 candidates
+Table 46. Complete localization candidate grid
+ID
+Family
+Features
+Weights
+Varied parameters
+loc_000
+Logistic regression
+optical
+session
+C=0.03
+loc_001
+Logistic regression
+optical
+session
+C=0.3
+loc_002
+Logistic regression
+optical
+session
+C=3
+loc_003
+Logistic regression
+optical
+session
+C=30
+loc_004
+RBF SVC
+optical
+session
+C=1; gamma_multiplier=0.1
+loc_005
+RBF SVC
+optical
+session
+C=1; gamma_multiplier=1.0
+loc_006
+RBF SVC
+optical
+session
+C=10; gamma_multiplier=0.1
+loc_007
+RBF SVC
+optical
+session
+C=10; gamma_multiplier=1.0
+loc_008
+RBF SVC
+optical
+session
+C=100; gamma_multiplier=0.1
+loc_009
+RBF SVC
+optical
+session
+C=100; gamma_multiplier=1.0
+loc_010
+Extra Trees
+optical
+session
+min_samples_leaf=2; max_features=0.75
+loc_011
+Extra Trees
+optical
+session
+min_samples_leaf=10; max_features=0.75
+loc_012
+Logistic regression
+shape
+session
+C=0.03
+loc_013
+Logistic regression
+shape
+session
+C=0.3
+loc_014
+Logistic regression
+shape
+session
+C=3
+loc_015
+Logistic regression
+shape
+session
+C=30
+loc_016
+RBF SVC
+shape
+session
+C=1; gamma_multiplier=0.1
+loc_017
+RBF SVC
+shape
+session
+C=1; gamma_multiplier=1.0
+loc_018
+RBF SVC
+shape
+session
+C=10; gamma_multiplier=0.1
+loc_019
+RBF SVC
+shape
+session
+C=10; gamma_multiplier=1.0
+loc_020
+RBF SVC
+shape
+session
+C=100; gamma_multiplier=0.1
+loc_021
+RBF SVC
+shape
+session
+C=100; gamma_multiplier=1.0
+loc_022
+Extra Trees
+shape
+session
+min_samples_leaf=2; max_features=0.75
+loc_023
+Extra Trees
+shape
+session
+min_samples_leaf=10; max_features=0.75
+loc_024
+Logistic regression
+spatial
+session
+C=0.03
+loc_025
+Logistic regression
+spatial
+session
+C=0.3
+loc_026
+Logistic regression
+spatial
+session
+C=3
+loc_027
+Logistic regression
+spatial
+session
+C=30
+loc_028
+RBF SVC
+spatial
+session
+C=1; gamma_multiplier=0.1
+loc_029
+RBF SVC
+spatial
+session
+C=1; gamma_multiplier=1.0
+loc_030
+RBF SVC
+spatial
+session
+C=10; gamma_multiplier=0.1
+loc_031
+RBF SVC
+spatial
+session
+C=10; gamma_multiplier=1.0
+loc_032
+RBF SVC
+spatial
+session
+C=100; gamma_multiplier=0.1
+loc_033
+RBF SVC
+spatial
+session
+C=100; gamma_multiplier=1.0
+loc_034
+Extra Trees
+spatial
+session
+min_samples_leaf=2; max_features=0.75
+loc_035
+Extra Trees
+spatial
+session
+min_samples_leaf=10; max_features=0.75
+loc_036
+Logistic regression
+invariant
+session
+C=0.03
+loc_037
+Logistic regression
+invariant
+session
+C=0.3
+
+
+MANUAL CALIBRATION  |  COMPLETE THESIS SOURCE REPORT
+19 October 2026  •  Manual dataset only
+50
+ID
+Family
+Features
+Weights
+Varied parameters
+loc_038
+Logistic regression
+invariant
+session
+C=3
+loc_039
+Logistic regression
+invariant
+session
+C=30
+loc_040
+RBF SVC
+invariant
+session
+C=1; gamma_multiplier=0.1
+loc_041
+RBF SVC
+invariant
+session
+C=1; gamma_multiplier=1.0
+loc_042
+RBF SVC
+invariant
+session
+C=10; gamma_multiplier=0.1
+loc_043
+RBF SVC
+invariant
+session
+C=10; gamma_multiplier=1.0
+loc_044
+RBF SVC
+invariant
+session
+C=100; gamma_multiplier=0.1
+loc_045
+RBF SVC
+invariant
+session
+C=100; gamma_multiplier=1.0
+loc_046
+Extra Trees
+invariant
+session
+min_samples_leaf=2; max_features=0.75
+loc_047
+Extra Trees
+invariant
+session
+min_samples_leaf=10; max_features=0.75
+loc_048
+Logistic regression
+temporal
+session
+C=0.03
+loc_049
+Logistic regression
+temporal
+session
+C=0.3
+loc_050
+Logistic regression
+temporal
+session
+C=3
+loc_051
+Logistic regression
+temporal
+session
+C=30
+loc_052
+RBF SVC
+temporal
+session
+C=1; gamma_multiplier=0.1
+loc_053
+RBF SVC
+temporal
+session
+C=1; gamma_multiplier=1.0
+loc_054
+RBF SVC
+temporal
+session
+C=10; gamma_multiplier=0.1
+loc_055
+RBF SVC
+temporal
+session
+C=10; gamma_multiplier=1.0
+loc_056
+RBF SVC
+temporal
+session
+C=100; gamma_multiplier=0.1
+loc_057
+RBF SVC
+temporal
+session
+C=100; gamma_multiplier=1.0
+loc_058
+Extra Trees
+temporal
+session
+min_samples_leaf=2; max_features=0.75
+loc_059
+Extra Trees
+temporal
+session
+min_samples_leaf=10; max_features=0.75
+loc_060
+HistGB
+spatial
+session
+max_leaf_nodes=15; l2_regularization=10
+loc_061
+MLP
+spatial
+session
+hidden_layer_sizes=[64, 32]; alpha=1.0
+loc_062
+HistGB
+invariant
+session
+max_leaf_nodes=15; l2_regularization=10
+loc_063
+MLP
+invariant
+session
+hidden_layer_sizes=[64, 32]; alpha=1.0
+
+
+MANUAL CALIBRATION  |  COMPLETE THESIS SOURCE REPORT
+19 October 2026  •  Manual dataset only
+51
+Contact — 52 candidates
+Table 47. Complete contact candidate grid
+ID
+Family
+Features
+Weights
+Varied parameters
+con_000
+Random Forest
+optical
+session
+min_samples_leaf=2; max_features=0.75
+con_001
+Random Forest
+optical
+session
+min_samples_leaf=10; max_features=0.75
+con_002
+Random Forest
+optical
+session
+min_samples_leaf=30; max_features=0.75
+con_003
+Extra Trees
+optical
+session
+min_samples_leaf=3; max_features=0.75
+con_004
+Extra Trees
+optical
+session
+min_samples_leaf=15; max_features=0.75
+con_005
+HistGB
+optical
+session
+max_leaf_nodes=7; l2_regularization=10
+con_006
+HistGB
+optical
+session
+max_leaf_nodes=15; l2_regularization=10
+con_007
+Logistic regression
+optical
+session
+C=0.1
+con_008
+Logistic regression
+optical
+session
+C=10
+con_009
+RBF SVC
+optical
+session
+C=1; gamma_multiplier=1.0
+con_010
+RBF SVC
+optical
+session
+C=10; gamma_multiplier=1.0
+con_011
+XGBoost
+optical
+session
+max_depth=2; reg_lambda=20
+con_012
+XGBoost
+optical
+session
+max_depth=4; reg_lambda=20
+con_013
+Random Forest
+shape
+session
+min_samples_leaf=2; max_features=0.75
+con_014
+Random Forest
+shape
+session
+min_samples_leaf=10; max_features=0.75
+con_015
+Random Forest
+shape
+session
+min_samples_leaf=30; max_features=0.75
+con_016
+Extra Trees
+shape
+session
+min_samples_leaf=3; max_features=0.75
+con_017
+Extra Trees
+shape
+session
+min_samples_leaf=15; max_features=0.75
+con_018
+HistGB
+shape
+session
+max_leaf_nodes=7; l2_regularization=10
+con_019
+HistGB
+shape
+session
+max_leaf_nodes=15; l2_regularization=10
+con_020
+Logistic regression
+shape
+session
+C=0.1
+con_021
+Logistic regression
+shape
+session
+C=10
+con_022
+RBF SVC
+shape
+session
+C=1; gamma_multiplier=1.0
+con_023
+RBF SVC
+shape
+session
+C=10; gamma_multiplier=1.0
+con_024
+XGBoost
+shape
+session
+max_depth=2; reg_lambda=20
+con_025
+XGBoost
+shape
+session
+max_depth=4; reg_lambda=20
+con_026
+Random Forest
+spatial
+session
+min_samples_leaf=2; max_features=0.75
+con_027
+Random Forest
+spatial
+session
+min_samples_leaf=10; max_features=0.75
+con_028
+Random Forest
+spatial
+session
+min_samples_leaf=30; max_features=0.75
+con_029
+Extra Trees
+spatial
+session
+min_samples_leaf=3; max_features=0.75
+con_030
+Extra Trees
+spatial
+session
+min_samples_leaf=15; max_features=0.75
+con_031
+HistGB
+spatial
+session
+max_leaf_nodes=7; l2_regularization=10
+con_032
+HistGB
+spatial
+session
+max_leaf_nodes=15; l2_regularization=10
+con_033
+Logistic regression
+spatial
+session
+C=0.1
+con_034
+Logistic regression
+spatial
+session
+C=10
+con_035
+RBF SVC
+spatial
+session
+C=1; gamma_multiplier=1.0
+con_036
+RBF SVC
+spatial
+session
+C=10; gamma_multiplier=1.0
+con_037
+XGBoost
+spatial
+session
+max_depth=2; reg_lambda=20
+
+
+MANUAL CALIBRATION  |  COMPLETE THESIS SOURCE REPORT
+19 October 2026  •  Manual dataset only
+52
+ID
+Family
+Features
+Weights
+Varied parameters
+con_038
+XGBoost
+spatial
+session
+max_depth=4; reg_lambda=20
+con_039
+Random Forest
+temporal
+session
+min_samples_leaf=2; max_features=0.75
+con_040
+Random Forest
+temporal
+session
+min_samples_leaf=10; max_features=0.75
+con_041
+Random Forest
+temporal
+session
+min_samples_leaf=30; max_features=0.75
+con_042
+Extra Trees
+temporal
+session
+min_samples_leaf=3; max_features=0.75
+con_043
+Extra Trees
+temporal
+session
+min_samples_leaf=15; max_features=0.75
+con_044
+HistGB
+temporal
+session
+max_leaf_nodes=7; l2_regularization=10
+con_045
+HistGB
+temporal
+session
+max_leaf_nodes=15; l2_regularization=10
+con_046
+Logistic regression
+temporal
+session
+C=0.1
+con_047
+Logistic regression
+temporal
+session
+C=10
+con_048
+RBF SVC
+temporal
+session
+C=1; gamma_multiplier=1.0
+con_049
+RBF SVC
+temporal
+session
+C=10; gamma_multiplier=1.0
+con_050
+XGBoost
+temporal
+session
+max_depth=2; reg_lambda=20
+con_051
+XGBoost
+temporal
+session
+max_depth=4; reg_lambda=20
+
+
+MANUAL CALIBRATION  |  COMPLETE THESIS SOURCE REPORT
+19 October 2026  •  Manual dataset only
+53
+Appendix B. Exact estimator settings and saved components
+The following constructor is the executed tuning factory. It combines with every candidate in Appendix A. Unspecified
+parameters follow the recorded library versions; complete get_params exports for the best full-pool components and
+the fixed benchmark are printed below. Serialized null values retain the source export representation, including the
+XGBoost missing-value default.
+SEED = 1741
+def estimator(config, n_features):
+    task, family, p = config["task"], config["family"], dict(config["params"])
+    regression = task == "force"
+    if family in ("Extra Trees", "Random Forest"):
+        cls = {("Extra Trees", True): ExtraTreesRegressor,
+               ("Extra Trees", False): ExtraTreesClassifier,
+               ("Random Forest", True): RandomForestRegressor,
+               ("Random Forest", False): RandomForestClassifier}[family, regression]
+        return cls(n_estimators=180, n_jobs=1, random_state=SEED, **p)
+    if family == "HistGB":
+        cls = HistGradientBoostingRegressor if regression else HistGradientBoostingClassifier
+        return cls(max_iter=180, learning_rate=.05, min_samples_leaf=20,
+                   early_stopping=False, random_state=SEED, **p)
+    if family == "XGBoost":
+        cls = XGBRegressor if regression else XGBClassifier
+        return cls(n_estimators=220, learning_rate=.04, min_child_weight=5,
+                   tree_method="hist", n_jobs=1, random_state=SEED, **p)
+    if family == "Logistic regression":
+        return LogisticRegression(max_iter=2500, random_state=SEED, **p)
+    if family == "RBF SVR":
+        return SVR(cache_size=256, **p)
+    if family == "RBF SVC":
+        p["gamma"] = p.pop("gamma_multiplier") / n_features
+        return SVC(cache_size=256, decision_function_shape="ovr", random_state=SEED, **p)
+    if family == "MLP":
+        cls = MLPRegressor if regression else MLPClassifier
+        return cls(max_iter=350, early_stopping=False, learning_rate_init=.001,
+                   random_state=SEED, **p)
+    raise ValueError(family)
+Best-family full-pool components: complete parameter exports
+force_for_056.joblib
+categorical_features="from_dtype"; early_stopping=false; interaction_cst=null; l2_regularization=10; learning_rate=0.05;
+loss="squared_error"; max_bins=255; max_depth=null; max_features=1.0; max_iter=180; max_leaf_nodes=31; min_samples_leaf=20;
+monotonic_cst=null; n_iter_no_change=10; quantile=null; random_state=1741; scoring="loss"; tol=1e-07; validation_fraction=0.1;
+verbose=0; warm_start=false.
+Scaler: with_mean=True; with_std=True. Feature order and dimension follow the named pack. Learned scaler arrays and estimator
+weights/trees are stored together in the joblib component.
+SHA256: 338d605806bb042fbe47e53a1d0fd88b7bddc7f72cb7989a8d7b73aed9e853dc
+force_for_050.joblib
+bootstrap=false; ccp_alpha=0.0; criterion="squared_error"; max_depth=null; max_features=0.75; max_leaf_nodes=null; max_samples=null;
+min_impurity_decrease=0.0; min_samples_leaf=3; min_samples_split=2; min_weight_fraction_leaf=0.0; monotonic_cst=null;
+n_estimators=180; n_jobs=1; oob_score=false; random_state=1741; verbose=0; warm_start=false.
+Scaler: with_mean=True; with_std=True. Feature order and dimension follow the named pack. Learned scaler arrays and estimator
+weights/trees are stored together in the joblib component.
+SHA256: 6de9bc275c4578553b2111f461ccfa9b5468e28e0fbd07b389fa754e6b49b52e
+
+
+MANUAL CALIBRATION  |  COMPLETE THESIS SOURCE REPORT
+19 October 2026  •  Manual dataset only
+54
+force_for_059.joblib
+base_score=null; booster=null; callbacks=null; colsample_bylevel=null; colsample_bynode=null; colsample_bytree=null; device=null;
+early_stopping_rounds=null; enable_categorical=true; eval_metric=null; feature_types=null; feature_weights=null; gamma=null;
+grow_policy=null; importance_type=null; interaction_constraints=null; learning_rate=0.04; max_bin=null; max_cat_threshold=null;
+max_cat_to_onehot=null; max_delta_step=null; max_depth=5; max_leaves=null; min_child_weight=5; missing="NaN";
+monotone_constraints=null; multi_strategy=null; n_estimators=220; n_jobs=1; num_parallel_tree=null; objective="reg:squarederror";
+random_state=1741; reg_alpha=null; reg_lambda=20; sampling_method=null; scale_pos_weight=null; subsample=null; tree_method="hist";
+validate_parameters=null; verbosity=null.
+Scaler: with_mean=True; with_std=True. Feature order and dimension follow the named pack. Learned scaler arrays and estimator
+weights/trees are stored together in the joblib component.
+SHA256: 58044a24b1797c75daaf61cccc3e6e4cef2ebba3b92ea459ae8fab2f43846967
+localization_loc_036.joblib
+C=0.03; class_weight=null; dual=false; fit_intercept=true; intercept_scaling=1; l1_ratio=0.0; max_iter=2500; n_jobs=null;
+penalty="deprecated"; random_state=1741; solver="lbfgs"; tol=0.0001; verbose=0; warm_start=false.
+Scaler: with_mean=True; with_std=True. Feature order and dimension follow the named pack. Learned scaler arrays and estimator
+weights/trees are stored together in the joblib component.
+SHA256: 60afcde48ca3aa43c481619ff633b2e8571c477eed2d5404a282108e61fee95d
+contact_con_022.joblib
+C=1; break_ties=false; cache_size=256; class_weight=null; coef0=0.0; decision_function_shape="ovr"; degree=3;
+gamma=0.011111111111111112; kernel="rbf"; max_iter=-1; probability="deprecated"; random_state=1741; shrinking=true; tol=0.001;
+verbose=false.
+Scaler: with_mean=True; with_std=True. Feature order and dimension follow the named pack. Learned scaler arrays and estimator
+weights/trees are stored together in the joblib component.
+SHA256: d6d81520c54eb0f41cb4e18124e90500e1af0842d3ef884da2c931e7fd1b77de
+For the TEST2 force member for_055, use the full HistGB parameter set above with max_leaf_nodes=15 instead of 31.
+For the TEST1 localization member loc_048, use the same Logistic-regression parameter set with temporal rather than
+invariant features and the fold-specific scaler/history. These are changes to the input pack and selected output history,
+not changes to C.
+
+
+MANUAL CALIBRATION  |  COMPLETE THESIS SOURCE REPORT
+19 October 2026  •  Manual dataset only
+55
+Fixed benchmark: complete parameters
+Force estimators use positive=9. Total-light linear and isotonic reduce the scaled nine channels to their sum; the fitted
+median baseline ignores X. Classifiers use optical=27. Fixed classifiers use native decisions (probability threshold 0.5 or
+SVC decision threshold 0), with no output EMA or debounce. Fixed force predictions are not clipped. Contact and
+localization have the same recorded constructor parameters for each family; XGBoost’s classifier resolves its multiclass
+objective during localization fitting. [S4, S7]
+Force — Median baseline
+constant=null; quantile=null; strategy="median".
+Force — Total light linear
+copy_X=true; fit_intercept=false; n_jobs=null; positive=true; tol=1e-06.
+Force — NNLS
+copy_X=true; fit_intercept=false; n_jobs=null; positive=true; tol=1e-06.
+Force — Positive Ridge
+alpha=10.0; copy_X=true; fit_intercept=false; max_iter=null; positive=true; random_state=null; solver="auto"; tol=0.0001.
+Force — Isotonic
+increasing=true; out_of_bounds="clip"; y_max=null; y_min=null.
+Force — Monotonic HistGB
+categorical_features="from_dtype"; early_stopping=false; interaction_cst=null; l2_regularization=10; learning_rate=0.05;
+loss="squared_error"; max_bins=255; max_depth=null; max_features=1.0; max_iter=150; max_leaf_nodes=7; min_samples_leaf=30;
+monotonic_cst=[1, 1, 1, 1, 1, 1, 1, 1, 1]; n_iter_no_change=10; quantile=null; random_state=1729; scoring="loss"; tol=1e-07;
+validation_fraction=0.1; verbose=0; warm_start=false.
+Force — Monotonic XGBoost
+base_score=null; booster=null; callbacks=null; colsample_bylevel=null; colsample_bynode=null; colsample_bytree=null; device=null;
+early_stopping_rounds=null; enable_categorical=true; eval_metric=null; feature_types=null; feature_weights=null; gamma=null;
+grow_policy=null; importance_type=null; interaction_constraints=null; learning_rate=0.05; max_bin=null; max_cat_threshold=null;
+max_cat_to_onehot=null; max_delta_step=null; max_depth=3; max_leaves=null; min_child_weight=10; missing=null;
+monotone_constraints="(1,1,1,1,1,1,1,1,1)"; multi_strategy=null; n_estimators=150; n_jobs=2; num_parallel_tree=null;
+objective="reg:squarederror"; random_state=1729; reg_alpha=null; reg_lambda=10; sampling_method=null; scale_pos_weight=null;
+subsample=null; tree_method="hist"; validate_parameters=null; verbosity=null.
+Force — Extra Trees
+bootstrap=false; ccp_alpha=0.0; criterion="squared_error"; max_depth=null; max_features=1.0; max_leaf_nodes=null; max_samples=null;
+min_impurity_decrease=0.0; min_samples_leaf=10; min_samples_split=2; min_weight_fraction_leaf=0.0; monotonic_cst=null;
+n_estimators=150; n_jobs=2; oob_score=false; random_state=1729; verbose=0; warm_start=false.
+Force — RBF SVR
+C=10; cache_size=200; coef0=0.0; degree=3; epsilon=0.1; gamma="scale"; kernel="rbf"; max_iter=-1; shrinking=true; tol=0.001;
+verbose=false.
+Contact and localization — Logistic regression
+C=1; class_weight=null; dual=false; fit_intercept=true; intercept_scaling=1; l1_ratio=0.0; max_iter=3000; n_jobs=null; penalty="deprecated";
+random_state=1729; solver="lbfgs"; tol=0.0001; verbose=0; warm_start=false.
+Contact and localization — RBF SVC
+C=10; break_ties=false; cache_size=200; class_weight=null; coef0=0.0; decision_function_shape="ovr"; degree=3; gamma="scale";
+kernel="rbf"; max_iter=-1; probability=false; random_state=1729; shrinking=true; tol=0.001; verbose=false.
+
+
+MANUAL CALIBRATION  |  COMPLETE THESIS SOURCE REPORT
+19 October 2026  •  Manual dataset only
+56
+Contact and localization — Random Forest
+bootstrap=true; ccp_alpha=0.0; class_weight=null; criterion="gini"; max_depth=null; max_features="sqrt"; max_leaf_nodes=null;
+max_samples=null; min_impurity_decrease=0.0; min_samples_leaf=5; min_samples_split=2; min_weight_fraction_leaf=0.0;
+monotonic_cst=null; n_estimators=150; n_jobs=2; oob_score=false; random_state=1729; verbose=0; warm_start=false.
+Contact and localization — Extra Trees
+bootstrap=false; ccp_alpha=0.0; class_weight=null; criterion="gini"; max_depth=null; max_features=0.75; max_leaf_nodes=null;
+max_samples=null; min_impurity_decrease=0.0; min_samples_leaf=5; min_samples_split=2; min_weight_fraction_leaf=0.0;
+monotonic_cst=null; n_estimators=150; n_jobs=2; oob_score=false; random_state=1729; verbose=0; warm_start=false.
+Contact and localization — HistGB
+categorical_features="from_dtype"; class_weight=null; early_stopping=false; interaction_cst=null; l2_regularization=10; learning_rate=0.05;
+loss="log_loss"; max_bins=255; max_depth=null; max_features=1.0; max_iter=120; max_leaf_nodes=7; min_samples_leaf=25;
+monotonic_cst=null; n_iter_no_change=10; random_state=1729; scoring="loss"; tol=1e-07; validation_fraction=0.1; verbose=0;
+warm_start=false.
+Contact and localization — XGBoost
+base_score=null; booster=null; callbacks=null; colsample_bylevel=null; colsample_bynode=null; colsample_bytree=null; device=null;
+early_stopping_rounds=null; enable_categorical=true; eval_metric=null; feature_types=null; feature_weights=null; gamma=null;
+grow_policy=null; importance_type=null; interaction_constraints=null; learning_rate=0.05; max_bin=null; max_cat_threshold=null;
+max_cat_to_onehot=null; max_delta_step=null; max_depth=3; max_leaves=null; min_child_weight=5; missing=null;
+monotone_constraints=null; multi_strategy=null; n_estimators=120; n_jobs=2; num_parallel_tree=null; objective="binary:logistic";
+random_state=1729; reg_alpha=null; reg_lambda=10; sampling_method=null; scale_pos_weight=null; subsample=null; tree_method="hist";
+validate_parameters=null; verbosity=null.
+
+
+MANUAL CALIBRATION  |  COMPLETE THESIS SOURCE REPORT
+19 October 2026  •  Manual dataset only
+57
+Appendix C. Exact feature-construction source
+The following function preserves the executed block order. AREA_COLUMNS, RAW_LIGHT_COLUMNS, SIGNED and
+ACTIVE_COLUMNS list the nine taxels in ascending order; they respectively contain ROI areas, raw positive-light sums,
+signed-light sums and active fractions. Frames must already be ordered chronologically within recording. The input
+floor is the training-only nine-vector described in Section 3.
+def causal_ema(values, session_ids, times, tau):
+    """Only current/past rows; restart at session boundary or >0.3 s gap."""
+    if tau == 0:
+        return np.asarray(values).copy()
+    values = np.asarray(values)
+    result = np.empty_like(values, dtype=float)
+    for i in range(len(values)):
+        dt = times[i] - times[i-1] if i else 0
+        if i == 0 or session_ids[i] != session_ids[i-1] or dt > 0.3 or dt <= 0:
+            result[i] = values[i]
+        else:
+            a = -np.expm1(-dt / tau)
+            result[i] = result[i-1] + a * (values[i] - result[i-1])
+    return result
+def optical_features(frames, floors):
+    """Return fixed optical feature packs; labels/force/absolute time are absent."""
+    def cols(s): return frames[[f"roi{r}_{s}" for r in range(1,10)]].to_numpy(float)
+    area = frames[AREA_COLUMNS].to_numpy(float)
+    if not (np.isfinite(area).all() and (area > 0).all()):
+        raise ValueError("Invalid ROI areas")
+    positive = np.maximum(frames[RAW_LIGHT_COLUMNS].to_numpy(float) - floors, 0) / area
+    signed = frames[SIGNED].to_numpy(float) / area
+    active = frames[ACTIVE_COLUMNS].to_numpy(float)
+    optical = np.column_stack([positive, signed, active])
+    if not np.isfinite(optical).all(): raise ValueError("Nonfinite basic optical features")
+    def unit(x): return x / (np.sum(np.abs(x), axis=1, keepdims=True) + 1e-6)
+    def contrast(x): return x - np.median(x, axis=1, keepdims=True)
+    med, mad = cols("signed_delta_v_median"), cols("signed_delta_v_mad")
+    raw = cols("raw_v_mean")
+    rawmed, rawmax = cols("raw_v_median"), cols("raw_v_max")
+    cx = (cols("centroid_x") - cols("x")) / np.maximum(cols("width"), 1)
+    cy = (cols("centroid_y") - cols("y")) / np.maximum(cols("height"), 1)
+    present = (np.isfinite(cx) & np.isfinite(cy)).astype(float)
+    cx, cy = np.nan_to_num(cx, nan=0.5), np.nan_to_num(cy, nan=0.5)
+    shape = np.column_stack([unit(positive), unit(contrast(signed)), unit(active),
+        contrast(signed), contrast(active), unit(contrast(raw)), unit(contrast(med))])
+    spatial = np.column_stack([optical, shape, med, mad, cx, cy, present,
+        contrast(raw), contrast(rawmed), rawmax / (raw + 1),
+        np.log1p(positive), np.sign(signed) * np.log1p(np.abs(signed))])
+    invariant = np.column_stack([shape, unit(mad), cx, cy, present,
+        unit(contrast(rawmed)), rawmax / (raw + 1)])
+    ids = frames.session_id.to_numpy()
+    times = frames.capture_monotonic_relative_s.to_numpy(float)
+    fast = causal_ema(optical, ids, times, .3)
+    slow = causal_ema(optical, ids, times, 1.0)
+    temporal = np.column_stack([spatial, fast, slow, optical-fast, fast-slow])
+    packs = dict(positive=positive, optical=optical,
+        shape=np.column_stack([optical, shape]), spatial=spatial,
+        invariant=invariant, temporal=temporal)
+    for name, x in packs.items():
+        if not np.isfinite(x).all(): raise ValueError(f"Nonfinite {name} features")
+    return packs
+The feature code computes histories for all available optical frames before eligibility masking. Neither the target force
+nor target taxel enters the estimator feature array. No neural-network segmentation, image morphology, future-frame
+filtering or zero-response rejection is applied.
+
+
+MANUAL CALIBRATION  |  COMPLETE THESIS SOURCE REPORT
+19 October 2026  •  Manual dataset only
+58
+Appendix D. Evidence register and artifact integrity
+Paths below are relative to the shared SOFTWARE CALIBRATION project unless noted. They identify inspectable project
+evidence, not external academic literature. This PDF embeds the numbers and figures needed for thesis writing; the
+source files remain available for deeper replication.
+S1 — Consolidated best metrics, matrices and fold configurations
+reports/BEST_RESULTS/BEST_METRICS.json
+SHA256: 0f74601199ca2b644e9abc2f83ab402f516a37d99c1da70728616f564e754332
+S2 — All 50 fixed and tuned comparison rows
+reports/BEST_RESULTS/reference/all_competing_models_ranked.csv
+SHA256: 0a4e85fb7d19ae7b50601480951f5484c56876d2fe613ad238f4f16e13326370
+S3 — Winning-model held-out prediction rows
+reports/BEST_RESULTS/data/best_models_held_out_predictions.parquet
+SHA256: 84ba96166137f8ab1c71c6c8d9303b1e75297bfc18e5e89f55e2e373596b9560
+S4 — Fixed benchmark protocol
+calibration_gui/analysis_outputs/live_sensor_manual_only/model_runs/retraining_20260909/protocol.json
+SHA256: 31924ffc9ba96124719f2fe4f4e057492716827a0ef4bbbde995f501b5b9f28a
+S5 — Tuning protocol and full 178-candidate grid
+calibration_gui/analysis_outputs/live_sensor_manual_only/model_runs/tuning_20260909/protocol.json
+SHA256: 81ecf501fb217d40f33dc352da1fe123f6a888c4f0a2effad6398375488a523e
+S6 — Fixed-run dataset and feature provenance
+calibration_gui/analysis_outputs/live_sensor_manual_only/model_runs/retraining_20260909/provenance.json
+SHA256: f0fa7fdc78bdaae23dd9b1fc2bd47c21530b20f0c5389c8c7b7392429319f3af
+S7 — Fixed estimator parameter export
+calibration_gui/analysis_outputs/live_sensor_manual_only/model_runs/retraining_20260909/estimator_parameters.json
+SHA256: df26dd967959929a56b3b98100c1dc007e2f09e45d269902434ea497b3cf5c75
+S8 — Exact segmentation, model defaults and feature source
+reports/manual_calibration_thesis_report_2026-10-05/Exact_Segmentation_and_Model_Configurations.json
+SHA256: f11515378af507a6d7b064c257d84a3739060818085860987632e7de62750a15
+S9 — Tuning validation audit
+calibration_gui/analysis_outputs/live_sensor_manual_only/model_runs/tuning_20260909/validation_audit.json
+SHA256: e1400aa5a1b91b788751c6ff217e88647594e1a829c80aafa383080fd03db3a5
+S10 — Optical source validation
+reports/manual_calibration_matrices_and_light_metrics_2026-10-18/source_validation.json
+SHA256: abac5f5948e7e2f278bf3942e7eae5c2530e3db695c9f887d8b7381843ddb285
+
+
+MANUAL CALIBRATION  |  COMPLETE THESIS SOURCE REPORT
+19 October 2026  •  Manual dataset only
+59
+S11 — Optical analysis methods and interpretation
+reports/manual_calibration_matrices_and_light_metrics_2026-10-18/Technical_Notes_for_Thesis.txt
+SHA256: 48ae27c36b1a6eca4415b36213bf50ec535872adf0ea07b3b6f3985c76ac210a
+S12 — Optical metric calculations and validation
+reports/manual_calibration_matrices_and_light_metrics_2026-10-18/metrics_and_validation.json
+SHA256: f65eb208b539728ccca25747df1e41c6abf4272759727d190de6a3b03a15abe0
+S13 — Independent winner-metric and matrix recomputation for this report
+reports/complete_thesis_report_2026-10-18/derived_evidence.json
+SHA256: cb7514a3dc2432b2a1cdbb871fecff843fda36533bdc17aaef9cd3685dbfb8c0
+S14 — Saved original-bundle timing audit
+calibration_gui/analysis_outputs/live_sensor_manual_only/model_runs/tuning_20260909/inference_timing.json
+SHA256: 5de2b3fd743678edb665916ce290188fce8a1cb8587e06a781f5c78a6f97f1c0
+S15 — Prior report: acquisition context and hardware evidence register
+reports/manual_calibration_thesis_report_2026-10-05/Manual_Calibration_Models_Technical_Report.txt
+SHA256: 29720f548ca9fec0a1523da485e902d0f8da144480d3d3733ce6e8a09828cc8d
+S16 — Direct HSV V metrics, baseline provenance and calculation checks
+reports/manual_v_channel_metrics_2026-10-18/v_channel_metrics.json
+SHA256: 8c44db5108c12856b8df0d213eb4dacbe9dd84f49d2694fd2ebf5fe47f49408b
+S17 — Raw-V versus force analysis, coefficients and recording-level correlations
+reports/manual_v_force_relationship_2026-10-19/v_force_analysis.json
+SHA256: 485ea4d47581f64a36c8aa9e7416305e800e1a1a78df6665503cb7f731f12964
+S18 — Baseline-corrected and normalized V-force comparisons, baseline lineage and checks
+reports/manual_normalized_v_force_2026-10-19/normalized_v_force_analysis.json
+SHA256: ce1a853477cc1e13902387defcb7bf090cc12130587dbbcb495c6002d0a65ee1
+Manual archive
+External original path: C:/Users/DLSU/Downloads/THESIS DATA/Data Collection/Manual Calibration (2).zip. Recorded size: 1,283,430,583
+bytes. SHA256: e039dcd49f3390d34dc979490dcf46a6ecc43d9e6a2aec08e4952acc14b5006a. The report does not import
+automatic-calibration data.
+Additional reproducibility files
+BEST_RESULTS/BEST_MODEL_CONFIGURATIONS.json provides all six winning-family fold settings; BEST_RESULTS/figure_manifest.json and
+Figure_Captions.txt map the eight reused figures. The tuning run’s selections_fold1.json through selections_fold6.json, final_selections.json,
+source_snapshot/, environment.json and models/ preserve the detailed run. The raw manual optical source-member manifest and all light
+CSV tables remain under BEST_RESULTS/data/.
+The complete comparison table contains all 50 evaluated family/procedure rows. The candidate appendix contains all
+178 configurations. Every matrix and quantitative heatmap has its numeric values printed in searchable tables. No
+competing model, previous report, prediction row, or source figure is removed by this update.

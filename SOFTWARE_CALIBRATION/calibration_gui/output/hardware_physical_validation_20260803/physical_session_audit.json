@@ -1,0 +1,128 @@
+{
+  "master_rows": 161,
+  "raw_rows": 125,
+  "elapsed_s": 11.0376938,
+  "missing_force": 0,
+  "sync_invalid": 0,
+  "feature_rows": 161,
+  "frame_ids_contiguous": true,
+  "synchronization_gap_ms": {
+    "minimum": 0.2616,
+    "median": 24.9431,
+    "p95": 42.8304,
+    "maximum": 45.9398
+  },
+  "data_dictionary_core_headers_exact": true,
+  "data_dictionary_keys_unique": true,
+  "phases": {
+    "pre": {
+      "n": 46,
+      "force_mean_N": -0.010580379736535963,
+      "force_median_N": -0.010704182961906051,
+      "force_min_N": -0.0111828652840541,
+      "force_max_N": -0.0063293550151029,
+      "raw_mean": 88542.60851786169,
+      "roi5_delta_mean_peak": 0.004375,
+      "dominant_rois": {}
+    },
+    "press": {
+      "n": 19,
+      "force_mean_N": 0.2059986201473601,
+      "force_median_N": 0.2121085842049253,
+      "force_min_N": 0.0130896817452305,
+      "force_max_N": 0.356274544053863,
+      "raw_mean": 102030.39286676286,
+      "roi5_delta_mean_peak": 0.00125,
+      "dominant_rois": {}
+    },
+    "post": {
+      "n": 96,
+      "force_mean_N": 0.28588366003548715,
+      "force_median_N": -0.0081330815798063,
+      "force_min_N": -0.0091373917558641,
+      "force_max_N": 5.093533788965867,
+      "raw_mean": 107005.35438792617,
+      "roi5_delta_mean_peak": 0.00375,
+      "dominant_rois": {}
+    }
+  },
+  "press_prompt_start_s": 3.0,
+  "press_prompt_end_s": 4.5,
+  "roi_delta_v_mean_peaks": {
+    "1": 0.019375,
+    "2": 0.00875,
+    "3": 0.011875,
+    "4": 0.01,
+    "5": 0.004375,
+    "6": 0.004375,
+    "7": 0.015625,
+    "8": 0.004375,
+    "9": 0.00625
+  },
+  "force_peak_elapsed_s": 4.8297883,
+  "force_peak_N": 5.093533788965867,
+  "final_two_seconds_force_median_N": -0.008708295577031,
+  "raw_sample_id_gaps": 0,
+  "videos": {
+    "session_motion_magnified.mp4": {
+      "metadata_frames": 161,
+      "decoded_frames": 161,
+      "fps": 15.595,
+      "size": [
+        640,
+        480
+      ],
+      "bytes": 126107,
+      "sha256": "797c5271b072bc3a67d9efc3fc67c5761c7804a7ccfd2c418fccf6c6ceab6c19"
+    },
+    "session_original_overlays.mp4": {
+      "metadata_frames": 161,
+      "decoded_frames": 161,
+      "fps": 15.595,
+      "size": [
+        640,
+        480
+      ],
+      "bytes": 336150,
+      "sha256": "47fc9480f0185bc2ef7b3a3e32eabdae3a80c8b9489622b84f9c4e22f89e161e"
+    },
+    "session_processed.mp4": {
+      "metadata_frames": 161,
+      "decoded_frames": 161,
+      "fps": 15.595,
+      "size": [
+        640,
+        480
+      ],
+      "bytes": 126107,
+      "sha256": "797c5271b072bc3a67d9efc3fc67c5761c7804a7ccfd2c418fccf6c6ceab6c19"
+    },
+    "session_video.mp4": {
+      "metadata_frames": 161,
+      "decoded_frames": 161,
+      "fps": 15.595,
+      "size": [
+        640,
+        480
+      ],
+      "bytes": 126107,
+      "sha256": "797c5271b072bc3a67d9efc3fc67c5761c7804a7ccfd2c418fccf6c6ceab6c19"
+    }
+  },
+  "status": {
+    "session_status": "complete",
+    "lifecycle": "COMPLETE",
+    "complete": true,
+    "partial": false,
+    "accepted_frame_count": 161,
+    "feature_row_count": 161,
+    "video_frame_count": 161,
+    "loadcell_sample_count": 125,
+    "required_artifacts_written": true,
+    "automatic_heatmap_summary_status": "complete",
+    "automatic_spatial_profile_status": "complete",
+    "automatic_temporal_line_status": "complete"
+  },
+  "graph_companion_files": 15,
+  "partial_files": []
+}

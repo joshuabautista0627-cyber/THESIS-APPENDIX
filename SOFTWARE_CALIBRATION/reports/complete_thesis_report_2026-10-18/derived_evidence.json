@@ -1,0 +1,394 @@
+{
+  "overall": {
+    "force": {
+      "frames": 7154,
+      "recordings": 54,
+      "mae_N": 0.49718116328456075,
+      "rmse_N": 0.6299466857213563,
+      "bias_N": 0.0826997062786284,
+      "r2": 0.3112870973724726
+    },
+    "localization": {
+      "frames": 7154,
+      "recordings": 54,
+      "accuracy": 0.8488180870453353,
+      "balanced_accuracy": 0.8488180870453353,
+      "macro_f1": 0.8500260129390658
+    },
+    "contact": {
+      "frames": 8506,
+      "recordings": 65,
+      "accuracy": 0.992416224751909,
+      "balanced_accuracy": 0.9954356908229083,
+      "macro_f1": 0.9867496034837684,
+      "precision": 1.0,
+      "recall": 0.9908713816458166,
+      "specificity": 1.0,
+      "fpr": 0.0,
+      "contact_f1": 0.9954147623807637
+    }
+  },
+  "folds": {
+    "force": [
+      {
+        "fold": 1,
+        "frames": 2365,
+        "recordings": 9,
+        "mae_N": 0.5683327956467504,
+        "rmse_N": 0.6926128244458538,
+        "bias_N": 0.014092652122146042,
+        "r2": 0.053261185809242884
+      },
+      {
+        "fold": 2,
+        "frames": 1025,
+        "recordings": 9,
+        "mae_N": 0.49365916766564827,
+        "rmse_N": 0.6228423073809751,
+        "bias_N": 0.10148302605861828,
+        "r2": 0.3214672210881895
+      },
+      {
+        "fold": 3,
+        "frames": 686,
+        "recordings": 9,
+        "mae_N": 0.5056200354008542,
+        "rmse_N": 0.6146803783257774,
+        "bias_N": 0.07008837298590846,
+        "r2": 0.4128621637237774
+      },
+      {
+        "fold": 4,
+        "frames": 1117,
+        "recordings": 9,
+        "mae_N": 0.4677798158642271,
+        "rmse_N": 0.6089129667277117,
+        "bias_N": 0.011449427296480155,
+        "r2": 0.37111470092651566
+      },
+      {
+        "fold": 5,
+        "frames": 1016,
+        "recordings": 9,
+        "mae_N": 0.4677706156952859,
+        "rmse_N": 0.599371027397189,
+        "bias_N": 0.15019213092039443,
+        "r2": 0.293666506382083
+      },
+      {
+        "fold": 6,
+        "frames": 945,
+        "recordings": 9,
+        "mae_N": 0.4799245494345981,
+        "rmse_N": 0.636788269070954,
+        "bias_N": 0.14889262828822297,
+        "r2": 0.349967086678178
+      }
+    ],
+    "localization": [
+      {
+        "fold": 1,
+        "frames": 2365,
+        "recordings": 9,
+        "accuracy": 0.4841118751500589,
+        "balanced_accuracy": 0.484111875150059,
+        "macro_f1": 0.4410542938008794
+      },
+      {
+        "fold": 2,
+        "frames": 1025,
+        "recordings": 9,
+        "accuracy": 0.8834695859272391,
+        "balanced_accuracy": 0.8834695859272391,
+        "macro_f1": 0.8796795852136581
+      },
+      {
+        "fold": 3,
+        "frames": 686,
+        "recordings": 9,
+        "accuracy": 0.9600322564589039,
+        "balanced_accuracy": 0.9600322564589041,
+        "macro_f1": 0.9596859339826472
+      },
+      {
+        "fold": 4,
+        "frames": 1117,
+        "recordings": 9,
+        "accuracy": 0.9086468260813051,
+        "balanced_accuracy": 0.9086468260813049,
+        "macro_f1": 0.9060974586066831
+      },
+      {
+        "fold": 5,
+        "frames": 1016,
+        "recordings": 9,
+        "accuracy": 0.9820429153701963,
+        "balanced_accuracy": 0.9820429153701965,
+        "macro_f1": 0.9820818975856965
+      },
+      {
+        "fold": 6,
+        "frames": 945,
+        "recordings": 9,
+        "accuracy": 0.8746050632843085,
+        "balanced_accuracy": 0.8746050632843086,
+        "macro_f1": 0.8304218389223658
+      }
+    ],
+    "contact": [
+      {
+        "fold": 1,
+        "frames": 2609,
+        "recordings": 11,
+        "accuracy": 1.0,
+        "balanced_accuracy": 1.0,
+        "macro_f1": 1.0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "specificity": 1.0,
+        "fpr": 0.0,
+        "contact_f1": 1.0
+      },
+      {
+        "fold": 2,
+        "frames": 1268,
+        "recordings": 11,
+        "accuracy": 0.9928698752228164,
+        "balanced_accuracy": 0.9956427015250544,
+        "macro_f1": 0.9881964315771756,
+        "precision": 1.0,
+        "recall": 0.9912854030501089,
+        "specificity": 1.0,
+        "fpr": 0.0,
+        "contact_f1": 0.9956236323851204
+      },
+      {
+        "fold": 3,
+        "frames": 939,
+        "recordings": 11,
+        "accuracy": 0.986824769433465,
+        "balanced_accuracy": 0.9919484702093397,
+        "macro_f1": 0.9784590409590409,
+        "precision": 1.0,
+        "recall": 0.9838969404186795,
+        "specificity": 1.0,
+        "fpr": 0.0,
+        "contact_f1": 0.9918831168831167
+      },
+      {
+        "fold": 4,
+        "frames": 1361,
+        "recordings": 11,
+        "accuracy": 0.9860956618464961,
+        "balanced_accuracy": 0.9915029044617476,
+        "macro_f1": 0.9773006860359994,
+        "precision": 1.0,
+        "recall": 0.9830058089234952,
+        "specificity": 1.0,
+        "fpr": 0.0,
+        "contact_f1": 0.9914300850758826
+      },
+      {
+        "fold": 5,
+        "frames": 1265,
+        "recordings": 11,
+        "accuracy": 0.9943104810361447,
+        "balanced_accuracy": 0.9965230717443107,
+        "macro_f1": 0.9905528975100124,
+        "precision": 1.0,
+        "recall": 0.9930461434886213,
+        "specificity": 1.0,
+        "fpr": 0.0,
+        "contact_f1": 0.9965109405348705
+      },
+      {
+        "fold": 6,
+        "frames": 1064,
+        "recordings": 10,
+        "accuracy": 0.9945945945945945,
+        "balanced_accuracy": 0.996996996996997,
+        "macro_f1": 0.9853360811667722,
+        "precision": 1.0,
+        "recall": 0.9939939939939939,
+        "specificity": 1.0,
+        "fpr": 0.0,
+        "contact_f1": 0.9969879518072288
+      }
+    ]
+  },
+  "taxels": {
+    "force": [
+      {
+        "taxel": 1,
+        "frames": 696,
+        "recordings": 6,
+        "mae_N": 0.595958763629224,
+        "rmse_N": 0.7573858272674914,
+        "bias_N": 0.032120037713707715,
+        "r2": 0.21596866650210977
+      },
+      {
+        "taxel": 2,
+        "frames": 493,
+        "recordings": 6,
+        "mae_N": 0.43326354203312567,
+        "rmse_N": 0.5764287942516985,
+        "bias_N": 0.08940539629664362,
+        "r2": 0.4636476669433168
+      },
+      {
+        "taxel": 3,
+        "frames": 266,
+        "recordings": 6,
+        "mae_N": 0.47079447928493345,
+        "rmse_N": 0.6224012938349044,
+        "bias_N": 0.10545671792640308,
+        "r2": 0.4310128985894225
+      },
+      {
+        "taxel": 4,
+        "frames": 1092,
+        "recordings": 6,
+        "mae_N": 0.576746691134486,
+        "rmse_N": 0.7003251261601351,
+        "bias_N": 0.07021657125639748,
+        "r2": 0.040291046295190536
+      },
+      {
+        "taxel": 5,
+        "frames": 1463,
+        "recordings": 6,
+        "mae_N": 0.5270219360763851,
+        "rmse_N": 0.6312931074139517,
+        "bias_N": 0.13947894600973962,
+        "r2": 0.10846742297601664
+      },
+      {
+        "taxel": 6,
+        "frames": 921,
+        "recordings": 6,
+        "mae_N": 0.5021246033073116,
+        "rmse_N": 0.6168171448601413,
+        "bias_N": -0.0034614040934455768,
+        "r2": 0.057273124705202405
+      },
+      {
+        "taxel": 7,
+        "frames": 1024,
+        "recordings": 6,
+        "mae_N": 0.48685495023130715,
+        "rmse_N": 0.6075616548997225,
+        "bias_N": 0.10083528711328733,
+        "r2": 0.1985522933323346
+      },
+      {
+        "taxel": 8,
+        "frames": 703,
+        "recordings": 6,
+        "mae_N": 0.47416715263154224,
+        "rmse_N": 0.5880561071730042,
+        "bias_N": 0.06367164377124601,
+        "r2": 0.31053094393111624
+      },
+      {
+        "taxel": 9,
+        "frames": 496,
+        "recordings": 6,
+        "mae_N": 0.40769835123273107,
+        "rmse_N": 0.5420496427684954,
+        "bias_N": 0.1465741605136763,
+        "r2": 0.49999255003883514
+      }
+    ],
+    "localization": [],
+    "contact": []
+  },
+  "force_bins": [
+    {
+      "lower": 0.05,
+      "upper": 0.5,
+      "frames": 263,
+      "recordings": 52,
+      "mae_N": 1.253836768361119,
+      "rmse_N": 1.2960682281102862,
+      "bias_N": 1.253836768361119,
+      "r2": -88.1450644156661
+    },
+    {
+      "lower": 0.5,
+      "upper": 1,
+      "frames": 672,
+      "recordings": 51,
+      "mae_N": 0.9389772886997156,
+      "rmse_N": 1.011301987861361,
+      "bias_N": 0.9389772886997156,
+      "r2": -39.67749954683776
+    },
+    {
+      "lower": 1,
+      "upper": 1.5,
+      "frames": 1102,
+      "recordings": 52,
+      "mae_N": 0.6944189455228729,
+      "rmse_N": 0.7818928703410933,
+      "bias_N": 0.6840949869256134,
+      "r2": -29.592623733311907
+    },
+    {
+      "lower": 1.5,
+      "upper": 2,
+      "frames": 1490,
+      "recordings": 53,
+      "mae_N": 0.4029086924649129,
+      "rmse_N": 0.4788557453679463,
+      "bias_N": 0.3007839411378184,
+      "r2": -9.870012698791177
+    },
+    {
+      "lower": 2,
+      "upper": 2.5,
+      "frames": 1749,
+      "recordings": 52,
+      "mae_N": 0.278866954222004,
+      "rmse_N": 0.3437179961346054,
+      "bias_N": -0.05722357924851581,
+      "r2": -5.071557574092833
+    },
+    {
+      "lower": 2.5,
+      "upper": 3,
+      "frames": 1878,
+      "recordings": 54,
+      "mae_N": 0.5298174752062521,
+      "rmse_N": 0.6372163723241527,
+      "bias_N": -0.5235879729786238,
+      "r2": -18.347035271678912
+    }
+  ],
+  "checks": [
+    "force.frames: independently matches saved result",
+    "force.recordings: independently matches saved result",
+    "force.mae_N: independently matches saved result",
+    "force.rmse_N: independently matches saved result",
+    "force.bias_N: independently matches saved result",
+    "force.r2: independently matches saved result",
+    "localization.frames: independently matches saved result",
+    "localization.recordings: independently matches saved result",
+    "localization.accuracy: independently matches saved result",
+    "localization.balanced_accuracy: independently matches saved result",
+    "localization.macro_f1: independently matches saved result",
+    "localization: both confusion matrices independently reproduced",
+    "contact.frames: independently matches saved result",
+    "contact.recordings: independently matches saved result",
+    "contact.accuracy: independently matches saved result",
+    "contact.balanced_accuracy: independently matches saved result",
+    "contact.macro_f1: independently matches saved result",
+    "contact.precision: independently matches saved result",
+    "contact.recall: independently matches saved result",
+    "contact.specificity: independently matches saved result",
+    "contact.fpr: independently matches saved result",
+    "contact.contact_f1: independently matches saved result",
+    "contact: both confusion matrices independently reproduced"
+  ],
+  "combined_positive_detection_and_localization": 0.8422695586987671
+}

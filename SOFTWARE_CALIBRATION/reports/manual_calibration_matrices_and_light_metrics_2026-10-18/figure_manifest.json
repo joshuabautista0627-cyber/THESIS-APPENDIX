@@ -1,0 +1,38 @@
+[
+  {
+    "stem": "01_localization_9x9_row_normalized",
+    "caption": "Nine-taxel localization confusion matrix. Rows are actual labels; columns predicted labels. Each cell is 100 times the raw count divided by the total of its actual-class row. Every row sums to 100%. T1\u2013T9 identify the nine taxels/ROIs. Saved predictions are from the six outer group-held-out folds of the tuned nested selection procedure, not from evaluating a full-data refit on training data. 7,154 frames in 54 manual recordings; press interval 0.05\u20133 N, plus dedicated no-contact recordings for the contact task."
+  },
+  {
+    "stem": "02_localization_9x9_raw_counts",
+    "caption": "Nine-taxel localization confusion matrix. Rows are actual labels; columns predicted labels. Cells are unweighted integer frame counts. T1\u2013T9 identify the nine taxels/ROIs. Saved predictions are from the six outer group-held-out folds of the tuned nested selection procedure, not from evaluating a full-data refit on training data. 7,154 frames in 54 manual recordings; press interval 0.05\u20133 N, plus dedicated no-contact recordings for the contact task."
+  },
+  {
+    "stem": "03_contact_2x2_row_normalized",
+    "caption": "Contact detection confusion matrix. Rows are actual labels; columns predicted labels. Each cell is 100 times the raw count divided by the total of its actual-class row. Every row sums to 100%. T1\u2013T9 identify the nine taxels/ROIs. Saved predictions are from the six outer group-held-out folds of the tuned nested selection procedure, not from evaluating a full-data refit on training data. 8,506 frames in 65 manual recordings; press interval 0.05\u20133 N, plus dedicated no-contact recordings for the contact task."
+  },
+  {
+    "stem": "04_contact_2x2_raw_counts",
+    "caption": "Contact detection confusion matrix. Rows are actual labels; columns predicted labels. Cells are unweighted integer frame counts. T1\u2013T9 identify the nine taxels/ROIs. Saved predictions are from the six outer group-held-out folds of the tuned nested selection procedure, not from evaluating a full-data refit on training data. 8,506 frames in 65 manual recordings; press interval 0.05\u20133 N, plus dedicated no-contact recordings for the contact task."
+  },
+  {
+    "stem": "05_supplement_localization_equal_recording",
+    "caption": "Nine-taxel localization confusion matrix. Rows are actual labels; columns predicted labels. Each frame has weight 1 divided by its recording frame count; actual-class rows are then normalized to 100%. These percentages intentionally differ from the raw-count ratios. T1\u2013T9 identify the nine taxels/ROIs. Saved predictions are from the six outer group-held-out folds of the tuned nested selection procedure, not from evaluating a full-data refit on training data. 7,154 frames in 54 manual recordings; press interval 0.05\u20133 N, plus dedicated no-contact recordings for the contact task."
+  },
+  {
+    "stem": "06_supplement_contact_equal_recording",
+    "caption": "Contact detection confusion matrix. Rows are actual labels; columns predicted labels. Each frame has weight 1 divided by its recording frame count; actual-class rows are then normalized to 100%. These percentages intentionally differ from the raw-count ratios. T1\u2013T9 identify the nine taxels/ROIs. Saved predictions are from the six outer group-held-out folds of the tuned nested selection procedure, not from evaluating a full-data refit on training data. 8,506 frames in 65 manual recordings; press interval 0.05\u20133 N, plus dedicated no-contact recordings for the contact task."
+  },
+  {
+    "stem": "07_light_response_distribution",
+    "caption": "Optical response-distribution matrix, distinct from a classifier confusion matrix. For each taxel, D is the ROI mean positive baseline-subtracted V. Its reference floor is the median of no-contact recording medians outside the corresponding held-out group. E=max(D-floor,0). For each recording, average E_j over all eligible frames, then divide each taxel mean by the sum of the nine means and multiply by 100. Average these normalized recording profiles equally across the six recordings of each pressed taxel. All 7,154 frames are retained, including 1,153 frames with zero total excess. Every recording has a nonzero mean-response denominator. Off-diagonal response is an exploratory cross-talk/spread proxy, not calibrated optical power leakage. Acquisition CSVs are joined exactly to the held-out frame IDs."
+  },
+  {
+    "stem": "08_light_metrics_by_taxel",
+    "caption": "Four optical diagnostics from original manual acquisition CSVs: mean target excess positive \u0394V after a fold-specific no-contact floor; RMS of within-recording temporal SD of mean positive \u0394V in 11 no-contact recordings; pressed-taxel active area at the saved \u0394V threshold of 10; and mean excess-response/reference-noise-SD ratio. Positive values are averaged within each press recording and then over six recordings per taxel. No-contact noise displayed uses all 11 control recordings descriptively, while each press ratio uses only control recordings outside its held-out group. These are camera-based diagnostics, not calibrated lux, mechanical sensitivity, or photometric SNR."
+  },
+  {
+    "stem": "09_light_force_correlation",
+    "caption": "Spearman rank correlation between the target taxel mean positive \u0394V recorded at acquisition and the lag-aligned reference force retained in the held-out prediction table. Each cell is one press recording in the 0.05\u20133 N interval. No new lag, signal threshold, or fitted regression was optimized. The fixed -1 to +1 color scale retains negative associations. These within-recording descriptive correlations are not independent-frame significance tests and do not establish linearity or causal sensitivity."
+  }
+]

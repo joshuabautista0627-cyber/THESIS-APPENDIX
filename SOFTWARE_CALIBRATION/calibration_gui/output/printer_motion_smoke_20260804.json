@@ -1,0 +1,619 @@
+{
+  "test_type": "physical_cautious_printer_motion_smoke",
+  "started_utc": "2026-08-04T06:36:26.604107+00:00",
+  "finished_utc": "2026-08-04T06:36:56.270056+00:00",
+  "operating_system": "Windows-11-10.0.26200-SP0",
+  "printer_port": "COM4",
+  "loadcell_port_reserved_not_opened": "COM3",
+  "ports_are_separate": true,
+  "enumerated_ports": [
+    {
+      "device": "COM3",
+      "description": "USB-SERIAL CH340 (COM3)",
+      "manufacturer": "wch.cn",
+      "vid": 6790,
+      "pid": 29987,
+      "serial_number": ""
+    },
+    {
+      "device": "COM4",
+      "description": "USB-SERIAL CH340 (COM4)",
+      "manufacturer": "wch.cn",
+      "vid": 6790,
+      "pid": 29987,
+      "serial_number": ""
+    }
+  ],
+  "stages": [
+    {
+      "stage": "connected_m115",
+      "connection": {
+        "port": "COM4",
+        "baud_rate": 115200,
+        "firmware_name": "Marlin V1.1.6 (Sep 13 2022 15:13:53)",
+        "firmware_version": "",
+        "marlin_verified": true,
+        "connected_monotonic_ns": 80288845984700
+      }
+    },
+    {
+      "stage": "position_before_home",
+      "position": {
+        "tracked_x_mm": 149.2,
+        "tracked_y_mm": 120.9,
+        "tracked_z_mm": 0.0,
+        "reported_x_mm": 149.2,
+        "reported_y_mm": 120.9,
+        "reported_z_mm": 0.0,
+        "tracked_valid": true,
+        "reported_valid": true,
+        "homed": false,
+        "press_zero_x_mm": null,
+        "press_zero_y_mm": null,
+        "press_zero_z_mm": null,
+        "press_zero_valid": false
+      }
+    },
+    {
+      "stage": "home_all_complete",
+      "position": {
+        "tracked_x_mm": 149.2,
+        "tracked_y_mm": 120.9,
+        "tracked_z_mm": 10.0,
+        "reported_x_mm": 149.2,
+        "reported_y_mm": 120.9,
+        "reported_z_mm": 10.0,
+        "tracked_valid": true,
+        "reported_valid": true,
+        "homed": true,
+        "press_zero_x_mm": null,
+        "press_zero_y_mm": null,
+        "press_zero_z_mm": null,
+        "press_zero_valid": false
+      }
+    },
+    {
+      "stage": "jog_complete",
+      "axis": "Z",
+      "delta_mm": 1.0,
+      "feed_rate_mm_min": 120.0,
+      "purpose": "positive Z away from sensor",
+      "position": {
+        "tracked_x_mm": 149.2,
+        "tracked_y_mm": 120.9,
+        "tracked_z_mm": 11.0,
+        "reported_x_mm": 149.2,
+        "reported_y_mm": 120.9,
+        "reported_z_mm": 11.0,
+        "tracked_valid": true,
+        "reported_valid": true,
+        "homed": true,
+        "press_zero_x_mm": null,
+        "press_zero_y_mm": null,
+        "press_zero_z_mm": null,
+        "press_zero_valid": false
+      }
+    },
+    {
+      "stage": "jog_complete",
+      "axis": "X",
+      "delta_mm": 1.0,
+      "feed_rate_mm_min": 600.0,
+      "purpose": "small positive X",
+      "position": {
+        "tracked_x_mm": 150.2,
+        "tracked_y_mm": 120.9,
+        "tracked_z_mm": 11.0,
+        "reported_x_mm": 150.2,
+        "reported_y_mm": 120.9,
+        "reported_z_mm": 11.0,
+        "tracked_valid": true,
+        "reported_valid": true,
+        "homed": true,
+        "press_zero_x_mm": null,
+        "press_zero_y_mm": null,
+        "press_zero_z_mm": null,
+        "press_zero_valid": false
+      }
+    },
+    {
+      "stage": "jog_complete",
+      "axis": "Y",
+      "delta_mm": 1.0,
+      "feed_rate_mm_min": 600.0,
+      "purpose": "small positive Y",
+      "position": {
+        "tracked_x_mm": 150.2,
+        "tracked_y_mm": 121.9,
+        "tracked_z_mm": 11.0,
+        "reported_x_mm": 150.2,
+        "reported_y_mm": 121.9,
+        "reported_z_mm": 11.0,
+        "tracked_valid": true,
+        "reported_valid": true,
+        "homed": true,
+        "press_zero_x_mm": null,
+        "press_zero_y_mm": null,
+        "press_zero_z_mm": null,
+        "press_zero_valid": false
+      }
+    },
+    {
+      "stage": "jog_complete",
+      "axis": "Z",
+      "delta_mm": -0.1,
+      "feed_rate_mm_min": 60.0,
+      "purpose": "very small negative Z direction check",
+      "position": {
+        "tracked_x_mm": 150.2,
+        "tracked_y_mm": 121.9,
+        "tracked_z_mm": 10.9,
+        "reported_x_mm": 150.2,
+        "reported_y_mm": 121.9,
+        "reported_z_mm": 10.9,
+        "tracked_valid": true,
+        "reported_valid": true,
+        "homed": true,
+        "press_zero_x_mm": null,
+        "press_zero_y_mm": null,
+        "press_zero_z_mm": null,
+        "press_zero_valid": false
+      }
+    },
+    {
+      "stage": "jog_complete",
+      "axis": "Z",
+      "delta_mm": 0.1,
+      "feed_rate_mm_min": 60.0,
+      "purpose": "return Z to pre-direction-check height",
+      "position": {
+        "tracked_x_mm": 150.2,
+        "tracked_y_mm": 121.9,
+        "tracked_z_mm": 11.0,
+        "reported_x_mm": 150.2,
+        "reported_y_mm": 121.9,
+        "reported_z_mm": 11.0,
+        "tracked_valid": true,
+        "reported_valid": true,
+        "homed": true,
+        "press_zero_x_mm": null,
+        "press_zero_y_mm": null,
+        "press_zero_z_mm": null,
+        "press_zero_valid": false
+      }
+    }
+  ],
+  "commands_actually_sent": [
+    "M115",
+    "M114",
+    "G28",
+    "M400",
+    "M114",
+    "G90",
+    "G1 Z11.000 F120.000",
+    "M400",
+    "M114",
+    "G90",
+    "G1 X150.200 F600.000",
+    "M400",
+    "M114",
+    "G90",
+    "G1 Y121.900 F600.000",
+    "M400",
+    "M114",
+    "G90",
+    "G1 Z10.900 F60.000",
+    "M400",
+    "M114",
+    "G90",
+    "G1 Z11.000 F60.000",
+    "M400",
+    "M114"
+  ],
+  "command_history": [
+    {
+      "command_id": "864aba64-1d71-4e62-9ebb-96626969e2fc",
+      "gcode": "M115",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 80290847595800,
+      "sent_monotonic_ns": 80290847659700,
+      "acknowledged_monotonic_ns": 80290920746300,
+      "completed_monotonic_ns": 80290930982500,
+      "response_lines": [
+        "FIRMWARE_NAME:Marlin V1.1.6 (Sep 13 2022 15:13:53) SOURCE_CODE_URL:github.com/MarlinFirmware/Marlin PROTOCOL_VERSION:1.0 MACHINE_TYPE:Ender-3 V2 Neo EXTRUDER_COUNT:1 UUID:cede2a2f-41a2-4748-9b12-c55c62f367ff",
+        "Cap:SERIAL_XON_XOFF:0",
+        "Cap:BINARY_FILE_TRANSFER:0",
+        "Cap:EEPROM:1",
+        "Cap:VOLUMETRIC:1",
+        "Cap:AUTOREPORT_POS:0",
+        "Cap:AUTOREPORT_TEMP:1",
+        "Cap:PROGRESS:0",
+        "Cap:PRINT_JOB:1",
+        "Cap:AUTOLEVEL:1",
+        "Cap:RUNOUT:0",
+        "Cap:Z_PROBE:1",
+        "Cap:LEVELING_DATA:1",
+        "Cap:BUILD_PERCENT:0",
+        "Cap:SOFTWARE_POWER:0",
+        "Cap:TOGGLE_LIGHTS:0",
+        "Cap:CASE_LIGHT_BRIGHTNESS:0",
+        "Cap:EMERGENCY_PARSER:0",
+        "Cap:HOST_ACTION_COMMANDS:0",
+        "Cap:PROMPT_SUPPORT:0",
+        "Cap:SDCARD:1",
+        "Cap:REPEAT:0",
+        "Cap:SD_WRITE:1",
+        "Cap:AUTOREPORT_SD_STATUS:0",
+        "Cap:LONG_FILENAME:1",
+        "Cap:THERMAL_PROTECTION:1",
+        "Cap:MOTION_MODES:0",
+        "Cap:ARCS:1",
+        "Cap:BABYSTEPPING:1",
+        "Cap:CHAMBER_TEMPERATURE:0",
+        "Cap:COOLER_TEMPERATURE:0",
+        "Cap:MEATPACK:0",
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "0897e4ca-4cd8-4be7-8b2c-9a9fe3517859",
+      "gcode": "M114",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 80290931484400,
+      "sent_monotonic_ns": 80290931520300,
+      "acknowledged_monotonic_ns": 80290939822500,
+      "completed_monotonic_ns": 80290942504400,
+      "response_lines": [
+        "X:149.20 Y:120.90 Z:0.00 E:0.00 Count X:11936 Y:9672 Z:-72",
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "f9a15d5a-e1ec-4e9c-a5bd-6abc3ddf4b6b",
+      "gcode": "G28",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 80290942730700,
+      "sent_monotonic_ns": 80290942811500,
+      "acknowledged_monotonic_ns": 80310959421100,
+      "completed_monotonic_ns": 80310967332200,
+      "response_lines": [
+        "echo:busy: processing",
+        "echo:busy: processing",
+        "echo:busy: processing",
+        "echo:busy: processing",
+        "echo:busy: processing",
+        "echo:busy: processing",
+        "echo:busy: processing",
+        "echo:busy: processing",
+        "X:149.20 Y:120.90 Z:10.00 E:0.00 Count X:11936 Y:9672 Z:4000",
+        "echo:Bed Leveling ON",
+        "echo:Fade Height 3.00",
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "32fed0b8-f545-47be-a272-d26ecc11f1f3",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 80310967596300,
+      "sent_monotonic_ns": 80310967638300,
+      "acknowledged_monotonic_ns": 80310970253800,
+      "completed_monotonic_ns": 80310978236200,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "b0085dec-519c-461b-b042-8807ac98f582",
+      "gcode": "M114",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 80310978346200,
+      "sent_monotonic_ns": 80310978380800,
+      "acknowledged_monotonic_ns": 80310985226900,
+      "completed_monotonic_ns": 80310989176900,
+      "response_lines": [
+        "X:149.20 Y:120.90 Z:10.00 E:0.00 Count X:11936 Y:9672 Z:4000",
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "a14e8826-a750-4bf1-84d3-1b5c9e5dc47a",
+      "gcode": "G90",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 80310989448700,
+      "sent_monotonic_ns": 80310989500800,
+      "acknowledged_monotonic_ns": 80310991942800,
+      "completed_monotonic_ns": 80311000316500,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "b3478cd5-d71a-4585-8156-92633a0651b9",
+      "gcode": "G1 Z11.000 F120.000",
+      "timeout_s": 60.0,
+      "state": "completed",
+      "queued_monotonic_ns": 80311000498900,
+      "sent_monotonic_ns": 80311000613800,
+      "acknowledged_monotonic_ns": 80311004498300,
+      "completed_monotonic_ns": 80311011429900,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "3464cbeb-6922-4794-8f18-80f4662f7d1d",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 80311011550700,
+      "sent_monotonic_ns": 80311011608600,
+      "acknowledged_monotonic_ns": 80311634629000,
+      "completed_monotonic_ns": 80311636787200,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "72ed0006-7c1c-4b4a-b1fc-4219b910e37f",
+      "gcode": "M114",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 80311636991200,
+      "sent_monotonic_ns": 80311637068100,
+      "acknowledged_monotonic_ns": 80311643960600,
+      "completed_monotonic_ns": 80311647760400,
+      "response_lines": [
+        "X:149.20 Y:120.90 Z:11.00 E:0.00 Count X:11936 Y:9672 Z:4400",
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "424015a1-0c03-41d3-97d8-d78cb868de6a",
+      "gcode": "G90",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 80311647971100,
+      "sent_monotonic_ns": 80311648011600,
+      "acknowledged_monotonic_ns": 80312293058100,
+      "completed_monotonic_ns": 80312301213900,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "2066c24b-290d-4ae0-b05c-af0f21f61b7a",
+      "gcode": "G1 X150.200 F600.000",
+      "timeout_s": 60.0,
+      "state": "completed",
+      "queued_monotonic_ns": 80312301377800,
+      "sent_monotonic_ns": 80312301455700,
+      "acknowledged_monotonic_ns": 80312305989900,
+      "completed_monotonic_ns": 80312312898900,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "97b17b12-f2e1-470a-932f-abcb44d7862c",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 80312313035300,
+      "sent_monotonic_ns": 80312313102100,
+      "acknowledged_monotonic_ns": 80312520168000,
+      "completed_monotonic_ns": 80312521935600,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "71f0d0f8-4aa3-4cbb-9fc3-dfce833d1c8f",
+      "gcode": "M114",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 80312522108500,
+      "sent_monotonic_ns": 80312522178500,
+      "acknowledged_monotonic_ns": 80312529046100,
+      "completed_monotonic_ns": 80312532577600,
+      "response_lines": [
+        "X:150.20 Y:120.90 Z:11.00 E:0.00 Count X:12016 Y:9672 Z:4400",
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "7f4b0ff4-30f5-45ba-8496-f9ddcb646b71",
+      "gcode": "G90",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 80312532775700,
+      "sent_monotonic_ns": 80312532813000,
+      "acknowledged_monotonic_ns": 80312535140900,
+      "completed_monotonic_ns": 80312543522600,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "5c3e708b-191f-4549-bfa2-072ffede62a5",
+      "gcode": "G1 Y121.900 F600.000",
+      "timeout_s": 60.0,
+      "state": "completed",
+      "queued_monotonic_ns": 80312543625800,
+      "sent_monotonic_ns": 80312543661600,
+      "acknowledged_monotonic_ns": 80312547774500,
+      "completed_monotonic_ns": 80312554561500,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "dc251574-6813-4ac4-b89c-d1e7b76192bf",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 80312554737000,
+      "sent_monotonic_ns": 80312555123600,
+      "acknowledged_monotonic_ns": 80312761968700,
+      "completed_monotonic_ns": 80312772193700,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "5898c3b5-b6d5-48d4-b222-e1e42da4f593",
+      "gcode": "M114",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 80312772505000,
+      "sent_monotonic_ns": 80312772553400,
+      "acknowledged_monotonic_ns": 80312779493700,
+      "completed_monotonic_ns": 80312783349600,
+      "response_lines": [
+        "X:150.20 Y:121.90 Z:11.00 E:0.00 Count X:12016 Y:9752 Z:4400",
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "1078c4c5-ebb5-47b3-b786-232dce093a86",
+      "gcode": "G90",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 80312783552200,
+      "sent_monotonic_ns": 80312783670100,
+      "acknowledged_monotonic_ns": 80316522421300,
+      "completed_monotonic_ns": 80316530648000,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "42453c05-a811-4aa6-ad7e-44947daf7460",
+      "gcode": "G1 Z10.900 F60.000",
+      "timeout_s": 60.0,
+      "state": "completed",
+      "queued_monotonic_ns": 80316530802500,
+      "sent_monotonic_ns": 80316530860400,
+      "acknowledged_monotonic_ns": 80316534686000,
+      "completed_monotonic_ns": 80316541646300,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "489a01c7-b5bc-4d95-a55b-ac2d2180faf6",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 80316541748000,
+      "sent_monotonic_ns": 80316541818700,
+      "acknowledged_monotonic_ns": 80316740857300,
+      "completed_monotonic_ns": 80316748698200,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "a380a7ca-eb50-4308-88bc-d791609ab0ce",
+      "gcode": "M114",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 80316748898100,
+      "sent_monotonic_ns": 80316748943000,
+      "acknowledged_monotonic_ns": 80316986680200,
+      "completed_monotonic_ns": 80316990282900,
+      "response_lines": [
+        "X:150.20 Y:121.90 Z:10.90 E:0.00 Count X:12016 Y:9752 Z:4360",
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "104f4604-9ecf-483e-856a-411710ed9a93",
+      "gcode": "G90",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 80316990576200,
+      "sent_monotonic_ns": 80316990648300,
+      "acknowledged_monotonic_ns": 80316993062000,
+      "completed_monotonic_ns": 80317002324400,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "c34055fa-a3ee-4af4-8482-c3f7fad02b71",
+      "gcode": "G1 Z11.000 F60.000",
+      "timeout_s": 60.0,
+      "state": "completed",
+      "queued_monotonic_ns": 80317002465800,
+      "sent_monotonic_ns": 80317002505500,
+      "acknowledged_monotonic_ns": 80317006319200,
+      "completed_monotonic_ns": 80317013085800,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "f579bee1-76c3-40ee-8098-cbb92fddbee4",
+      "gcode": "M400",
+      "timeout_s": 120.0,
+      "state": "completed",
+      "queued_monotonic_ns": 80317013206700,
+      "sent_monotonic_ns": 80317013269200,
+      "acknowledged_monotonic_ns": 80317212538700,
+      "completed_monotonic_ns": 80317213169100,
+      "response_lines": [
+        "ok"
+      ],
+      "error": ""
+    },
+    {
+      "command_id": "d0d262cd-2521-4cae-8179-a0b3dd3ffe02",
+      "gcode": "M114",
+      "timeout_s": 15.0,
+      "state": "completed",
+      "queued_monotonic_ns": 80317213420400,
+      "sent_monotonic_ns": 80317213499500,
+      "acknowledged_monotonic_ns": 80317220485400,
+      "completed_monotonic_ns": 80317224323000,
+      "response_lines": [
+        "X:150.20 Y:121.90 Z:11.00 E:0.00 Count X:12016 Y:9752 Z:4400",
+        "ok"
+      ],
+      "error": ""
+    }
+  ],
+  "motion_interlock_reason": "",
+  "press_zero_set": false,
+  "camera_or_loadcell_acquisition_tested": false,
+  "operator_observation_required": "Confirm physical axis directions and absence of collision; serial success alone does not prove the observed direction."
+}

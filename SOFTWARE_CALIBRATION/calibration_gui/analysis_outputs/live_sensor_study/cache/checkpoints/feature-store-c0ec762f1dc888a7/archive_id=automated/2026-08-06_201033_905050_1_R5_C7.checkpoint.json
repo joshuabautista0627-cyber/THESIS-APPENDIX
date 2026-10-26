@@ -1,0 +1,30 @@
+{
+  "archive_id": "automated",
+  "checkpoint_identity_hash": "f594e8b5e5ad6d676bad1f5b704a85b28b1c7893707240630a81b355fb9800f2",
+  "column_count": 209,
+  "completed_at": "2026-08-13T07:39:40.083273Z",
+  "decoded_video_frames": 992,
+  "exclusion_counts": {},
+  "expected_master_rows": 992,
+  "feature_spec_hash": "38fa59a354306bf39c0b570f57e764f5638b19a3ecbdbd49b177b8df6ac56cf5",
+  "frame_reconciliation": {
+    "all_differences_reason_coded": true,
+    "decoded_video_frames": 992,
+    "master_rows": 992,
+    "missing_video_frames": 0,
+    "output_rows": 992,
+    "unmatched_video_frames": 0
+  },
+  "orientation_counts": {
+    "already_oriented": 992
+  },
+  "output_sha256": "4392cba8c5fdcab3f7a3c86f107fa9cf303c13f8e39ee85e5bc11ffa3aa89371",
+  "output_size_bytes": 811096,
+  "reported_video_frames": 992,
+  "reused": false,
+  "row_count": 992,
+  "run_id": "feature-store-c0ec762f1dc888a7",
+  "schema_version": "1.0.0",
+  "session_id": "2026-08-06_201033_905050_1_R5_C7",
+  "source_manifest_hash": "29950d3cf3f84cfe97bd079057677d6b236d4fda33b0ed862b26ebc9b1237a43"
+}

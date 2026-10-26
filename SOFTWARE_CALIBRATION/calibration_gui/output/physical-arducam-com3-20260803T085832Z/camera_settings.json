@@ -1,0 +1,62 @@
+{
+  "simulation_mode": false,
+  "identified_device": "Arducam IMX179 Camera Module",
+  "windows_pnp_identity": "USB VID_1BCF&PID_0B12",
+  "requested": {
+    "device_index": 0,
+    "backend_preference": [
+      "DirectShow"
+    ],
+    "requested_width": 640,
+    "requested_height": 480,
+    "requested_fps": 30.0,
+    "warmup_seconds": 0.0,
+    "baseline_drift_mean_v": 5.0,
+    "property_readback_tolerance": 0.05
+  },
+  "actual": {
+    "device_index": 0,
+    "backend": "DirectShow",
+    "requested_width": 640,
+    "requested_height": 480,
+    "requested_fps": 30.0,
+    "actual_width": 640,
+    "actual_height": 480,
+    "actual_fps": 30.00003000003,
+    "simulation_mode": false,
+    "source_label": "GXIVISION-S2M05 candidate at camera index 0; operator confirmation required"
+  },
+  "mode_readbacks": [
+    {
+      "property_name": "width",
+      "requested_value": 640.0,
+      "actual_value": 640.0,
+      "write_succeeded": true,
+      "read_succeeded": true,
+      "confirmed": true,
+      "supported": true,
+      "message": "Requested mode value confirmed by OpenCV readback."
+    },
+    {
+      "property_name": "height",
+      "requested_value": 480.0,
+      "actual_value": 480.0,
+      "write_succeeded": true,
+      "read_succeeded": true,
+      "confirmed": true,
+      "supported": true,
+      "message": "Requested mode value confirmed by OpenCV readback."
+    },
+    {
+      "property_name": "fps",
+      "requested_value": 30.0,
+      "actual_value": 30.00003000003,
+      "write_succeeded": true,
+      "read_succeeded": true,
+      "confirmed": true,
+      "supported": true,
+      "message": "Requested mode value confirmed by OpenCV readback."
+    }
+  ],
+  "controls": {}
+}

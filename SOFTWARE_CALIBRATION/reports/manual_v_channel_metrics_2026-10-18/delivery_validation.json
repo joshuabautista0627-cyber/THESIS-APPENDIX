@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "rendered_pages": 47,
+  "changed_content_visually_reviewed": [
+    20,
+    21,
+    22,
+    34,
+    47
+  ],
+  "unchanged_content": "All prior model comparisons and configuration rows passed the PDF numeric checks; all pages rendered and text bounds checked.",
+  "raw_v_calculation_checks": 680,
+  "report_validation_checks": 358,
+  "previous_complete_pdf_preserved": true,
+  "new_content": "Direct raw HSV V, own-baseline mean change, temporal SD, CV, ROI-mean extrema, pixel peaks, brightness heatmaps"
+}

@@ -1,0 +1,21 @@
+{
+  "port": "COM3",
+  "baud_rate": 115200,
+  "phase": "unloaded",
+  "errors": [],
+  "captured_samples": 95,
+  "discarded_settling_samples": 10,
+  "used_samples": 85,
+  "mean_raw": 56052.6,
+  "std_raw": 22.747684340546463,
+  "span_raw": 112.0,
+  "cv_percent": 0.040582746100174594,
+  "min_raw": 55998.0,
+  "max_raw": 56110.0,
+  "median_interval_ms": 91.83785000004718,
+  "measured_rate_hz": 10.888756650983078,
+  "first_sample_id": 10,
+  "last_sample_id": 94,
+  "id_gaps": 0,
+  "timestamp_utc": "2026-08-03T08:46:14Z"
+}

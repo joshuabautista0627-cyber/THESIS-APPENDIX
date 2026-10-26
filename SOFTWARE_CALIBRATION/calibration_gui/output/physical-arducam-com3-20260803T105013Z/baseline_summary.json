@@ -1,0 +1,220 @@
+{
+  "backend": "DirectShow",
+  "baseline_id": "baseline-physical-20260803T105009Z",
+  "camera_device": "Arducam IMX179 Camera Module, index 0",
+  "camera_fingerprint": "5222f0ec2f694b247983e2deb4d82f732c5a0413de882eaf7bc15d7ee5de2eba",
+  "camera_settings": {
+    "backend": "DirectShow",
+    "camera_device": "Arducam IMX179 Camera Module, index 0",
+    "controls": {
+      "actual": {
+        "actual_fps": 30.00003000003,
+        "actual_height": 480,
+        "actual_width": 640,
+        "backend": "DirectShow",
+        "device_index": 0,
+        "requested_fps": 30.0,
+        "requested_height": 480,
+        "requested_width": 640,
+        "simulation_mode": false,
+        "source_label": "GXIVISION-S2M05 candidate at camera index 0; operator confirmation required"
+      },
+      "controls": {},
+      "identified_device": "Arducam IMX179 Camera Module",
+      "mode_readbacks": [
+        {
+          "actual_value": 640.0,
+          "confirmed": true,
+          "message": "Requested mode value confirmed by OpenCV readback.",
+          "property_name": "width",
+          "read_succeeded": true,
+          "requested_value": 640.0,
+          "supported": true,
+          "write_succeeded": true
+        },
+        {
+          "actual_value": 480.0,
+          "confirmed": true,
+          "message": "Requested mode value confirmed by OpenCV readback.",
+          "property_name": "height",
+          "read_succeeded": true,
+          "requested_value": 480.0,
+          "supported": true,
+          "write_succeeded": true
+        },
+        {
+          "actual_value": 30.00003000003,
+          "confirmed": true,
+          "message": "Requested mode value confirmed by OpenCV readback.",
+          "property_name": "fps",
+          "read_succeeded": true,
+          "requested_value": 30.0,
+          "supported": true,
+          "write_succeeded": true
+        }
+      ],
+      "requested": {
+        "backend_preference": [
+          "DirectShow"
+        ],
+        "baseline_drift_mean_v": 5.0,
+        "device_index": 0,
+        "property_readback_tolerance": 0.05,
+        "requested_fps": 30.0,
+        "requested_height": 480,
+        "requested_width": 640,
+        "warmup_seconds": 0.0
+      },
+      "simulation_mode": false,
+      "windows_pnp_identity": "USB VID_1BCF&PID_0B12"
+    },
+    "frame_height": 480,
+    "frame_width": 640,
+    "processing_settings": {
+      "active_delta_v_threshold": 10.0,
+      "localization_min_mean_delta_v": 5.0,
+      "minimum_saturation_for_h": 10
+    }
+  },
+  "capture_timestamp_iso": "2026-08-03T10:50:09.767119+00:00",
+  "frame_height": 480,
+  "frame_width": 640,
+  "invalid_reason": "",
+  "processing_fingerprint": "18047f9513dd8fd5bb06932cb2f783270914b34b8049a1ecf014cb864a332b60",
+  "processing_settings": {
+    "active_delta_v_threshold": 10.0,
+    "localization_min_mean_delta_v": 5.0,
+    "minimum_saturation_for_h": 10
+  },
+  "roi_layout_id": "roi-7fcb77f2917a01cfbbbf",
+  "rois": [
+    {
+      "array_shape": [
+        80,
+        80
+      ],
+      "capture_timestamp_iso": "2026-08-03T10:50:09.767119+00:00",
+      "circular_mean_h": 119.99999999999999,
+      "mean_s": 0.32140625,
+      "mean_v": 0.0027291666666666666,
+      "median_v": 0.0,
+      "roi_id": 1,
+      "std_v": 0.08916773509873897,
+      "valid_frame_count": 30
+    },
+    {
+      "array_shape": [
+        80,
+        80
+      ],
+      "capture_timestamp_iso": "2026-08-03T10:50:09.767119+00:00",
+      "circular_mean_h": 119.99999999999999,
+      "mean_s": 0.09296875,
+      "mean_v": 0.0007291666666666667,
+      "median_v": 0.0,
+      "roi_id": 2,
+      "std_v": 0.03818116877867355,
+      "valid_frame_count": 30
+    },
+    {
+      "array_shape": [
+        80,
+        80
+      ],
+      "capture_timestamp_iso": "2026-08-03T10:50:09.767119+00:00",
+      "circular_mean_h": 119.99999999999997,
+      "mean_s": 0.085,
+      "mean_v": 0.0006666666666666666,
+      "median_v": 0.0,
+      "roi_id": 3,
+      "std_v": 0.03650875085358151,
+      "valid_frame_count": 30
+    },
+    {
+      "array_shape": [
+        80,
+        80
+      ],
+      "capture_timestamp_iso": "2026-08-03T10:50:09.767119+00:00",
+      "circular_mean_h": 119.99999999999997,
+      "mean_s": 0.10359375,
+      "mean_v": 0.0009166666666666666,
+      "median_v": 0.0,
+      "roi_id": 4,
+      "std_v": 0.05552020403020467,
+      "valid_frame_count": 30
+    },
+    {
+      "array_shape": [
+        80,
+        80
+      ],
+      "capture_timestamp_iso": "2026-08-03T10:50:09.767119+00:00",
+      "circular_mean_h": 119.99999999999997,
+      "mean_s": 0.0425,
+      "mean_v": 0.0003333333333333333,
+      "median_v": 0.0,
+      "roi_id": 5,
+      "std_v": 0.025817737227641687,
+      "valid_frame_count": 30
+    },
+    {
+      "array_shape": [
+        80,
+        80
+      ],
+      "capture_timestamp_iso": "2026-08-03T10:50:09.767119+00:00",
+      "circular_mean_h": 119.99999999999997,
+      "mean_s": 0.03453125,
+      "mean_v": 0.0002708333333333333,
+      "median_v": 0.0,
+      "roi_id": 6,
+      "std_v": 0.023272157527230306,
+      "valid_frame_count": 30
+    },
+    {
+      "array_shape": [
+        80,
+        80
+      ],
+      "capture_timestamp_iso": "2026-08-03T10:50:09.767119+00:00",
+      "circular_mean_h": 119.99999999999999,
+      "mean_s": 0.329375,
+      "mean_v": 0.0033125,
+      "median_v": 0.0,
+      "roi_id": 7,
+      "std_v": 0.13208845777388473,
+      "valid_frame_count": 30
+    },
+    {
+      "array_shape": [
+        80,
+        80
+      ],
+      "capture_timestamp_iso": "2026-08-03T10:50:09.767119+00:00",
+      "circular_mean_h": 119.99999999999997,
+      "mean_s": 0.03984375,
+      "mean_v": 0.0003125,
+      "median_v": 0.0,
+      "roi_id": 8,
+      "std_v": 0.0249980467987001,
+      "valid_frame_count": 30
+    },
+    {
+      "array_shape": [
+        80,
+        80
+      ],
+      "capture_timestamp_iso": "2026-08-03T10:50:09.767119+00:00",
+      "circular_mean_h": 119.99999999999999,
+      "mean_s": 0.09828125,
+      "mean_v": 0.0009791666666666666,
+      "median_v": 0.0,
+      "roi_id": 9,
+      "std_v": 0.06676357214808255,
+      "valid_frame_count": 30
+    }
+  ],
+  "schema_version": "1.0",
+  "valid": true
+}

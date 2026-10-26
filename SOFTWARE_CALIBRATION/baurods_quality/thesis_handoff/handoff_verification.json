@@ -1,0 +1,20 @@
+{
+  "scope": "Completed manual-calibration data quality assessment only",
+  "source_archive_sha256": "e039dcd49f3390d34dc979490dcf46a6ecc43d9e6a2aec08e4952acc14b5006a",
+  "report_words": 13926,
+  "configuration_files_reread": 83,
+  "source_table_count": 48,
+  "figure_pairs": 19,
+  "figures_exist": true,
+  "counts_reconcile": true,
+  "reviewed_findings_preserved": true,
+  "report_sha256": "ae583a466985b42325a80dbec16fdd418ac56de4403fe475f48f35d72341107d",
+  "version": "1.1",
+  "revision_date": "2026-10-18",
+  "original_source_table_count": 35,
+  "original_figure_pairs": 15,
+  "pdf_pages": 39,
+  "statistical_supplement": "Repeatability, conditional force adjustment, approximate uncertainty; no pass/fail judgment",
+  "physical_press_replicates_known": false,
+  "independent_sessions": 1
+}

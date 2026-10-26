@@ -1,0 +1,127 @@
+{
+  "frame_height": 120,
+  "frame_width": 160,
+  "roi_layout_id": "roi-81bee7dd1c252e4d249c",
+  "roi_order": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "rois": [
+    {
+      "area": 1376,
+      "center_x": 26.5,
+      "center_y": 20.0,
+      "column": 1,
+      "height": 32,
+      "roi_id": 1,
+      "row": 1,
+      "width": 43,
+      "x": 5,
+      "y": 4
+    },
+    {
+      "area": 1408,
+      "center_x": 80.0,
+      "center_y": 20.0,
+      "column": 2,
+      "height": 32,
+      "roi_id": 2,
+      "row": 1,
+      "width": 44,
+      "x": 58,
+      "y": 4
+    },
+    {
+      "area": 1376,
+      "center_x": 133.5,
+      "center_y": 20.0,
+      "column": 3,
+      "height": 32,
+      "roi_id": 3,
+      "row": 1,
+      "width": 43,
+      "x": 112,
+      "y": 4
+    },
+    {
+      "area": 1376,
+      "center_x": 26.5,
+      "center_y": 60.0,
+      "column": 1,
+      "height": 32,
+      "roi_id": 4,
+      "row": 2,
+      "width": 43,
+      "x": 5,
+      "y": 44
+    },
+    {
+      "area": 1408,
+      "center_x": 80.0,
+      "center_y": 60.0,
+      "column": 2,
+      "height": 32,
+      "roi_id": 5,
+      "row": 2,
+      "width": 44,
+      "x": 58,
+      "y": 44
+    },
+    {
+      "area": 1376,
+      "center_x": 133.5,
+      "center_y": 60.0,
+      "column": 3,
+      "height": 32,
+      "roi_id": 6,
+      "row": 2,
+      "width": 43,
+      "x": 112,
+      "y": 44
+    },
+    {
+      "area": 1376,
+      "center_x": 26.5,
+      "center_y": 100.0,
+      "column": 1,
+      "height": 32,
+      "roi_id": 7,
+      "row": 3,
+      "width": 43,
+      "x": 5,
+      "y": 84
+    },
+    {
+      "area": 1408,
+      "center_x": 80.0,
+      "center_y": 100.0,
+      "column": 2,
+      "height": 32,
+      "roi_id": 8,
+      "row": 3,
+      "width": 44,
+      "x": 58,
+      "y": 84
+    },
+    {
+      "area": 1376,
+      "center_x": 133.5,
+      "center_y": 100.0,
+      "column": 3,
+      "height": 32,
+      "roi_id": 9,
+      "row": 3,
+      "width": 43,
+      "x": 112,
+      "y": 84
+    }
+  ],
+  "schema_version": "1.0"
+}
