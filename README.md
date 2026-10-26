@@ -12,6 +12,20 @@ python reassemble_appendix.py
 
 The script verifies each part, joins the original ZIP, and verifies its SHA-256. Parts are raw consecutive segments and cannot be extracted individually. Allow approximately 71 GB of free space for the downloaded parts plus the reconstructed ZIP, and additional space if extracting it. GitHub's automatic **Source code (zip)** download contains the repository tree only; it is not the complete electronic appendix.
 
+If GitHub CLI is installed, download all release assets into a new folder with:
+
+```powershell
+gh release download appendix-2026-10-19 --repo joshuabautista0627-cyber/THESIS-APPENDIX --dir SPARE-Appendix
+cd SPARE-Appendix
+python reassemble_appendix.py
+```
+
+For a Windows Git checkout, enable long paths for the clone because the evidence directories have deeply nested filenames:
+
+```powershell
+git -c core.longpaths=true clone https://github.com/joshuabautista0627-cyber/THESIS-APPENDIX.git
+```
+
 ## Browse the implementation
 
 - [SPARE application and setup instructions](SOFTWARE_CALIBRATION/calibration_gui/README.md)

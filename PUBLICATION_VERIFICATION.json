@@ -1,0 +1,28 @@
+{
+  "publication_date": "2026-10-27",
+  "snapshot_date": "2026-10-19",
+  "archive": "SPARE_Thesis_Appendix_2026-10-19.zip",
+  "archive_bytes": 35111754320,
+  "archive_sha256": "7707f15a4c60ef4e9901362870437db25670edcab8d04b79ee4a52f86221bbe2",
+  "parts_verified": 19,
+  "server_size_and_sha256_checks": "passed",
+  "reassembly_tests": [
+    {
+      "case": "valid",
+      "result": "passed"
+    },
+    {
+      "case": "corrupt",
+      "result": "passed"
+    },
+    {
+      "case": "missing",
+      "result": "passed"
+    },
+    {
+      "case": "existing",
+      "result": "passed"
+    }
+  ],
+  "release_url": "https://github.com/joshuabautista0627-cyber/THESIS-APPENDIX/releases/tag/appendix-2026-10-19"
+}

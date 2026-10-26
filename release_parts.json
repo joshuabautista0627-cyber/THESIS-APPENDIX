@@ -1,0 +1,102 @@
+{
+  "archive": "SPARE_Thesis_Appendix_2026-10-19.zip",
+  "bytes": 35111754320,
+  "sha256": "7707f15a4c60ef4e9901362870437db25670edcab8d04b79ee4a52f86221bbe2",
+  "parts": [
+    {
+      "name": "SPARE_Thesis_Appendix_2026-10-19.zip.part001",
+      "bytes": 1900000000,
+      "sha256": "6aac6c70d450c300af97b970877c09d4787d72c7b56623b85d0c6cadee1c7321"
+    },
+    {
+      "name": "SPARE_Thesis_Appendix_2026-10-19.zip.part002",
+      "bytes": 1900000000,
+      "sha256": "0b0536b130ee58868110b6db2db0c46cc0e2f7d0fb8097beba4bf71272e8c749"
+    },
+    {
+      "name": "SPARE_Thesis_Appendix_2026-10-19.zip.part003",
+      "bytes": 1900000000,
+      "sha256": "2cf2150c153c667cacc91eb9e8733dd42c1a9fbc5795de277ca782aa697ccf6e"
+    },
+    {
+      "name": "SPARE_Thesis_Appendix_2026-10-19.zip.part004",
+      "bytes": 1900000000,
+      "sha256": "2b3c018a94eabd7a953a9d3e807edf8f1ce071411d3d3b298c352aefd69fc7da"
+    },
+    {
+      "name": "SPARE_Thesis_Appendix_2026-10-19.zip.part005",
+      "bytes": 1900000000,
+      "sha256": "a089d9d6de5b2677dd642a5e8dcb19bf22dc11d42243875cd66da6c571c1d66b"
+    },
+    {
+      "name": "SPARE_Thesis_Appendix_2026-10-19.zip.part006",
+      "bytes": 1900000000,
+      "sha256": "94d8b2712095d0584da3369dc6e1886024348563364256a8c024e8582ad1511c"
+    },
+    {
+      "name": "SPARE_Thesis_Appendix_2026-10-19.zip.part007",
+      "bytes": 1900000000,
+      "sha256": "e6dff7489772913931ae1505c0de29d9329ce45e4c70c9d0daa4cb7ec9f7e4ad"
+    },
+    {
+      "name": "SPARE_Thesis_Appendix_2026-10-19.zip.part008",
+      "bytes": 1900000000,
+      "sha256": "b5ddbbb827aec2bc7122ca157714a79a7acb1d41ff65a56b53517926ac5dac36"
+    },
+    {
+      "name": "SPARE_Thesis_Appendix_2026-10-19.zip.part009",
+      "bytes": 1900000000,
+      "sha256": "0bde636a1c75aa884d7b18321bc304f29c2a54e1e7920b9e5ddce865268dae9d"
+    },
+    {
+      "name": "SPARE_Thesis_Appendix_2026-10-19.zip.part010",
+      "bytes": 1900000000,
+      "sha256": "1a3e2fc5ac64a198ae8e716b3b629d42c1aee2bb5f0e68624b6df1aa1db70440"
+    },
+    {
+      "name": "SPARE_Thesis_Appendix_2026-10-19.zip.part011",
+      "bytes": 1900000000,
+      "sha256": "8efa2db54e6ed504db91df1cb10f56d05c1ddf685531a67b13b7b53d55739826"
+    },
+    {
+      "name": "SPARE_Thesis_Appendix_2026-10-19.zip.part012",
+      "bytes": 1900000000,
+      "sha256": "2b7e47a2f71c1828152539ab191184c33782f2c9c14ff7e6d3ddc68628017b8b"
+    },
+    {
+      "name": "SPARE_Thesis_Appendix_2026-10-19.zip.part013",
+      "bytes": 1900000000,
+      "sha256": "b906f66118073a57cfb0562a89fd6200588d8580f4d22144dc32f355e1437224"
+    },
+    {
+      "name": "SPARE_Thesis_Appendix_2026-10-19.zip.part014",
+      "bytes": 1900000000,
+      "sha256": "bf619a4845ea6ae4555f965e4fe6cc2d7edaac74906651f3532edf6d2b87432f"
+    },
+    {
+      "name": "SPARE_Thesis_Appendix_2026-10-19.zip.part015",
+      "bytes": 1900000000,
+      "sha256": "a85e5a480428a52d079f355a0666eb55dd71669977502f36ab22f0ddf7a04432"
+    },
+    {
+      "name": "SPARE_Thesis_Appendix_2026-10-19.zip.part016",
+      "bytes": 1900000000,
+      "sha256": "6f59da34ac5b7d132a23931688fa59e806bc092e3cea4176341445da57eb6a18"
+    },
+    {
+      "name": "SPARE_Thesis_Appendix_2026-10-19.zip.part017",
+      "bytes": 1900000000,
+      "sha256": "e27685588ce029e7a6d247421493ab1a37592b34842661aaeaf67992e340bdfe"
+    },
+    {
+      "name": "SPARE_Thesis_Appendix_2026-10-19.zip.part018",
+      "bytes": 1900000000,
+      "sha256": "1253d0cf604bfa8f8aeb16ba149b2ffdfd7e5d5cbc9ef6a542e1721f326dab90"
+    },
+    {
+      "name": "SPARE_Thesis_Appendix_2026-10-19.zip.part019",
+      "bytes": 911754320,
+      "sha256": "b5af7b457163b45b14f55326a1d96895b74b554d679c9b2900295e471da7b8d1"
+    }
+  ]
+}
