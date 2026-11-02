@@ -1,0 +1,41 @@
+{
+  "actual": {
+    "actual_fps": null,
+    "actual_height": 480,
+    "actual_width": 640,
+    "backend": "DirectShow",
+    "device_index": 0,
+    "requested_fps": 30.0,
+    "requested_height": 480,
+    "requested_width": 640,
+    "simulation_mode": false,
+    "source_label": "Arducam IMX179 Camera Module candidate at camera index 0; operator confirmation required"
+  },
+  "camera_model": "Arducam IMX179 Camera Module",
+  "camera_orientation": {
+    "mirror_horizontal": true,
+    "rotation_degrees_clockwise": 90
+  },
+  "controls": {
+    "auto_exposure": false,
+    "auto_focus": true,
+    "auto_white_balance": true,
+    "backlight_compensation": 4.0,
+    "brightness": 228.0,
+    "contrast": 130.0,
+    "exposure": -2.0,
+    "focus": 0.0,
+    "gain": 0.0,
+    "gamma": 110.0,
+    "hue": 128.0,
+    "iris": -1.0,
+    "pan": 0.0,
+    "roll": 0.0,
+    "saturation": 54.0,
+    "sharpness": 255.0,
+    "temperature": -1.0,
+    "tilt": 0.0,
+    "white_balance": 4600.0,
+    "zoom": 0.0
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "model_run": "analysis_outputs/live_sensor_manual_only/model_runs/tuning_20260909",
+  "roi_layout": "assets/live_sensor/roi_layout.json",
+  "camera_index": 0,
+  "camera_controls": {},
+  "display_mode": "models",
+  "minimum_v_step": 0.0,
+  "physical_mapping": null,
+  "overlay": true,
+  "replay": "assets/baurods_demo_replay/center_press/session_video.mp4"
+}

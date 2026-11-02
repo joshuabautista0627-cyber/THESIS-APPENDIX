@@ -2,6 +2,10 @@
 
 Source and supporting evidence snapshot prepared on **19 October 2026**, published to this repository on **26 October 2026**.
 
+## BAURods live GUI
+
+Run the 3 × 3 mechanoluminescent sensor demo with an underside camera or the included press and unloaded recordings. The Windows download includes the fitted models and offline Python dependencies. [Download the Windows x64 demo](https://github.com/joshuabautista0627-cyber/THESIS-APPENDIX/releases/download/baurods-live-gui-2026-11-03/BAURods_Live_Demo_Windows_x64.zip) · [Source and setup instructions](BAURods_Live_Demo/)
+
 ## Complete THESIS DATA folder — 27 October 2026
 
 The separate [THESIS DATA release](https://github.com/joshuabautista0627-cyber/THESIS-APPENDIX/releases/tag/thesis-data-2026-10-27) preserves **all 8,589 files (69,613,874,782 source bytes)** and the complete directory structure from the supplied folder, including original ZIP archives and their extracted data folders. See [download and recovery instructions](THESIS_DATA_DOWNLOAD.md).

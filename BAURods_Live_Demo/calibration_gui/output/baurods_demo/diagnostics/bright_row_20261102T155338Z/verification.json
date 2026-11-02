@@ -1,0 +1,212 @@
+[
+  {
+    "source": "assets/baurods_demo_replay/center_press/session_video.mp4",
+    "mode": "rod_response",
+    "tested_frames": 160,
+    "valid_frames": 160,
+    "raw_contact_taxels": {
+      "5": 57,
+      "9": 22
+    },
+    "displayed_taxels": {
+      "5": 12
+    }
+  },
+  {
+    "source": "assets/baurods_demo_replay/unloaded/session_video.mp4",
+    "mode": "rod_response",
+    "tested_frames": 130,
+    "valid_frames": 130,
+    "raw_contact_taxels": {},
+    "displayed_taxels": {}
+  },
+  {
+    "source": "output/baurods_demo/diagnostics/idle_20261102T131324Z/fresh.csv",
+    "tested_frames": 141,
+    "raw_contact_taxels": {
+      "8": 141
+    },
+    "displayed_taxels": {},
+    "transitions": []
+  },
+  {
+    "source": "output/baurods_demo/diagnostics/center_20261102T131742Z/trial.csv",
+    "tested_frames": 278,
+    "raw_contact_taxels": {
+      "9": 278
+    },
+    "displayed_taxels": {
+      "5": 69
+    },
+    "transitions": [
+      {
+        "source_time_s": 10.169,
+        "phase": "press1",
+        "roi": 5
+      },
+      {
+        "source_time_s": 11.497,
+        "phase": "idle1",
+        "roi": null
+      },
+      {
+        "source_time_s": 15.226,
+        "phase": "press2",
+        "roi": 5
+      },
+      {
+        "source_time_s": 16.97,
+        "phase": "idle2",
+        "roi": null
+      },
+      {
+        "source_time_s": 20.906,
+        "phase": "press3",
+        "roi": 5
+      },
+      {
+        "source_time_s": 22.441,
+        "phase": "idle3",
+        "roi": null
+      }
+    ]
+  },
+  {
+    "source": "output/baurods_demo/diagnostics/corners_20261102T133236Z/trial.csv",
+    "tested_frames": 215,
+    "raw_contact_taxels": {
+      "8": 209,
+      "9": 6
+    },
+    "displayed_taxels": {
+      "8": 20,
+      "9": 28
+    },
+    "transitions": [
+      {
+        "source_time_s": 32.256,
+        "phase": "press8",
+        "roi": 8
+      },
+      {
+        "source_time_s": 33.583,
+        "phase": "release8",
+        "roi": null
+      },
+      {
+        "source_time_s": 37.519,
+        "phase": "press9",
+        "roi": 9
+      },
+      {
+        "source_time_s": 39.391,
+        "phase": "release9",
+        "roi": null
+      }
+    ]
+  },
+  {
+    "source": "output/baurods_demo/diagnostics/bright_row_20261102T155338Z/sessions/20261102T155451Z_988696d8/session_video.avi",
+    "mode": "rod_response",
+    "tested_frames": 570,
+    "valid_frames": 461,
+    "raw_contact_taxels": {
+      "9": 314,
+      "3": 21,
+      "8": 126
+    },
+    "displayed_taxels": {
+      "7": 53,
+      "8": 49,
+      "9": 64
+    },
+    "raw_parity_frames": 461,
+    "transitions": [
+      {
+        "frame": 160,
+        "source_s": 10.684,
+        "phase": "press_1_R7",
+        "roi": 7,
+        "direction": "drop"
+      },
+      {
+        "frame": 190,
+        "source_s": 12.684,
+        "phase": "release_1_R7",
+        "roi": null,
+        "direction": ""
+      },
+      {
+        "frame": 240,
+        "source_s": 16.012,
+        "phase": "press_1_R8",
+        "roi": 8,
+        "direction": "drop"
+      },
+      {
+        "frame": 262,
+        "source_s": 17.484,
+        "phase": "release_1_R8",
+        "roi": null,
+        "direction": ""
+      },
+      {
+        "frame": 301,
+        "source_s": 20.092,
+        "phase": "press_1_R9",
+        "roi": 9,
+        "direction": "drop"
+      },
+      {
+        "frame": 328,
+        "source_s": 21.884,
+        "phase": "release_1_R9",
+        "roi": null,
+        "direction": ""
+      },
+      {
+        "frame": 373,
+        "source_s": 24.892,
+        "phase": "press_2_R7",
+        "roi": 7,
+        "direction": "drop"
+      },
+      {
+        "frame": 396,
+        "source_s": 26.428,
+        "phase": "release_2_R7",
+        "roi": null,
+        "direction": ""
+      },
+      {
+        "frame": 432,
+        "source_s": 28.828,
+        "phase": "press_2_R8",
+        "roi": 8,
+        "direction": "drop"
+      },
+      {
+        "frame": 459,
+        "source_s": 30.636,
+        "phase": "release_2_R8",
+        "roi": null,
+        "direction": ""
+      },
+      {
+        "frame": 493,
+        "source_s": 32.892,
+        "phase": "press_2_R9",
+        "roi": 9,
+        "direction": "drop"
+      },
+      {
+        "frame": 530,
+        "source_s": 35.372,
+        "phase": "release_2_R9",
+        "roi": null,
+        "direction": ""
+      }
+    ],
+    "operator_confirmed": true
+  }
+]

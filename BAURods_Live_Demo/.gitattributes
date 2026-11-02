@@ -1,0 +1,6 @@
+# Preserve the bytes shipped in the Windows kit, including checked model metadata.
+* -text
+*.joblib binary
+*.parquet binary
+*.mp4 binary
+*.npz binary
