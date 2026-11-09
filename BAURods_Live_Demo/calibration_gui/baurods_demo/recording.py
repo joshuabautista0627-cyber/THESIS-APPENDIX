@@ -1,21 +1,27 @@
 """Lossless, unannotated replay plus an append-only model/validity trace."""
 import csv
+from dataclasses import asdict
 from datetime import datetime, timezone
 from pathlib import Path
 from uuid import uuid4
+import json
 
 import cv2
 
 from processing.baseline import save_baseline
 from scripts.live_sensor_common import atomic_write_json, utc_now_iso
 from .setup import ROI_ORDER
+from .optical_change import OpticalReading
+from .optical_rois import SPOT_MODES
 
 TIMING = ["frame_id", "source_time_s", "wall_clock_iso", "baseline_id", "history_epoch"]
 FIELDS = ["record_type", *TIMING, "logged_utc", "status", "valid", "detail", "raw_contact",
           "contact_decision_score", "raw_taxel", *[f"localization_score_R{i}" for i in ROI_ORDER],
           "displayed_contact", "displayed_taxel", "displayed_grid_position", "grid_view",
           "processing_ms", "frame_age_ms", "capture_hz", "inference_hz", "display_mode",
-          "optical_roi", "local_change_v", "change_threshold_v", "optical_state", "optical_direction", "optical_v_per_s"]
+          "optical_roi", "local_change_v", "change_threshold_v", "optical_state", "optical_direction", "optical_v_per_s",
+          "displayed_taxels", "displayed_grid_positions", "optical_rois", "optical_readings",
+          "optical_values", "optical_metric", "optical_layout_id"]
 
 
 class SessionRecorder:
@@ -58,20 +64,30 @@ class SessionRecorder:
         row = dict(**timing, record_type="frame", logged_utc=utc_now_iso(), status=state.status,
                    valid=int(state.result is not None), detail=state.detail, processing_ms=state.ms,
                    frame_age_ms=state.age_ms(), capture_hz=state.capture_hz, inference_hz=state.inference_hz,
-                   display_mode=self.meta["presentation_filter"])
+                   display_mode=self.meta["presentation_filter"],
+                   optical_layout_id=self.meta["acquisition"].get("optical_layout_id", ""),
+                   optical_metric=("brightest_5_percent_v" if self.meta["presentation_filter"] in SPOT_MODES else
+                                   "mean_positive_delta_v" if self.meta["presentation_filter"] == "models" else "mean_v"))
         if state.result:
+            row["optical_values"] = json.dumps(state.optical)
             r = state.result
             row.update(raw_contact=r["contact"], contact_decision_score=r["contact_score"], raw_taxel=r["localization"],
-                       displayed_contact=int(state.active is not None), displayed_taxel=state.active or "",
+                       displayed_contact=int(bool(state.active_rois)), displayed_taxel=state.active or "",
                        displayed_grid_position=(state.cells.index(state.active) + 1 if state.active else ""),
+                       displayed_taxels=json.dumps(state.active_rois),
+                       displayed_grid_positions=json.dumps([state.cells.index(i)+1 for i in state.active_rois]),
                        grid_view="verified physical" if state.mapping else "trained ROI order")
             row.update({f"localization_score_R{i}": x for i, x in zip(ROI_ORDER, r["localization_scores"], strict=True)})
             if state.change is not None:
-                row.update(optical_roi=state.change.roi or "", local_change_v=state.change.change_v,
-                           change_threshold_v=state.change.threshold_v, optical_state=state.change.detail,
-                           optical_v_per_s=state.change.rate_v_s,
-                           optical_direction=state.change.direction or
-                           ({"v_rise": "rise", "v_drop": "drop"}.get(row["display_mode"], "") if state.change.roi else ""))
+                row.update(optical_state=state.change.detail, optical_rois=json.dumps(state.change.rois),
+                           optical_readings=json.dumps([asdict(r) for r in state.change.readings]))
+                scalar = state.change if isinstance(state.change, OpticalReading) else (
+                    state.change.readings[0] if len(state.change.readings) == 1 else None)
+                if scalar is not None:
+                    row.update(optical_roi=scalar.roi or "", local_change_v=scalar.change_v,
+                               change_threshold_v=scalar.threshold_v, optical_v_per_s=scalar.rate_v_s,
+                               optical_direction=scalar.direction or
+                               ({"v_rise": "rise", "v_drop": "drop"}.get(row["display_mode"], "") if scalar.roi else ""))
         self.log.writerow(row)
         self.meta["frames"] += 1
         if self.meta["frames"] % 10 == 0:

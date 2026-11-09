@@ -98,6 +98,7 @@ class Replay:
         clock = "nominal video FPS (estimated timing)"
         camera = {}
         recorded_mapping = None
+        recorded_rois = None
         if self.path.stem == "session_video":
             layout_path = folder / "roi_layout.json"
             if layout_path.exists() and load_roi_layout(layout_path).roi_layout_id != LIVE_LAYOUT_ID:
@@ -125,6 +126,7 @@ class Replay:
             if (folder / "session.json").is_file():
                 recorded = json.loads((folder / "session.json").read_text(encoding="utf-8"))
                 recorded_mapping = recorded.get("physical_mapping")
+                recorded_rois = recorded.get("configuration", {}).get("optical_rois")
                 camera = recorded.get("acquisition", camera)
         if self.timeline is None and not (math.isfinite(self.fps) and self.fps > 0):
             raise ValueError("Replay requires capture timestamps or a valid video frame rate")
@@ -133,7 +135,7 @@ class Replay:
         return dict(mode=REPLAY, device=str(self.path.resolve()), backend="OpenCV video",
                     source=self.path.name, resolution=size, clock=clock,
                     controls=camera.get("controls", {}), scheduled_baselines=scheduled,
-                    recorded_mapping=recorded_mapping)
+                    recorded_mapping=recorded_mapping, optical_rois=recorded_rois)
 
     @staticmethod
     def _read_clock(path):

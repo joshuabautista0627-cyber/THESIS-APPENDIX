@@ -1,5 +1,6 @@
 """Defense-demo acceptance checks using real clips and an injected USB interruption."""
 import csv
+from itertools import combinations
 from concurrent.futures import ThreadPoolExecutor
 from dataclasses import replace
 import json
@@ -16,8 +17,9 @@ import numpy as np
 from PySide6.QtWidgets import QApplication
 
 from baurods_demo.model import OpticalModel, load_selected, oriented_image
+from baurods_demo.multi_press import MultiPress
 from baurods_demo.light_check import LightCheckWindow
-from baurods_demo.optical_change import NOISE_KEY, OpticalChange
+from baurods_demo.optical_change import NOISE_KEY, MultiReading, OpticalChange, OpticalReading
 from baurods_demo.recording import SessionRecorder
 from baurods_demo.rod_response import PROFILE_KEY, RodResponse, unloaded_profile
 from baurods_demo.runtime import FrameAnalysis, Session, View
@@ -293,6 +295,147 @@ class DemoTests(unittest.TestCase):
                 self.assertEqual((flash.roi, flash.direction, flash.detail), (k+1, "rise", "Rapid local V rise"))
                 self.assertGreater(flash.rate_v_s, 0.)
                 self.assertIsNone(View(result={"contact": 0}, change=flash).active)
+
+    def test_multi_press_pairs_have_independent_onset_and_release(self):
+        for pair in combinations(range(9), 2):
+            for direction, base in (("rise", np.full(9, 8.)), ("rise", np.zeros(9)),
+                                    ("drop", np.full(9, 1.2))):
+                detector = MultiPress()
+                for i in range(60):
+                    v = base.copy()
+                    pressed = pair if 15 <= i < 30 else pair[1:] if 30 <= i < 45 else ()
+                    for k in pressed:
+                        v[k] = v[k]+3 if direction == "rise" else .005
+                    reading = detector.update(i/15, v, base, np.zeros(9))
+                    self.assertTrue(set(reading.rois) <= {k+1 for k in pressed})
+                    if i in (24, 39, 54):
+                        self.assertEqual(reading.rois, tuple(k+1 for k in pressed))
+
+    def test_multi_press_rejects_weak_single_frame_flicker_and_slow_drift(self):
+        base = np.full(9, 8.)
+        for signal in (lambda i: .8 if i == 15 else 0.,
+                       lambda i: max(0., i-15)*.01):
+            detector = MultiPress()
+            for i in range(100):
+                v = base.copy()
+                v[[6, 8]] += signal(i)
+                self.assertFalse(detector.update(i/15, v, base, np.zeros(9)).rois)
+        detector = MultiPress()
+        for i in range(30):
+            v = base.copy()
+            if i >= 15:
+                v[[6, 8]] += .8
+            reading = detector.update(i/15, v, base, np.zeros(9))
+        self.assertEqual(reading.rois, (7, 9))
+
+    def test_multi_press_common_light_mixed_directions_and_reset(self):
+        base = np.arange(9, dtype=float)+5
+        for transform in (lambda v: v+12, lambda v: v*.01, lambda v: v*1.5,
+                          lambda v: np.maximum(v-8, 0)):
+            detector = MultiPress()
+            for i in range(45):
+                self.assertFalse(detector.update(i/15, base if i < 15 else transform(base),
+                                                 base, np.zeros(9)).rois)
+        detector = MultiPress()
+        for i in range(45):
+            v = base.copy()
+            if i >= 15:
+                v[[0, 6]] += 4
+                v[[2, 8]] = .005
+            reading = detector.update(i/15, v, base, np.zeros(9))
+        self.assertEqual(reading.rois, (1, 3, 7, 9))
+        self.assertEqual([r.direction for r in reading.readings], ["rise", "drop", "rise", "drop"])
+        self.assertFalse(detector.update(4., v, base, np.zeros(9)).rois)
+        detector.reset()
+        self.assertFalse(detector.update(0., v, base, np.zeros(9)).rois)
+        with self.assertRaises(ValueError):
+            detector.update(.1, [np.nan]*9, base, np.zeros(9))
+
+    def test_multi_press_view_gui_mapping_recording_and_stale_clear(self):
+        change = MultiReading((OpticalReading(7, 3., .6, "Fixture", "rise", 8.),
+                               OpticalReading(9, 3., .6, "Fixture", "rise", 8.)), "Fixture pair")
+        result = dict(contact=1, localization=5, contact_score=.9, localization_scores=[1/9]*9)
+        frame = Frame(0, 0., np.zeros((640, 480, 3), np.uint8), "")
+        mapping = verified_mapping([7, 4, 1, 8, 5, 2, 9, 6, 3], "fixture")
+        state = View("CONTACT DETECTED", frame=frame, arrived=time.monotonic(),
+                     result=result, mapping=mapping, change=change)
+        self.assertEqual(state.active_rois, (7, 9))
+        self.assertIsNone(state.active)
+        self.assertFalse(replace(state, result=dict(result, contact=0)).active_rois)
+        self.assertFalse(replace(state, arrived=time.monotonic()-1).fresh().active_rois)
+        with tempfile.TemporaryDirectory() as tmp:
+            settings = dict(self.settings, display_mode="multi_press")
+            save_setup(settings, tmp)
+            recorder = SessionRecorder(tmp, settings, self.model, {}, mapping)
+            try:
+                recorder.frame(frame, state, None, 0)
+            finally:
+                recorder.close("STOPPED")
+            with (recorder.path/"predictions.csv").open(encoding="utf-8") as stream:
+                rows = list(csv.DictReader(stream))
+            self.assertEqual(rows[0]["displayed_contact"], "1")
+            self.assertEqual(rows[0]["displayed_taxel"], "")
+            self.assertEqual(json.loads(rows[0]["displayed_taxels"]), [7, 9])
+            self.assertEqual(json.loads(rows[0]["displayed_grid_positions"]), [1, 7])
+            self.assertEqual([r["roi"] for r in json.loads(rows[0]["optical_readings"])], [7, 9])
+            w = Window(output=tmp)
+            w.timer.stop()
+            w.idle = state
+            w.refresh()
+            self.assertEqual([c.text() for c in w.taxels if c.property("active")], ["R7", "R9"])
+            self.assertIn("R7, R9", w.prediction.text())
+            w.idle = replace(state, result=None)
+            w.refresh()
+            self.assertFalse(any(c.property("active") for c in w.taxels))
+            w.mode.setCurrentText(REPLAY)
+            w.select_video(recorder.path/"session_video.avi")
+            self.assertEqual(w.rule.currentData(), "multi_press")
+            w.close()
+
+    def test_multi_press_pixel_recording_replays_each_active_set(self):
+        settings = dict(self.settings, display_mode="multi_press")
+        with tempfile.TemporaryDirectory() as tmp, ThreadPoolExecutor(1) as pool:
+            source = Replay(SAMPLE/"unloaded/session_video.mp4", self.model.layout)
+            writer = None
+            expected = []
+            try:
+                info = source.open()
+                first = source.read()
+                self.model.predictor.reset()
+                analysis = FrameAnalysis(self.model, source, info, Path(tmp), pool, "multi_press")
+                writer = SessionRecorder(tmp, settings, self.model, info, None)
+                for i in range(60):
+                    image = first.image.copy()
+                    # Construct known simultaneous optical signals on a real unloaded frame.
+                    rods = (7, 9) if 15 <= i < 30 else (9,) if 30 <= i < 45 else ()
+                    for k in rods:
+                        roi = self.model.layout.rois[k-1]
+                        image[roi.y:roi.y+roi.height, roi.x:roi.x+roi.width] = 80
+                    frame = replace(first, number=i, t=i/15, image=image)
+                    status, detail, raw = analysis.analyze(frame)
+                    state = View(status, detail, frame, result=raw, change=analysis.change)
+                    expected.append((raw["contact"], raw["localization"], state.active_rois))
+                    writer.frame(frame, state, analysis.baseline, analysis.epoch)
+            finally:
+                source.close()
+                if writer:
+                    writer.close("REPLAY COMPLETE")
+            self.assertEqual(expected[24][2], (7, 9))
+            self.assertEqual(expected[39][2], (9,))
+            self.assertEqual(expected[54][2], ())
+            source = Replay(writer.path/"session_video.avi", self.model.layout)
+            actual = []
+            try:
+                self.model.predictor.reset()
+                info = source.open()
+                analysis = FrameAnalysis(self.model, source, info, Path(tmp), pool, "multi_press")
+                while (frame := source.read()) is not None:
+                    status, detail, raw = analysis.analyze(frame)
+                    state = View(status, detail, frame, result=raw, change=analysis.change)
+                    actual.append((raw["contact"], raw["localization"], state.active_rois))
+            finally:
+                source.close()
+            self.assertEqual(actual, expected)
 
     def test_rapid_v_tap_rejects_lighting_ambiguity_gaps_and_subthreshold_steps(self):
         b = np.array([3., 3.2, 2.8, 2.4, 2.6, 1.6, 1.4, 1.2, .7])

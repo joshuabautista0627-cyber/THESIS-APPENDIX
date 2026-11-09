@@ -15,7 +15,10 @@ from processing.baseline import BaselineContext, capture_baseline, save_baseline
 from scripts.live_sensor_common import PROJECT_ROOT, atomic_write_json
 from services.camera_service import CameraConnectionError
 from .model import OpticalModel
-from .optical_change import MODE_LABELS, NOISE_KEY, OpticalChange, OpticalReading, mean_v_samples, noise_thresholds
+from .optical_change import MODE_LABELS, NOISE_KEY, MultiReading, OpticalChange, OpticalReading, mean_v_samples, noise_thresholds
+from .multi_press import MultiPress
+from .multi_rise import MultiRise
+from .optical_rois import RISE_MODES, SPOT_MODES, SIGNAL_PROFILE_KEY, layout_values, optical_layout, signal_profile, signal_values
 from .rod_response import PROFILE_KEY, RodResponse, unloaded_profile
 from .recording import SessionRecorder
 from .setup import OUTPUT, ROI_ORDER, effective_mapping
@@ -40,17 +43,23 @@ class View:
     ms: float = 0.
     mapping: dict | None = None
     optical: tuple = ()
-    change: OpticalReading | None = None
+    change: OpticalReading | MultiReading | None = None
 
     @property
     def cells(self):
         return tuple(self.mapping["cells"]) if self.mapping else ROI_ORDER
 
     @property
-    def active(self):
+    def active_rois(self):
         if not self.result or not self.result["contact"]:
-            return None
-        return self.change.roi if self.change is not None else self.result["localization"]
+            return ()
+        return self.change.rois if self.change is not None else (self.result["localization"],)
+
+    @property
+    def active(self):
+        """Legacy scalar output is defined only for exactly one active rod."""
+        rois = self.active_rois
+        return rois[0] if len(rois) == 1 else None
 
     def age_ms(self):
         return 1000 * max(0., time.monotonic() - self.arrived) if self.arrived else 0.
@@ -67,7 +76,7 @@ def rate(stamps):
 
 class FrameAnalysis:
     """Own exactly one baseline and one model history for the current stream."""
-    def __init__(self, model, source, info, output, pool, display_mode="models", minimum_v_step=0.):
+    def __init__(self, model, source, info, output, pool, display_mode="models", minimum_v_step=0., regions=None):
         self.model, self.source, self.info = model, source, info
         self.output, self.pool = output, pool
         self.session = uuid4().hex
@@ -80,8 +89,13 @@ class FrameAnalysis:
         if display_mode not in MODE_LABELS:
             raise ValueError(f"Unknown display mode: {display_mode}")
         self.display_mode = display_mode
+        self.regions = regions or optical_layout(info.get("optical_rois"), model.layout)
         self.detector = None
-        if display_mode in {"rod_response", "rapid_tap"}:
+        if display_mode in RISE_MODES:
+            self.detector = MultiRise(minimum_v_step, spot=display_mode in SPOT_MODES, sustained=display_mode == "multi_slide")
+        elif display_mode == "multi_press":
+            self.detector = MultiPress(minimum_v_step)
+        elif display_mode in {"rod_response", "rapid_tap"}:
             self.detector = RodResponse(minimum_v_step, use_tap_rate=display_mode == "rapid_tap")
         elif display_mode != "models":
             self.detector = OpticalChange(display_mode, minimum_v_step)
@@ -111,6 +125,7 @@ class FrameAnalysis:
         samples = mean_v_samples(frames, layout.rois)
         baseline.camera_settings[NOISE_KEY] = noise_thresholds([f.t for f in frames], samples)
         baseline.camera_settings[PROFILE_KEY] = unloaded_profile(samples)
+        baseline.camera_settings[SIGNAL_PROFILE_KEY] = signal_profile(frames, self.regions)
         folder = self.output / "calibrations" / baseline.baseline_id
         save_baseline(baseline, folder / "baseline_summary.json", folder / "baseline_data.npz")
         return baseline
@@ -155,16 +170,31 @@ class FrameAnalysis:
             self.optical = tuple(row[f"roi{i}_raw_v_mean"] for i in ROI_ORDER)
             center = [roi.mean_v for roi in self.baseline.roi_baselines]
             noise = self.baseline.camera_settings.get(NOISE_KEY, (0.,) * 9)
-            if self.display_mode in {"rod_response", "rapid_tap"} and PROFILE_KEY in self.baseline.camera_settings:
+            if self.display_mode in {"rod_response", "rapid_tap", "multi_press", *RISE_MODES} and PROFILE_KEY in self.baseline.camera_settings:
                 profile = self.baseline.camera_settings[PROFILE_KEY]
                 center, noise = profile["mean_v_center"], profile["noise_v"]
+            custom = self.regions.roi_layout_id != self.model.layout.roi_layout_id
+            saved = self.baseline.camera_settings.get(SIGNAL_PROFILE_KEY)
+            compatible = saved and saved.get("layout_id") == self.regions.roi_layout_id
+            if (custom or self.display_mode in SPOT_MODES) and not compatible:
+                self.optical = ()
+                return "CALIBRATION REQUIRED", "Capture an unloaded baseline for these optical ROIs and this method.", None
+            if custom or self.display_mode in RISE_MODES:
+                mean, spot = signal_values(frame.image, self.regions.rois)
+                self.optical = tuple(spot if self.display_mode in SPOT_MODES else mean)
+                if compatible:
+                    profile = saved["spot" if self.display_mode in SPOT_MODES else "mean"]
+                    center = profile["mean_v_center"]
+                    noise = profile["rise_noise_v" if self.display_mode in RISE_MODES else "noise_v"]
+                elif self.display_mode in RISE_MODES:
+                    noise = [x*.7 for x in noise]
             self.change = self.detector.update(frame.t, self.optical, center, noise)
-            if self.change.roi is None:
+            if not self.change.rois:
                 return "NO CONFIRMED CONTACT", self.change.detail, r
+            names = ", ".join(f"R{i}" for i in self.change.rois)
             if not r["contact"]:
-                return "OPTICAL CHANGE ONLY", f"Optical R{self.change.roi} · SVC reports no contact", r
-            direction = self.change.direction or ("rise" if self.display_mode == "v_rise" else "drop")
-            return "CONTACT DETECTED", f"Local V {direction} at R{self.change.roi} · SVC positive", r
+                return "OPTICAL CHANGE ONLY", f"Optical {names} · SVC reports no contact", r
+            return "CONTACT DETECTED", f"Optical {names} · SVC positive", r
         if r["contact"]:
             return "CONTACT DETECTED", f"Predicted taxel R{r['localization']}", r
         return "NO CONTACT DETECTED", "Ready for a single-taxel press.", r
@@ -280,20 +310,26 @@ class Session:
             if self.cancel.is_set():
                 return
             stage = "SETUP ERROR"
+            values = self.settings.get("optical_rois") if source.live else self.info.get("optical_rois")
+            regions = optical_layout(values, model.layout)
+            if self.settings.get("display_mode", "models") == "models":
+                regions = model.layout
+            self.info.update(optical_rois=layout_values(regions), optical_layout_id=regions.roi_layout_id)
             mapping = effective_mapping(self.settings, self.info)
             atomic_write_json(self.output / "last_acquisition.json", dict(acquisition=self.info, models=self.models,
-                              roi_layout=model.layout.to_dict(), physical_mapping=mapping,
+                              roi_layout=model.layout.to_dict(), optical_roi_layout=regions.to_dict(), physical_mapping=mapping,
                               display_mode=self.settings.get("display_mode", "models"),
                               minimum_v_step=self.settings.get("minimum_v_step", 0.)))
             if self.record:
                 stage = "RECORDING ERROR"
-                recorder = SessionRecorder(self.output, self.settings, model, self.info, mapping)
+                recorded_settings = dict(self.settings, optical_rois=layout_values(regions))
+                recorder = SessionRecorder(self.output, recorded_settings, model, self.info, mapping)
                 self.record_path = recorder.path
             stage = "PROCESSING ERROR"
             with ThreadPoolExecutor(max_workers=1, thread_name_prefix="BAURods baseline") as pool:
                 analysis = FrameAnalysis(model, source, self.info, self.output, pool,
                                          self.settings.get("display_mode", "models"),
-                                         self.settings.get("minimum_v_step", 0.))
+                                         self.settings.get("minimum_v_step", 0.), regions)
                 with self.lock:
                     if not self.cancel.is_set():
                         self.state = View(status="ACQUIRING", detail="Waiting for the first frame.", arrived=time.monotonic())

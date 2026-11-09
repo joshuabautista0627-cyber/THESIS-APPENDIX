@@ -16,7 +16,9 @@ from PySide6.QtWidgets import (QCheckBox, QComboBox, QDialog, QDialogButtonBox, 
 from core.live_sensor_contracts import load_canonical_live_layout
 from scripts.live_sensor_common import PROJECT_ROOT
 from .runtime import Session, View
-from .optical_change import MODE_LABELS
+from .optical_change import MODE_LABELS, MultiReading
+from .optical_rois import SPOT_MODES, optical_layout
+from .roi_editor import RoiEditor
 from .setup import DEFAULTS, OUTPUT, SAMPLE, load_setup, save_setup, verified_mapping
 from .sources import LIVE, REPLAY
 from .widgets import CameraView, MappingDialog, OpticalStrip, label
@@ -67,17 +69,23 @@ class Window(QMainWindow):
             for filename in ("segoeui.ttf", "seguisb.ttf", "segoeuib.ttf"):
                 QFontDatabase.addApplicationFont(str(fonts / filename))
         self.output, self.session_factory = Path(output), session_factory
-        self.session = self.mapping_dialog = None
+        self.session = self.mapping_dialog = self.roi_dialog = None
+        self.reference_frame = None
+        self.layout_reset_pending = False
         self.last_frame = self.last_grid = self.last_status = None
         self.initial_error = ""
         self.close_started = None
         try:
             self.settings = load_setup(output)
-            self.layout_spec = load_canonical_live_layout(PROJECT_ROOT / self.settings["roi_layout"])
+            self.canonical_layout = load_canonical_live_layout(PROJECT_ROOT / self.settings["roi_layout"])
+            self.layout_spec = optical_layout(self.settings.get("optical_rois"), self.canonical_layout)
+            if self.settings["display_mode"] == "models":
+                self.layout_spec = self.canonical_layout
         except Exception as exc:
             self.initial_error = str(exc)
             self.settings = json.loads(DEFAULTS.read_text())
             self.layout_spec = None
+            self.canonical_layout = None
         if replay is not None:
             self.settings["replay"] = str(replay)
         self.setWindowTitle("BAURods Live Demo")
@@ -158,6 +166,10 @@ class Window(QMainWindow):
         self.overlay.setChecked(bool(self.settings["overlay"]))
         self.overlay.toggled.connect(self.toggle_overlay)
         cam_title.addWidget(self.overlay)
+        self.roi_button = QPushButton("Edit ROIs…")
+        self.roi_button.setToolTip("Start the camera preview, then edit optical regions. Editing stops acquisition; Save and capture a fresh baseline.")
+        self.roi_button.clicked.connect(self.edit_rois)
+        cam_title.addWidget(self.roi_button)
         content.addLayout(cam_title)
         self.camera = CameraView(self.layout_spec)
         self.camera.overlay = self.overlay.isChecked()
@@ -174,7 +186,7 @@ class Window(QMainWindow):
         rule_row.addWidget(label("CONTACT STATUS", "brand"), 1)
         self.rule = QComboBox()
         self.rule.setAccessibleName("Contact display rule")
-        self.rule.setToolTip("Rapid V tap uses a recent change in rod brightness and checks for shared shadows or release. "
+        self.rule.setToolTip("Multi-press tracks 2–4 rods independently and requires a fresh unloaded baseline. "
                              "A green contact tile also requires a positive SVC decision. Stop to change the rule.")
         for key, title in MODE_LABELS.items():
             self.rule.addItem(title, key)
@@ -252,6 +264,59 @@ class Window(QMainWindow):
     def rule_changed(self):
         if self.mode.currentText() == LIVE:
             self.settings["display_mode"] = self.rule.currentData()
+        self.refresh_layout()
+
+    def regions_for_input(self):
+        if self.rule.currentData() == "models":
+            return self.canonical_layout
+        values = self.settings.get("optical_rois")
+        if self.mode.currentText() != LIVE:
+            values = None
+            clip = Path(self.clips.currentData())
+            meta = clip.with_name("session.json")
+            if clip.stem == "session_video" and meta.is_file():
+                values = json.loads(meta.read_text(encoding="utf-8")).get("configuration", {}).get("optical_rois")
+        return optical_layout(values, self.canonical_layout)
+
+    def refresh_layout(self):
+        try:
+            if self.canonical_layout is not None:
+                self.layout_spec = self.regions_for_input()
+                self.camera.rois = self.layout_spec.rois
+                self.camera.update()
+        except (ValueError, OSError, AttributeError) as exc:
+            self.initial_error = str(exc)
+
+    def edit_rois(self):
+        if self.roi_dialog is not None or self.reference_frame is None or self.mode.currentText() != LIVE:
+            return
+        if self.session and not self.session.done.is_set():
+            self.session.stop("ROI EDITING", "Acquisition stopped. Save your regions, then Start and capture a fresh baseline.")
+        layout = optical_layout(self.settings.get("optical_rois"), self.canonical_layout)
+        self.roi_dialog = RoiEditor(self, layout, self.canonical_layout, self.reference_frame, self.apply_rois)
+        self.roi_dialog.finished.connect(lambda _: setattr(self, "roi_dialog", None))
+        self.roi_dialog.show()
+        self.refresh()
+
+    def apply_rois(self, values):
+        layout = optical_layout(values, self.canonical_layout)
+        previous = dict(self.settings)
+        self.settings.update(optical_rois=values if layout.roi_layout_id != self.canonical_layout.roi_layout_id else None,
+                             physical_mapping=None)
+        if self.rule.currentData() == "models":
+            self.settings["display_mode"] = "multi_v_rise"
+        try:
+            self.persist()
+        except OSError:
+            self.settings = previous
+            raise
+        if self.rule.currentData() == "models":
+            self.rule.setCurrentIndex(self.rule.findData("multi_v_rise"))
+        self.refresh_layout()
+        self.idle = View("CALIBRATION REQUIRED", "ROI layout saved. Start and capture a fresh unloaded baseline.")
+        self.layout_reset_pending = True
+        self.refresh()
+        return True
 
     def restore_rule(self):
         if self.mode.currentText() == LIVE:
@@ -269,6 +334,7 @@ class Window(QMainWindow):
                     pass  # Replay.open reports an unreadable session when Start is pressed.
         self.rule.setCurrentIndex(max(0, self.rule.findData(config.get("display_mode", "models"))))
         self.minimum_v_step = config.get("minimum_v_step", 0.)
+        self.refresh_layout()
 
     def change_mode(self, index):
         self.inputs.setCurrentIndex(index)
@@ -294,7 +360,8 @@ class Window(QMainWindow):
             return
         try:
             self.persist()
-            self.layout_spec = load_canonical_live_layout(PROJECT_ROOT / self.settings["roi_layout"])
+            self.canonical_layout = load_canonical_live_layout(PROJECT_ROOT / self.settings["roi_layout"])
+            self.layout_spec = self.regions_for_input()
             self.camera.rois = self.layout_spec.rois
             self.initial_error = ""
             config = dict(self.settings, display_mode=self.rule.currentData(), minimum_v_step=self.minimum_v_step)
@@ -343,7 +410,7 @@ class Window(QMainWindow):
         if not session or session.mode != LIVE or not session.view().result or session.record:
             return False
         previous = self.settings["physical_mapping"]
-        self.settings["physical_mapping"] = verified_mapping(cells, session.info["device"])
+        self.settings["physical_mapping"] = verified_mapping(cells, session.info["device"], self.layout_spec.roi_layout_id)
         try:
             self.persist()
         except OSError as exc:
@@ -355,11 +422,15 @@ class Window(QMainWindow):
 
     def refresh(self):
         s = self.session
+        if self.layout_reset_pending and (s is None or s.done.is_set()):
+            self.session = s = None
+            self.layout_reset_pending = False
         state = s.view() if s else getattr(self, "idle", View())
         busy = bool(s and not s.done.is_set())
         running = busy and not s.cancel.is_set()
         live = self.mode.currentText() == LIVE
         self.start_button.setEnabled(not busy)
+        self.roi_button.setEnabled(live and self.reference_frame is not None and self.roi_dialog is None)
         self.stop_button.setEnabled(running)
         for control in (self.mode, self.inputs, self.record, self.rule):
             control.setEnabled(not busy)
@@ -376,30 +447,36 @@ class Window(QMainWindow):
         self.camera.placeholder = "Select a recording and press Start" if not live else "Waiting for the underside camera"
         if self.last_frame is not state.frame:
             self.camera.set_image(state.frame.image if state.frame else None)
+            if state.frame is not None and live:
+                self.reference_frame = state.frame.image.copy()
             self.last_frame = state.frame
         if self.mapping_dialog:
             self.mapping_dialog.fresh = bool(running and live and state.result)
             self.mapping_dialog.preview.set_image(state.frame.image if state.frame else None)
             self.mapping_dialog.optics.set_values(state.optical if state.result else ())
             self.mapping_dialog.optical_title.setText(self.optical_title.text())
-        signal = "mean positive ΔV" if self.rule.currentData() == "models" else "mean HSV V"
+        signal = ("mean positive ΔV" if self.rule.currentData() == "models" else
+                  "brightest 5% V, denoised" if self.rule.currentData() in SPOT_MODES else "mean HSV V")
         self.optical_title.setText(f"Optical response per ROI  ·  {signal} (digital levels)")
         self.optics.set_values(state.optical if state.result else ())
-        key = (state.cells, state.active)
+        key = (state.cells, state.active_rois)
         if key != self.last_grid:
             self.last_grid = key
             for cell, number in zip(self.taxels, state.cells):
                 cell.setText(f"R{number}")
-                cell.setProperty("active", number == state.active)
+                cell.setProperty("active", number in state.active_rois)
                 cell.style().unpolish(cell)
                 cell.style().polish(cell)
         self.grid_caption.setText("Physical top view  ·  nine positions verified" if state.mapping else
-                                  ("Trained ROI order  ·  physical orientation unchecked" if live else "Recorded view  ·  trained ROI order"))
-        origin = "Optical taxel" if self.rule.currentData() != "models" else "Predicted taxel"
-        if state.result and state.change and state.change.roi and not state.result["contact"]:
-            self.prediction.setText(f"Optical R{state.change.roi}  ·  contact unconfirmed")
+                                  ("ROI order  ·  physical orientation unchecked" if live else "Recorded view  ·  ROI order"))
+        origin = "Optical taxels" if self.rule.currentData().startswith("multi_") else (
+            "Optical taxel" if self.rule.currentData() != "models" else "Predicted taxel")
+        if state.result and state.change and state.change.rois and not state.result["contact"]:
+            names = ", ".join(f"R{i}" for i in state.change.rois)
+            self.prediction.setText(f"Optical {names}  ·  contact unconfirmed")
         else:
-            self.prediction.setText(f"{origin}   R{state.active}" if state.active else f"{origin}   —")
+            names = ", ".join(f"R{i}" for i in state.active_rois)
+            self.prediction.setText(f"{origin}   {names}" if names else f"{origin}   —")
         info = s.info if s else {}
         size = " × ".join(map(str, info.get("resolution", (640, 480))))
         self.camera_line.setText(f"{self.mode.currentText()}   ·   {size} input   ·   480 × 640 ROI view")
@@ -416,12 +493,14 @@ class Window(QMainWindow):
         if state.result:
             raw = state.result
             score = f"   ·   Raw SVC {raw['contact']} ({raw['contact_score']:.3f})   ·   Raw logistic R{raw['localization']}"
-            if state.change:
+            if isinstance(state.change, MultiReading):
+                score += f"   ·   {len(state.active_rois)} confirmed optical rods · experimental multi-press"
+            elif state.change:
                 score += f"   ·   Local change {state.change.change_v:.2f} / threshold {state.change.threshold_v:.2f} V levels"
                 if state.change.rate_v_s is not None:
                     score += f"   ·   R{state.change.roi} {state.change.rate_v_s:+.1f} V levels/s"
         trace = f"   ·   Session {s.record_path.name}" if s and s.record_path else ""
-        self.session_line.setText(f"{info.get('clock', 'Single-taxel demonstration')}   ·   Experimental live inference{score}{trace}")
+        self.session_line.setText(f"{info.get('clock', 'Camera demonstration')}   ·   Experimental live inference{score}{trace}")
 
     def settings_dialog(self):
         busy = bool(self.session and not self.session.done.is_set())
@@ -454,7 +533,7 @@ class Window(QMainWindow):
         step.setSpecialValueText("Automatic")
         step.setValue(self.minimum_v_step)
         step.setEnabled(not busy and self.rule.currentData() != "models")
-        form.addRow("Minimum optical step (mean V levels)", step)
+        form.addRow("Minimum optical step (selected V metric)", step)
         form.addRow(label("Recorded IMX179 reference: 640 × 480, exposure −2, manual exposure, gain 0. "
                           "A requested control must be confirmed by the driver.", "muted", True))
         path = QLineEdit(str(self.settings["model_run"]))
@@ -462,6 +541,7 @@ class Window(QMainWindow):
         override.setEnabled(not busy)
         form.addRow("Final tuning run", path)
         form.addRow("ROI layout", label(self.settings["roi_layout"], "muted", True))
+        form.addRow("Optical detection regions", label(self.layout_spec.roi_layout_id if self.layout_spec else "Invalid", "muted", True))
         form.addRow("Setup and session folder", label(str(self.output), "muted", True))
         tabs.addTab(page, "Setup")
         diagnostics = QPlainTextEdit()

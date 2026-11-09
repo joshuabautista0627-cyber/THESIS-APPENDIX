@@ -1,0 +1,39 @@
+{
+  "date": "2026-11-09",
+  "mode": "multi_press",
+  "software_tests_passed": 24,
+  "pair_combinations": 36,
+  "pair_cases": [
+    "bright",
+    "dark_unloaded_to_bright",
+    "lit_to_dark"
+  ],
+  "constructed_pixel_test": "R7 + R9 -> R9 -> none; identical lossless replay active sets",
+  "unconfirmed_run_raw_model_parity_frames": 405,
+  "physical_multi_press_accuracy": "Live acceptance failed: neither of two operator-confirmed runs detected an R7 + R9 pair during their four cued pair windows; all 812 valid displayed frames were blank.",
+  "source_sha256": {
+    "calibration_gui/baurods_demo/light_check.py": "577cff499a4bc15d05a31394f8e044d5543724f41fd1bf988f03d02d3abe7e23",
+    "calibration_gui/baurods_demo/model.py": "bd2580ad28e068847cea2c58bd3140501a699a770792d7379b8481637b0ae3b3",
+    "calibration_gui/baurods_demo/multi_press.py": "1a9953f352d0b2e2eb7eca7478aa432f75b10182c1cd0d20941ff60a9587ad1a",
+    "calibration_gui/baurods_demo/optical_change.py": "960652339db6296bf3047c6d972683a29c0eb47f70972d8a145a7691cc9929bb",
+    "calibration_gui/baurods_demo/recording.py": "dc33595d60a60aa204c08c9eb22048ee99e22d0df6480db9031b150e72b9451e",
+    "calibration_gui/baurods_demo/rod_response.py": "e7112f5f4c1dd210360679e41ae75a68229772f61733e32150a76a9a615d5503",
+    "calibration_gui/baurods_demo/runtime.py": "011097ada74ae6fdaeda724732ffa52f1912ad045afbe53901069b13ff67595c",
+    "calibration_gui/baurods_demo/setup.py": "734b5bdb9e0149e814186725be4b743e26800e0bfd66b0f41a598f7c598a5c8e",
+    "calibration_gui/baurods_demo/sources.py": "c0c432cd1a1cb27d6e73ea083e45316d46c7c2f8a3fc6ae72669bf728a89fb20",
+    "calibration_gui/baurods_demo/tap_rate.py": "b30b1bd22e620a1589a31891a6b72b34f28a9d08bd94b090a60457f5650b72f7",
+    "calibration_gui/baurods_demo/widgets.py": "161e07511e79cfd1143722c79400840532e51d3f32809074e4a5043137372eec",
+    "calibration_gui/baurods_demo/window.py": "4214fffa66dd1a9ee4a5aad5d16da2266791ff9d5db94dc55978f358a7df11e5",
+    "calibration_gui/baurods_demo/__init__.py": "58fb912de8f28c6aa4bf514a807340e8e831ae30d805ef8da1b8acdc15788de7",
+    "calibration_gui/baurods_demo/__main__.py": "da927ed9aadfd8c59cf0f96264d7ff964dc2a99d57c18c5dd475e2a8c7b68393",
+    "calibration_gui/BAURods_Live_Demo.md": "0a8c68d9531b3f30f7626feb96059b863186e97beb99f4bcbdc172d8d9b1211f",
+    "calibration_gui/tests/test_baurods_demo.py": "329625befc9bb2255977f673bf5a9b4866fa4f6b56fb759fcbed20004e72ff40",
+    "calibration_gui/scripts/verify_baurods_optical.py": "37c98efb4ff6387eac3b5dbc5af7a3534aa787721a42860aeb7280eb55f99e75"
+  },
+  "confirmed_live_raw_parity_frames": 812,
+  "confirmed_live_runs": [
+    "multi_press_20261109T105524Z_73caa3",
+    "multi_press_20261109T110005Z_a9a538"
+  ],
+  "sensitivity_trials": "0.20, 0.10 and 0.05 did not recover the pair; lower settings also detected R7 during release. Live settings unchanged."
+}

@@ -44,14 +44,14 @@ def check_mapping(values):
     return cells
 
 
-def verified_mapping(values, device):
+def verified_mapping(values, device, layout_id=LIVE_LAYOUT_ID):
     return dict(cells=list(check_mapping(values)), verified_utc=utc_now_iso(),
-                device=device, layout_id=LIVE_LAYOUT_ID)
+                device=device, layout_id=layout_id)
 
 
 def effective_mapping(settings, acquisition):
     m = settings.get("physical_mapping") if acquisition["mode"] == LIVE else acquisition.get("recorded_mapping")
-    if not m or m.get("layout_id") != LIVE_LAYOUT_ID or not m.get("verified_utc"):
+    if not m or m.get("layout_id") != acquisition.get("optical_layout_id", LIVE_LAYOUT_ID) or not m.get("verified_utc"):
         return None
     if acquisition["mode"] == LIVE and m.get("device") != acquisition["device"]:
         return None

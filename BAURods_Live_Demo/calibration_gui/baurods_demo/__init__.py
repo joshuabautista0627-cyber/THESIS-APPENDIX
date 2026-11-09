@@ -1,1 +1,1 @@
-"""Camera-only BAURods single-taxel demonstration."""
+"""Camera-only BAURods contact and optical localization demonstration."""

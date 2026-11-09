@@ -4,7 +4,7 @@ Source and supporting evidence snapshot prepared on **19 October 2026**, publish
 
 ## BAURods live GUI
 
-Run the 3 × 3 mechanoluminescent sensor demo with an underside camera or the included press and unloaded recordings. The Windows download includes the fitted models and offline Python dependencies. [Download the Windows x64 demo](https://github.com/joshuabautista0627-cyber/THESIS-APPENDIX/releases/download/baurods-live-gui-2026-11-03/BAURods_Live_Demo_Windows_x64.zip) · [Source and setup instructions](BAURods_Live_Demo/)
+Run the 3 × 3 mechanoluminescent sensor demo with an underside camera or the included press and unloaded recordings. The 9 November update adds editable optical ROIs, independent multi-press detection and sliding / held-light mode. The Windows download includes the fitted models and offline Python dependencies. [Download the Windows x64 demo](https://github.com/joshuabautista0627-cyber/THESIS-APPENDIX/releases/download/baurods-live-gui-2026-11-09/BAURods_Live_Demo_Windows_x64.zip) · [Source and setup instructions](BAURods_Live_Demo/)
 
 ## Complete THESIS DATA folder — 27 October 2026
 

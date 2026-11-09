@@ -10,6 +10,9 @@ import numpy as np
 import pandas as pd
 
 from baurods_demo.model import OpticalModel
+from baurods_demo.multi_press import MultiPress
+from baurods_demo.multi_rise import MultiRise
+from baurods_demo.optical_rois import RISE_MODES, SPOT_MODES
 from baurods_demo.optical_change import NOISE_KEY, RESET_GAP_S, OpticalChange, noise_thresholds
 from baurods_demo.rod_response import PROFILE_KEY, RodResponse, unloaded_profile
 from baurods_demo.runtime import FrameAnalysis, View
@@ -18,7 +21,9 @@ from baurods_demo.sources import Replay
 
 
 def trace_report(path, mode):
-    combined = mode in {"rod_response", "rapid_tap"}
+    if mode in SPOT_MODES:
+        raise ValueError("Bright-spot measurement requires pixels; use a recorded video with a matching unloaded profile")
+    combined = mode in {"rod_response", "rapid_tap", "multi_press", *RISE_MODES}
     frame = pd.read_csv(path)
     phase = frame["phase"] if "phase" in frame else frame["part"]
     times = frame["capture_monotonic_relative_s" if "capture_monotonic_relative_s" in frame else "t"].to_numpy()
@@ -45,19 +50,20 @@ def trace_report(path, mode):
         if combined and PROFILE_KEY in baseline["camera_settings"]:
             profile = baseline["camera_settings"][PROFILE_KEY]
             reference, noise = profile["mean_v_center"], profile["noise_v"]
-    detector = RodResponse(use_tap_rate=mode == "rapid_tap") if combined else OpticalChange(mode)
+    detector = MultiRise() if mode == "multi_v_rise" else MultiPress() if mode == "multi_press" else (
+        RodResponse(use_tap_rate=mode == "rapid_tap") if combined else OpticalChange(mode))
     active, raw = Counter(), Counter()
-    transitions, last = [], None
+    transitions, last = [], ()
     for i in np.flatnonzero(~cal):
-        reading = detector.update(times[i], means[i], reference, noise)
+        reading = detector.update(times[i], means[i], reference, np.asarray(noise)*.7 if mode == "multi_v_rise" else noise)
         contact = bool(frame.raw_contact.iloc[i])
         if contact:
             raw[int(frame.raw_taxel.iloc[i])] += 1
-        displayed = reading.roi if contact else None
-        if displayed is not None:
-            active[displayed] += 1
+        displayed = reading.rois if contact else ()
+        active.update(displayed)
         if displayed != last:
-            transitions.append(dict(source_time_s=round(times[i], 3), phase=phase.iloc[i], roi=displayed))
+            transitions.append(dict(source_time_s=round(times[i], 3), phase=phase.iloc[i],
+                                    roi=displayed[0] if len(displayed) == 1 else None, rois=displayed))
             last = displayed
     return dict(source=str(path), tested_frames=int((~cal).sum()), raw_contact_taxels=raw,
                 displayed_taxels=active, transitions=transitions)
@@ -67,7 +73,8 @@ def video_report(path, model, mode="v_rise", cues=()):
     source = Replay(path, model.layout)
     model.predictor.reset()
     raw, displayed = Counter(), Counter()
-    transitions, last = [], None
+    transitions, last = [], ()
+    contact_counts = Counter()
     total = valid = 0
     expected = None
     peak_rates = {}
@@ -95,8 +102,8 @@ def video_report(path, model, mode="v_rise", cues=()):
                         raise ValueError(f"Raw model parity failed on frame {f.number}")
                 if pred["contact"]:
                     raw[pred["localization"]] += 1
-                if state.active is not None:
-                    displayed[state.active] += 1
+                displayed.update(state.active_rois)
+                contact_counts[len(state.active_rois)] += 1
                 if cues:
                     phase = next((e["phase"] for e in reversed(cues) if e["frame"] <= f.number), "setup")
                     means = np.asarray(analysis.optical)
@@ -107,14 +114,14 @@ def video_report(path, model, mode="v_rise", cues=()):
                         if phase not in peak_rates or abs(rates[k]) > abs(peak_rates[phase]["local_v_per_s"]):
                             peak_rates[phase] = dict(roi=k+1, local_v_per_s=float(rates[k]), source_s=f.t)
                     previous = analysis.epoch, f.t, means
-                    if state.active != last:
+                    if state.active_rois != last:
                         transitions.append(dict(frame=f.number, source_s=round(f.t, 3), phase=phase, roi=state.active,
-                                                direction=state.change.direction if state.change and state.active else ""))
-                        last = state.active
+                                                rois=state.active_rois))
+                        last = state.active_rois
     finally:
         source.close()
     report = dict(source=str(path), mode=mode, tested_frames=total, valid_frames=valid,
-                  raw_contact_taxels=raw, displayed_taxels=displayed)
+                  raw_contact_taxels=raw, displayed_taxels=displayed, frames_by_contact_count=contact_counts)
     if expected is not None:
         if len(expected) != valid:
             raise ValueError("Valid frame count differs from the recorded session")
@@ -125,7 +132,8 @@ def video_report(path, model, mode="v_rise", cues=()):
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("--trace", type=Path, action="append", default=[], help="Also test a captured numeric idle or press trial")
-    p.add_argument("--mode", choices=["v_drop", "v_rise", "rod_response", "rapid_tap"], help="Use this display rule for every input")
+    p.add_argument("--mode", choices=["v_drop", "v_rise", "rod_response", "rapid_tap", "multi_press", *sorted(RISE_MODES)],
+                   help="Use this display rule for every input")
     p.add_argument("--guided-check", type=Path, action="append", default=[], help="Light-check folder; repeat for multiple runs")
     p.add_argument("--output", type=Path, help="Save the numerical verification result as JSON")
     args = p.parse_args()
@@ -136,7 +144,7 @@ def main():
     for folder in args.guided_check:
         meta = json.loads((folder / "check.json").read_text())
         session = folder / "sessions" / Path(meta["session"]).name
-        check = video_report(session / "session_video.avi", model, args.mode or "rod_response", meta["cues"])
+        check = video_report(session / "session_video.avi", model, args.mode or meta.get("rule", "rod_response"), meta["cues"])
         check["operator_confirmed"] = meta["confirmed"]
         reports.append(check)
     result = json.dumps(reports, indent=2)

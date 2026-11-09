@@ -76,7 +76,7 @@ class OpticalStrip(QWidget):
         super().__init__()
         self.values = ()
         self.setFixedHeight(43)
-        self.setToolTip("ROI 1–9 in trained camera order. All nine measured optical values share this frame's scale.")
+        self.setToolTip("ROI 1–9 in the displayed detection layout. All nine optical values share this frame's scale.")
 
     def set_values(self, values):
         if self.values != values:

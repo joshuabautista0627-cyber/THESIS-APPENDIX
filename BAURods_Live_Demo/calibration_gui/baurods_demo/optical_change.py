@@ -7,6 +7,10 @@ import numpy as np
 
 
 MODE_LABELS = {"models": "Trained models", "rapid_tap": "SVC + rapid V tap", "rod_response": "SVC + rod response",
+               "multi_press": "SVC + multi-press (experimental)",
+               "multi_v_rise": "SVC + multi V rise (experimental)",
+               "multi_spot": "SVC + multi bright spots (experimental)",
+               "multi_slide": "SVC + sliding / held light (experimental)",
                "v_rise": "SVC + local V rise", "v_drop": "SVC + local V drop"}
 DEFAULT_STEP = {"v_rise": 0.6, "v_drop": 2.0}  # Mean HSV-V digital levels across one ROI.
 HISTORY_S = 0.45
@@ -57,6 +61,24 @@ class OpticalReading:
     detail: str
     direction: str = ""
     rate_v_s: float | None = None
+
+    @property
+    def rois(self):
+        return (self.roi,) if self.roi is not None else ()
+
+    @property
+    def readings(self):
+        return (self,) if self.roi is not None else ()
+
+
+@dataclass(frozen=True)
+class MultiReading:
+    readings: tuple[OpticalReading, ...]
+    detail: str
+
+    @property
+    def rois(self):
+        return tuple(r.roi for r in self.readings)
 
 
 class OpticalChange:

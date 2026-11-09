@@ -1,4 +1,4 @@
-"""Repeat the operator-cued R7/R8/R9 check using the normal camera, models, and recorder."""
+"""Operator-cued single-rod and multi-press checks with the normal camera and recorder."""
 from datetime import datetime, timezone
 from pathlib import Path
 import time
@@ -8,7 +8,7 @@ from PySide6.QtCore import QTimer
 from PySide6.QtWidgets import QApplication, QFrame, QHBoxLayout, QLabel, QPushButton
 
 from scripts.live_sensor_common import atomic_write_json
-from .setup import OUTPUT, load_setup
+from .setup import OUTPUT, load_setup, save_setup
 from .window import Window
 
 
@@ -23,40 +23,80 @@ def cue_plan():
     return cues + [("final_idle", 1.5, "Leave all rods unloaded")]
 
 
+def multi_cue_plan(rois=(7, 9)):
+    a, b = rois
+    return [
+        ("idle", 3., "Keep all rods unloaded"),
+        (f"press_1_R{a}_R{b}", 4., f"Press the rods inside camera R{a} + R{b} together"),
+        (f"hold_1_R{b}", 3.5, f"Release R{a} only · keep holding R{b}"),
+        ("release_1_all", 3.5, f"Release R{b} · keep all rods unloaded"),
+        (f"press_2_R{a}_R{b}", 4., f"Press the rods inside camera R{a} + R{b} together"),
+        (f"hold_2_R{a}", 3.5, f"Release R{b} only · keep holding R{a}"),
+        ("release_2_all", 3.5, f"Release R{a} · keep all rods unloaded"),
+        ("final_idle", 2., "Leave all rods unloaded"),
+    ]
+
+
+def sliding_cue_plan(rois=(1, 3)):
+    a, b = rois
+    return [
+        ("idle", 3., "Keep all rods unloaded"),
+        (f"slide_R{a}", 6., f"Slide the rod inside camera R{a} gently side to side"),
+        ("release_1_all", 3., "Release all rods"),
+        (f"slide_R{b}", 6., f"Slide the rod inside camera R{b} gently side to side"),
+        ("release_2_all", 3., "Release all rods"),
+        (f"slide_R{a}_R{b}", 8., f"Slide the rods inside camera R{a} + R{b} together"),
+        (f"hold_R{b}", 4., f"Release camera R{a} · continue sliding camera R{b} only"),
+        ("release_3_all", 4., "Release all rods"),
+        ("final_idle", 2., "Leave all rods unloaded"),
+    ]
+
+
 class LightCheckWindow(Window):
-    def __init__(self, output=OUTPUT, **kwargs):
+    def __init__(self, output=OUTPUT, *, multi=False, sliding=False, rois=None, check_mode="multi_v_rise", **kwargs):
+        multi = multi or sliding
+        rois = tuple(rois or ((1, 3) if sliding else (7, 9)))
+        if len(rois) != 2 or len(set(rois)) != 2 or any(type(i) is not int or i not in range(1, 10) for i in rois):
+            raise ValueError("Choose two distinct rods from R1 through R9")
         settings = load_setup(output)
         stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
-        check_folder = Path(output) / "diagnostics" / f"bright_row_{stamp}_{uuid4().hex[:6]}"
+        prefix = "sliding" if sliding else "multi_press" if multi else "bright_row"
+        check_folder = Path(output) / "diagnostics" / f"{prefix}_{stamp}_{uuid4().hex[:6]}"
         super().__init__(output=check_folder, **kwargs)
         self.demo_output = Path(output)
         self.demo_window = None
         self.return_requested = False
         self.settings.update(settings)
         self.index.setValue(settings["camera_index"])
-        self.rule.setCurrentIndex(self.rule.findData("rapid_tap"))
+        mode = "multi_slide" if sliding else check_mode if multi else "rapid_tap"
+        if self.rule.findData(mode) < 0:
+            raise ValueError("Unknown check mode")
+        self.rule.setCurrentIndex(self.rule.findData(mode))
         self.minimum_v_step = settings["minimum_v_step"]
         self.record.setChecked(True)
         self.record.hide()
         self.start_button.hide()
         self.baseline_button.hide()
         self.mode.hide()  # This procedure is for live camera input.
-        self.setWindowTitle("BAURods · R7 / R8 / R9 light check")
+        names = " + ".join(f"R{i}" for i in rois)
+        self.setWindowTitle(f"BAURods · {names} {'sliding' if sliding else 'multi-press'} check" if multi else "BAURods · R7 / R8 / R9 light check")
         self.resize(1140, 770)
         self.stage = "waiting"
+        self.multi = multi
+        self.sliding = sliding
         self.events = []
-        self.plan = cue_plan()
+        self.plan = sliding_cue_plan(rois) if sliding else multi_cue_plan(rois) if multi else cue_plan()
         self.confirmed = self.armed = False
         self.origin = None
         self.issue = ""
         banner = QFrame()
         banner.setStyleSheet("QFrame{background:#16475a;border-radius:6px;}")
         row = QHBoxLayout(banner)
-        self.cue = QLabel("Select the Arducam index. Start saves a short local replay of two R7, R8, R9 rounds.")
+        self.cue = QLabel("Select the Arducam index. Start records an unloaded baseline, then the guided cues.")
         self.cue.setWordWrap(True)
         self.cue.setStyleSheet("font-size:17px; font-weight:650; color:white")
         row.addWidget(self.cue, 1)
-        self.check_button = QPushButton("Start light check")
+        self.check_button = QPushButton("Start sliding check" if sliding else "Start multi-press check" if multi else "Start light check")
         self.check_button.clicked.connect(self.check_action)
         row.addWidget(self.check_button)
         self.demo_button = QPushButton("Open normal demo")
@@ -66,6 +106,15 @@ class LightCheckWindow(Window):
         self.cue_timer = QTimer(self)
         self.cue_timer.timeout.connect(self.tick)
         self.cue_timer.start(30)
+
+    def apply_rois(self, values):
+        if not super().apply_rois(values):
+            return False
+        # A layout adjusted in a guided check also belongs to the normal live GUI.
+        settings = load_setup(self.demo_output)
+        settings.update(optical_rois=self.settings.get("optical_rois"), physical_mapping=None)
+        save_setup(settings, self.demo_output)
+        return True
 
     def save_check(self):
         path = self.session.record_path if self.session else None
@@ -118,7 +167,7 @@ class LightCheckWindow(Window):
         if not self.session or self.session.cancel.is_set():
             self.stage, self.issue = "waiting", f"{state.status} · {state.detail}"
             self.cue.setText(self.issue)
-            self.check_button.setText("Retry light check")
+            self.check_button.setText("Retry sliding check" if self.sliding else "Retry multi-press check" if self.multi else "Retry light check")
             self.check_button.show()
             self.demo_button.setText("Open normal demo")
             self.save_check()
@@ -142,7 +191,7 @@ class LightCheckWindow(Window):
                 if not self.events or self.events[-1]["phase"] != phase:
                     self.events.append(dict(phase=phase, frame=state.frame.number, source_s=state.frame.t))
                     self.save_check()
-                    if phase.startswith("press"):
+                    if phase.startswith(("press", "hold", "release", "slide")):
                         QApplication.beep()
                 self.cue.setText(f"{text}   ·   {end-elapsed:.1f} s")
                 return
@@ -150,7 +199,7 @@ class LightCheckWindow(Window):
         self.events.append(dict(phase="end", frame=state.frame.number, source_s=state.frame.t))
         self.stop()
         self.save_check()
-        self.cue.setText("Did you complete both press/release rounds?")
+        self.cue.setText("Did you complete all sliding and release cues?" if self.sliding else "Did you complete both press/release rounds?")
         self.check_button.setText("Yes · open normal demo")
         self.check_button.show()
         self.demo_button.setText("Timing uncertain · open demo")
